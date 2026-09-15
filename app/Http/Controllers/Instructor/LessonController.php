@@ -15,7 +15,7 @@ class LessonController extends Controller
     {
         abort_unless($section->course->instructor_id === auth()->id(), 403);
 
-        $data = $this->validateData($request);
+        $data = $this->withVideoProvider($this->validateData($request));
 
         $section->lessons()->create([
             ...$data,
@@ -29,7 +29,7 @@ class LessonController extends Controller
     {
         abort_unless($lesson->section->course->instructor_id === auth()->id(), 403);
 
-        $lesson->update($this->validateData($request));
+        $lesson->update($this->withVideoProvider($this->validateData($request)));
 
         return back()->with('success', 'تم تحديث الدرس.');
     }
@@ -53,5 +53,20 @@ class LessonController extends Controller
             'duration_seconds' => ['nullable', 'integer', 'min:0'],
             'is_preview' => ['boolean'],
         ]);
+    }
+
+    /**
+     * Video hosting is YouTube (unlisted) for now to keep the platform free
+     * during development — swappable for Bunny.net/Cloudflare Stream later
+     * without a schema change, since we already store provider + id.
+     */
+    private function withVideoProvider(array $data): array
+    {
+        if (($data['type'] ?? null) === 'video' && ! empty($data['video_url'])) {
+            $data['video_provider'] = 'youtube';
+            $data['video_id'] = Lesson::extractYoutubeId($data['video_url']);
+        }
+
+        return $data;
     }
 }

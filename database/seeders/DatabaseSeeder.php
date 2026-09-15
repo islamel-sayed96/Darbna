@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -41,10 +43,48 @@ class DatabaseSeeder extends Seeder
         ]);
         $student->assignRole('student');
 
-        Category::firstOrCreate(
+        $category = Category::firstOrCreate(
             ['slug' => 'web-development'],
             ['name' => 'تطوير الويب']
         );
+
+        $demoCourse = Course::firstOrCreate(
+            ['slug' => 'html-css-for-beginners'],
+            [
+                'instructor_id' => $instructor->id,
+                'category_id' => $category->id,
+                'title' => 'أساسيات HTML و CSS للمبتدئين',
+                'description' => 'كورس تجريبي لعرض شكل المنصة: تشوف فيه فيديو، تختبر تجربة الطالب، وتاخد فكرة عن شكل صفحة الكورس والدرس.',
+                'price' => 0,
+                'is_free' => true,
+                'level' => 'beginner',
+                'language' => 'ar',
+                'status' => 'published',
+                'published_at' => now(),
+            ]
+        );
+
+        if ($demoCourse->sections()->doesntExist()) {
+            $section = $demoCourse->sections()->create(['title' => 'مقدمة الكورس', 'position' => 1]);
+
+            $section->lessons()->create([
+                'title' => 'الدرس الأول: مقدمة (فيديو تجريبي)',
+                'type' => 'video',
+                'video_provider' => 'youtube',
+                'video_id' => Lesson::extractYoutubeId('https://www.youtube.com/watch?v=aqz-KE-bpKQ'),
+                'video_url' => 'https://www.youtube.com/watch?v=aqz-KE-bpKQ',
+                'position' => 1,
+                'is_preview' => true,
+            ]);
+
+            $section->lessons()->create([
+                'title' => 'الدرس الثاني: نص تجريبي',
+                'type' => 'text',
+                'content' => 'ده مثال لدرس نصي — ممكن المحاضر يكتب هنا شرح أو ملاحظات بدل فيديو.',
+                'position' => 2,
+                'is_preview' => false,
+            ]);
+        }
 
         SubscriptionPlan::firstOrCreate(
             ['slug' => 'monthly'],

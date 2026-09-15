@@ -50,6 +50,8 @@ function AddSectionForm({ course }) {
 function AddLessonForm({ section }) {
     const [title, setTitle] = useState('');
     const [type, setType] = useState('video');
+    const [videoUrl, setVideoUrl] = useState('');
+    const [isPreview, setIsPreview] = useState(false);
     const [processing, setProcessing] = useState(false);
 
     const submit = (e) => {
@@ -58,39 +60,65 @@ function AddLessonForm({ section }) {
         setProcessing(true);
         router.post(
             route('instructor.lessons.store', section.id),
-            { title, type },
+            { title, type, video_url: videoUrl, is_preview: isPreview },
             {
                 preserveScroll: true,
                 onFinish: () => setProcessing(false),
-                onSuccess: () => setTitle(''),
+                onSuccess: () => {
+                    setTitle('');
+                    setVideoUrl('');
+                    setIsPreview(false);
+                },
             },
         );
     };
 
     return (
-        <form onSubmit={submit} className="mt-2 flex gap-2">
-            <TextInput
-                className="flex-1"
-                placeholder="اسم الدرس"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <select
-                className="rounded-md border-gray-300 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-            >
-                <option value="video">فيديو</option>
-                <option value="text">نص</option>
-                <option value="quiz">اختبار</option>
-                <option value="live">حصة مباشرة</option>
-            </select>
+        <form onSubmit={submit} className="mt-2 space-y-2">
+            <div className="flex gap-2">
+                <TextInput
+                    className="flex-1"
+                    placeholder="اسم الدرس"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <select
+                    className="rounded-md border-gray-300 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                >
+                    <option value="video">فيديو</option>
+                    <option value="text">نص</option>
+                    <option value="quiz">اختبار</option>
+                    <option value="live">حصة مباشرة</option>
+                </select>
+            </div>
+
+            {type === 'video' && (
+                <TextInput
+                    className="block w-full"
+                    placeholder="رابط يوتيوب (غير مدرج/Unlisted) — https://youtu.be/..."
+                    value={videoUrl}
+                    onChange={(e) => setVideoUrl(e.target.value)}
+                />
+            )}
+
+            <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                <input
+                    type="checkbox"
+                    checked={isPreview}
+                    onChange={(e) => setIsPreview(e.target.checked)}
+                    className="rounded border-gray-300 text-indigo-600"
+                />
+                معاينة مجانية (يقدر يشوفه أي حد حتى بدون اشتراك)
+            </label>
+
             <button
                 type="submit"
                 disabled={processing}
                 className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
             >
-                + درس
+                + إضافة الدرس
             </button>
         </form>
     );

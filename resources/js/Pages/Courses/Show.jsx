@@ -83,19 +83,40 @@ export default function Show({ course, isEnrolled, hasActiveSubscription }) {
                                     {section.title}
                                 </p>
                                 <ul className="mt-2 space-y-1">
-                                    {section.lessons.map((lesson) => (
-                                        <li
-                                            key={lesson.id}
-                                            className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-300"
-                                        >
-                                            <span>{lesson.title}</span>
-                                            {lesson.is_preview && (
-                                                <span className="text-xs text-indigo-600">
-                                                    معاينة مجانية
-                                                </span>
-                                            )}
-                                        </li>
-                                    ))}
+                                    {section.lessons.map((lesson) => {
+                                        const canOpen =
+                                            lesson.is_preview || isEnrolled;
+                                        const content = (
+                                            <>
+                                                <span>{lesson.title}</span>
+                                                {lesson.is_preview && (
+                                                    <span className="text-xs text-indigo-600">
+                                                        معاينة مجانية
+                                                    </span>
+                                                )}
+                                            </>
+                                        );
+
+                                        return (
+                                            <li key={lesson.id}>
+                                                {canOpen ? (
+                                                    <Link
+                                                        href={route(
+                                                            'lessons.show',
+                                                            lesson.id,
+                                                        )}
+                                                        className="flex items-center justify-between rounded px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    >
+                                                        {content}
+                                                    </Link>
+                                                ) : (
+                                                    <div className="flex items-center justify-between px-2 py-1.5 text-sm text-gray-400">
+                                                        {content}
+                                                    </div>
+                                                )}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         ))}

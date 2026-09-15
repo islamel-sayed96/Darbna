@@ -32,7 +32,7 @@ class CoursePlatformFlowTest extends TestCase
             'language' => 'ar',
         ]);
 
-        $course = $instructor->coursesTaught()->first();
+        $course = $instructor->coursesTaught()->latest('id')->first();
 
         $response->assertRedirect(route('instructor.courses.edit', $course));
         $this->assertSame('draft', $course->status);
