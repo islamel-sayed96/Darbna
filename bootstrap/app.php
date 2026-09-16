@@ -12,6 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Render (and most PaaS hosts) terminate TLS at a reverse proxy and
+        // forward plain HTTP to the app, so without this Laravel thinks
+        // every request is insecure and generates http:// asset URLs —
+        // which browsers then block as mixed content on an https:// page.
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
