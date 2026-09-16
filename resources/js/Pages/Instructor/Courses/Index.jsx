@@ -26,7 +26,7 @@ export default function Index({ courses }) {
                     <div className="flex justify-end">
                         <Link
                             href={route('instructor.courses.create')}
-                            className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                            className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500"
                         >
                             + إنشاء كورس جديد
                         </Link>
@@ -57,7 +57,7 @@ export default function Index({ courses }) {
                                         'instructor.courses.edit',
                                         course.id,
                                     )}
-                                    className="mt-3 inline-block text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                                    className="mt-3 inline-block text-sm font-medium text-brand-600 hover:text-brand-500"
                                 >
                                     إدارة الكورس
                                 </Link>

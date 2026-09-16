@@ -8,7 +8,14 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600|cairo:400,500,600,700&display=swap" rel="stylesheet" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <meta name="description" content="{{ config('app.name') }} — منصة كورسات أونلاين عربية: فيديوهات، اختبارات، شهادات، وحصص مباشرة.">
+        <meta property="og:title" content="{{ config('app.name') }}">
+        <meta property="og:description" content="تعلّم من نخبة المحاضرين، في أي وقت وأي مكان.">
+        <meta property="og:type" content="website">
 
         <!-- Scripts -->
         @routes

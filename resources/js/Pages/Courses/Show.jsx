@@ -20,7 +20,7 @@ export default function Show({ course, isEnrolled, hasActiveSubscription }) {
 
             <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
                 <div className="rounded-lg bg-white p-8 shadow dark:bg-gray-800">
-                    <p className="text-sm text-indigo-600">
+                    <p className="text-sm text-brand-600">
                         {course.category?.name ?? 'عام'}
                     </p>
                     <h1 className="mt-1 text-3xl font-bold text-gray-900 dark:text-white">
@@ -38,7 +38,7 @@ export default function Show({ course, isEnrolled, hasActiveSubscription }) {
                     </p>
 
                     <div className="mt-6 flex items-center gap-4">
-                        <span className="text-2xl font-bold text-indigo-600">
+                        <span className="text-2xl font-bold text-brand-600">
                             {course.is_free
                                 ? 'مجاني'
                                 : `${course.price} جنيه`}
@@ -52,7 +52,7 @@ export default function Show({ course, isEnrolled, hasActiveSubscription }) {
                             <button
                                 onClick={enroll}
                                 disabled={!canEnroll && !!auth.user}
-                                className="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:bg-indigo-500 disabled:opacity-50"
+                                className="rounded-md bg-brand-600 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-50"
                             >
                                 {course.is_free
                                     ? 'اشترك مجانًا'
@@ -90,7 +90,7 @@ export default function Show({ course, isEnrolled, hasActiveSubscription }) {
                                             <>
                                                 <span>{lesson.title}</span>
                                                 {lesson.is_preview && (
-                                                    <span className="text-xs text-indigo-600">
+                                                    <span className="text-xs text-brand-600">
                                                         معاينة مجانية
                                                     </span>
                                                 )}

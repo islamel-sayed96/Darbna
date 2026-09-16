@@ -12,6 +12,7 @@ class DashboardController extends Controller
 
         return match (true) {
             $user->hasRole('admin') => redirect()->route('admin.dashboard'),
+            $user->hasRole('moderator') => redirect()->route('admin.courses.index'),
             $user->hasRole('instructor') => redirect()->route('instructor.dashboard'),
             default => redirect()->route('student.dashboard'),
         };

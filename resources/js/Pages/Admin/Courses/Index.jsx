@@ -45,7 +45,7 @@ export default function Index({ courses, filters }) {
                                 onClick={() => changeStatus(tab.value)}
                                 className={`rounded-md px-4 py-2 text-sm font-medium ${
                                     filters.status === tab.value
-                                        ? 'bg-indigo-600 text-white'
+                                        ? 'bg-brand-600 text-white'
                                         : 'bg-white text-gray-600 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300'
                                 }`}
                             >
@@ -88,7 +88,7 @@ export default function Index({ courses, filters }) {
                                                     'admin.courses.show',
                                                     course.id,
                                                 )}
-                                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                className="font-medium text-brand-600 hover:text-brand-500"
                                             >
                                                 مراجعة
                                             </Link>

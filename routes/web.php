@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardCo
 use App\Http\Controllers\Instructor\LessonController;
 use App\Http\Controllers\LessonProgressController;
 use App\Http\Controllers\LessonViewController;
+use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use Illuminate\Foundation\Application;
@@ -29,6 +32,7 @@ Route::get('/', function () {
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/lessons/{lesson}', [LessonViewController::class, 'show'])->name('lessons.show');
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'redirect'])->name('dashboard');
@@ -38,16 +42,36 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/courses', [CourseReviewController::class, 'index'])->name('courses.index');
-    Route::get('/courses/{course}', [CourseReviewController::class, 'show'])->name('courses.show');
-    Route::post('/courses/{course}/approve', [CourseReviewController::class, 'approve'])->name('courses.approve');
-    Route::post('/courses/{course}/reject', [CourseReviewController::class, 'reject'])->name('courses.reject');
+        Route::get('/instructors', [InstructorController::class, 'index'])->name('instructors.index');
+        Route::get('/instructors/create', [InstructorController::class, 'create'])->name('instructors.create');
+        Route::post('/instructors', [InstructorController::class, 'store'])->name('instructors.store');
+        Route::post('/instructors/{instructor}/toggle-active', [InstructorController::class, 'toggleActive'])->name('instructors.toggle-active');
+
+        Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+        Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
+        Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+        Route::put('/staff/{staff}/permissions', [StaffController::class, 'updatePermissions'])->name('staff.permissions');
+        Route::post('/staff/{staff}/toggle-active', [StaffController::class, 'toggleActive'])->name('staff.toggle-active');
+    });
+
+    // Content moderation — admin (via its synced permissions) or any
+    // moderator explicitly granted the 'review_courses' permission.
+    Route::middleware('permission:review_courses')->group(function () {
+        Route::get('/courses', [CourseReviewController::class, 'index'])->name('courses.index');
+        Route::get('/courses/{course}', [CourseReviewController::class, 'show'])->name('courses.show');
+        Route::post('/courses/{course}/approve', [CourseReviewController::class, 'approve'])->name('courses.approve');
+        Route::post('/courses/{course}/reject', [CourseReviewController::class, 'reject'])->name('courses.reject');
+        Route::post('/courses/{course}/unpublish', [CourseReviewController::class, 'unpublish'])->name('courses.unpublish');
+        Route::delete('/courses/{course}', [CourseReviewController::class, 'destroy'])->name('courses.destroy');
+    });
 });
 
 Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')->name('instructor.')->group(function () {
@@ -58,7 +82,6 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
     Route::post('/courses', [InstructorCourseController::class, 'store'])->name('courses.store');
     Route::get('/courses/{course}/edit', [InstructorCourseController::class, 'edit'])->name('courses.edit');
     Route::put('/courses/{course}', [InstructorCourseController::class, 'update'])->name('courses.update');
-    Route::delete('/courses/{course}', [InstructorCourseController::class, 'destroy'])->name('courses.destroy');
     Route::post('/courses/{course}/submit', [InstructorCourseController::class, 'submit'])->name('courses.submit');
 
     Route::post('/courses/{course}/sections', [CourseSectionController::class, 'store'])->name('sections.store');

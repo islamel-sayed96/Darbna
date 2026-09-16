@@ -8,7 +8,7 @@ export default function Welcome({ canLogin, canRegister }) {
             <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
                 <nav className="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
                     <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                        <span className="text-xl font-bold text-indigo-600">
+                        <span className="text-xl font-bold text-brand-600">
                             دربنا
                         </span>
 
@@ -32,7 +32,7 @@ export default function Welcome({ canLogin, canRegister }) {
                             {canRegister && (
                                 <Link
                                     href={route('register')}
-                                    className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                                    className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500"
                                 >
                                     ابدأ الآن مجانًا
                                 </Link>
@@ -54,7 +54,7 @@ export default function Welcome({ canLogin, canRegister }) {
                     <div className="mt-10 flex justify-center gap-4">
                         <Link
                             href={route('courses.index')}
-                            className="rounded-md bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500"
+                            className="rounded-md bg-brand-600 px-6 py-3 text-base font-semibold text-white hover:bg-brand-500"
                         >
                             تصفح الكورسات
                         </Link>

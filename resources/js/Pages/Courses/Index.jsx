@@ -46,7 +46,7 @@ export default function Index({ courses, categories, filters }) {
                     </select>
                     <button
                         type="submit"
-                        className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                        className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500"
                     >
                         بحث
                     </button>
@@ -59,7 +59,7 @@ export default function Index({ courses, categories, filters }) {
                             href={route('courses.show', course.slug)}
                             className="overflow-hidden rounded-lg bg-white shadow transition hover:shadow-md dark:bg-gray-800"
                         >
-                            <div className="flex h-36 items-center justify-center bg-indigo-50 text-indigo-300 dark:bg-gray-700">
+                            <div className="flex h-36 items-center justify-center bg-brand-50 text-brand-300 dark:bg-gray-700">
                                 <span className="text-sm">لا توجد صورة</span>
                             </div>
                             <div className="p-4">
@@ -72,7 +72,7 @@ export default function Index({ courses, categories, filters }) {
                                 <p className="mt-1 text-sm text-gray-500">
                                     {course.instructor?.name}
                                 </p>
-                                <p className="mt-2 font-bold text-indigo-600">
+                                <p className="mt-2 font-bold text-brand-600">
                                     {course.is_free
                                         ? 'مجاني'
                                         : `${course.price} جنيه`}

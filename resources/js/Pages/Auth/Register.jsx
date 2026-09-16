@@ -11,7 +11,6 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
-        account_type: 'student',
     });
 
     const submit = (e) => {
@@ -62,37 +61,6 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel value="نوع الحساب" />
-
-                    <div className="mt-2 grid grid-cols-2 gap-3">
-                        {[
-                            { value: 'student', label: 'طالب' },
-                            { value: 'instructor', label: 'محاضر' },
-                        ].map((option) => (
-                            <button
-                                type="button"
-                                key={option.value}
-                                onClick={() =>
-                                    setData('account_type', option.value)
-                                }
-                                className={`rounded-md border px-4 py-2 text-sm font-medium transition ${
-                                    data.account_type === option.value
-                                        ? 'border-indigo-600 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
-                                        : 'border-gray-300 text-gray-600 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700'
-                                }`}
-                            >
-                                {option.label}
-                            </button>
-                        ))}
-                    </div>
-
-                    <InputError
-                        message={errors.account_type}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div className="mt-4">
                     <InputLabel htmlFor="password" value="كلمة المرور" />
 
                     <TextInput
@@ -137,7 +105,7 @@ export default function Register() {
                 <div className="mt-4 flex items-center justify-end">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                     >
                         لديك حساب بالفعل؟
                     </Link>

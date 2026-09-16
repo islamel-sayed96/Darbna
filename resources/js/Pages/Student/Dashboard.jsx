@@ -38,8 +38,8 @@ export default function Dashboard({
                             </p>
                             {!activeSubscription && (
                                 <Link
-                                    href={route('courses.index')}
-                                    className="mt-2 inline-block text-sm text-indigo-600 hover:underline"
+                                    href={route('pricing')}
+                                    className="mt-2 inline-block text-sm text-brand-600 hover:underline"
                                 >
                                     عرض خطط الاشتراك
                                 </Link>
@@ -60,7 +60,7 @@ export default function Dashboard({
                             </h3>
                             <Link
                                 href={route('courses.index')}
-                                className="text-sm text-indigo-600 hover:underline"
+                                className="text-sm text-brand-600 hover:underline"
                             >
                                 تصفح المزيد من الكورسات
                             </Link>
@@ -81,7 +81,7 @@ export default function Dashboard({
                                     </h4>
                                     <div className="mt-3 h-2 w-full rounded-full bg-gray-100 dark:bg-gray-700">
                                         <div
-                                            className="h-2 rounded-full bg-indigo-600"
+                                            className="h-2 rounded-full bg-brand-600"
                                             style={{
                                                 width: `${enrollment.progress_percent}%`,
                                             }}

@@ -86,17 +86,6 @@ class CourseController extends Controller
         return back()->with('success', 'تم إرسال الكورس للمراجعة، هيتراجع من فريق الإدارة قريبًا.');
     }
 
-    public function destroy(Course $course): RedirectResponse
-    {
-        $this->authorizeOwner($course);
-
-        abort_if($course->status === 'published', 422, 'لا يمكن حذف كورس منشور، قم بإلغاء نشره أولاً.');
-
-        $course->delete();
-
-        return redirect()->route('instructor.courses.index')->with('success', 'تم حذف الكورس.');
-    }
-
     private function authorizeOwner(Course $course): void
     {
         abort_unless($course->instructor_id === auth()->id(), 403);

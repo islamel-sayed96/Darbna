@@ -9,6 +9,7 @@ use App\Models\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -20,9 +21,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (['admin', 'instructor', 'student'] as $role) {
+        foreach (['admin', 'instructor', 'student', 'moderator'] as $role) {
             Role::firstOrCreate(['name' => $role]);
         }
+
+        $permissions = ['review_courses', 'manage_users', 'manage_categories', 'manage_subscriptions'];
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+        Role::findByName('admin')->syncPermissions($permissions);
 
         $admin = User::factory()->create([
             'name' => 'مدير المنصة',
@@ -86,27 +93,39 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        SubscriptionPlan::firstOrCreate(
-            ['slug' => 'monthly'],
+        $plans = [
             [
-                'name' => 'اشتراك شهري',
+                'slug' => 'monthly',
+                'name' => 'الخطة الشهرية',
                 'price' => 199,
                 'interval' => 'month',
-                'description' => 'وصول كامل لكل الكورسات المنشورة شهريًا.',
-                'is_active' => true,
-            ]
-        );
-
-        SubscriptionPlan::firstOrCreate(
-            ['slug' => 'yearly'],
+                'description' => 'وصول كامل لكل الكورسات المشمولة بالاشتراك، يتجدد كل شهر.',
+                'badge' => null,
+            ],
             [
-                'name' => 'اشتراك سنوي',
+                'slug' => 'half-yearly',
+                'name' => 'خطة الـ 6 شهور',
+                'price' => 999,
+                'interval' => 'half_year',
+                'description' => 'وفّر حوالي 16% عن السعر الشهري — وصول كامل لمدة 6 شهور.',
+                'badge' => 'الأكثر توفيرًا',
+            ],
+            [
+                'slug' => 'yearly-gold',
+                'name' => 'الخطة الذهبية (سنوية)',
                 'price' => 1799,
                 'interval' => 'year',
-                'description' => 'وصول كامل لكل الكورسات المنشورة بخصم سنوي.',
-                'is_active' => true,
-            ]
-        );
+                'description' => 'وفّر أكتر من 24% عن السعر الشهري — وصول كامل لمدة سنة كاملة.',
+                'badge' => 'ذهبي',
+            ],
+        ];
+
+        foreach ($plans as $plan) {
+            SubscriptionPlan::firstOrCreate(
+                ['slug' => $plan['slug']],
+                [...$plan, 'is_active' => true]
+            );
+        }
 
         $this->command?->info("Demo users created (password: 'password'):");
         $this->command?->info('- admin@darbna.test');

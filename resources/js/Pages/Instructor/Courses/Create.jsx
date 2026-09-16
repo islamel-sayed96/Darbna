@@ -118,7 +118,7 @@ export default function Create({ categories }) {
                                 onChange={(e) =>
                                     setData('is_free', e.target.checked)
                                 }
-                                className="rounded border-gray-300 text-indigo-600"
+                                className="rounded border-gray-300 text-brand-600"
                             />
                             <InputLabel
                                 htmlFor="is_free"

@@ -10,7 +10,7 @@ export default function SiteLayout({ children }) {
             <nav className="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                     <Link href="/" className="flex items-center gap-2">
-                        <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <ApplicationLogo className="h-9" />
                     </Link>
 
                     <div className="flex items-center gap-6">
@@ -21,10 +21,17 @@ export default function SiteLayout({ children }) {
                             تصفح الكورسات
                         </Link>
 
+                        <Link
+                            href={route('pricing')}
+                            className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                        >
+                            الأسعار
+                        </Link>
+
                         {auth.user ? (
                             <Link
                                 href={route('dashboard')}
-                                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                                className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500"
                             >
                                 لوحة التحكم
                             </Link>
@@ -38,7 +45,7 @@ export default function SiteLayout({ children }) {
                                 </Link>
                                 <Link
                                     href={route('register')}
-                                    className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                                    className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500"
                                 >
                                     ابدأ الآن
                                 </Link>

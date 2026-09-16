@@ -65,4 +65,18 @@ class CourseReviewController extends Controller
 
         return back()->with('success', 'تم رفض الكورس مع إرسال السبب للمحاضر.');
     }
+
+    public function unpublish(Course $course): RedirectResponse
+    {
+        $course->update(['status' => 'unpublished']);
+
+        return back()->with('success', 'تم إلغاء نشر الكورس.');
+    }
+
+    public function destroy(Course $course): RedirectResponse
+    {
+        $course->delete();
+
+        return redirect()->route('admin.courses.index')->with('success', 'تم حذف الكورس نهائيًا.');
+    }
 }

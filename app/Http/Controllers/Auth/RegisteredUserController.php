@@ -35,7 +35,6 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'account_type' => ['required', 'in:student,instructor'],
         ]);
 
         $user = User::create([
@@ -44,7 +43,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->assignRole($request->string('account_type')->toString());
+        // Public registration is students only — instructor and staff
+        // accounts are created by an admin (see Admin\InstructorController
+        // and Admin\StaffController) so their access can be vetted.
+        $user->assignRole('student');
 
         event(new Registered($user));
 

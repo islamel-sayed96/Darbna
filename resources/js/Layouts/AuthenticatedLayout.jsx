@@ -27,6 +27,21 @@ export default function AuthenticatedLayout({ header, children }) {
         });
     }
 
+    if (roles.includes('admin')) {
+        links.push(
+            {
+                href: route('admin.instructors.index'),
+                label: 'المحاضرين',
+                active: 'admin.instructors.*',
+            },
+            {
+                href: route('admin.staff.index'),
+                label: 'الفريق',
+                active: 'admin.staff.*',
+            },
+        );
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav className="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -35,7 +50,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                                    <ApplicationLogo className="h-9" />
                                 </Link>
                             </div>
 
@@ -61,6 +76,13 @@ export default function AuthenticatedLayout({ header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                                             >
+                                                {user.avatar_url ? (
+                                                    <img
+                                                        src={user.avatar_url}
+                                                        alt={user.name}
+                                                        className="me-2 h-6 w-6 rounded-full object-cover"
+                                                    />
+                                                ) : null}
                                                 {user.name}
 
                                                 <svg

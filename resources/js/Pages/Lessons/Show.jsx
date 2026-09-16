@@ -24,7 +24,7 @@ export default function Show({
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
                 <Link
                     href={route('courses.show', course.slug)}
-                    className="text-sm text-indigo-600 hover:underline"
+                    className="text-sm text-brand-600 hover:underline"
                 >
                     &larr; الرجوع لصفحة الكورس: {course.title}
                 </Link>
@@ -79,7 +79,7 @@ export default function Show({
                             {prevLesson ? (
                                 <Link
                                     href={route('lessons.show', prevLesson.id)}
-                                    className="text-sm text-indigo-600 hover:underline"
+                                    className="text-sm text-brand-600 hover:underline"
                                 >
                                     &larr; الدرس السابق
                                 </Link>
@@ -89,7 +89,7 @@ export default function Show({
                             {nextLesson && (
                                 <Link
                                     href={route('lessons.show', nextLesson.id)}
-                                    className="text-sm text-indigo-600 hover:underline"
+                                    className="text-sm text-brand-600 hover:underline"
                                 >
                                     الدرس التالي &rarr;
                                 </Link>
@@ -108,7 +108,7 @@ export default function Show({
                                         href={route('lessons.show', l.id)}
                                         className={`block rounded px-2 py-1.5 text-sm ${
                                             l.id === lesson.id
-                                                ? 'bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+                                                ? 'bg-brand-50 font-medium text-brand-700 dark:bg-brand-900/40 dark:text-brand-300'
                                                 : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700'
                                         }`}
                                     >

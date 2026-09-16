@@ -28,7 +28,7 @@ COPY . .
 COPY --from=vendor /app/vendor ./vendor
 COPY --from=assets /app/public/build ./public/build
 
-RUN mkdir -p database storage/framework/{cache,sessions,views} storage/logs bootstrap/cache \
+RUN mkdir -p database storage/framework/{cache,sessions,views} storage/logs storage/app/public bootstrap/cache \
     && touch database/database.sqlite \
     && chmod -R 775 storage bootstrap/cache database
 
@@ -44,4 +44,5 @@ ENV APP_ENV=production \
 EXPOSE 8080
 
 CMD php artisan migrate --seed --force \
+    && [ -L public/storage ] || php artisan storage:link \
     && php artisan serve --host=0.0.0.0 --port=${PORT}

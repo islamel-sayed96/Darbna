@@ -39,6 +39,8 @@ class HandleInertiaRequests extends Middleware
             ],
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
+                'generatedPassword' => fn () => $request->session()->get('generatedPassword'),
+                'generatedFor' => fn () => $request->session()->get('generatedFor'),
             ],
         ];
     }
