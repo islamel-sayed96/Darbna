@@ -12,7 +12,10 @@ RUN npm run build
 FROM composer:2 AS vendor
 WORKDIR /app
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-interaction --prefer-dist --ignore-platform-reqs
+# Includes dev deps on purpose: this demo image seeds sample data via
+# UserFactory, which needs fakerphp/faker (a dev-only package normally
+# absent from a real production install).
+RUN composer install --no-scripts --no-interaction --prefer-dist --ignore-platform-reqs
 
 FROM php:8.4-cli
 RUN apt-get update && apt-get install -y --no-install-recommends \
