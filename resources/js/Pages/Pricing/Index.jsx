@@ -1,18 +1,42 @@
 import SiteLayout from '@/Layouts/SiteLayout';
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
-const INTERVAL_LABELS = {
-    month: '/ شهريًا',
-    half_year: '/ كل 6 شهور',
-    year: '/ سنويًا',
-};
+const DURATIONS = [
+    { months: 1, label: 'شهر' },
+    { months: 3, label: '3 شهور' },
+    { months: 6, label: '6 شهور' },
+    { months: 12, label: 'سنة' },
+];
+
+const ACCESS_ORDER = [
+    'limited_courses',
+    'single_path',
+    'three_paths',
+    'all_access',
+];
 
 export default function Index({ plans }) {
     const { auth } = usePage().props;
+    const [duration, setDuration] = useState(1);
     const [subscribingTo, setSubscribingTo] = useState(null);
 
+    const visiblePlans = useMemo(() => {
+        return ACCESS_ORDER.map((accessType) =>
+            plans.find(
+                (plan) =>
+                    plan.access_type === accessType &&
+                    plan.duration_months === duration,
+            ),
+        ).filter(Boolean);
+    }, [plans, duration]);
+
     const subscribe = (plan) => {
+        if (!auth.user) {
+            router.visit(route('login'));
+            return;
+        }
+
         setSubscribingTo(plan.id);
         router.post(
             route('checkout.store', plan.id),
@@ -31,13 +55,31 @@ export default function Index({ plans }) {
                         خطط الاشتراك
                     </h1>
                     <p className="mt-3 text-gray-600 dark:text-gray-300">
-                        اشترك مرة واحدة وادخل على كل الكورسات المشمولة —
-                        كل ما الخطة أطول كل ما وفّرت أكتر.
+                        اختار مدة الاشتراك ونوع الوصول اللي يناسبك — كل ما
+                        اشتركت لمدة أطول كل ما وفّرت أكتر.
                     </p>
                 </div>
 
-                <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {plans.map((plan) => (
+                <div className="mt-8 flex justify-center">
+                    <div className="inline-flex rounded-full border border-gray-200 bg-white p-1 dark:border-gray-700 dark:bg-gray-800">
+                        {DURATIONS.map((d) => (
+                            <button
+                                key={d.months}
+                                onClick={() => setDuration(d.months)}
+                                className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+                                    duration === d.months
+                                        ? 'bg-brand-600 text-white'
+                                        : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                                }`}
+                            >
+                                {d.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    {visiblePlans.map((plan) => (
                         <div
                             key={plan.id}
                             className={`relative rounded-2xl border p-6 shadow-sm ${
@@ -53,7 +95,7 @@ export default function Index({ plans }) {
                             )}
 
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                                {plan.name}
+                                {plan.name.split(' — ')[0]}
                             </h3>
 
                             <p className="mt-4">
@@ -62,8 +104,7 @@ export default function Index({ plans }) {
                                 </span>
                                 <span className="text-sm text-gray-500">
                                     {' '}
-                                    {plan.currency}{' '}
-                                    {INTERVAL_LABELS[plan.interval] ?? ''}
+                                    {plan.currency}
                                 </span>
                             </p>
 

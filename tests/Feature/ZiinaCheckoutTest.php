@@ -32,7 +32,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
 
         $response = $this->actingAs($student)->post(route('checkout.store', $plan));
 
@@ -66,7 +66,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
 
         $response = $this->actingAs($student)->post(route('checkout.store', $plan));
 
@@ -84,7 +84,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
 
         $response = $this->actingAs($student)->post(route('checkout.store', $plan));
 
@@ -109,7 +109,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'yearly-gold')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-12m')->first();
 
         $this->actingAs($student)->post(route('checkout.store', $plan));
         $payment = Payment::where('user_id', $student->id)->first();
@@ -141,7 +141,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
 
         $this->actingAs($student)->post(route('checkout.store', $plan));
         $payment = Payment::where('user_id', $student->id)->first();
@@ -166,7 +166,7 @@ class ZiinaCheckoutTest extends TestCase
         $otherStudent = User::factory()->create();
         $otherStudent->assignRole('student');
 
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
         $this->actingAs($student)->post(route('checkout.store', $plan));
         $payment = Payment::where('user_id', $student->id)->first();
 
@@ -184,7 +184,7 @@ class ZiinaCheckoutTest extends TestCase
         ]);
 
         $student = User::role('student')->first();
-        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
         $this->actingAs($student)->post(route('checkout.store', $plan));
         $payment = Payment::where('user_id', $student->id)->first();
 

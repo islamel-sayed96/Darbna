@@ -81,10 +81,28 @@ class User extends Authenticatable
 
     public function activeSubscription(): ?Subscription
     {
+        return $this->activeSubscriptions()->first();
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, Subscription>
+     */
+    public function activeSubscriptions()
+    {
         return $this->subscriptions()
             ->where('status', 'active')
             ->where('ends_at', '>', now())
             ->latest('ends_at')
-            ->first();
+            ->get();
+    }
+
+    public function hasAccessToCourse(Course $course): bool
+    {
+        if ($course->is_free) {
+            return true;
+        }
+
+        return $this->activeSubscriptions()
+            ->contains(fn (Subscription $subscription) => $subscription->grantsAccessToCourse($course));
     }
 }

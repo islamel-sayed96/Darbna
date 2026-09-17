@@ -43,7 +43,7 @@ class CourseController extends Controller
         return Inertia::render('Courses/Show', [
             'course' => $course,
             'isEnrolled' => $isEnrolled,
-            'hasActiveSubscription' => $user ? (bool) $user->activeSubscription() : false,
+            'hasActiveSubscription' => $user ? $user->hasAccessToCourse($course) : false,
         ]);
     }
 }

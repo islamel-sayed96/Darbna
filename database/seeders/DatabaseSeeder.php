@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\LearningPath;
 use App\Models\Lesson;
-use App\Models\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -104,44 +103,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Placeholder AED pricing — Ziina (the payment gateway wired up)
-        // only settles in AED. Adjust these once real price points are set.
-        $plans = [
-            [
-                'slug' => 'monthly',
-                'name' => 'الخطة الشهرية',
-                'price' => 49,
-                'currency' => 'AED',
-                'interval' => 'month',
-                'description' => 'وصول كامل لكل الكورسات المشمولة بالاشتراك، يتجدد كل شهر.',
-                'badge' => null,
-            ],
-            [
-                'slug' => 'half-yearly',
-                'name' => 'خطة الـ 6 شهور',
-                'price' => 249,
-                'currency' => 'AED',
-                'interval' => 'half_year',
-                'description' => 'وفّر حوالي 15% عن السعر الشهري — وصول كامل لمدة 6 شهور.',
-                'badge' => 'الأكثر توفيرًا',
-            ],
-            [
-                'slug' => 'yearly-gold',
-                'name' => 'الخطة الذهبية (سنوية)',
-                'price' => 449,
-                'currency' => 'AED',
-                'interval' => 'year',
-                'description' => 'وفّر أكتر من 23% عن السعر الشهري — وصول كامل لمدة سنة كاملة.',
-                'badge' => 'ذهبي',
-            ],
-        ];
-
-        foreach ($plans as $plan) {
-            SubscriptionPlan::firstOrCreate(
-                ['slug' => $plan['slug']],
-                [...$plan, 'is_active' => true]
-            );
-        }
+        $this->call(SubscriptionPlanSeeder::class);
 
         $this->command?->info("Demo users created (password: 'password'):");
         $this->command?->info('- admin@darbna.test');

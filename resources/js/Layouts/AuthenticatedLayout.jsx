@@ -54,6 +54,16 @@ export default function AuthenticatedLayout({ header, children }) {
                 label: 'المسارات',
                 active: 'admin.learning-paths.*',
             },
+            {
+                href: route('admin.subscription-plans.index'),
+                label: 'خطط الاشتراك',
+                active: 'admin.subscription-plans.*',
+            },
+            {
+                href: route('admin.enrollments.index'),
+                label: 'تسجيل يدوي',
+                active: 'admin.enrollments.*',
+            },
         );
     }
 

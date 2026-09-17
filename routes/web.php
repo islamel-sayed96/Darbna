@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EnrollmentController as AdminEnrollmentController;
 use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructorApplicationController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\SubscriptionPlanController as AdminSubscriptionPlanController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -23,6 +25,7 @@ use App\Http\Controllers\LessonViewController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+use App\Http\Controllers\SubscriptionSelectionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -49,6 +52,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/checkout/{plan}', [CheckoutController::class, 'store'])->name('checkout.store');
     Route::get('/checkout/{payment}/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/{payment}/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
+
+    Route::get('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'edit'])->name('subscriptions.select.edit');
+    Route::post('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'update'])->name('subscriptions.select.update');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -97,6 +103,17 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::post('/courses/{course}/unpublish', [CourseReviewController::class, 'unpublish'])->name('courses.unpublish');
         Route::post('/courses/{course}/learning-path', [CourseReviewController::class, 'assignLearningPath'])->name('courses.assign-learning-path');
         Route::delete('/courses/{course}', [CourseReviewController::class, 'destroy'])->name('courses.destroy');
+    });
+
+    Route::middleware('permission:manage_subscriptions')->group(function () {
+        Route::get('/subscription-plans', [AdminSubscriptionPlanController::class, 'index'])->name('subscription-plans.index');
+        Route::post('/subscription-plans', [AdminSubscriptionPlanController::class, 'store'])->name('subscription-plans.store');
+        Route::put('/subscription-plans/{subscriptionPlan}', [AdminSubscriptionPlanController::class, 'update'])->name('subscription-plans.update');
+        Route::delete('/subscription-plans/{subscriptionPlan}', [AdminSubscriptionPlanController::class, 'destroy'])->name('subscription-plans.destroy');
+
+        Route::get('/enrollments', [AdminEnrollmentController::class, 'index'])->name('enrollments.index');
+        Route::post('/enrollments', [AdminEnrollmentController::class, 'store'])->name('enrollments.store');
+        Route::delete('/enrollments/{enrollment}', [AdminEnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     });
 });
 

@@ -17,12 +17,12 @@ class EnrollmentController extends Controller
             return back()->with('success', 'أنت مشترك بالفعل في هذا الكورس.');
         }
 
-        $hasActiveSubscription = (bool) $user->activeSubscription();
+        $hasAccess = $user->hasAccessToCourse($course);
 
         abort_unless(
-            $course->is_free || $hasActiveSubscription,
+            $hasAccess,
             403,
-            'هذا الكورس يتطلب اشتراك فعّال أو شراء منفصل.'
+            'هذا الكورس مش مشمول باشتراكك الحالي.'
         );
 
         $course->enrollments()->create([

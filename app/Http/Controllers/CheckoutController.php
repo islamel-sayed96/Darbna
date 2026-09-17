@@ -8,11 +8,13 @@ use App\Models\SubscriptionPlan;
 use App\Services\ZiinaClient;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Throwable;
 
 class CheckoutController extends Controller
 {
-    public function store(SubscriptionPlan $plan, ZiinaClient $ziina): RedirectResponse
+    public function store(SubscriptionPlan $plan, ZiinaClient $ziina): RedirectResponse|SymfonyResponse
     {
         abort_unless($plan->is_active, 404);
 
@@ -46,7 +48,12 @@ class CheckoutController extends Controller
 
         $payment->update(['gateway_reference' => $intent['id'] ?? null]);
 
-        return redirect()->away($intent['redirect_url']);
+        // Ziina's checkout page lives outside the Inertia app, so a plain
+        // redirect()->away() would make the Inertia client try to load it
+        // as an XHR response and fail. Inertia::location() instead returns
+        // a 409 with X-Inertia-Location, telling the client to do a real
+        // full-page browser navigation.
+        return Inertia::location($intent['redirect_url']);
     }
 
     public function success(Payment $payment, ZiinaClient $ziina): RedirectResponse
@@ -67,7 +74,14 @@ class CheckoutController extends Controller
 
         if ($payment->status !== 'paid') {
             $payment->update(['status' => 'paid', 'paid_at' => now()]);
-            $this->activateSubscription($payment);
+            $subscription = $this->activateSubscription($payment);
+        } else {
+            $subscription = Subscription::where('payment_reference', $payment->gateway_reference)->first();
+        }
+
+        if ($subscription && $subscription->needsSelection()) {
+            return redirect()->route('subscriptions.select.edit', $subscription)
+                ->with('success', 'تم تفعيل اشتراكك! اختار الكورسات أو المسارات اللي عايز توصل لها.');
         }
 
         return redirect()->route('student.dashboard')->with('success', 'تم تفعيل اشتراكك بنجاح!');
@@ -84,24 +98,18 @@ class CheckoutController extends Controller
         return redirect()->route('pricing')->with('success', 'تم إلغاء عملية الدفع.');
     }
 
-    private function activateSubscription(Payment $payment): void
+    private function activateSubscription(Payment $payment): Subscription
     {
         /** @var SubscriptionPlan $plan */
         $plan = $payment->payable;
         $startsAt = now();
 
-        $endsAt = match ($plan->interval) {
-            'half_year' => $startsAt->copy()->addMonths(6),
-            'year' => $startsAt->copy()->addYear(),
-            default => $startsAt->copy()->addMonth(),
-        };
-
-        Subscription::create([
+        return Subscription::create([
             'user_id' => $payment->user_id,
             'plan_id' => $plan->id,
             'status' => 'active',
             'starts_at' => $startsAt,
-            'ends_at' => $endsAt,
+            'ends_at' => $startsAt->copy()->addMonths($plan->duration_months),
             'payment_reference' => $payment->gateway_reference,
         ]);
     }
