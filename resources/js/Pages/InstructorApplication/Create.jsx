@@ -11,27 +11,33 @@ export default function Create() {
         name: '',
         email: '',
         phone: '',
-        message: '',
+        residence: '',
+        cv: null,
+        portfolio: '',
+        course_title: '',
+        course_syllabus: '',
     });
 
     const submit = (e) => {
         e.preventDefault();
         post(route('instructor-application.store'), {
+            forceFormData: true,
             onSuccess: () => reset(),
         });
     };
 
     return (
         <SiteLayout>
-            <Head title="انضم كمحاضر" />
+            <Head title="الانضمام كمحاضر" />
 
             <div className="mx-auto max-w-xl px-4 py-16 sm:px-6 lg:px-8">
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    انضم كمحاضر في دربنا
+                    الانضمام كمحاضر
                 </h1>
                 <p className="mt-2 text-gray-600 dark:text-gray-300">
-                    املا الفورم وهنراجع طلبك ونتواصل معاك على الإيميل. بعد
-                    القبول هيتعمل لك حساب محاضر تقدر تبدأ بيه ترفع كورساتك.
+                    إذا كان لديك خبرة في مجال عملك وتريد الانضمام إلى
+                    محاضرين منصة دربنا، املا البيانات دي وهنراجع طلبك
+                    ونتواصل معاك على الإيميل.
                 </p>
 
                 {flash?.success ? (
@@ -100,20 +106,108 @@ export default function Create() {
 
                         <div>
                             <InputLabel
-                                htmlFor="message"
-                                value="حدثنا عن خبرتك وإيه اللي حابب تعلّمه"
+                                htmlFor="residence"
+                                value="مكان الإقامة"
                             />
-                            <textarea
-                                id="message"
-                                rows={4}
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                                value={data.message}
+                            <TextInput
+                                id="residence"
+                                className="mt-1 block w-full"
+                                placeholder="مثال: القاهرة، مصر"
+                                value={data.residence}
                                 onChange={(e) =>
-                                    setData('message', e.target.value)
+                                    setData('residence', e.target.value)
+                                }
+                                required
+                            />
+                            <InputError
+                                message={errors.residence}
+                                className="mt-2"
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel htmlFor="cv" value="السيرة الذاتية" />
+                            <input
+                                id="cv"
+                                type="file"
+                                accept=".pdf,.doc,.docx"
+                                onChange={(e) =>
+                                    setData('cv', e.target.files[0])
+                                }
+                                className="mt-1 block w-full text-sm text-gray-600 file:me-3 file:rounded-md file:border-0 file:bg-brand-50 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-700 hover:file:bg-brand-100 dark:text-gray-300"
+                                required
+                            />
+                            <p className="mt-1 text-xs text-gray-500">
+                                PDF أو Word — بحد أقصى 5 ميجا.
+                            </p>
+                            <InputError
+                                message={errors.cv}
+                                className="mt-2"
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel
+                                htmlFor="portfolio"
+                                value="سابقة الأعمال (إن وجدت)"
+                            />
+                            <TextInput
+                                id="portfolio"
+                                className="mt-1 block w-full"
+                                placeholder="رابط لأعمالك السابقة أو قناتك أو أي محتوى تعليمي قدمته"
+                                value={data.portfolio}
+                                onChange={(e) =>
+                                    setData('portfolio', e.target.value)
                                 }
                             />
                             <InputError
-                                message={errors.message}
+                                message={errors.portfolio}
+                                className="mt-2"
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel
+                                htmlFor="course_title"
+                                value="عنوان الدورة التدريبية"
+                            />
+                            <TextInput
+                                id="course_title"
+                                className="mt-1 block w-full"
+                                placeholder="مثال: أساسيات التصميم الجرافيكي من الصفر"
+                                value={data.course_title}
+                                onChange={(e) =>
+                                    setData('course_title', e.target.value)
+                                }
+                                required
+                            />
+                            <InputError
+                                message={errors.course_title}
+                                className="mt-2"
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel
+                                htmlFor="course_syllabus"
+                                value="المادة العلمية للدورة التدريبية"
+                            />
+                            <textarea
+                                id="course_syllabus"
+                                rows={5}
+                                placeholder="اكتب محاور الدورة والمواضيع اللي هتتغطى فيها"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                                value={data.course_syllabus}
+                                onChange={(e) =>
+                                    setData(
+                                        'course_syllabus',
+                                        e.target.value,
+                                    )
+                                }
+                                required
+                            />
+                            <InputError
+                                message={errors.course_syllabus}
                                 className="mt-2"
                             />
                         </div>

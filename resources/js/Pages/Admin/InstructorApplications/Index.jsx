@@ -100,11 +100,62 @@ export default function Index({ applications, filters }) {
                                     )}
                                 </div>
 
-                                {application.message && (
-                                    <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">
-                                        {application.message}
-                                    </p>
-                                )}
+                                <dl className="mt-3 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+                                    <div>
+                                        <dt className="text-gray-500">
+                                            مكان الإقامة
+                                        </dt>
+                                        <dd className="text-gray-800 dark:text-gray-200">
+                                            {application.residence ?? '—'}
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt className="text-gray-500">
+                                            السيرة الذاتية
+                                        </dt>
+                                        <dd>
+                                            {application.cv_url ? (
+                                                <a
+                                                    href={application.cv_url}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="text-brand-600 hover:underline"
+                                                >
+                                                    تحميل الملف
+                                                </a>
+                                            ) : (
+                                                '—'
+                                            )}
+                                        </dd>
+                                    </div>
+                                    {application.portfolio && (
+                                        <div>
+                                            <dt className="text-gray-500">
+                                                سابقة الأعمال
+                                            </dt>
+                                            <dd className="break-all text-gray-800 dark:text-gray-200">
+                                                {application.portfolio}
+                                            </dd>
+                                        </div>
+                                    )}
+                                    <div className="sm:col-span-2">
+                                        <dt className="text-gray-500">
+                                            عنوان الدورة المقترحة
+                                        </dt>
+                                        <dd className="font-medium text-gray-900 dark:text-white">
+                                            {application.course_title ?? '—'}
+                                        </dd>
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <dt className="text-gray-500">
+                                            المادة العلمية
+                                        </dt>
+                                        <dd className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+                                            {application.course_syllabus ??
+                                                '—'}
+                                        </dd>
+                                    </div>
+                                </dl>
                             </div>
                         ))}
 

@@ -7,6 +7,8 @@ use App\Models\LearningPath;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class CatalogFeaturesTest extends TestCase
@@ -102,16 +104,22 @@ class CatalogFeaturesTest extends TestCase
 
     public function test_guest_can_submit_instructor_application_and_admin_can_approve_it(): void
     {
+        Storage::fake('public');
+
         $response = $this->post(route('instructor-application.store'), [
             'name' => 'مرشح محاضر',
             'email' => 'candidate@darbna.test',
-            'message' => 'خبرة 5 سنين في التسويق',
+            'residence' => 'القاهرة، مصر',
+            'cv' => UploadedFile::fake()->create('cv.pdf', 200, 'application/pdf'),
+            'course_title' => 'أساسيات التسويق الرقمي',
+            'course_syllabus' => 'محاور الدورة: مقدمة، أدوات، تطبيق عملي.',
         ]);
         $response->assertRedirect();
 
         $application = InstructorApplication::where('email', 'candidate@darbna.test')->first();
         $this->assertNotNull($application);
         $this->assertSame('pending', $application->status);
+        Storage::disk('public')->assertExists($application->cv_path);
 
         $admin = User::role('admin')->first();
         $this->actingAs($admin)->post(route('admin.instructor-applications.approve', $application))

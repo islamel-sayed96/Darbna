@@ -21,10 +21,17 @@ class InstructorApplicationController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
-            'message' => ['nullable', 'string', 'max:2000'],
+            'residence' => ['required', 'string', 'max:255'],
+            'cv' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:5120'],
+            'portfolio' => ['nullable', 'string', 'max:500'],
+            'course_title' => ['required', 'string', 'max:255'],
+            'course_syllabus' => ['required', 'string', 'max:4000'],
         ]);
 
-        InstructorApplication::create($data);
+        $cvPath = $request->file('cv')->store('instructor-applications/cvs', 'public');
+        unset($data['cv']);
+
+        InstructorApplication::create([...$data, 'cv_path' => $cvPath]);
 
         return back()->with('success', 'تم استلام طلبك، هنراجعه ونرد عليك على الإيميل قريبًا.');
     }
