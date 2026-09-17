@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Instructor;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\LearningPath;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -31,6 +32,7 @@ class CourseController extends Controller
     {
         return Inertia::render('Instructor/Courses/Create', [
             'categories' => Category::orderBy('name')->get(['id', 'name']),
+            'learningPaths' => LearningPath::orderBy('title')->get(['id', 'title']),
         ]);
     }
 
@@ -57,6 +59,7 @@ class CourseController extends Controller
         return Inertia::render('Instructor/Courses/Edit', [
             'course' => $course,
             'categories' => Category::orderBy('name')->get(['id', 'name']),
+            'learningPaths' => LearningPath::orderBy('title')->get(['id', 'title']),
         ]);
     }
 
@@ -97,6 +100,7 @@ class CourseController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'category_id' => ['nullable', 'exists:categories,id'],
+            'learning_path_id' => ['nullable', 'exists:learning_paths,id'],
             'price' => ['required', 'numeric', 'min:0'],
             'is_free' => ['boolean'],
             'level' => [Rule::in(['beginner', 'intermediate', 'advanced'])],

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
-    'instructor_id', 'category_id', 'title', 'slug', 'description',
+    'instructor_id', 'category_id', 'learning_path_id', 'title', 'slug', 'description',
     'thumbnail_path', 'promo_video_url', 'price', 'is_free', 'level',
     'language', 'status', 'rejection_reason', 'submitted_at',
     'reviewed_by', 'reviewed_at', 'published_at',
@@ -34,6 +34,11 @@ class Course extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function learningPath(): BelongsTo
+    {
+        return $this->belongsTo(LearningPath::class);
     }
 
     public function reviewedBy(): BelongsTo

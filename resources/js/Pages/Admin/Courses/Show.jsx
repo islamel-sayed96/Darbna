@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 
-export default function Show({ course }) {
+export default function Show({ course, learningPaths }) {
     const [showReject, setShowReject] = useState(false);
     const { data, setData, post, processing, errors } = useForm({
         rejection_reason: '',
@@ -16,6 +16,12 @@ export default function Show({ course }) {
     const reject = (e) => {
         e.preventDefault();
         post(route('admin.courses.reject', course.id));
+    };
+
+    const changeLearningPath = (e) => {
+        router.post(route('admin.courses.assign-learning-path', course.id), {
+            learning_path_id: e.target.value || null,
+        });
     };
 
     return (
@@ -62,6 +68,28 @@ export default function Show({ course }) {
                                 <dt className="text-gray-500">المستوى</dt>
                                 <dd className="font-medium text-gray-900 dark:text-white">
                                     {course.level}
+                                </dd>
+                            </div>
+                            <div>
+                                <dt className="text-gray-500">مسار التعلم</dt>
+                                <dd>
+                                    <select
+                                        className="mt-1 rounded-md border-gray-300 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                                        defaultValue={
+                                            course.learning_path_id ?? ''
+                                        }
+                                        onChange={changeLearningPath}
+                                    >
+                                        <option value="">بدون مسار</option>
+                                        {learningPaths.map((path) => (
+                                            <option
+                                                key={path.id}
+                                                value={path.id}
+                                            >
+                                                {path.title}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </dd>
                             </div>
                         </dl>

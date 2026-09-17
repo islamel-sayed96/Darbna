@@ -1,38 +1,39 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructorApplicationController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Instructor\CourseController as InstructorCourseController;
 use App\Http\Controllers\Instructor\CourseSectionController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use App\Http\Controllers\Instructor\LessonController;
+use App\Http\Controllers\InstructorApplicationController;
+use App\Http\Controllers\LearningPathController;
 use App\Http\Controllers\LessonProgressController;
 use App\Http\Controllers\LessonViewController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/lessons/{lesson}', [LessonViewController::class, 'show'])->name('lessons.show');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+Route::get('/learning-paths', [LearningPathController::class, 'index'])->name('learning-paths.index');
+Route::get('/learning-paths/{learningPath:slug}', [LearningPathController::class, 'show'])->name('learning-paths.show');
+Route::get('/become-instructor', [InstructorApplicationController::class, 'create'])->name('instructor-application.create');
+Route::post('/become-instructor', [InstructorApplicationController::class, 'store'])->name('instructor-application.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'redirect'])->name('dashboard');
@@ -60,6 +61,21 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
         Route::put('/staff/{staff}/permissions', [StaffController::class, 'updatePermissions'])->name('staff.permissions');
         Route::post('/staff/{staff}/toggle-active', [StaffController::class, 'toggleActive'])->name('staff.toggle-active');
+
+        Route::get('/categories', [AdminCategoryController::class, 'index'])->name('categories.index');
+        Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
+        Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{category}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
+
+        Route::get('/learning-paths', [AdminLearningPathController::class, 'index'])->name('learning-paths.index');
+        Route::get('/learning-paths/{learningPath}', [AdminLearningPathController::class, 'show'])->name('learning-paths.show');
+        Route::post('/learning-paths', [AdminLearningPathController::class, 'store'])->name('learning-paths.store');
+        Route::put('/learning-paths/{learningPath}', [AdminLearningPathController::class, 'update'])->name('learning-paths.update');
+        Route::delete('/learning-paths/{learningPath}', [AdminLearningPathController::class, 'destroy'])->name('learning-paths.destroy');
+
+        Route::get('/instructor-applications', [AdminInstructorApplicationController::class, 'index'])->name('instructor-applications.index');
+        Route::post('/instructor-applications/{instructorApplication}/approve', [AdminInstructorApplicationController::class, 'approve'])->name('instructor-applications.approve');
+        Route::post('/instructor-applications/{instructorApplication}/reject', [AdminInstructorApplicationController::class, 'reject'])->name('instructor-applications.reject');
     });
 
     // Content moderation — admin (via its synced permissions) or any
@@ -70,6 +86,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::post('/courses/{course}/approve', [CourseReviewController::class, 'approve'])->name('courses.approve');
         Route::post('/courses/{course}/reject', [CourseReviewController::class, 'reject'])->name('courses.reject');
         Route::post('/courses/{course}/unpublish', [CourseReviewController::class, 'unpublish'])->name('courses.unpublish');
+        Route::post('/courses/{course}/learning-path', [CourseReviewController::class, 'assignLearningPath'])->name('courses.assign-learning-path');
         Route::delete('/courses/{course}', [CourseReviewController::class, 'destroy'])->name('courses.destroy');
     });
 });

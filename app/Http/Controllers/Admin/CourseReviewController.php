@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\LearningPath;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -30,11 +31,23 @@ class CourseReviewController extends Controller
 
     public function show(Course $course): Response
     {
-        $course->load(['instructor:id,name,email,headline', 'category:id,name', 'sections.lessons']);
+        $course->load(['instructor:id,name,email,headline', 'category:id,name', 'learningPath:id,title', 'sections.lessons']);
 
         return Inertia::render('Admin/Courses/Show', [
             'course' => $course,
+            'learningPaths' => LearningPath::orderBy('title')->get(['id', 'title']),
         ]);
+    }
+
+    public function assignLearningPath(Request $request, Course $course): RedirectResponse
+    {
+        $data = $request->validate([
+            'learning_path_id' => ['nullable', 'exists:learning_paths,id'],
+        ]);
+
+        $course->update($data);
+
+        return back()->with('success', 'تم تحديث مسار الكورس.');
     }
 
     public function approve(Course $course): RedirectResponse

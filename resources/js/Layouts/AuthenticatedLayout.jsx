@@ -35,9 +35,24 @@ export default function AuthenticatedLayout({ header, children }) {
                 active: 'admin.instructors.*',
             },
             {
+                href: route('admin.instructor-applications.index'),
+                label: 'طلبات الانضمام',
+                active: 'admin.instructor-applications.*',
+            },
+            {
                 href: route('admin.staff.index'),
                 label: 'الفريق',
                 active: 'admin.staff.*',
+            },
+            {
+                href: route('admin.categories.index'),
+                label: 'التصنيفات',
+                active: 'admin.categories.*',
+            },
+            {
+                href: route('admin.learning-paths.index'),
+                label: 'المسارات',
+                active: 'admin.learning-paths.*',
             },
         );
     }

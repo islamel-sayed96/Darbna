@@ -5,11 +5,12 @@ import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm } from '@inertiajs/react';
 
-export default function Create({ categories }) {
+export default function Create({ categories, learningPaths }) {
     const { data, setData, post, processing, errors } = useForm({
         title: '',
         description: '',
         category_id: '',
+        learning_path_id: '',
         price: 0,
         is_free: true,
         level: 'beginner',
@@ -108,6 +109,31 @@ export default function Create({ categories }) {
                                     <option value="advanced">متقدم</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div>
+                            <InputLabel
+                                htmlFor="learning_path_id"
+                                value="مسار التعلم (اختياري)"
+                            />
+                            <select
+                                id="learning_path_id"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                                value={data.learning_path_id}
+                                onChange={(e) =>
+                                    setData(
+                                        'learning_path_id',
+                                        e.target.value,
+                                    )
+                                }
+                            >
+                                <option value="">بدون مسار</option>
+                                {learningPaths.map((path) => (
+                                    <option key={path.id} value={path.id}>
+                                        {path.title}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         <div className="flex items-center gap-3">

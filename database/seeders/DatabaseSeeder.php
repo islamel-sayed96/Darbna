@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\LearningPath;
 use App\Models\Lesson;
 use App\Models\SubscriptionPlan;
 use App\Models\User;
@@ -55,11 +56,21 @@ class DatabaseSeeder extends Seeder
             ['name' => 'تطوير الويب']
         );
 
+        $learningPath = LearningPath::firstOrCreate(
+            ['slug' => 'become-a-web-developer'],
+            [
+                'title' => 'مسار: صانع مواقع من الصفر',
+                'description' => 'مجموعة كورسات مرتبة توصلك لاحتراف تطوير الويب خطوة بخطوة.',
+                'is_published' => true,
+            ]
+        );
+
         $demoCourse = Course::firstOrCreate(
             ['slug' => 'html-css-for-beginners'],
             [
                 'instructor_id' => $instructor->id,
                 'category_id' => $category->id,
+                'learning_path_id' => $learningPath->id,
                 'title' => 'أساسيات HTML و CSS للمبتدئين',
                 'description' => 'كورس تجريبي لعرض شكل المنصة: تشوف فيه فيديو، تختبر تجربة الطالب، وتاخد فكرة عن شكل صفحة الكورس والدرس.',
                 'price' => 0,
