@@ -52,6 +52,48 @@ class ZiinaCheckoutTest extends TestCase
         });
     }
 
+    public function test_a_ziina_response_missing_redirect_url_does_not_crash_and_redirects_back_with_a_message(): void
+    {
+        // Reproduces the real bug: e.g. a bad/missing API key or an
+        // unexpected response shape used to cause an uncaught 500 instead
+        // of a friendly redirect back to pricing.
+        Http::fake([
+            'api-v2.ziina.com/api/payment_intent' => Http::response([
+                'id' => 'pi_broken',
+                'status' => 'requires_payment_instrument',
+                // no redirect_url
+            ], 200),
+        ]);
+
+        $student = User::role('student')->first();
+        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+
+        $response = $this->actingAs($student)->post(route('checkout.store', $plan));
+
+        $response->assertRedirect(route('pricing'));
+        $response->assertSessionHas('success');
+
+        $payment = Payment::where('user_id', $student->id)->first();
+        $this->assertSame('failed', $payment->status);
+    }
+
+    public function test_an_unauthorized_ziina_response_does_not_crash_and_redirects_back_with_a_message(): void
+    {
+        Http::fake([
+            'api-v2.ziina.com/api/payment_intent' => Http::response(['message' => 'Unauthorized'], 401),
+        ]);
+
+        $student = User::role('student')->first();
+        $plan = SubscriptionPlan::where('slug', 'monthly')->first();
+
+        $response = $this->actingAs($student)->post(route('checkout.store', $plan));
+
+        $response->assertRedirect(route('pricing'));
+
+        $payment = Payment::where('user_id', $student->id)->first();
+        $this->assertSame('failed', $payment->status);
+    }
+
     public function test_successful_payment_activates_a_subscription(): void
     {
         Http::fake([

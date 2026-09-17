@@ -34,10 +34,14 @@ class CheckoutController extends Controller
                 cancelUrl: route('checkout.cancel', $payment),
             );
         } catch (Throwable $e) {
-            Log::error('Ziina payment intent creation failed.', ['message' => $e->getMessage()]);
+            Log::error('Ziina payment intent creation failed.', [
+                'exception' => get_class($e),
+                'message' => $e->getMessage(),
+                'payment_id' => $payment->id,
+            ]);
             $payment->update(['status' => 'failed']);
 
-            return redirect()->route('pricing')->with('success', 'حصل خطأ أثناء بدء عملية الدفع، حاول تاني.');
+            return redirect()->route('pricing')->with('success', 'حصل خطأ أثناء بدء عملية الدفع، حاول تاني أو تواصل معانا لو استمرت المشكلة.');
         }
 
         $payment->update(['gateway_reference' => $intent['id'] ?? null]);

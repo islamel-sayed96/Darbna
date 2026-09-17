@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -34,14 +35,43 @@ class ZiinaClient
             'cancel_url' => $cancelUrl,
             'failure_url' => $cancelUrl,
             'test' => $this->testMode,
-        ])->throw();
+        ]);
 
-        return $response->json();
+        $this->assertUsable($response, 'create payment intent');
+
+        $data = $response->json();
+
+        if (empty($data['redirect_url'])) {
+            throw new ZiinaApiException(
+                "Ziina create-payment-intent response missing redirect_url. Body: {$response->body()}"
+            );
+        }
+
+        return $data;
     }
 
     public function getPaymentIntent(string $id): array
     {
-        return $this->http()->get("/payment_intent/{$id}")->throw()->json();
+        $response = $this->http()->get("/payment_intent/{$id}");
+
+        $this->assertUsable($response, 'get payment intent');
+
+        return $response->json();
+    }
+
+    private function assertUsable(Response $response, string $action): void
+    {
+        if ($response->failed()) {
+            throw new ZiinaApiException(
+                "Ziina {$action} failed with status {$response->status()}. Body: {$response->body()}"
+            );
+        }
+
+        if ($response->json() === null) {
+            throw new ZiinaApiException(
+                "Ziina {$action} returned a non-JSON response. Body: {$response->body()}"
+            );
+        }
     }
 
     private function http()
