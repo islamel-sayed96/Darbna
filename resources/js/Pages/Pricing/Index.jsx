@@ -82,12 +82,20 @@ export default function Index({ plans }) {
                                         : 'اشترك الآن'}
                                 </button>
                             ) : (
-                                <Link
-                                    href={route('login')}
-                                    className="mt-6 block w-full rounded-md bg-gray-200 px-4 py-2 text-center text-sm font-semibold text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200"
-                                >
-                                    سجّل الدخول للاشتراك
-                                </Link>
+                                <div className="mt-6 grid grid-cols-2 gap-2">
+                                    <Link
+                                        href={route('login')}
+                                        className="rounded-md bg-gray-200 px-4 py-2 text-center text-sm font-semibold text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200"
+                                    >
+                                        تسجيل الدخول
+                                    </Link>
+                                    <Link
+                                        href={route('register')}
+                                        className="rounded-md bg-brand-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-brand-500"
+                                    >
+                                        إنشاء حساب
+                                    </Link>
+                                </div>
                             )}
                         </div>
                     ))}
