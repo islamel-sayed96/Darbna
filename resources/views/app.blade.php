@@ -12,9 +12,9 @@
 
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-        <meta name="description" content="{{ config('app.name') }} — منصة كورسات أونلاين عربية: فيديوهات، اختبارات، شهادات، وحصص مباشرة.">
+        <meta name="description" content="بورتفوليو شخصي: تطوير Front-End و Back-End، تصميم UI/UX، تسويق رقمي و SEO، تصميم مواقع، وتجارة إلكترونية — بالإضافة لدورات تدريبية عملية عبر منصة دربنا.">
         <meta property="og:title" content="{{ config('app.name') }}">
-        <meta property="og:description" content="تعلّم من نخبة المحاضرين، في أي وقت وأي مكان.">
+        <meta property="og:description" content="مطوّر ومصمم متكامل، وصاحب منصة دربنا التعليمية.">
         <meta property="og:type" content="website">
 
         <!-- Scripts -->
