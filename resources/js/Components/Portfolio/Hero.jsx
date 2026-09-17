@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Mail, PlayCircle } from 'lucide-react';
+import { ArrowDown, Code2, Mail, PlayCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { profile } from '@/Data/portfolio';
 
@@ -106,9 +106,7 @@ export default function Hero() {
                 >
                     <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-brand-500 to-brand-800 shadow-2xl" />
                     <div className="absolute inset-3 flex items-center justify-center rounded-[2rem] bg-white/10 backdrop-blur-sm">
-                        <span className="text-8xl font-black text-white/90">
-                            {profile.name.trim().charAt(0)}
-                        </span>
+                        <Code2 size={110} strokeWidth={1.4} className="text-white/90" />
                     </div>
                     <motion.div
                         className="absolute -bottom-6 -right-6 rounded-2xl bg-white px-5 py-4 shadow-xl dark:bg-gray-800"
@@ -123,7 +121,7 @@ export default function Hero() {
                         </p>
                     </motion.div>
                     <motion.div
-                        className="absolute -left-8 top-8 rounded-2xl bg-white px-4 py-3 shadow-xl dark:bg-gray-800"
+                        className="absolute -left-2 top-8 rounded-2xl bg-white px-4 py-3 shadow-xl dark:bg-gray-800 sm:-left-8"
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                     >
