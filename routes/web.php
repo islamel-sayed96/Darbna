@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructo
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
@@ -44,6 +45,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/courses/{course}/enroll', [EnrollmentController::class, 'store'])->name('courses.enroll');
     Route::post('/lessons/{lesson}/complete', [LessonProgressController::class, 'store'])->name('lessons.complete');
+
+    Route::post('/checkout/{plan}', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/{payment}/success', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/{payment}/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

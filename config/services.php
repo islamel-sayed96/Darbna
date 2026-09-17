@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'ziina' => [
+        'key' => env('ZIINA_API_KEY'),
+        'base_url' => env('ZIINA_BASE_URL', 'https://api-v2.ziina.com/api'),
+        'test_mode' => env('ZIINA_TEST_MODE', true),
+    ],
+
 ];

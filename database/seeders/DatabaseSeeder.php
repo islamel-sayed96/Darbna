@@ -104,11 +104,14 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Placeholder AED pricing — Ziina (the payment gateway wired up)
+        // only settles in AED. Adjust these once real price points are set.
         $plans = [
             [
                 'slug' => 'monthly',
                 'name' => 'الخطة الشهرية',
-                'price' => 199,
+                'price' => 49,
+                'currency' => 'AED',
                 'interval' => 'month',
                 'description' => 'وصول كامل لكل الكورسات المشمولة بالاشتراك، يتجدد كل شهر.',
                 'badge' => null,
@@ -116,17 +119,19 @@ class DatabaseSeeder extends Seeder
             [
                 'slug' => 'half-yearly',
                 'name' => 'خطة الـ 6 شهور',
-                'price' => 999,
+                'price' => 249,
+                'currency' => 'AED',
                 'interval' => 'half_year',
-                'description' => 'وفّر حوالي 16% عن السعر الشهري — وصول كامل لمدة 6 شهور.',
+                'description' => 'وفّر حوالي 15% عن السعر الشهري — وصول كامل لمدة 6 شهور.',
                 'badge' => 'الأكثر توفيرًا',
             ],
             [
                 'slug' => 'yearly-gold',
                 'name' => 'الخطة الذهبية (سنوية)',
-                'price' => 1799,
+                'price' => 449,
+                'currency' => 'AED',
                 'interval' => 'year',
-                'description' => 'وفّر أكتر من 24% عن السعر الشهري — وصول كامل لمدة سنة كاملة.',
+                'description' => 'وفّر أكتر من 23% عن السعر الشهري — وصول كامل لمدة سنة كاملة.',
                 'badge' => 'ذهبي',
             ],
         ];
