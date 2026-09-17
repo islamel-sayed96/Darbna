@@ -28,6 +28,7 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/terms', fn () => Inertia::render('Legal/Terms'))->name('terms');
+Route::get('/privacy', fn () => Inertia::render('Legal/Privacy'))->name('privacy');
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');

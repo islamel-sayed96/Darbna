@@ -8,6 +8,7 @@ export default function Footer() {
         { href: route('pricing'), label: 'الأسعار' },
         { href: route('instructor-application.create'), label: 'انضم كمحاضر' },
         { href: route('terms'), label: 'الشروط والأحكام' },
+        { href: route('privacy'), label: 'سياسة الخصوصية' },
     ];
 
     return (
