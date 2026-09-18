@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Payment;
 use App\Models\SubscriptionPlan;
 use App\Models\User;
+use App\Services\ZiinaClient;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
@@ -79,6 +80,33 @@ class ZiinaCheckoutTest extends TestCase
 
     public function test_an_unauthorized_ziina_response_does_not_crash_and_redirects_back_with_a_message(): void
     {
+        Http::fake([
+            'api-v2.ziina.com/api/payment_intent' => Http::response(['message' => 'Unauthorized'], 401),
+        ]);
+
+        $student = User::role('student')->first();
+        $plan = SubscriptionPlan::where('slug', 'all_access-1m')->first();
+
+        $response = $this->actingAs($student)->post(route('checkout.store', $plan));
+
+        $response->assertRedirect(route('pricing'));
+
+        $payment = Payment::where('user_id', $student->id)->first();
+        $this->assertSame('failed', $payment->status);
+    }
+
+    public function test_a_missing_ziina_api_key_does_not_crash_and_redirects_back_with_a_message(): void
+    {
+        // Reproduces the real production bug: ZiinaClient's constructor
+        // takes a non-nullable string $apiKey. If ZIINA_API_KEY isn't set,
+        // config() returns null, and — before this was fixed — building
+        // the client with that null would throw a TypeError during
+        // dependency injection, before the controller's try/catch could
+        // ever run. That's an uncaught 500 no amount of in-controller
+        // error handling can catch.
+        config(['services.ziina.key' => null]);
+        $this->app->forgetInstance(ZiinaClient::class);
+
         Http::fake([
             'api-v2.ziina.com/api/payment_intent' => Http::response(['message' => 'Unauthorized'], 401),
         ]);
