@@ -1,5 +1,5 @@
 import SiteLayout from '@/Layouts/SiteLayout';
-import { Head, Link, router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import { useMemo, useState } from 'react';
 
 const DURATIONS = [
@@ -33,7 +33,9 @@ export default function Index({ plans }) {
 
     const subscribe = (plan) => {
         if (!auth.user) {
-            router.visit(route('login'));
+            router.visit(
+                route('login', { redirect: route('pricing') }),
+            );
             return;
         }
 
@@ -112,32 +114,15 @@ export default function Index({ plans }) {
                                 {plan.description}
                             </p>
 
-                            {auth.user ? (
-                                <button
-                                    onClick={() => subscribe(plan)}
-                                    disabled={subscribingTo === plan.id}
-                                    className="mt-6 w-full rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-60"
-                                >
-                                    {subscribingTo === plan.id
-                                        ? 'جاري التحويل للدفع...'
-                                        : 'اشترك الآن'}
-                                </button>
-                            ) : (
-                                <div className="mt-6 grid grid-cols-2 gap-2">
-                                    <Link
-                                        href={route('login')}
-                                        className="rounded-md bg-gray-200 px-4 py-2 text-center text-sm font-semibold text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200"
-                                    >
-                                        تسجيل الدخول
-                                    </Link>
-                                    <Link
-                                        href={route('register')}
-                                        className="rounded-md bg-brand-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-brand-500"
-                                    >
-                                        إنشاء حساب
-                                    </Link>
-                                </div>
-                            )}
+                            <button
+                                onClick={() => subscribe(plan)}
+                                disabled={subscribingTo === plan.id}
+                                className="mt-6 w-full rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-60"
+                            >
+                                {subscribingTo === plan.id
+                                    ? 'جاري التحويل للدفع...'
+                                    : 'اشترك الآن'}
+                            </button>
                         </div>
                     ))}
                 </div>

@@ -51,4 +51,32 @@ class AuthenticationTest extends TestCase
         $this->assertGuest();
         $response->assertRedirect('/');
     }
+
+    public function test_a_safe_redirect_query_param_sends_the_user_back_after_login(): void
+    {
+        $user = User::factory()->create();
+
+        $this->get('/login?redirect='.urlencode(url('/pricing')));
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $response->assertRedirect(url('/pricing'));
+    }
+
+    public function test_a_redirect_query_param_pointing_off_site_is_ignored(): void
+    {
+        $user = User::factory()->create();
+
+        $this->get('/login?redirect=https://evil.example.com');
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $response->assertRedirect(route('dashboard', absolute: false));
+    }
 }

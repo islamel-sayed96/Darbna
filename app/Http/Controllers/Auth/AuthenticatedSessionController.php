@@ -16,11 +16,14 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): Response
+    public function create(Request $request): Response
     {
+        $this->rememberIntendedRedirect($request);
+
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            'redirect' => $request->query('redirect'),
         ]);
     }
 
@@ -48,5 +51,20 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    /**
+     * A guest bounced to login from a client-side action (e.g. the "اشترك
+     * الآن" button on the pricing page) has no server-set intended URL, so
+     * we accept one via ?redirect= — only when it points back at this same
+     * app, to avoid becoming an open redirect.
+     */
+    private function rememberIntendedRedirect(Request $request): void
+    {
+        $redirect = $request->query('redirect');
+
+        if ($redirect && str_starts_with($redirect, url('/'))) {
+            $request->session()->put('url.intended', $redirect);
+        }
     }
 }
