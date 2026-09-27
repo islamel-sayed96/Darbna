@@ -284,26 +284,11 @@
   });
   $("#rsvpEdit").addEventListener("click", () => { $("#rsvpDone").hidden = true; form.hidden = false; });
 
-  /* ════════ Music: an original Egyptian zaffa in maqam Hijaz ════════
+  /* ════════ Built-in music: an original Egyptian zaffa in maqam Hijaz ════════
      Qanun melody with tremolo, oud bass, darbuka on the maqsum rhythm and riq.
      All instruments are synthesised (Karplus–Strong strings, noise percussion). */
-  const Music = (() => {
+  const Zaffa = (() => {
     let playing = false;
-    if (CONFIG.musicUrl) {
-      const a = new Audio(CONFIG.musicUrl);
-      a.loop = true; a.volume = 0;
-      let fade;
-      return {
-        play() {
-          a.play().then(() => {
-            playing = true; sync();
-            clearInterval(fade); fade = setInterval(() => { a.volume = Math.min(.85, a.volume + .05); if (a.volume >= .85) clearInterval(fade); }, 120);
-          }).catch(() => {});
-        },
-        pause() { clearInterval(fade); a.pause(); a.volume = 0; playing = false; sync(); },
-        get playing() { return playing; }
-      };
-    }
     let ctx, master, dry, rev, noise, timer, next = 0, step = 0;
     const E = 0.29;                                 // eighth note (~103 bpm)
     const hz = m => 440 * Math.pow(2, (m - 69) / 12);
@@ -434,6 +419,8 @@
       }
     }
     return {
+      // Create and unlock the audio context inside the guest's tap, so a later fallback can start.
+      prime() { try { if (!ctx) init(); ctx.resume(); } catch (e) {} },
       play() {
         try {
           if (!ctx) init();
@@ -455,6 +442,40 @@
         setTimeout(() => { if (!playing) { ctx.suspend(); next = 0; } }, 1000);
       },
       get playing() { return playing; }
+    };
+  })();
+  /* The song file from config plays first; if it is missing or can't play, the zaffa takes over. */
+  const Music = (() => {
+    let audio = null, useSynth = !CONFIG.musicUrl, playing = false, want = false, fade;
+    const fallback = () => {
+      if (useSynth) return;
+      useSynth = true; playing = false;
+      if (audio) { audio.pause(); audio.removeAttribute("src"); }
+      if (want) Zaffa.play(); else sync();
+    };
+    if (!useSynth) {
+      audio = new Audio();
+      audio.loop = true; audio.preload = "auto"; audio.volume = 0;
+      audio.addEventListener("error", fallback);
+      audio.src = CONFIG.musicUrl;
+    }
+    return {
+      play() {
+        want = true;
+        if (useSynth) { Zaffa.play(); return; }
+        Zaffa.prime();
+        audio.play().then(() => {
+          playing = true; sync();
+          clearInterval(fade);
+          fade = setInterval(() => { audio.volume = Math.min(.85, audio.volume + .05); if (audio.volume >= .85) clearInterval(fade); }, 120);
+        }).catch(err => { if (err && err.name !== "NotAllowedError" && err.name !== "AbortError") fallback(); });
+      },
+      pause() {
+        want = false;
+        if (useSynth) { Zaffa.pause(); return; }
+        clearInterval(fade); audio.pause(); audio.volume = 0; playing = false; sync();
+      },
+      get playing() { return useSynth ? Zaffa.playing : playing; }
     };
   })();
   const mBtn = $("#musicBtn");
