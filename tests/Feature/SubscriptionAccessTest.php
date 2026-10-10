@@ -182,8 +182,9 @@ class SubscriptionAccessTest extends TestCase
         $course = $this->makeCourse();
 
         $response = $this->actingAs($admin)->post(route('admin.enrollments.store'), [
+            'type' => 'course',
             'email' => $student->email,
-            'course_id' => $course->id,
+            'content_id' => $course->id,
         ]);
 
         $response->assertRedirect();
@@ -196,8 +197,9 @@ class SubscriptionAccessTest extends TestCase
         $course = $this->makeCourse();
 
         $this->actingAs($student)->post(route('admin.enrollments.store'), [
+            'type' => 'course',
             'email' => $student->email,
-            'course_id' => $course->id,
+            'content_id' => $course->id,
         ])->assertForbidden();
     }
 

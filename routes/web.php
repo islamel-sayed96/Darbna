@@ -2,15 +2,21 @@
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CourseReviewController;
+use App\Http\Controllers\Admin\CycleController as AdminCycleController;
+use App\Http\Controllers\Admin\CycleLectureController as AdminCycleLectureController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EnrollmentController as AdminEnrollmentController;
 use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructorApplicationController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
+use App\Http\Controllers\Admin\MaterialController as AdminMaterialController;
+use App\Http\Controllers\Admin\MaterialPageController as AdminMaterialPageController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\SubscriptionPlanController as AdminSubscriptionPlanController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CycleController;
+use App\Http\Controllers\CycleLectureController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\HomeController;
@@ -22,8 +28,11 @@ use App\Http\Controllers\InstructorApplicationController;
 use App\Http\Controllers\LearningPathController;
 use App\Http\Controllers\LessonProgressController;
 use App\Http\Controllers\LessonViewController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\MaterialPageController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\SubscriptionSelectionController;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +46,18 @@ Route::get('/privacy', fn () => Inertia::render('Legal/Privacy'))->name('privacy
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/lessons/{lesson}', [LessonViewController::class, 'show'])->name('lessons.show');
+Route::get('/material-pages/{materialPage}', [MaterialPageController::class, 'show'])->name('material-pages.show');
+Route::get('/cycle-lectures/{cycleLecture}', [CycleLectureController::class, 'show'])->name('cycle-lectures.show');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::get('/learning-paths', [LearningPathController::class, 'index'])->name('learning-paths.index');
 Route::get('/learning-paths/{learningPath:slug}', [LearningPathController::class, 'show'])->name('learning-paths.show');
+
+Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
+Route::get('/materials/{material:slug}', [MaterialController::class, 'show'])->name('materials.show');
+
+Route::get('/cycles', [CycleController::class, 'index'])->name('cycles.index');
+Route::get('/cycles/{cycle:slug}', [CycleController::class, 'show'])->name('cycles.show');
+
 Route::get('/become-instructor', [InstructorApplicationController::class, 'create'])->name('instructor-application.create');
 Route::post('/become-instructor', [InstructorApplicationController::class, 'store'])->name('instructor-application.store');
 
@@ -55,6 +73,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'edit'])->name('subscriptions.select.edit');
     Route::post('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'update'])->name('subscriptions.select.update');
+
+    Route::post('/purchases/materials/{material}', [PurchaseController::class, 'storeMaterial'])->name('purchases.materials.store');
+    Route::post('/purchases/cycles/{cycle}', [PurchaseController::class, 'storeCycle'])->name('purchases.cycles.store');
+    Route::get('/purchases/{payment}/success', [PurchaseController::class, 'success'])->name('purchases.success');
+    Route::get('/purchases/{payment}/cancel', [PurchaseController::class, 'cancel'])->name('purchases.cancel');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -88,6 +111,28 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::put('/learning-paths/{learningPath}', [AdminLearningPathController::class, 'update'])->name('learning-paths.update');
         Route::delete('/learning-paths/{learningPath}', [AdminLearningPathController::class, 'destroy'])->name('learning-paths.destroy');
 
+        Route::get('/materials', [AdminMaterialController::class, 'index'])->name('materials.index');
+        Route::get('/materials/create', [AdminMaterialController::class, 'create'])->name('materials.create');
+        Route::post('/materials', [AdminMaterialController::class, 'store'])->name('materials.store');
+        Route::get('/materials/{material}/edit', [AdminMaterialController::class, 'edit'])->name('materials.edit');
+        Route::put('/materials/{material}', [AdminMaterialController::class, 'update'])->name('materials.update');
+        Route::delete('/materials/{material}', [AdminMaterialController::class, 'destroy'])->name('materials.destroy');
+
+        Route::post('/materials/{material}/pages', [AdminMaterialPageController::class, 'store'])->name('material-pages.store');
+        Route::put('/material-pages/{materialPage}', [AdminMaterialPageController::class, 'update'])->name('material-pages.update');
+        Route::delete('/material-pages/{materialPage}', [AdminMaterialPageController::class, 'destroy'])->name('material-pages.destroy');
+
+        Route::get('/cycles', [AdminCycleController::class, 'index'])->name('cycles.index');
+        Route::get('/cycles/create', [AdminCycleController::class, 'create'])->name('cycles.create');
+        Route::post('/cycles', [AdminCycleController::class, 'store'])->name('cycles.store');
+        Route::get('/cycles/{cycle}/edit', [AdminCycleController::class, 'edit'])->name('cycles.edit');
+        Route::put('/cycles/{cycle}', [AdminCycleController::class, 'update'])->name('cycles.update');
+        Route::delete('/cycles/{cycle}', [AdminCycleController::class, 'destroy'])->name('cycles.destroy');
+
+        Route::post('/cycles/{cycle}/lectures', [AdminCycleLectureController::class, 'store'])->name('cycle-lectures.store');
+        Route::put('/cycle-lectures/{cycleLecture}', [AdminCycleLectureController::class, 'update'])->name('cycle-lectures.update');
+        Route::delete('/cycle-lectures/{cycleLecture}', [AdminCycleLectureController::class, 'destroy'])->name('cycle-lectures.destroy');
+
         Route::get('/instructor-applications', [AdminInstructorApplicationController::class, 'index'])->name('instructor-applications.index');
         Route::post('/instructor-applications/{instructorApplication}/approve', [AdminInstructorApplicationController::class, 'approve'])->name('instructor-applications.approve');
         Route::post('/instructor-applications/{instructorApplication}/reject', [AdminInstructorApplicationController::class, 'reject'])->name('instructor-applications.reject');
@@ -114,6 +159,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::get('/enrollments', [AdminEnrollmentController::class, 'index'])->name('enrollments.index');
         Route::post('/enrollments', [AdminEnrollmentController::class, 'store'])->name('enrollments.store');
         Route::delete('/enrollments/{enrollment}', [AdminEnrollmentController::class, 'destroy'])->name('enrollments.destroy');
+        Route::delete('/content-accesses/{contentAccess}', [AdminEnrollmentController::class, 'destroyContentAccess'])->name('content-accesses.destroy');
     });
 });
 

@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Cycle;
 use App\Models\LearningPath;
 use App\Models\Lesson;
+use App\Models\Material;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -100,6 +102,51 @@ class DatabaseSeeder extends Seeder
                 'content' => 'ده مثال لدرس نصي — ممكن المحاضر يكتب هنا شرح أو ملاحظات بدل فيديو.',
                 'position' => 2,
                 'is_preview' => false,
+            ]);
+        }
+
+        $demoMaterial = Material::firstOrCreate(
+            ['slug' => 'html-css-cheat-sheet'],
+            [
+                'instructor_id' => $instructor->id,
+                'category_id' => $category->id,
+                'course_id' => $demoCourse->id,
+                'title' => 'ملخص HTML و CSS العلمي',
+                'description' => 'صفحات مرجعية مكتوبة تلخص أهم قواعد HTML و CSS، ملحقة بكورس أساسيات HTML و CSS.',
+                'price' => 19,
+                'is_published' => true,
+                'published_at' => now(),
+            ]
+        );
+
+        if ($demoMaterial->pages()->doesntExist()) {
+            $demoMaterial->pages()->create([
+                'title' => 'الصفحة الأولى: عناصر HTML الأساسية',
+                'content' => 'ده مثال لمحتوى صفحة علمية — ممكن تكتب هنا شرح أو ملخص نصي بدل فيديو.',
+                'position' => 1,
+            ]);
+        }
+
+        $demoCycle = Cycle::firstOrCreate(
+            ['slug' => 'web-dev-cycle-1'],
+            [
+                'instructor_id' => $instructor->id,
+                'category_id' => $category->id,
+                'title' => 'سايكل تطوير الويب — الدفعة الأولى',
+                'description' => 'محاضرات مسجلة لدفعة الطلاب الأولى في برنامج تطوير الويب.',
+                'price' => 0,
+                'is_published' => true,
+                'published_at' => now(),
+            ]
+        );
+
+        if ($demoCycle->lectures()->doesntExist()) {
+            $demoCycle->lectures()->create([
+                'title' => 'المحاضرة الأولى: مقدمة السايكل',
+                'video_provider' => 'youtube',
+                'video_id' => Lesson::extractYoutubeId('https://www.youtube.com/watch?v=aqz-KE-bpKQ'),
+                'video_url' => 'https://www.youtube.com/watch?v=aqz-KE-bpKQ',
+                'position' => 1,
             ]);
         }
 

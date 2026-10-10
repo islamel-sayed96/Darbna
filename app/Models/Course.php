@@ -76,6 +76,11 @@ class Course extends Model
         return $this->hasMany(Certificate::class);
     }
 
+    public function materials(): HasMany
+    {
+        return $this->hasMany(Material::class);
+    }
+
     public function isPublished(): bool
     {
         return $this->status === 'published';

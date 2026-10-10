@@ -55,13 +55,23 @@ export default function AuthenticatedLayout({ header, children }) {
                 active: 'admin.learning-paths.*',
             },
             {
+                href: route('admin.materials.index'),
+                label: 'المواد العلمية',
+                active: 'admin.materials.*',
+            },
+            {
+                href: route('admin.cycles.index'),
+                label: 'السايكلات',
+                active: 'admin.cycles.*',
+            },
+            {
                 href: route('admin.subscription-plans.index'),
                 label: 'خطط الاشتراك',
                 active: 'admin.subscription-plans.*',
             },
             {
                 href: route('admin.enrollments.index'),
-                label: 'تسجيل يدوي',
+                label: 'فتح أكسيس يدوي',
                 active: 'admin.enrollments.*',
             },
         );

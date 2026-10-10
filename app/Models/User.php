@@ -105,4 +105,33 @@ class User extends Authenticatable
         return $this->activeSubscriptions()
             ->contains(fn (Subscription $subscription) => $subscription->grantsAccessToCourse($course));
     }
+
+    public function contentAccesses(): HasMany
+    {
+        return $this->hasMany(ContentAccess::class);
+    }
+
+    public function hasAccessToMaterial(Material $material): bool
+    {
+        if ((float) $material->price === 0.0 || $material->instructor_id === $this->id || $this->hasRole('admin')) {
+            return true;
+        }
+
+        return $this->contentAccesses()
+            ->where('accessible_type', Material::class)
+            ->where('accessible_id', $material->id)
+            ->exists();
+    }
+
+    public function hasAccessToCycle(Cycle $cycle): bool
+    {
+        if ((float) $cycle->price === 0.0 || $cycle->instructor_id === $this->id || $this->hasRole('admin')) {
+            return true;
+        }
+
+        return $this->contentAccesses()
+            ->where('accessible_type', Cycle::class)
+            ->where('accessible_id', $cycle->id)
+            ->exists();
+    }
 }

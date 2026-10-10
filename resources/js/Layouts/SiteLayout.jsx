@@ -30,6 +30,20 @@ export default function SiteLayout({ children }) {
                         </Link>
 
                         <Link
+                            href={route('materials.index')}
+                            className="hidden text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white sm:inline"
+                        >
+                            المواد العلمية
+                        </Link>
+
+                        <Link
+                            href={route('cycles.index')}
+                            className="hidden text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white sm:inline"
+                        >
+                            السايكلات
+                        </Link>
+
+                        <Link
                             href={route('pricing')}
                             className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                         >
