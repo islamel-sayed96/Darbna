@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تواصل معنا | نوفا</title>
+  <meta name="description" content="تواصل معنا عبر واتساب أو الإيميل واطلب عرض سعر مجاني لمشروعك.">
+  <meta name="theme-color" content="#0b0b14">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero">
+      <div class="hero__bg"><div class="grid-bg"></div><div class="blob blob--1"></div><div class="blob blob--2"></div></div>
+      <div class="container" style="position:relative">
+        <div class="crumbs"><a href="index.html">الرئيسية</a> / تواصل معنا</div>
+        <h1>يلا <span class="text-grad">نتكلم</span></h1>
+        <p>املأ النموذج وهيتبعت لنا على الواتساب أو الإيميل مباشرة — بنرد خلال 24 ساعة.</p>
+      </div>
+    </section>
+    <section class="section" style="padding-top:20px">
+      <div class="container contact">
+        <div class="contact__info">
+          <a class="info-item info-item--wa reveal" data-wa>
+            <span class="info-item__icon"><svg viewBox="0 0 24 24" class="icon" style="width:26px;height:26px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <div><small>واتساب (الأسرع)</small><strong dir="ltr" data-site="phone"></strong></div>
+          </a>
+          <a class="info-item reveal" data-mail>
+            <span class="info-item__icon" data-icon="mail"></span>
+            <div><small>البريد الإلكتروني</small><strong data-site="email"></strong></div>
+          </a>
+          <div class="info-item reveal">
+            <span class="info-item__icon" data-icon="pin"></span>
+            <div><small>العنوان</small><strong data-site="address"></strong></div>
+          </div>
+          <div class="info-item reveal">
+            <span class="info-item__icon" data-icon="clock"></span>
+            <div><small>مواعيد العمل</small><strong data-site="hours"></strong></div>
+          </div>
+        </div>
+
+        <form class="form reveal" id="contact-form" novalidate>
+          <h3>اطلب عرض سعر مجاني</h3>
+          <p class="muted">اختار الخدمات اللي محتاجها واكتب تفاصيل بسيطة عن مشروعك.</p>
+          <div class="form__row">
+            <div class="field">
+              <label for="name">الاسم *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+              <div class="field__err">من فضلك اكتب اسمك</div>
+            </div>
+            <div class="field">
+              <label for="phone">رقم الموبايل / واتساب *</label>
+              <input id="phone" name="phone" type="tel" dir="ltr" autocomplete="tel" required>
+              <div class="field__err">اكتب رقم صحيح</div>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="company">اسم الشركة / النشاط</label>
+              <input id="company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="budget">الميزانية التقريبية</label>
+              <select id="budget" name="budget">
+                <option value="">اختار (اختياري)</option>
+                <option>أقل من 10,000 ج.م</option>
+                <option>10,000 – 30,000 ج.م</option>
+                <option>30,000 – 75,000 ج.م</option>
+                <option>أكتر من 75,000 ج.م</option>
+                <option>مش متأكد — محتاج استشارة</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>الخدمات المطلوبة *</label>
+            <div class="checks" id="service-checks"></div>
+            <div class="field__err">اختار خدمة واحدة على الأقل</div>
+          </div>
+          <div class="field">
+            <label for="message">تفاصيل المشروع *</label>
+            <textarea id="message" name="message" required placeholder="احكيلنا باختصار عن مشروعك وهدفك..."></textarea>
+            <div class="field__err">اكتب تفاصيل بسيطة عن مشروعك</div>
+          </div>
+          <div class="form__actions">
+            <button type="button" class="btn btn--wa" id="send-wa">إرسال عبر واتساب</button>
+            <button type="button" class="btn btn--primary" id="send-email">إرسال عبر الإيميل</button>
+          </div>
+          <p class="form__note">بياناتك بتتبعت لنا مباشرة ومش بنشاركها مع أي حد.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">أسئلة شائعة</span>
+          <h2>قبل ما <span class="text-grad">تسأل</span></h2>
+        </div>
+        <div class="faq" id="faq"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
