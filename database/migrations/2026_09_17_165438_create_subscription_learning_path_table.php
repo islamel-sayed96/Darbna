@@ -14,7 +14,11 @@ return new class extends Migration
             $table->foreignId('learning_path_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
 
-            $table->unique(['subscription_id', 'learning_path_id']);
+            // Named explicitly — the auto-generated name (table + both
+            // column names + "_unique") is 69 characters, over MySQL's
+            // 64-character identifier limit (SQLite, used in local/demo
+            // dev, doesn't enforce this, so it only surfaced on real MySQL).
+            $table->unique(['subscription_id', 'learning_path_id'], 'subscription_learning_path_unique');
         });
     }
 
