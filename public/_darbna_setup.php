@@ -35,8 +35,12 @@ if (! $expected || ! hash_equals((string) $expected, (string) $given)) {
 header('Content-Type: text/plain; charset=utf-8');
 
 $commands = [
-    ['migrate', ['--seed' => true, '--force' => true]],
-    ['storage:link', []],
+    // migrate:fresh (not migrate) — an earlier blind attempt died mid-batch
+    // and left some tables created but not recorded as migrated, so a
+    // plain `migrate` fails on "table already exists". Nothing real has
+    // been stored yet, so dropping everything and rebuilding clean is safe.
+    ['migrate:fresh', ['--seed' => true, '--force' => true]],
+    ['storage:link', ['--force' => true]],
     ['config:cache', []],
     ['route:cache', []],
     ['view:cache', []],
