@@ -44,8 +44,19 @@ $commands = [
 
 foreach ($commands as [$command, $arguments]) {
     echo "\$ php artisan {$command}\n";
-    $kernel->call($command, $arguments);
-    echo $kernel->output();
+
+    try {
+        $kernel->call($command, $arguments);
+        echo $kernel->output();
+    } catch (\Throwable $e) {
+        echo 'ERROR: '.get_class($e).': '.$e->getMessage()."\n";
+        echo $e->getFile().':'.$e->getLine()."\n\n";
+        echo $e->getTraceAsString()."\n";
+        echo str_repeat('-', 60)."\n";
+        echo "Stopped — fix the error above before rerunning.\n";
+        exit;
+    }
+
     echo str_repeat('-', 60)."\n";
 }
 
