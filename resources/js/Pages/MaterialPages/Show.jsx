@@ -30,6 +30,23 @@ export default function Show({ material, page, pages, currentIndex }) {
                                     {page.content}
                                 </p>
                             )}
+
+                            {page.quiz && (
+                                <div className="mt-6 rounded-md border border-brand-200 bg-brand-50 p-4 dark:border-brand-800 dark:bg-brand-900/30">
+                                    <p className="font-medium text-brand-800 dark:text-brand-200">
+                                        فيه اختبار على الصفحة دي: {page.quiz.title}
+                                    </p>
+                                    <Link
+                                        href={route(
+                                            'quizzes.take',
+                                            page.quiz.id,
+                                        )}
+                                        className="mt-2 inline-block rounded-md bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white hover:bg-brand-500"
+                                    >
+                                        ابدأ الاختبار
+                                    </Link>
+                                </div>
+                            )}
                         </div>
 
                         <div className="mt-4 flex justify-between">

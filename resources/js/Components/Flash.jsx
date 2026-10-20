@@ -3,7 +3,7 @@ import { usePage } from '@inertiajs/react';
 export default function Flash() {
     const { flash } = usePage().props;
 
-    if (!flash?.success && !flash?.generatedPassword) {
+    if (!flash?.success && !flash?.error && !flash?.generatedPassword) {
         return null;
     }
 
@@ -12,6 +12,12 @@ export default function Flash() {
             {flash?.success && (
                 <div className="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-900/30 dark:text-green-300">
                     {flash.success}
+                </div>
+            )}
+
+            {flash?.error && (
+                <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300">
+                    {flash.error}
                 </div>
             )}
 

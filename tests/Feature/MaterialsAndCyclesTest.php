@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
@@ -266,6 +267,32 @@ class MaterialsAndCyclesTest extends TestCase
         $this->actingAs($admin)->get(route('admin.cycles.create'))->assertOk();
         $this->actingAs($admin)->get(route('admin.cycles.edit', $cycle))->assertOk();
         $this->actingAs($admin)->get(route('admin.enrollments.index'))->assertOk();
+    }
+
+    public function test_admin_can_import_pages_from_a_pdf(): void
+    {
+        $admin = User::role('admin')->first();
+        $material = Material::create([
+            'title' => 'مادة من PDF',
+            'slug' => 'material-pdf-'.uniqid(),
+            'price' => 0,
+            'is_published' => true,
+        ]);
+
+        $pdf = new UploadedFile(
+            base_path('tests/Fixtures/sample-material.pdf'),
+            'sample.pdf',
+            'application/pdf',
+            null,
+            true,
+        );
+
+        $this->actingAs($admin)
+            ->post(route('admin.materials.pdf-import', $material), ['pdf' => $pdf])
+            ->assertRedirect();
+
+        $this->assertSame(2, $material->pages()->count());
+        $this->assertSame('Lesson One Introduction', $material->pages()->orderBy('position')->first()->content);
     }
 
     public function test_admin_can_revoke_manual_content_access(): void

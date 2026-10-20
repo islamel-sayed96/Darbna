@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
 use App\Http\Controllers\Admin\MaterialController as AdminMaterialController;
 use App\Http\Controllers\Admin\MaterialPageController as AdminMaterialPageController;
+use App\Http\Controllers\Admin\MaterialPdfController as AdminMaterialPdfController;
+use App\Http\Controllers\Admin\QuizController as AdminQuizController;
+use App\Http\Controllers\Admin\QuizQuestionController as AdminQuizQuestionController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\SubscriptionPlanController as AdminSubscriptionPlanController;
 use App\Http\Controllers\CheckoutController;
@@ -33,6 +36,7 @@ use App\Http\Controllers\MaterialPageController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\QuizAttemptController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\SubscriptionSelectionController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +77,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'edit'])->name('subscriptions.select.edit');
     Route::post('/subscriptions/{subscription}/select', [SubscriptionSelectionController::class, 'update'])->name('subscriptions.select.update');
+
+    Route::get('/quizzes/{quiz}/take', [QuizAttemptController::class, 'create'])->name('quizzes.take');
+    Route::post('/quizzes/{quiz}/attempts', [QuizAttemptController::class, 'store'])->name('quiz-attempts.store');
+    Route::get('/quiz-attempts/{quizAttempt}', [QuizAttemptController::class, 'show'])->name('quiz-attempts.show');
 
     Route::post('/purchases/materials/{material}', [PurchaseController::class, 'storeMaterial'])->name('purchases.materials.store');
     Route::post('/purchases/cycles/{cycle}', [PurchaseController::class, 'storeCycle'])->name('purchases.cycles.store');
@@ -121,6 +129,16 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::post('/materials/{material}/pages', [AdminMaterialPageController::class, 'store'])->name('material-pages.store');
         Route::put('/material-pages/{materialPage}', [AdminMaterialPageController::class, 'update'])->name('material-pages.update');
         Route::delete('/material-pages/{materialPage}', [AdminMaterialPageController::class, 'destroy'])->name('material-pages.destroy');
+
+        Route::post('/materials/{material}/pdf-import', [AdminMaterialPdfController::class, 'store'])->name('materials.pdf-import');
+
+        Route::get('/material-pages/{materialPage}/quiz', [AdminQuizController::class, 'edit'])->name('material-pages.quiz.edit');
+        Route::post('/material-pages/{materialPage}/quiz', [AdminQuizController::class, 'store'])->name('material-pages.quiz.store');
+        Route::put('/quizzes/{quiz}', [AdminQuizController::class, 'update'])->name('quizzes.update');
+        Route::delete('/quizzes/{quiz}', [AdminQuizController::class, 'destroy'])->name('quizzes.destroy');
+
+        Route::post('/quizzes/{quiz}/questions', [AdminQuizQuestionController::class, 'store'])->name('quiz-questions.store');
+        Route::delete('/quiz-questions/{quizQuestion}', [AdminQuizQuestionController::class, 'destroy'])->name('quiz-questions.destroy');
 
         Route::get('/cycles', [AdminCycleController::class, 'index'])->name('cycles.index');
         Route::get('/cycles/create', [AdminCycleController::class, 'create'])->name('cycles.create');

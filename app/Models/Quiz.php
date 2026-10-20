@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['course_id', 'lesson_id', 'title', 'passing_score', 'time_limit_minutes', 'max_attempts'])]
+#[Fillable(['course_id', 'lesson_id', 'material_page_id', 'title', 'passing_score', 'time_limit_minutes', 'max_attempts'])]
 class Quiz extends Model
 {
     public function course(): BelongsTo
@@ -18,6 +18,11 @@ class Quiz extends Model
     public function lesson(): BelongsTo
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    public function materialPage(): BelongsTo
+    {
+        return $this->belongsTo(MaterialPage::class);
     }
 
     public function questions(): HasMany

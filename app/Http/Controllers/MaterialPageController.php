@@ -11,7 +11,7 @@ class MaterialPageController extends Controller
 {
     public function show(MaterialPage $materialPage): Response|RedirectResponse
     {
-        $materialPage->load('material');
+        $materialPage->load('material', 'quiz');
         $material = $materialPage->material;
 
         abort_unless($material->is_published, 404);
