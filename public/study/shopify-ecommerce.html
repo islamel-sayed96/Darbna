@@ -1,0 +1,1607 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>متجرك على Shopify</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a course workbook. Sticky chapter rail on the side (top chip bar on phones), one long reading column of chapters, each ending in practice + quiz. */
+:root{
+  --bg:#F3F5F1; --surface:#FFFFFF; --sunk:#E9EEE8; --ink:#16211C; --muted:#56665E; --line:#D7DFD8;
+  --accent:#0B6B4E; --accent-ink:#FFFFFF; --accent-soft:#E1F0E8;
+  --gold:#B87A0A; --gold-soft:#FAF0D7;
+  --good:#1D7A45; --good-soft:#E2F3E8; --bad:#B3261E; --bad-soft:#FBE7E5;
+  --font-display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --font-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1B; --sunk:#1C2722; --ink:#E6EEE9; --muted:#9BAEA4; --line:#2A3832;
+  --accent:#4FC394; --accent-ink:#06241A; --accent-soft:#16332A;
+  --gold:#E6B44E; --gold-soft:#2D2614;
+  --good:#6DD29B; --good-soft:#143022; --bad:#F2877E; --bad-soft:#3A1A18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1B; --sunk:#1C2722; --ink:#E6EEE9; --muted:#9BAEA4; --line:#2A3832;
+  --accent:#4FC394; --accent-ink:#06241A; --accent-soft:#16332A;
+  --gold:#E6B44E; --gold-soft:#2D2614;
+  --good:#6DD29B; --good-soft:#143022; --bad:#F2877E; --bad-soft:#3A1A18; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.85}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,label:focus-within{outline:2px solid var(--gold);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.35;text-wrap:balance;margin:0;font-weight:700}
+p{margin:0}
+code,.mono{font-family:var(--font-mono);font-size:.88em;direction:ltr;unicode-bidi:isolate}
+code{background:var(--sunk);padding:1px 6px;border-radius:5px}
+
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{border-bottom:1px solid var(--line);background:var(--surface)}
+.hero-in{max-width:1180px;margin:0 auto;padding-block:40px 32px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.eyebrow{font-size:.8rem;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3rem);margin-top:6px}
+.hero h1 span{color:var(--accent)}
+.hero p.sub{color:var(--muted);max-width:60ch;margin-top:10px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:.92rem;color:var(--muted)}
+.hero-meta b{color:var(--ink);font-variant-numeric:tabular-nums}
+.progress-card{min-width:240px;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;background:var(--bg)}
+.progress-card .lbl{font-size:.85rem;color:var(--muted)}
+.progress-card .num{font-family:var(--font-display);font-size:2rem;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .4s}
+
+/* app grid */
+.app{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;padding-block:28px 80px}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start;max-height:calc(100vh - 32px);overflow:auto}
+.rail h2{font-size:.95rem;color:var(--muted);margin-bottom:10px}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.rail a{display:grid;grid-template-columns:28px 1fr 16px;gap:8px;align-items:center;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.93rem;line-height:1.5}
+.rail a:hover{background:var(--sunk)}
+.rail a.on{background:var(--accent-soft);color:var(--ink)}
+.rail .n{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);text-align:center}
+.rail .ok{color:var(--good);font-size:.85rem;visibility:hidden}
+.rail a.done .ok{visibility:visible}
+.rail .final-link{margin-top:10px;border:1px dashed var(--gold);}
+
+main{min-width:0}
+.chapter{scroll-margin-top:24px;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:22px}
+.chapter:last-child{border-bottom:0}
+.ch-head{display:flex;flex-direction:column;gap:8px}
+.ch-tag{display:inline-flex;gap:8px;align-items:center;font-size:.82rem;font-weight:600;color:var(--accent);letter-spacing:.03em}
+.ch-tag .mono{color:var(--muted)}
+.ch-head h2{font-size:clamp(1.55rem,3vw,2.1rem)}
+.ch-head .en{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);direction:ltr;text-align:right}
+.lead{font-size:1.06rem;max-width:68ch}
+.goals{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0;padding:0;list-style:none}
+.goals li{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:3px 12px}
+
+.prose{display:flex;flex-direction:column;gap:12px;max-width:72ch}
+.prose h3{font-size:1.25rem;margin-top:10px}
+.prose h4{font-size:1.02rem;font-family:var(--font-body);font-weight:700}
+.prose ul,.prose ol{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:4px}
+.prose li::marker{color:var(--accent)}
+
+.kicker{font-family:var(--font-body);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--muted)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card h4{font-size:1rem;font-family:var(--font-body);font-weight:700}
+.card p{font-size:.94rem;color:var(--muted)}
+.card .idx{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+
+.example{background:var(--gold-soft);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:8px;max-width:72ch}
+.example .kicker{color:var(--gold)}
+.tip{background:var(--accent-soft);border-radius:var(--r);padding:14px 18px;max-width:72ch;display:flex;flex-direction:column;gap:6px}
+.tip .kicker{color:var(--accent)}
+.warn{background:var(--bad-soft);border-radius:var(--r);padding:14px 18px;max-width:72ch;display:flex;flex-direction:column;gap:6px}
+.warn .kicker{color:var(--bad)}
+
+figure.fig{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px}
+figure.fig figcaption{font-size:.86rem;color:var(--muted)}
+.scroll-x{overflow-x:auto}
+svg text{font-family:var(--font-body)}
+.s-ink{fill:var(--ink)} .s-muted{fill:var(--muted)} .s-acc{fill:var(--accent)} .s-accsoft{fill:var(--accent-soft)}
+.s-surface{fill:var(--surface)} .s-sunk{fill:var(--sunk)} .s-gold{fill:var(--gold)} .s-goldsoft{fill:var(--gold-soft)}
+.s-line{stroke:var(--line)} .s-stroke-acc{stroke:var(--accent)} .s-stroke-ink{stroke:var(--ink)} .s-stroke-muted{stroke:var(--muted)}
+.s-accink{fill:var(--accent-ink)}
+
+table.t{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--surface)}
+table.t th,table.t td{border:1px solid var(--line);padding:8px 10px;text-align:right;vertical-align:top}
+table.t th{background:var(--sunk);font-weight:700}
+.tbl{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
+.tbl table.t th,.tbl table.t td{border-width:0 0 1px 0}
+
+/* prompt box */
+.prompt{position:relative;background:var(--sunk);border-radius:var(--r);padding:14px 16px;direction:ltr;text-align:left;font-family:var(--font-mono);font-size:.88rem;line-height:1.7;white-space:pre-wrap;max-width:72ch}
+.copy{position:absolute;top:8px;right:8px;font:600 .75rem var(--font-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer}
+
+/* mock admin */
+.mock{direction:ltr;text-align:left;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);font-size:.88rem}
+.mock-top{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--ink);color:var(--bg);font-weight:600}
+.mock-top .dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.mock-top .search{flex:1;max-width:280px;margin-left:auto;background:var(--muted);opacity:.35;height:22px;border-radius:6px}
+.mock-body{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:300px}
+.mock-nav{background:var(--sunk);padding:8px;display:flex;flex-direction:column;gap:2px}
+.mock-nav button{all:unset;cursor:pointer;padding:6px 10px;border-radius:6px;font-size:.86rem;display:block}
+.mock-nav button.sub{padding-left:24px;font-size:.82rem;color:var(--muted)}
+.mock-nav button:hover{background:var(--surface)}
+.mock-nav button.on{background:var(--surface);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
+.mock-nav button:focus-visible{outline:2px solid var(--gold)}
+.mock-pane{padding:16px 18px;display:flex;flex-direction:column;gap:8px;direction:rtl;text-align:right;font-size:.95rem}
+.mock-pane h4{font-family:var(--font-mono);direction:ltr;text-align:right;font-size:1rem}
+.mock-pane ul{margin:0;padding-inline-start:20px}
+
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:.8rem;font-weight:600;color:var(--muted)}
+.fake-input{border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:var(--bg);min-height:32px}
+.mock-form{padding:16px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px}
+.mock-col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.mock-box{border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.mock-box .h{font-weight:700}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--good-soft);color:var(--good);font-weight:600}
+.strike{text-decoration:line-through;color:var(--muted)}
+
+/* tools */
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.tool h4{font-size:1.05rem}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tool input[type=number]{width:100%;font:500 1rem var(--font-mono);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);direction:ltr;text-align:left}
+.tool label.f{display:flex;flex-direction:column;gap:4px;font-size:.85rem;color:var(--muted);font-weight:600}
+.result{display:flex;flex-wrap:wrap;gap:10px 24px;padding:12px 14px;background:var(--sunk);border-radius:8px}
+.result div{display:flex;flex-direction:column}
+.result span{font-size:.8rem;color:var(--muted)}
+.result b{font-family:var(--font-mono);font-size:1.15rem;direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
+.verdict{font-weight:700;padding:8px 12px;border-radius:8px}
+.verdict.good{background:var(--good-soft);color:var(--good)}
+.verdict.bad{background:var(--bad-soft);color:var(--bad)}
+.verdict.mid{background:var(--gold-soft);color:var(--gold)}
+
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.checks input{margin-top:6px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.checks label:has(input:checked){background:var(--accent-soft);border-color:transparent}
+.checks label:has(input:checked) .t{text-decoration:line-through;text-decoration-color:var(--muted)}
+
+/* bundle */
+.bundle{direction:ltr;text-align:left;display:flex;flex-direction:column;gap:8px;max-width:420px}
+.bundle .opt{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--surface)}
+.bundle .opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.bundle input{accent-color:var(--accent)}
+.bundle .nm{font-weight:700;flex:1}
+.bundle .pr{font-family:var(--font-mono);font-weight:600}
+.bundle .save{font-size:.72rem;background:var(--gold);color:var(--surface);padding:1px 7px;border-radius:99px;font-weight:700}
+
+/* practice + quiz shells */
+.practice,.quiz{border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:14px}
+.practice{background:var(--surface);border:1px solid var(--line)}
+.quiz{background:var(--surface);border:2px solid var(--accent)}
+.sec-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-title h3{font-size:1.25rem}
+.sec-title .meta{font-size:.85rem;color:var(--muted)}
+.q{display:flex;flex-direction:column;gap:8px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.q:last-of-type{border-bottom:0}
+.q .qt{font-weight:600}
+.q .qt .qn{font-family:var(--font-mono);color:var(--accent);margin-inline-end:6px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:8px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:var(--bg)}
+.opts input{margin-top:6px;accent-color:var(--accent);flex:none}
+.opts label:has(input:checked){border-color:var(--accent)}
+.opts label.right{background:var(--good-soft);border-color:var(--good)}
+.opts label.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.why{font-size:.9rem;color:var(--muted);padding-inline-start:12px;border-inline-start:3px solid var(--line)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:600 .95rem var(--font-body);border:0;border-radius:8px;padding:9px 18px;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.score{font-weight:700;font-variant-numeric:tabular-nums}
+.score.pass{color:var(--good)} .score.fail{color:var(--bad)}
+
+.final{background:var(--surface);border:2px solid var(--gold);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px;scroll-margin-top:24px}
+.final h2{font-size:1.8rem}
+.cert{border:1px solid var(--gold);background:var(--gold-soft);border-radius:var(--r);padding:20px;text-align:center;display:flex;flex-direction:column;gap:6px}
+.cert h3{font-size:1.4rem}
+
+.roadmap{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;counter-reset:rm}
+.roadmap li{counter-increment:rm;display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;font-size:.92rem;line-height:1.6}
+.roadmap li::before{content:counter(rm);font-family:var(--font-mono);font-size:.8rem;min-width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none;font-weight:600}
+.roadmap li small{display:block;color:var(--muted);font-family:var(--font-mono);font-size:.75rem}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.sw{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.sw i{display:block;height:54px}
+.sw div{padding:8px 10px;font-size:.85rem;line-height:1.5}
+.sw b{display:block}
+
+footer.foot{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:.85rem}
+footer.foot div{max-width:1180px;margin:0 auto}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr}
+  .app{grid-template-columns:minmax(0,1fr);gap:20px;padding-top:0}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;max-height:none;background:var(--bg);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);overflow-x:auto}
+  .rail h2{display:none}
+  .rail ol{flex-direction:row;gap:6px;width:max-content}
+  .rail a{grid-template-columns:auto auto;padding:5px 12px;border:1px solid var(--line);border-radius:99px;white-space:nowrap;font-size:.85rem}
+  .rail a .lbl-long{display:none}
+  .rail a .ok{display:none}
+  .rail a.done{border-color:var(--good)}
+  .rail .final-link{margin-top:0}
+  .chapter{scroll-margin-top:70px}
+  .mock-body{grid-template-columns:minmax(0,1fr)}
+  .mock-nav{flex-direction:row;flex-wrap:wrap}
+  .mock-nav button.sub{padding-left:10px}
+  .mock-form{grid-template-columns:minmax(0,1fr)}
+}
+@media (min-width:901px){.rail a .lbl-short{display:none}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div dir="rtl" lang="ar">
+
+<header class="hero wrap">
+  <div class="hero-in">
+    <div>
+      <div class="eyebrow">مادة علمية · E-Commerce Shopify</div>
+      <h1>ابني متجرك الإلكتروني على <span>Shopify</span> من الصفر</h1>
+      <p class="sub">كورس عملي بالمصري لإنشاء متجر دروبشيبينج: من اختيار المنتج الرابح لحد أول حملة إعلانية. كل فصل فيه شرح وأمثلة وصور توضيحية، وبعدها تدريب عملي واختبار قصير.</p>
+      <div class="hero-meta">
+        <span><b>10</b> فصول</span>
+        <span><b>10</b> تدريبات عملية</span>
+        <span><b>50</b> سؤال في اختبارات الفصول</span>
+        <span>اختبار نهائي <b>20</b> سؤال</span>
+      </div>
+    </div>
+    <div class="progress-card" aria-live="polite">
+      <div class="lbl">تقدمك في الكورس</div>
+      <div class="num"><span id="pDone">0</span> / 10</div>
+      <div class="bar"><i id="pBar"></i></div>
+      <div class="lbl" style="margin-top:6px">الفصل بيتحسب لما تنجح في اختباره (٦٠٪ فأكتر)</div>
+    </div>
+  </div>
+</header>
+
+<div class="app wrap">
+  <nav class="rail" aria-label="فصول الكورس">
+    <h2>الفصول</h2>
+    <ol id="railList">
+      <li><a href="#ch1" data-ch="1"><span class="n">01</span><span><span class="lbl-long">مدخل للتجارة الإلكترونية</span><span class="lbl-short">١ مدخل</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch2" data-ch="2"><span class="n">02</span><span><span class="lbl-long">المنتج الرابح</span><span class="lbl-short">٢ المنتج</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch3" data-ch="3"><span class="n">03</span><span><span class="lbl-long">البراند: الاسم واللوجو والألوان</span><span class="lbl-short">٣ البراند</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch4" data-ch="4"><span class="n">04</span><span><span class="lbl-long">الاشتراك ولوحة التحكم</span><span class="lbl-short">٤ لوحة التحكم</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch5" data-ch="5"><span class="n">05</span><span><span class="lbl-long">إضافة المنتجات</span><span class="lbl-short">٥ المنتجات</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch6" data-ch="6"><span class="n">06</span><span><span class="lbl-long">الثيم وشكل المتجر</span><span class="lbl-short">٦ الثيم</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch7" data-ch="7"><span class="n">07</span><span><span class="lbl-long">الصفحات والقوائم والعروض</span><span class="lbl-short">٧ الصفحات</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch8" data-ch="8"><span class="n">08</span><span><span class="lbl-long">الشركة ووسائل الدفع</span><span class="lbl-short">٨ الشركة والدفع</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch9" data-ch="9"><span class="n">09</span><span><span class="lbl-long">التطبيقات والأسواق والإيميلات</span><span class="lbl-short">٩ التطبيقات</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#ch10" data-ch="10"><span class="n">10</span><span><span class="lbl-long">ميتا والإعلانات والتحسين</span><span class="lbl-short">١٠ الإعلانات</span></span><span class="ok">✓</span></a></li>
+      <li><a href="#final" class="final-link"><span class="n">★</span><span><span class="lbl-long">الاختبار النهائي</span><span class="lbl-short">الاختبار النهائي</span></span><span class="ok"></span></a></li>
+    </ol>
+  </nav>
+
+<main>
+
+<!-- ============ CH1 ============ -->
+<section class="chapter" id="ch1">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الأول <span class="mono">Chapter 1</span></div>
+    <h2>مدخل للتجارة الإلكترونية والدروبشيبينج</h2>
+    <div class="en">E-Commerce &amp; Dropshipping Basics</div>
+    <p class="lead">قبل ما نفتح Shopify لازم نفهم اللعبة نفسها: يعني إيه تبيع أونلاين، يعني إيه دروبشيبينج، وفلوسك بتيجي منين وبتروح فين.</p>
+    <ul class="goals"><li>تفرّق بين نماذج البيع أونلاين</li><li>تفهم دورة الطلب في الدروبشيبينج</li><li>تعرف خريطة الكورس كاملة</li></ul>
+  </div>
+
+  <div class="prose">
+    <h3>يعني إيه تجارة إلكترونية؟</h3>
+    <p>التجارة الإلكترونية (E-Commerce) هي إنك تبيع منتج أو خدمة عن طريق الإنترنت: العميل يشوف المنتج على موقعك، يدفع أونلاين، والمنتج يوصله لحد البيت. الفكرة نفسها زي أي محل، بس المحل هنا هو <b>المتجر الإلكتروني</b>، والزباين جايين من <b>الإعلانات والسوشيال ميديا</b>.</p>
+    <h3>نماذج البيع أونلاين</h3>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="idx">Inventory</span><h4>تخزين بضاعة</h4><p>بتشتري كمية وتخزنها وتشحنها بنفسك. ربح أعلى للقطعة، بس محتاج رأس مال ومخزن، ولو المنتج ما اتباعش البضاعة بتفضل عندك.</p></div>
+    <div class="card"><span class="idx">Dropshipping</span><h4>دروبشيبينج</h4><p>بتعرض المنتج في متجرك من غير ما تشتريه. لما عميل يطلب، بتطلبه أنت من المورد وهو يشحنه للعميل مباشرة. ده النموذج اللي هنشتغل عليه.</p></div>
+    <div class="card"><span class="idx">Print on Demand</span><h4>طباعة عند الطلب</h4><p>تصاميمك على تيشيرتات أو مجات، والمورد بيطبع ويشحن لما ييجي طلب. قريب من الدروبشيبينج بس المنتج بتصميمك.</p></div>
+  </div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 230" width="100%" style="min-width:600px" role="img" aria-label="دورة الطلب في الدروبشيبينج">
+      <defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="s-acc"/></marker></defs>
+      <g>
+        <rect x="590" y="40" width="160" height="96" rx="12" class="s-accsoft"/>
+        <text x="670" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">١. العميل يطلب</text>
+        <text x="670" y="100" text-anchor="middle" class="s-muted" font-size="12">يشوف الإعلان ويدفع</text>
+        <text x="670" y="118" text-anchor="middle" class="s-muted" font-size="12">$39.99 في متجرك</text>
+      </g>
+      <g>
+        <rect x="400" y="40" width="160" height="96" rx="12" class="s-accsoft"/>
+        <text x="480" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٢. متجرك يستلم</text>
+        <text x="480" y="100" text-anchor="middle" class="s-muted" font-size="12">الطلب يظهر في Orders</text>
+        <text x="480" y="118" text-anchor="middle" class="s-muted" font-size="12">والفلوس في Payments</text>
+      </g>
+      <g>
+        <rect x="210" y="40" width="160" height="96" rx="12" class="s-accsoft"/>
+        <text x="290" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٣. تطلب من المورد</text>
+        <text x="290" y="100" text-anchor="middle" class="s-muted" font-size="12">عن طريق DSers</text>
+        <text x="290" y="118" text-anchor="middle" class="s-muted" font-size="12">وتدفع $12 مثلًا</text>
+      </g>
+      <g>
+        <rect x="20" y="40" width="160" height="96" rx="12" class="s-accsoft"/>
+        <text x="100" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٤. المورد يشحن</text>
+        <text x="100" y="100" text-anchor="middle" class="s-muted" font-size="12">على عنوان العميل</text>
+        <text x="100" y="118" text-anchor="middle" class="s-muted" font-size="12">باسم البراند بتاعك</text>
+      </g>
+      <line x1="586" y1="88" x2="566" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/>
+      <line x1="396" y1="88" x2="376" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/>
+      <line x1="206" y1="88" x2="186" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/>
+      <path d="M100 140 C100 200, 670 200, 670 142" fill="none" class="s-stroke-muted" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#ar1)"/>
+      <text x="385" y="214" text-anchor="middle" class="s-gold" font-size="13" font-weight="700">ربحك = سعر البيع − (المنتج + الشحن + الإعلان)</text>
+    </svg>
+    </div>
+    <figcaption>شكل ١ — دورة الطلب في الدروبشيبينج: أنت ما بتلمسش المنتج، بس بتتحكم في المتجر والتسويق وخدمة العملاء.</figcaption>
+  </figure>
+
+  <div class="example">
+    <span class="kicker">مثال بالأرقام</span>
+    <p>بتبيع طوق ضد البراغيث للكلاب بسعر <b>$29.99</b>. تكلفة المنتج من المورد <b>$6</b> والشحن <b>$4</b>، وكل بيعة بتكلفك إعلانات حوالي <b>$10</b>. يبقى ربحك من البيعة الواحدة تقريبًا <b>$9.99</b>، ولو بعت 10 قطع في اليوم يبقى حوالي <b>$100</b> ربح يومي.</p>
+  </div>
+
+  <div class="prose">
+    <h3>ليه Shopify؟</h3>
+    <ul>
+      <li>أشهر منصة للتجارة الإلكترونية في العالم، وسهلة من غير برمجة.</li>
+      <li>بتدعم الدروبشيبينج بشكل كبير، والموردين عاملين تطبيقات متوافقة معاها.</li>
+      <li>اشتراكها مش غالي مقارنة بالمكاسب اللي ممكن تحققها.</li>
+    </ul>
+    <h3>خريطة الطريق: الـ 16 خطوة اللي هنمشي عليها</h3>
+  </div>
+  <ol class="roadmap">
+    <li><div>اختيار المنتج الرابح<small>Winning Product</small></div></li>
+    <li><div>اختيار اسم البراند وحجز الدومين<small>Brand Name</small></div></li>
+    <li><div>تصميم اللوجو على Canva<small>Logo</small></div></li>
+    <li><div>إنشاء المتجر واختيار الخطة<small>Store Setup</small></div></li>
+    <li><div>إضافة المنتجات<small>Add Products</small></div></li>
+    <li><div>اختيار وتظبيط الثيم<small>Theme Setup</small></div></li>
+    <li><div>الصفحات الأساسية والسياسات<small>Pages</small></div></li>
+    <li><div>القوائم والفوتر<small>Menu &amp; Footer</small></div></li>
+    <li><div>تجهيز المنتجات والعروض<small>Products &amp; Offers</small></div></li>
+    <li><div>تفعيل التطبيقات<small>Apps</small></div></li>
+    <li><div>الشركة والإعدادات المتقدمة<small>Company Setup</small></div></li>
+    <li><div>الأسواق واللغات<small>Markets &amp; Language</small></div></li>
+    <li><div>الإيميلات الرسمية<small>Business Emails</small></div></li>
+    <li><div>حسابات ميتا الإعلانية والبيكسل<small>Meta Business Suite</small></div></li>
+    <li><div>صفحات فيسبوك وإنستجرام والإعلانات<small>Pages &amp; Ads</small></div></li>
+    <li><div>التحسين المستمر<small>Optimization</small></div></li>
+  </ol>
+
+  <div class="practice" data-practice="1">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">علّم على اللي خلّصته</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">اكتب في ورقة: هل هتبدأ بدروبشيبينج ولا تخزين بضاعة؟ وليه؟ (سطرين)</span></label></li>
+      <li><label><input type="checkbox"><span class="t">ادخل على متجرين ناجحين (Mooshwalks و Meowingtons) واكتب 3 حاجات عجبتك في كل واحد.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">احسب ربح منتج افتراضي: سعر بيع $24.99، منتج $5، شحن $3، إعلان $9. (الإجابة: $7.99)</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="1"></div>
+</section>
+
+<!-- ============ CH2 ============ -->
+<section class="chapter" id="ch2">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الثاني <span class="mono">Chapter 2</span></div>
+    <h2>المنتج الرابح</h2>
+    <div class="en">Winning Product</div>
+    <p class="lead">المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي. لو المنتج عليه طلب حقيقي، هيبيع حتى مع تسويق أو تصميم ضعيف.</p>
+    <ul class="goals"><li>تعرف مواصفات المنتج الرابح السبعة</li><li>تحسب هامش الربح صح</li><li>تستخدم 6 طرق للبحث عن منتجات</li></ul>
+  </div>
+
+  <div class="tip">
+    <span class="kicker">قاعدة مهمة</span>
+    <p>لازم يكون عندك <b>ليستة من 10 منتجات مختلفة</b> عشان تقدر تجرّب وتبدّل لو منتج فشل. التجريب مهم للوصول للمنتج الرابح، والمجهود ده جزء أساسي من النجاح.</p>
+  </div>
+
+  <div class="prose"><h3>مواصفات المنتج الرابح</h3></div>
+  <div class="cards">
+    <div class="card"><span class="idx">01</span><h4>بيحل مشكلة حقيقية</h4><p>المنتجات اللي بتحل مشاكل بتضمن وجود عملاء جاهزين. مثال: الأساور الطاردة للحشرات للكلاب والقطط في 2024.</p></div>
+    <div class="card"><span class="idx">02</span><h4>ترندي / فايرل</h4><p>زي الكمامات وقت كورونا. تابع الترندات عشان تسبق السوق.</p></div>
+    <div class="card"><span class="idx">03</span><h4>قابل للتطوير</h4><p>شوف منتجات ناس تانية بتبيعها وطوّر على فكرتهم: مش تقلّد، تحسّن. ركز على المنتجات اللي تسويقها أو عرضها ضعيف.</p></div>
+    <div class="card"><span class="idx">04</span><h4>هامش ربح كويس</h4><p>احسب التكلفة الكاملة (منتج + شحن + إعلانات). ما تشتغلش على منتج مكسبه $3–5 بس.</p></div>
+    <div class="card"><span class="idx">05</span><h4>جودته حقيقية</h4><p>اقرا الريفيوهات وشوف تقييمه على Amazon. اسأل نفسك: «هل أقدر أهديه لأهلي بثقة؟»</p></div>
+    <div class="card"><span class="idx">06</span><h4>مش ممنوع من الشحن الدولي</h4><p>تجنب: السوائل، البطاريات، الأدوات الحادة، والإلكترونيات القابلة للكسر. راجع شروط الشحن في بلد التارجت.</p></div>
+    <div class="card"><span class="idx">07</span><h4>بعيد عن الأجهزة الكهربائية</h4><p>شحنها صعب، وزنها تقيل، وأعطالها كتير. خليك في منتجات بسيطة وخفيفة في البداية.</p></div>
+  </div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 720 250" width="100%" style="min-width:560px" role="img" aria-label="مثال منتج يحل مشكلة: طوق طارد للحشرات">
+      <rect x="20" y="20" width="300" height="210" rx="14" class="s-sunk"/>
+      <circle cx="170" cy="118" r="62" fill="none" class="s-stroke-acc" stroke-width="14"/>
+      <rect x="150" y="48" width="40" height="22" rx="5" class="s-gold"/>
+      <circle cx="170" cy="180" r="9" class="s-gold"/>
+      <text x="170" y="122" text-anchor="middle" class="s-muted" font-size="12">طوق طارد للحشرات</text>
+      <g font-size="12">
+        <rect x="350" y="26" width="350" height="44" rx="8" class="s-goldsoft"/>
+        <text x="688" y="53" text-anchor="end" class="s-ink" font-weight="700">المشكلة: براغيث وقراد وناموس على الحيوان الأليف</text>
+        <rect x="350" y="80" width="350" height="44" rx="8" class="s-accsoft"/>
+        <text x="688" y="107" text-anchor="end" class="s-ink">✔ بيحل مشكلة · ✔ خفيف وسهل الشحن</text>
+        <rect x="350" y="134" width="350" height="44" rx="8" class="s-accsoft"/>
+        <text x="688" y="161" text-anchor="end" class="s-ink">✔ تكلفته $3–6 · ✔ يتباع بـ $24.99 – $29.99</text>
+        <rect x="350" y="188" width="350" height="36" rx="8" class="s-surface" stroke-width="1" style="stroke:var(--line)"/>
+        <text x="688" y="211" text-anchor="end" class="s-muted">الحشرات: Fleas · Ticks · Lice · Mosquitoes · Larvae</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>شكل ٢ — مثال من المادة: الطوق الطارد للحشرات بيحقق أغلب مواصفات المنتج الرابح.</figcaption>
+  </figure>
+
+  <div class="tool" id="profitTool">
+    <h4>حاسبة هامش الربح</h4>
+    <p style="color:var(--muted);font-size:.92rem">غيّر الأرقام وشوف المنتج يستاهل ولا لأ. القيم بالدولار.</p>
+    <div class="tool-grid">
+      <label class="f">سعر البيع<input type="number" id="pf-price" value="29.99" step="0.01" min="0"></label>
+      <label class="f">تكلفة المنتج<input type="number" id="pf-cost" value="6" step="0.01" min="0"></label>
+      <label class="f">الشحن<input type="number" id="pf-ship" value="4" step="0.01" min="0"></label>
+      <label class="f">تكلفة الإعلان لكل بيعة<input type="number" id="pf-ads" value="10" step="0.01" min="0"></label>
+      <label class="f">نسبة Shopify ٪<input type="number" id="pf-fee" value="2" step="0.1" min="0"></label>
+    </div>
+    <div class="result">
+      <div><span>التكلفة الكاملة</span><b id="pf-total">—</b></div>
+      <div><span>الربح من البيعة</span><b id="pf-profit">—</b></div>
+      <div><span>هامش الربح</span><b id="pf-margin">—</b></div>
+    </div>
+    <div class="verdict" id="pf-verdict">—</div>
+  </div>
+
+  <div class="prose">
+    <h3>طرق البحث عن المنتج الرابح</h3>
+  </div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الطريقة</th><th>إزاي تستخدمها</th></tr></thead>
+    <tbody>
+      <tr><td><b>AliExpress</b></td><td>شوف المنتجات الأكثر مبيعًا وعدد الطلبات والتقييمات.</td></tr>
+      <tr><td><b>Google Keyword Planner / Amazon</b></td><td>شوف الناس بتبحث على إيه في الدولة اللي هتبيع فيها. لو فيه بحث ومبيعات، يبقى المنتج عليه فرصة.</td></tr>
+      <tr><td><b>أدوات مدفوعة</b><br><span class="mono">Sell The Trend · Minea</span></td><td>بتوريك المنتجات الأكثر مبيعًا، والإعلانات، والمتاجر المنافسة.</td></tr>
+      <tr><td><b>TikTok &amp; Social Media</b></td><td>ابحث بـ <code>Dropshipping Products</code> وتابع الفيديوهات اللي عليها تفاعل كبير. منتج ترندي + تقديم ضعيف = فرصة ذهبية.</td></tr>
+      <tr><td><b>Meta Ads Library</b></td><td>شوف الإعلانات الشغالة حاليًا على فيسبوك وإنستجرام. الإعلان اللي شغال من أسابيع غالبًا بيكسب.</td></tr>
+      <tr><td><b>Zendrop</b></td><td>مورّد وأداة بحث في نفس الوقت، بيعرض منتجات ترندي جاهزة للدروبشيبينج.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="tool" id="scoreTool">
+    <h4>تقييم منتج: هل هو رابح؟</h4>
+    <p style="color:var(--muted);font-size:.92rem">فكّر في منتج معين وعلّم على المواصفات اللي بيحققها.</p>
+    <ul class="checks" id="scoreList">
+      <li><label><input type="checkbox"><span class="t">بيحل مشكلة حقيقية</span></label></li>
+      <li><label><input type="checkbox"><span class="t">ترندي أو عليه تفاعل عالي على السوشيال</span></label></li>
+      <li><label><input type="checkbox"><span class="t">أقدر أقدمه أحسن من المنافسين</span></label></li>
+      <li><label><input type="checkbox"><span class="t">هامش الربح أكتر من $10 بعد الإعلانات</span></label></li>
+      <li><label><input type="checkbox"><span class="t">تقييماته كويسة وأقدر أهديه لأهلي</span></label></li>
+      <li><label><input type="checkbox"><span class="t">مش سائل ولا بطارية ولا حاد ولا قابل للكسر</span></label></li>
+      <li><label><input type="checkbox"><span class="t">مش جهاز كهربائي، خفيف وبسيط</span></label></li>
+    </ul>
+    <div class="verdict mid" id="scoreOut">علّم على المواصفات عشان تشوف النتيجة.</div>
+  </div>
+
+  <div class="practice" data-practice="2">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">الهدف: ليستة 10 منتجات</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">ابحث على TikTok بكلمة <code>Dropshipping Products</code> واختار 3 منتجات عليها تفاعل كبير.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">دوّر على 3 منتجات من AliExpress أو Zendrop الأكثر مبيعًا في نيتش واحد.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">افتح Meta Ads Library ولاقي 4 إعلانات شغالة لمنتجات من نفس النيتش.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">قيّم كل منتج بأداة «هل هو رابح؟» واحسب ربحه بالحاسبة، واستبعد أي منتج أقل من 5 مواصفات.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="2"></div>
+</section>
+
+<!-- ============ CH3 ============ -->
+<section class="chapter" id="ch3">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الثالث <span class="mono">Chapter 3</span></div>
+    <h2>البراند: الاسم واللوجو والألوان</h2>
+    <div class="en">Store Identity · Brand Name · Logo · Colors</div>
+    <p class="lead">المنتج مهم جدًا، بس المتجر اللي بيعرضه ما يقلش أهمية عنه. لو عندك نفس المنتج في متجرين، واحد كويس وواحد وحش، المتجر الأفضل تصميمًا وتجربةً هيبيع أكتر.</p>
+    <ul class="goals"><li>تختار نوع المتجر المناسب</li><li>تطلّع اسم براند احترافي بسرعة</li><li>تصمم لوجو وتختار ألوان بتعبر عن البراند</li></ul>
+  </div>
+
+  <div class="prose">
+    <h3>ليه لازم نهتم بالمتجر؟</h3>
+    <ul>
+      <li>المتجر بيمثل واجهة البراند بتاعك.</li>
+      <li>تجربة المستخدم الجيدة = عميل سعيد = عميل بيرجع + بيجيب ناس تانية.</li>
+      <li>نجاح المتجر بيساعد في بناء علاقة بينك وبين العميل.</li>
+    </ul>
+    <h3>قبل ما تبدأ تبني المتجر لازم تحدد</h3>
+    <p><b>اسم البراند</b>، <b>اللوجو</b>، و<b>ألوان البراند</b>. لأن كل ده هتحطه جوه المتجر. مينفعش تبدأ المتجر وبعدين تفكر تسميه!</p>
+    <h3>أنواع المتاجر</h3>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="idx">One Product</span><h4>متجر منتج واحد</h4><p>المتجر كله مبني حوالين منتج واحد. سريع في الاختبار بس لو المنتج وقع لازم متجر جديد.</p></div>
+    <div class="card"><span class="idx">Niche Store</span><h4>متجر نيتش متخصص</h4><p>متخصص في مجال واحد زي المجوهرات أو منتجات الحيوانات. <b>هنبدأ بيه في الكورس</b> ونختبر أكتر من منتج لحد ما نلاقي الرابح.</p></div>
+    <div class="card"><span class="idx">General Store</span><h4>متجر عام</h4><p>منتجات متعددة من مجالات مختلفة. مرن بس صعب تبني فيه ثقة وهوية واضحة.</p></div>
+  </div>
+
+  <div class="example">
+    <span class="kicker">أمثلة لمتاجر ناجحة</span>
+    <p><b><a href="https://mooshwalks.com/" target="_blank" rel="noopener">Mooshwalks</a></b>: متجر شرابات 3D بشكل شخصيات، كسر المليون في أول سنة. قوة الفكرة + تصميم المتجر ساعدوا جدًا.</p>
+    <p><b><a href="https://www.meowingtons.com/" target="_blank" rel="noopener">Meowingtons</a></b>: متجر متخصص في منتجات القطط، شهرته كبيرة واتذكر في قنوات إعلامية.</p>
+  </div>
+
+  <div class="prose">
+    <h3>اختيار اسم البراند</h3>
+    <p>فيه ناس بتقعد شهور تفكر، وناس بتختار أي اسم بسرعة… الاتنين غلط. الصح: <b>توازن وذكاء باستخدام أدوات حديثة</b>. وابدأ من المنتج مش الاسم: لازم تكون عارف النيتش أو المنتج اللي هتبيعه قبل ما تختار الاسم.</p>
+    <ul>
+      <li>قصير وسهل النطق.</li>
+      <li>بيعكس مجال المتجر. مثال: <b>ZoomieZone</b> لمنتجات الحيوانات الأليفة.</li>
+      <li>متاح كدومين على <b>Namecheap</b> بنفس الاسم.</li>
+    </ul>
+    <p>اسم البراند أهم من شكل اللوجو. Apple وتويتر غيروا اللوجو وما حصلش حاجة. الناس بتشتري عشان «القيمة» مش عشان الشعار.</p>
+    <h4>الأداة الأولى: ChatGPT</h4>
+  </div>
+  <div class="prompt" id="prompt1"><button class="copy" data-copy="prompt1" type="button">نسخ</button>I am opening an online dropshipping store. The niche is socks, specifically long knee socks with 3D animal designs. Generate 10 name ideas.</div>
+  <div class="prose">
+    <h4>الأداة التانية: Namelix</h4>
+    <p>ادخل على <a href="https://namelix.com/" target="_blank" rel="noopener">namelix.com</a> واكتب كلمات مفتاحية عن البراند أو المنتج، مثلًا <code>socks, clothes, animal, 3d design</code>، واضغط Generate. وبعدها اختار أسلوب التوليد:</p>
+  </div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الإعداد</th><th>بيعمل إيه</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">Low</td><td>يدمج الكلمات اللي كتبتها في الاسم المقترح.</td></tr>
+      <tr><td class="mono">Medium ✓</td><td><b>أفضل اختيار</b>: بيوازن بين الواقعية والإبداع.</td></tr>
+      <tr><td class="mono">High</td><td>يختار أسماء إبداعية أبعد عن الكلمات اللي كتبتها.</td></tr>
+    </tbody>
+  </table></div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 720 200" width="100%" style="min-width:560px" role="img" aria-label="ثلاث أفكار للوجو">
+      <g>
+        <rect x="490" y="16" width="210" height="150" rx="14" class="s-sunk"/>
+        <circle cx="595" cy="72" r="34" class="s-acc"/>
+        <ellipse cx="595" cy="82" rx="13" ry="10" class="s-accink"/>
+        <circle cx="579" cy="62" r="5.5" class="s-accink"/><circle cx="591" cy="56" r="5.5" class="s-accink"/><circle cx="603" cy="56" r="5.5" class="s-accink"/><circle cx="613" cy="64" r="5.5" class="s-accink"/>
+        <text x="595" y="138" text-anchor="middle" class="s-ink" font-size="18" font-weight="700" style="font-family:var(--font-display)" direction="ltr">ZoomieZone</text>
+      </g>
+      <g>
+        <rect x="255" y="16" width="210" height="150" rx="14" class="s-sunk"/>
+        <path d="M345 34 h26 v52 q0 8 8 12 l14 8 q10 6 4 16 q-5 8 -16 3 l-30 -15 q-6 -3 -6 -10 z" class="s-gold"/>
+        <circle cx="356" cy="50" r="3" class="s-ink"/><circle cx="364" cy="50" r="3" class="s-ink"/>
+        <text x="360" y="150" text-anchor="middle" class="s-ink" font-size="18" font-weight="700" style="font-family:var(--font-display)" direction="ltr">KneeZoo</text>
+      </g>
+      <g>
+        <rect x="20" y="16" width="210" height="150" rx="14" class="s-ink"/>
+        <text x="125" y="98" text-anchor="middle" font-size="30" font-weight="700" style="fill:var(--bg);font-family:var(--font-display)" direction="ltr">furrly.</text>
+        <text x="125" y="124" text-anchor="middle" font-size="11" style="fill:var(--bg);opacity:.7" direction="ltr">PET ESSENTIALS</text>
+      </g>
+      <text x="595" y="190" text-anchor="middle" class="s-muted" font-size="12">أيقونة + اسم</text>
+      <text x="360" y="190" text-anchor="middle" class="s-muted" font-size="12">شكل المنتج نفسه</text>
+      <text x="125" y="190" text-anchor="middle" class="s-muted" font-size="12">اسم فقط (Wordmark)</text>
+    </svg>
+    </div>
+    <figcaption>شكل ٣ — ثلاث أساليب شائعة للوجو. كلها أمثلة توضيحية لأسماء براندات افتراضية.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>تصميم اللوجو على Canva</h3>
+    <ol>
+      <li>ادخل على <a href="https://www.canva.com/" target="_blank" rel="noopener">Canva.com</a>.</li>
+      <li>ابحث عن <code>3d socks store logo</code> أو أي وصف يناسب النيتش بتاعك.</li>
+      <li>اختار تصميم يعجبك واضغط <b>Customize</b> للتعديل عليه.</li>
+      <li>غيّر اسم البراند داخل التصميم أو جرّب أول حرف منه.</li>
+      <li>لو محتاج أفكار، ابحث على Google عن «اسم النيتش + logo» مثل <code>socks brand logo</code>.</li>
+    </ol>
+    <p>زمان كان التصميم صعب، دلوقتي Canva وأدوات الـ AI بتسهل الموضوع. دوّر على تصاميم قريبة من فكرتك واستخدمها كنقطة بداية.</p>
+    <h3>اختيار الألوان</h3>
+    <p>اختار ألوان تعبر عن إحساس البراند. ابحث على Google عن <code>Color and their effects</code> هتلاقي شرح للمشاعر المرتبطة بكل لون.</p>
+  </div>
+  <div class="swatches">
+    <div class="sw"><i style="background:#1F5FBF"></i><div><b>أزرق</b>ثقة وأمان: بنوك وتكنولوجيا</div></div>
+    <div class="sw"><i style="background:#D33A2C"></i><div><b>أحمر</b>حماس وعروض وإلحاح</div></div>
+    <div class="sw"><i style="background:#2E8B57"></i><div><b>أخضر</b>طبيعة وصحة ومنتجات عضوية</div></div>
+    <div class="sw"><i style="background:#F2B51C"></i><div><b>أصفر</b>تفاؤل وطاقة ولفت انتباه</div></div>
+    <div class="sw"><i style="background:#7A4FB5"></i><div><b>بنفسجي</b>إبداع وفخامة</div></div>
+    <div class="sw"><i style="background:#141414"></i><div><b>أسود</b>فخامة وبساطة: موضة وساعات</div></div>
+  </div>
+
+  <div class="tip">
+    <span class="kicker">ملاحظات أخيرة</span>
+    <ul style="margin:0;padding-inline-start:20px">
+      <li>ركز في بناء الهوية من البداية (اسم، لوجو، ألوان).</li>
+      <li>نجاح المتجر بيبدأ من التفاصيل الصغيرة.</li>
+      <li>ما تهملش المتجر عشان تركز على الإعلانات بس.</li>
+    </ul>
+  </div>
+
+  <div class="practice" data-practice="3">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">طلّع هوية البراند</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">عدّل البرومبت فوق بالنيتش بتاعك واطلب من ChatGPT 10 أسماء.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">جرّب Namelix بإعداد Medium وطلّع 5 أسماء تانية.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اختار أحسن 3 أسماء وتأكد إن الدومين <code>.com</code> متاح على Namecheap.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">صمم لوجو على Canva واختار لونين أساسيين للبراند واكتب كود كل لون.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="3"></div>
+</section>
+
+<!-- ============ CH4 ============ -->
+<section class="chapter" id="ch4">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الرابع <span class="mono">Chapter 4</span></div>
+    <h2>الاشتراك في Shopify ولوحة التحكم</h2>
+    <div class="en">Sign Up · Plan · Dashboard · Settings</div>
+    <p class="lead">هنفتح الحساب خطوة بخطوة، نختار الباقة المناسبة، ونلف على كل جزء في لوحة التحكم والإعدادات عشان تعرف كل زرار بيعمل إيه.</p>
+    <ul class="goals"><li>تفتح حساب وتجاوب أسئلة التسجيل</li><li>تختار الباقة الصح</li><li>تفهم الـ Navbar والـ Settings</li></ul>
+  </div>
+
+  <div class="prose">
+    <h3>الاشتراك خطوة بخطوة</h3>
+    <ol>
+      <li><b>فتح حساب:</b> سجّل بإيميل وباسورد وبلدك الحالي (تقدر تغيره بعدين). الإيميل ده مش شرط يكون رسمي، مجرد دخول فقط.</li>
+      <li><b>أسئلة التسجيل:</b>
+        <ul>
+          <li>تبيع فين؟ ← <code>Online Store</code></li>
+          <li>مرحلة البيزنس؟ ← <code>I'm just starting</code></li>
+          <li>تبيع إيه؟ ← <code>Dropshipping</code></li>
+        </ul>
+      </li>
+      <li><b>اختيار الباقة المناسبة.</b></li>
+    </ol>
+  </div>
+
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الباقة</th><th>السعر وقت الشرح</th><th>عمولة Shopify من كل بيعة</th><th>القرار</th></tr></thead>
+    <tbody>
+      <tr><td>الباقة الأرخص</td><td class="mono">$5 / month</td><td class="mono">5%</td><td>✗ ما تختارهاش، محدودة جدًا</td></tr>
+      <tr><td><b>الباقة الأساسية</b></td><td class="mono">$32 / month</td><td class="mono">2%</td><td>✓ اختارها: دعم فني 24 ساعة ومميزات متقدمة</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.85rem;color:var(--muted)">الأسعار بتتغير من وقت للتاني حسب Shopify والدولة وطريقة الدفع (شهري أو سنوي). راجع صفحة الأسعار قبل ما تشترك.</p>
+
+  <div class="example">
+    <span class="kicker">ليه الـ 2% فرق كبير؟</span>
+    <p>لو بعت بـ <b>$5,000</b> في الشهر: في الباقة الأرخص هتدفع عمولة <b>$250</b>، وفي الباقة الأساسية <b>$100</b> بس. يعني الفرق في العمولة لوحده بيغطي تمن الاشتراك.</p>
+  </div>
+
+  <div class="prose">
+    <h3>الصفحة الرئيسية ولوحة التحكم</h3>
+    <p>أول ما تفتح حسابك هتلاقي 7 خطوات أساسية لازم تخلصها، وبعدها تبدأ تشوف الإحصائيات والمبيعات. على الشمال هتلاقي الـ <b>Navbar</b> فيه كل الأدوات الأساسية. <b>اضغط على أي عنصر في الصورة</b> عشان تعرف بيعمل إيه:</p>
+  </div>
+
+  <figure class="fig">
+    <div class="mock" id="adminMock">
+      <div class="mock-top"><span class="dot"></span><span>my-brand-store</span><span class="search"></span></div>
+      <div class="mock-body">
+        <div class="mock-nav" role="tablist" aria-label="Shopify admin">
+          <button type="button" data-k="home" class="on">Home</button>
+          <button type="button" data-k="orders">Orders</button>
+          <button type="button" data-k="products">Products</button>
+          <button type="button" data-k="customers">Customers</button>
+          <button type="button" data-k="content">Content</button>
+          <button type="button" data-k="analytics">Analytics</button>
+          <button type="button" data-k="marketing">Marketing</button>
+          <button type="button" data-k="discounts">Discounts</button>
+          <button type="button" data-k="online">Online Store</button>
+          <button type="button" data-k="settings">Settings</button>
+        </div>
+        <div class="mock-pane" id="adminPane"></div>
+      </div>
+    </div>
+    <figcaption>شكل ٤ — محاكاة مبسطة للوحة تحكم Shopify. اضغط على العناصر عشان تشوف شرحها.</figcaption>
+  </figure>
+
+  <div class="prose"><h3>الإعدادات العامة (Settings)</h3></div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الإعداد</th><th>بيعمل إيه</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">My Store</td><td>اسم المتجر ورابطه (Store Name &amp; URL).</td></tr>
+      <tr><td class="mono">General</td><td>بيانات عامة: العنوان، رقم التليفون، الإيميل.</td></tr>
+      <tr><td class="mono">Plan · Billing</td><td>الخطة الحالية، وكل اللي دفعته من اشتراكات وإضافات.</td></tr>
+      <tr><td class="mono">Users &amp; Permissions</td><td>دعوة أعضاء فريق (مطور، دعم فني) بصلاحيات محددة.</td></tr>
+      <tr><td class="mono">Payments</td><td>إعداد بوابات الدفع (هنشرحها في الفصل الثامن).</td></tr>
+      <tr><td class="mono">Checkout</td><td>تخصيص تجربة الدفع: طلب الإيميل بس ولا التليفون كمان، تتبع الشحن، إلغاء إلزام إنشاء حساب، السماح بالعروض بالإيميل، وخيار «Tips».</td></tr>
+      <tr><td class="mono">Shipping &amp; Delivery</td><td>سياسات الشحن للدول المختلفة، وتقديم «Free Shipping» حسب السعر أو العروض.</td></tr>
+      <tr><td class="mono">Taxes</td><td>تفعيل الضرائب لو مطلوب قانونيًا. غالبًا الأفضل ما تفعّلهاش يدويًا عشان ما ترفعش السعر على العميل من غير مبرر.</td></tr>
+      <tr><td class="mono">Locations</td><td>لو عندك أكتر من فرع أو مخزن.</td></tr>
+      <tr><td class="mono">Markets</td><td>تحديد الدول اللي هتبيع فيها.</td></tr>
+      <tr><td class="mono">Apps and Sales Channels</td><td>تثبيت التطبيقات والإضافات المساعدة.</td></tr>
+      <tr><td class="mono">Domains</td><td>ربط الدومين (اسم النطاق) بالمتجر.</td></tr>
+      <tr><td class="mono">Customer Events</td><td>تتبع نشاط العملاء (الصفحات والمنتجات اللي شافوها) باستخدام الـ Pixel.</td></tr>
+      <tr><td class="mono">Notifications</td><td>الإيميل اللي بتتبعت منه التنبيهات (هنغيره بعدين للإيميل الرسمي).</td></tr>
+      <tr><td class="mono">Languages · Policies</td><td>لغة المتجر (إنجليزي + عربي مثلًا)، وسياسات الاسترجاع والشحن والخصوصية وشروط الاستخدام.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="practice" data-practice="4">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">افتح متجرك</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">افتح حساب Shopify وجاوب الأسئلة: Online Store · I'm just starting · Dropshipping.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">لف على كل عنصر في الـ Navbar واكتب جملة واحدة عن كل واحد بأسلوبك.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">من Settings › Checkout: ألغِ إلزام إنشاء حساب وفعّل تتبع الشحن.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">من Settings › General: عدّل اسم المتجر بالاسم اللي اخترته في الفصل التالت.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="4"></div>
+</section>
+
+<!-- ============ CH5 ============ -->
+<section class="chapter" id="ch5">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الخامس <span class="mono">Chapter 5</span></div>
+    <h2>إضافة المنتجات للمتجر</h2>
+    <div class="en">Add Products · DSers · Manual · Import</div>
+    <p class="lead">فيه 3 طرق تضيف بيها منتجات: يدوي، أو رفع ملف، أو ربط مورّد يضيفها تلقائيًا. الطريقة الأساسية في الدروبشيبينج هي ربط المورد عن طريق تطبيق زي DSers.</p>
+    <ul class="goals"><li>تعرف الطرق التلاتة لإضافة منتج</li><li>تربط DSers وتنقل منتج من AliExpress</li><li>تكتب صفحة منتج مقنعة</li></ul>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="idx">Add Product</span><h4>يدوي</h4><p>تكتب العنوان والوصف وترفع الصور وتحدد السعر بنفسك. مناسب لو المورد مش على تطبيق.</p></div>
+    <div class="card"><span class="idx">Import</span><h4>رفع ملف</h4><p>ترفع منتجات كتير مرة واحدة من ملف Excel/CSV أو من متجر تاني.</p></div>
+    <div class="card"><span class="idx">DSers ✓</span><h4>ربط مورّد</h4><p>الطريقة الأساسية: تختار المنتج من AliExpress وتنقله بضغطة، وبعد البيع تطلبه من المورد من نفس التطبيق.</p></div>
+  </div>
+
+  <div class="prose">
+    <h3>إضافة منتج عن طريق DSers</h3>
+    <ol>
+      <li>من <code>Apps</code> ادخل على Shopify App Store وابحث عن <b>DSers</b> واعمل Install.</li>
+      <li>اربط حساب AliExpress بتاعك بالتطبيق.</li>
+      <li>من جوه DSers ابحث عن المنتج أو الصق رابطه من AliExpress، واضغط <code>Add to Import List</code>.</li>
+      <li>من <code>Import List</code> عدّل العنوان، الوصف، الصور، والأسعار.</li>
+      <li>اضغط <code>Push to Shopify</code>، المنتج هيظهر في Products جاهز للتعديل.</li>
+      <li>لما ييجي طلب، هتلاقيه في DSers، وتطلبه من المورد بعنوان العميل.</li>
+    </ol>
+  </div>
+
+  <figure class="fig">
+    <div class="mock">
+      <div class="mock-top"><span class="dot"></span><span>Products › Add product</span><span class="search"></span></div>
+      <div class="mock-form">
+        <div class="mock-col">
+          <div class="mock-box">
+            <div class="field"><label>Title</label><div class="fake-input">Anti-Flea Collar for Dogs &amp; Cats – 8 Months Protection</div></div>
+            <div class="field"><label>Description</label><div class="fake-input" style="min-height:90px;line-height:1.6">Keep your pet itch-free all season.<br>✓ Repels fleas, ticks &amp; mosquitoes<br>✓ Waterproof &amp; adjustable<br>✓ Free shipping worldwide</div></div>
+          </div>
+          <div class="mock-box"><div class="h">Media</div><div style="display:flex;gap:8px"><div class="fake-input" style="width:64px;height:64px;background:var(--accent-soft)"></div><div class="fake-input" style="width:64px;height:64px;background:var(--gold-soft)"></div><div class="fake-input" style="width:64px;height:64px;background:var(--sunk)"></div></div></div>
+          <div class="mock-box"><div class="h">Pricing</div>
+            <div class="row2"><div class="field"><label>Price</label><div class="fake-input">$29.99</div></div><div class="field"><label>Compare-at price</label><div class="fake-input"><span class="strike">$49.99</span></div></div></div>
+            <div class="field"><label>Cost per item</label><div class="fake-input">$6.00 · Profit $23.99 · Margin 80%</div></div>
+          </div>
+          <div class="mock-box"><div class="h">Variants</div><div>Size: S · M · L &nbsp;|&nbsp; Color: Blue · Red</div></div>
+        </div>
+        <div class="mock-col">
+          <div class="mock-box"><div class="h">Status</div><div><span class="pill">Active</span></div></div>
+          <div class="mock-box"><div class="h">Product organization</div><div class="field"><label>Collections</label><div class="fake-input">Pet Care</div></div><div class="field"><label>Tags</label><div class="fake-input">flea, dog, cat</div></div></div>
+          <div class="mock-box"><div class="h">Inventory</div><div>Track quantity · 100 in stock</div></div>
+          <div class="mock-box"><div class="h">Search engine listing</div><div style="color:var(--muted)">Page title &amp; meta description</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption>شكل ٥ — صفحة إضافة منتج. كل خانة فيها لها دور: العنوان والوصف بيقنعوا العميل، والـ Compare-at price بيظهر السعر القديم مشطوب.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>خانات صفحة المنتج</h3>
+  </div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الخانة</th><th>تكتب فيها إيه</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">Title</td><td>اسم واضح فيه الفايدة. ما تسيبش عنوان AliExpress الطويل المليان كلمات.</td></tr>
+      <tr><td class="mono">Description</td><td>جملة جذابة، بعدها 3–5 نقاط بالمميزات، ثم المواصفات ومعلومات الشحن. ممكن تكتبه بـ ChatGPT وتعدّل عليه.</td></tr>
+      <tr><td class="mono">Media</td><td>صور واضحة بخلفية نضيفة + صورة المنتج وهو مستخدم + فيديو قصير لو متاح.</td></tr>
+      <tr><td class="mono">Price · Compare-at</td><td>سعر البيع، والسعر قبل الخصم (بيظهر مشطوب ويدي إحساس بالتوفير).</td></tr>
+      <tr><td class="mono">Cost per item</td><td>تكلفة المنتج من المورد، Shopify بيحسبلك الربح والهامش.</td></tr>
+      <tr><td class="mono">Variants</td><td>المقاسات والألوان، وكمان الـ Bundles (هنشرحها في الفصل السابع).</td></tr>
+      <tr><td class="mono">Collections</td><td>تنظيم المنتجات في مجموعات (Pet Care، Best Sellers…).</td></tr>
+      <tr><td class="mono">Inventory</td><td>متابعة الكمية والتوفر (Out of stock).</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="prompt" id="prompt2"><button class="copy" data-copy="prompt2" type="button">نسخ</button>Write a Shopify product description for an anti-flea collar for dogs and cats. Start with one catchy sentence, then 5 short benefit bullet points, then specifications, then a shipping and guarantee note. Friendly tone, US audience.</div>
+
+  <div class="warn">
+    <span class="kicker">أخطاء شائعة</span>
+    <ul style="margin:0;padding-inline-start:20px">
+      <li>ترك صور المورد فيها لوجو أو كلام صيني.</li>
+      <li>ترك عنوان AliExpress زي ما هو.</li>
+      <li>تسعير المنتج من غير ما تحسب الشحن والإعلانات.</li>
+    </ul>
+  </div>
+
+  <div class="practice" data-practice="5">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">3 منتجات جاهزة</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">ثبّت DSers واربطه بحساب AliExpress.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">انقل 3 منتجات من ليستة الفصل التاني للمتجر.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اكتب لكل منتج عنوان جديد ووصف بالبرومبت فوق، وحط Compare-at price.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اعمل Collection واحدة وحط فيها التلات منتجات.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="5"></div>
+</section>
+
+<!-- ============ CH6 ============ -->
+<section class="chapter" id="ch6">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل السادس <span class="mono">Chapter 6</span></div>
+    <h2>الثيم والشكل العام للمتجر</h2>
+    <div class="en">Theme · Sections · Product Page</div>
+    <p class="lead">الثيم هو واجهة المتجر = أول انطباع للعميل. الثيم الاحترافي = زيادة الثقة. وبيأثر على سرعة الموقع وتجربة المستخدم والمبيعات.</p>
+    <ul class="goals"><li>تفرّق بين الثيم المجاني والمدفوع</li><li>تختار ثيم مناسب لنوع متجرك</li><li>تعدّل اللوجو والألوان والسكشنز وصفحة المنتج</li></ul>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="idx">Free</span><h4>ثيم مجاني</h4><p>إمكانياته محدودة. مناسب لو إمكانياتك قليلة في البداية، بس حط الترقية في بالك.</p></div>
+    <div class="card"><span class="idx">Paid</span><h4>ثيم مدفوع</h4><p>بيقدملك مميزات أكتر ومناسب للتجارة الجدية. الأفضل تبدأ بيه عشان يسرّع نجاحك.</p></div>
+  </div>
+  <div class="warn">
+    <span class="kicker">ملاحظة</span>
+    <p>لو مش قادر تستثمر في ثيم مناسب، يبقى لازم تعيد التفكير، لأن التجارة = بيع وشراء واستثمار.</p>
+  </div>
+
+  <div class="tip">
+    <span class="kicker">خدمة معهد البيان</span>
+    <p>المعهد بيوفر <b>7 ثيمات مدفوعة جاهزة بـ $70 فقط</b> بخصومات حصرية للطلبة. عشان تتفعّل لازم تكون: (١) شاري الدومين الخاص بمتجرك، و(٢) مفعّل خطة Shopify (لأن Shopify بيطلب فاتورة مفعّلة). تواصل مع الإدارة لتسهيل الدفع.</p>
+  </div>
+
+  <div class="prose"><h3>قائمة ثيمات مقترحة</h3></div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>الثيم</th><th>مناسب لـ</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://themes.shopify.com/themes/broadcast/presets/broadcast" target="_blank" rel="noopener" class="mono">Broadcast</a></td><td>المنتجات الفردية (متجر منتج واحد)</td></tr>
+      <tr><td><a href="https://preview.themeforest.net/item/ella-multipurpose-shopify-theme-os-20/full_screen_preview/9691007" target="_blank" rel="noopener" class="mono">Ella</a></td><td>الملابس</td></tr>
+      <tr><td><a href="https://themes.shopify.com/themes/empire/presets/empire" target="_blank" rel="noopener" class="mono">Empire</a></td><td>المتاجر الكبيرة</td></tr>
+      <tr><td><a href="https://themes.shopify.com/themes/motion/presets/motion" target="_blank" rel="noopener" class="mono">Motion</a></td><td>المنتجات اللي محتاجة فيديو</td></tr>
+      <tr><td><a href="https://themes.shopify.com/themes/prestige/presets/prestige" target="_blank" rel="noopener" class="mono">Prestige</a></td><td>البراندات الفاخرة</td></tr>
+      <tr><td><span class="mono">District · Focal · Iconic · Impact · Showcase · Zubbio</span></td><td>اختيارات متنوعة (Zubbio للأثاث)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="prose">
+    <h3>بعد اختيار الثيم</h3>
+    <ul>
+      <li>اعمل <b>Publish</b> عشان يشيل الثيم الافتراضي ويحط الجديد.</li>
+      <li>لسه محتاج تعديلات كبيرة عشان يليق بمتجرك.</li>
+      <li>مهم جدًا يكون <b>Responsive</b> (يشتغل على كل الأجهزة). أغلب العملاء بيشتروا من الموبايل.</li>
+    </ul>
+    <h3>ميزة جديدة: Generate Theme بالذكاء الاصطناعي</h3>
+    <p>تكتب وصف البيزنس ← تضغط Generate ← يطلعلك ثيم مناسب. الـ AI بيستخدم نفس الثيم الأساسي لكن بيعدل المحتوى والصور بما يتوافق مع الوصف. أمثلة: <code>3D animal socks</code> أو <code>Portable fruit blender</code>.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 720 360" width="100%" style="min-width:560px" role="img" aria-label="سكشنز الصفحة الرئيسية للثيم">
+      <rect x="140" y="10" width="300" height="340" rx="12" class="s-sunk"/>
+      <rect x="152" y="22" width="276" height="20" rx="4" class="s-gold"/>
+      <text x="290" y="36" text-anchor="middle" font-size="10" class="s-ink" font-weight="700" direction="ltr">FREE SHIPPING ON ALL ORDERS</text>
+      <rect x="152" y="48" width="276" height="34" rx="4" class="s-surface"/>
+      <rect x="164" y="57" width="58" height="16" rx="3" class="s-acc"/>
+      <rect x="300" y="61" width="28" height="8" rx="2" class="s-muted"/><rect x="336" y="61" width="28" height="8" rx="2" class="s-muted"/><rect x="372" y="61" width="28" height="8" rx="2" class="s-muted"/>
+      <rect x="152" y="88" width="276" height="96" rx="4" class="s-accsoft"/>
+      <rect x="172" y="112" width="130" height="12" rx="3" class="s-ink"/><rect x="172" y="132" width="100" height="8" rx="2" class="s-muted"/>
+      <rect x="172" y="150" width="70" height="20" rx="10" class="s-acc"/>
+      <rect x="152" y="190" width="276" height="76" rx="4" class="s-surface"/>
+      <rect x="162" y="200" width="78" height="56" rx="4" class="s-goldsoft"/><rect x="251" y="200" width="78" height="56" rx="4" class="s-goldsoft"/><rect x="340" y="200" width="78" height="56" rx="4" class="s-goldsoft"/>
+      <rect x="152" y="272" width="276" height="34" rx="4" class="s-surface"/>
+      <text x="290" y="294" text-anchor="middle" font-size="11" class="s-muted">★★★★★ "Best collar ever!"</text>
+      <rect x="152" y="312" width="276" height="30" rx="4" class="s-ink"/>
+      <g font-size="12" class="s-ink">
+        <line x1="446" y1="32" x2="490" y2="32" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="36">Announcement bar · شريط الإعلان</text>
+        <line x1="446" y1="65" x2="490" y2="65" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="69">Header · اللوجو والقائمة</text>
+        <line x1="446" y1="136" x2="490" y2="136" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="140">Hero banner · صورة + زرار Shop Now</text>
+        <line x1="446" y1="228" x2="490" y2="228" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="232">Featured collection · المنتجات</text>
+        <line x1="446" y1="289" x2="490" y2="289" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="293">Testimonials · آراء العملاء</text>
+        <line x1="446" y1="327" x2="490" y2="327" class="s-stroke-muted" stroke-dasharray="3 3"/><text x="496" y="331">Footer · السياسات والتواصل</text>
+      </g>
+      <text x="130" y="185" text-anchor="end" class="s-muted" font-size="12">كل سكشن فيه:</text>
+      <text x="130" y="205" text-anchor="end" class="s-muted" font-size="12">صور + وصف</text>
+    </svg>
+    </div>
+    <figcaption>شكل ٦ — تقسيم الصفحة الرئيسية لسكشنز. بتشتغل على السكشنز واحد واحد.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>خطوات التعديل على الثيم</h3>
+    <ol>
+      <li><b>اللوجو (Logo):</b> لازم يكون مستطيل (مقاسات مناسبة من Canva). جرّب أكتر من مرة لحد ما تظبط حجمه.</li>
+      <li><b>لون الـ Navbar / Header:</b> المسار <code>Settings &gt; Header &gt; Colors</code>. لو عايز لون محدد: افتح Canva، اختار اللون، وشوف الـ RGB/Hex code وحطه في إعدادات Shopify.</li>
+      <li><b>السكشنز (Sections):</b> كل سكشن فيه صور ووصف (Description). ممكن تجيب المحتوى من ChatGPT أو تعدّل يدوي.</li>
+    </ol>
+    <h3>تظبيط صفحة المنتج (Edit Product Page)</h3>
+    <p>ادخل لصفحة المنتج من داخل Shopify، والتعديلات المتاحة: اللون (Product Colors)، الخلفية (Background)، الوصف (Description)، الصور (Product Images)، وأي سكشن إضافي تحب تضيفه (Reviews، Size Guide، Related Products…).</p>
+  </div>
+  <div class="tip">
+    <span class="kicker">الهدف</span>
+    <p>صفحة المنتج تبقى جذابة، واضحة، ومريحة للعين بحيث العميل يلاقي كل المعلومات قدامه بسهولة + صور تشجعه يشتري.</p>
+  </div>
+
+  <div class="practice" data-practice="6">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز الواجهة</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">جرّب Generate Theme بوصف البيزنس بتاعك وشوف النتيجة.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اختار ثيم واعمله Publish، وارفع اللوجو المستطيل.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">غيّر لون الـ Header بكود لون البراند من الفصل التالت.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">ضيف سكشن Reviews وSize Guide (لو مناسب) لصفحة المنتج، وافتح المتجر من الموبايل وراجع الشكل.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="6"></div>
+</section>
+
+<!-- ============ CH7 ============ -->
+<section class="chapter" id="ch7">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل السابع <span class="mono">Chapter 7</span></div>
+    <h2>الصفحات والقوائم والعروض</h2>
+    <div class="en">Menu &amp; Footer · Policies · Bundles</div>
+    <p class="lead">المتجر محتاج صفحات بتدي مصداقية وبتحميه قانونيًا، وقوائم واضحة، وعروض بتزود قيمة الطلب.</p>
+    <ul class="goals"><li>تظبط الـ Menu والـ Footer</li><li>تجهز صفحات السياسات</li><li>تعمل Bundle يزود متوسط الطلب</li></ul>
+  </div>
+
+  <div class="prose">
+    <h3>Menu (Navbar)</h3>
+    <p>هو الشريط العلوي في المتجر. تقدر تضيف أو تحذف العناصر اللي عايزها: About Us، Contact Us، Services، أو أي صفحات تانية.</p>
+    <p>لو الصفحة مش موجودة: روح إلى <code>Edit ← Create New Page ← Pages</code>. Shopify بيقدملك قوالب جاهزة تقدر تستخدمها أو تعدل عليها بحرية.</p>
+    <h3>Footer</h3>
+    <p>نفس فكرة الـ Menu لكن في أسفل الموقع. تقدر تضيف فيه: روابط مهمة (Privacy Policy، Refund Policy)، Contact Info، وأي روابط إضافية للبراند.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="mock" style="font-size:.84rem">
+      <div class="mock-top"><span class="dot"></span><span>zoomiezone.com</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px">
+        <b style="font-family:var(--font-display);color:var(--accent)">ZoomieZone</b>
+        <span style="display:flex;gap:16px;flex-wrap:wrap"><span>Home</span><span>Shop</span><span>About Us</span><span>Contact Us</span></span>
+      </div>
+      <div style="height:70px;background:var(--sunk);display:grid;place-items:center;color:var(--muted)">… page content …</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:14px 16px;background:var(--ink);color:var(--bg)">
+        <div><b>Policies</b><br>Privacy Policy<br>Refund Policy<br>Shipping Policy<br>Terms of Service</div>
+        <div><b>Contact</b><br>support@zoomiezone.com<br>+44 7xxx xxxxxx</div>
+        <div><b>Follow us</b><br>Instagram · TikTok · Facebook</div>
+      </div>
+    </div>
+    <figcaption>شكل ٧ — الـ Menu فوق والـ Footer تحت. السياسات والتواصل مكانهم الطبيعي في الفوتر.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>صفحات السياسات</h3>
+    <p>هتلاقيها تحت خالص في الإعدادات (Settings › Policies). Shopify بيجهزلك قوالب جاهزة، وتقدر تكتبها بنفسك أو تستخدم زرار <b>Insert</b> لملء القالب تلقائيًا.</p>
+  </div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>السياسة</th><th>تعمل فيها إيه</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">Privacy &amp; Policies</td><td>راجع المحتوى وعدّله حسب شغلك. عدّل الإيميل (بدل الإيميل الأساسي حط إيميل Support).</td></tr>
+      <tr><td class="mono">Return Policy</td><td>مكتوب يرجع على عنوان، وأنت غالبًا معندكش عنوان ← امسحه. وعدّل مدة الإرجاع (مثلًا بدل 14 يوم خليها 30 يوم).</td></tr>
+      <tr><td class="mono">Terms &amp; Services</td><td>ركّز على آخر سكشن وعدّل بياناتك فيه.</td></tr>
+      <tr><td class="mono">Shipping Policy</td><td>مش بتيجي جاهزة، لازم تكتبها بنفسك. ممكن تستعين بـ ChatGPT يساعدك بصياغة نص مناسب.</td></tr>
+      <tr><td class="mono">Contact Info</td><td>لازم تضيف وسيلة للتواصل: إيميل دعم، موبايل، أو أي وسيلة إضافية. تقدر تعمل Insert عشان يظهر أوتوماتيك.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip"><span class="kicker">الخلاصة</span><p>السياسات دي بتدي مصداقية وبتحمي متجرك قانونيًا. اقرا كل سياسة، عدّلها على وضعك، وخليها مناسبة للبراند بتاعك.</p></div>
+
+  <div class="prose">
+    <h3>العروض والـ Bundles</h3>
+    <p><b>الفكرة:</b> تزود خيارات للمنتج بحيث العميل يقدر يشتري أكتر من قطعة بسعر أقل (تشجيع على زيادة المبيعات).</p>
+    <h4>خطوات التطبيق</h4>
+    <ol>
+      <li>افتح أي منتج عندك وروح على <b>Variants</b> (اللون/المقاس…).</li>
+      <li>اعمل <code>Add another option ← Create Custom</code>.</li>
+      <li>Option name: <code>Bundle + Save Money</code></li>
+      <li>Option values: <code>Buy 2 Pairs</code> · <code>Buy 3 Pairs</code> · <code>Buy 4 Pairs</code></li>
+      <li>حدد سعر مختلف لكل باقة، واعمل صورة خاصة لكل Bundle على Canva (مثلًا صورتين أو 3 منتجات مع بعض).</li>
+      <li>ضيف خيار إضافي: <code>Do not save money</code> والسعر = سعر المنتج الأصلي (للاستفزاز النفسي عشان يختار الـ Bundle).</li>
+    </ol>
+  </div>
+
+  <div class="tool">
+    <h4>جرّب بنفسك: محاكاة اختيار Bundle</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;align-items:start">
+      <div class="bundle" id="bundleBox" role="radiogroup" aria-label="Bundle + Save Money">
+        <b style="font-size:.85rem">Bundle + Save Money</b>
+        <label class="opt"><input type="radio" name="bdl" value="1" id="bdl1"><span class="nm">Do not save money</span><span class="pr">$19.99</span></label>
+        <label class="opt"><input type="radio" name="bdl" value="2" id="bdl2"><span class="nm">Buy 2 Pairs</span><span class="save">SAVE 15%</span><span class="pr">$33.99</span></label>
+        <label class="opt"><input type="radio" name="bdl" value="3" id="bdl3" checked><span class="nm">Buy 3 Pairs</span><span class="save">SAVE 25%</span><span class="pr">$44.99</span></label>
+        <label class="opt"><input type="radio" name="bdl" value="4" id="bdl4"><span class="nm">Buy 4 Pairs</span><span class="save">SAVE 32%</span><span class="pr">$54.99</span></label>
+      </div>
+      <div class="result" style="flex-direction:column">
+        <div><span>سعر القطعة</span><b id="bdlUnit">—</b></div>
+        <div><span>العميل وفّر</span><b id="bdlSave">—</b></div>
+        <div><span>قيمة الطلب مقارنة بقطعة واحدة</span><b id="bdlAov">—</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="tip"><span class="kicker">النتيجة</span><p>العميل هيفضّل يختار باقات الـ Bundle لأنها أوفر، وهتزود متوسط سعر الطلب (AOV) عندك. والإعلان اللي جاب العميل اتدفع مرة واحدة بس.</p></div>
+
+  <div class="practice" data-practice="7">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">صفحات + عرض واحد</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">اعمل صفحتين About Us و Contact Us وضيفهم للـ Menu.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">جهّز السياسات الخمسة، وامسح العنوان من Return Policy وخلي المدة 30 يوم.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اكتب Shipping Policy بمساعدة ChatGPT.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اعمل Bundle (2، 3، 4 قطع + Do not save money) لمنتج واحد بصور من Canva.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="7"></div>
+</section>
+
+<!-- ============ CH8 ============ -->
+<section class="chapter" id="ch8">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل الثامن <span class="mono">Chapter 8</span></div>
+    <h2>إنشاء الشركة ووسائل الدفع</h2>
+    <div class="en">UK Company · Shopify Payments · Bank · Currency</div>
+    <p class="lead">عشان تستقبل فلوس العملاء بالكارت عن طريق Shopify Payments، محتاج شركة مسجلة. الكورس بيشرح فتح شركة في إنجلترا وتفعيلها على Shopify.</p>
+    <ul class="goals"><li>تفتح شركة LTD في UK</li><li>تفعّل Shopify Payments</li><li>تربط البنك وتظبط العملة</li></ul>
+  </div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 150" width="100%" style="min-width:620px" role="img" aria-label="مراحل إنشاء الشركة وتفعيل الدفع">
+      <line x1="60" y1="60" x2="700" y2="60" class="s-line" stroke-width="3"/>
+      <g font-size="12" text-anchor="middle">
+        <circle cx="700" cy="60" r="16" class="s-acc"/><text x="700" y="65" class="s-accink" font-weight="700">1</text>
+        <text x="700" y="98" class="s-ink" font-weight="700">التسجيل</text><text x="700" y="116" class="s-muted">yourcompanyformations</text>
+        <circle cx="540" cy="60" r="16" class="s-acc"/><text x="540" y="65" class="s-accink" font-weight="700">2</text>
+        <text x="540" y="98" class="s-ink" font-weight="700">التحقق من الهوية</text><text x="540" y="116" class="s-muted">Credas · 2–3 أيام</text>
+        <circle cx="380" cy="60" r="16" class="s-acc"/><text x="380" y="65" class="s-accink" font-weight="700">3</text>
+        <text x="380" y="98" class="s-ink" font-weight="700">استلام الأوراق</text><text x="380" y="116" class="s-muted">Incorporation · Share</text>
+        <circle cx="220" cy="60" r="16" class="s-acc"/><text x="220" y="65" class="s-accink" font-weight="700">4</text>
+        <text x="220" y="98" class="s-ink" font-weight="700">تفعيل Payments</text><text x="220" y="116" class="s-muted">Shopify Activate</text>
+        <circle cx="60" cy="60" r="16" class="s-gold"/><text x="60" y="65" class="s-ink" font-weight="700">5</text>
+        <text x="60" y="98" class="s-ink" font-weight="700">البنك والعملة</text><text x="60" y="116" class="s-muted">Wise · USD</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>شكل ٨ — الرحلة من فتح الشركة لحد أول دولار في حسابك.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>إنشاء شركة في إنجلترا</h3>
+    <p>التسجيل من خلال <a href="https://www.yourcompanyformations.co.uk/" target="_blank" rel="noopener" class="mono">yourcompanyformations.co.uk</a>. تختار الباقة بـ <b>£44 + £50</b> فتح الشركة.</p>
+    <h4>مميزات الباقة</h4>
+    <ul>
+      <li>عنوان مسجل + خدمة البريد (أساسي لتفعيل Shopify Payments).</li>
+      <li>كل الأوراق الرسمية: Certificate، Share Certificate، Register، Tax Registration.</li>
+      <li>نسخ ورقية للشهادات (مش PDF بس).</li>
+      <li>عنوان بريطاني رسمي للشركة والمديرين (مطلوب لـ Shopify + البنوك).</li>
+      <li>Free <span class="mono">.co.uk</span> Domain، وإضافات: Online Manager، Google Ads Voucher، دعم مستمر.</li>
+    </ul>
+    <h4>خطوات التسجيل</h4>
+    <ol>
+      <li>إدخال اسم الشركة + <b>LTD</b> (إضافة LTD هامة للأوراق الرسمية) ← <code>Save and Continue</code>.</li>
+      <li>هتظهر خدمات إضافية (مراجعة أوراق/زيادات) ← مش ضرورية، ممكن تلغيها.</li>
+      <li>ترفع هويتك وجواز سفرك وصورة على برنامج <b>Credas</b>.</li>
+      <li>خلال 2–3 أيام يوصلك إيميل بالأوراق (راجع الـ Inbox + الـ Spam).</li>
+      <li>لو طلبوا <b>Bank Statement</b>: اعمله من البنك وخلّي العنوان بالإنجليزي.</li>
+    </ol>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="idx">⭐ أهم ورقة</span><h4>Certificate of Incorporation</h4><p>بيثبت تسجيل شركتك رسميًا (اسم + رقم + تاريخ التسجيل).</p></div>
+    <div class="card"><span class="idx">⭐ أهم ورقة</span><h4>Share Certificate</h4><p>فيه عنوان شركتك وتفاصيل المالك.</p></div>
+    <div class="card"><span class="idx">باقي الأوراق</span><h4>الملف الكامل</h4><p>فاتورة، سجل الشركة، سجل الموظفين والأسهم، ورقة بتثبت إنك المالك، سجل تجاري.</p></div>
+  </div>
+
+  <div class="prose">
+    <h3>تفعيل الشركة على Shopify</h3>
+    <h4>General Settings</h4>
+    <ul>
+      <li><b>Store Name:</b> اسم المتجر.</li>
+      <li><b>Phone Number:</b> رقم من تطبيق <b>Vyke</b> (بريطاني).</li>
+      <li><b>Email:</b> الإيميل الرسمي من الدومين.</li>
+      <li><b>Billing Address:</b> عنوان الشركة المسجل.</li>
+    </ul>
+  </div>
+
+  <figure class="fig">
+    <div class="mock">
+      <div class="mock-top"><span class="dot"></span><span>Settings › Payments › Activate Shopify Payments</span></div>
+      <div class="mock-form">
+        <div class="mock-col">
+          <div class="mock-box"><div class="h">Business type</div>
+            <div>○ Individual &nbsp; ● <b>Registered company</b> &nbsp; ○ Non-Profit</div>
+            <div class="field"><label>Company type</label><div class="fake-input">Private</div></div>
+          </div>
+          <div class="mock-box"><div class="h">Business details</div>
+            <div class="row2"><div class="field"><label>Company name</label><div class="fake-input">ZOOMIEZONE LTD</div></div><div class="field"><label>Company number</label><div class="fake-input">1234 5678</div></div></div>
+            <div class="field"><label>Company address</label><div class="fake-input">Registered office, London, UK</div></div>
+            <div class="field"><label>VAT number</label><div class="fake-input">☑ I don't have a VAT number</div></div>
+          </div>
+        </div>
+        <div class="mock-col">
+          <div class="mock-box"><div class="h">Personal details</div>
+            <div class="field"><label>Ownership</label><div class="fake-input">100%</div></div>
+            <div class="field"><label>Role</label><div class="fake-input">CEO / Founder</div></div>
+            <div class="field"><label>Business activity</label><div class="fake-input">Retail</div></div>
+          </div>
+          <div class="mock-box"><div class="h">Verification</div><div>Certificate of Incorporation ✓<br>Share Certificate ✓</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption>شكل ٩ — محاكاة نموذج تفعيل Shopify Payments بالبيانات اللي هتدخلها. البيانات هنا أمثلة.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h4>البيانات الشخصية والنشاط</h4>
+    <ul>
+      <li><b>الاسم:</b> زي ما هو في أوراق الشركة. <b>تاريخ الميلاد:</b> زي الباسبور.</li>
+      <li><b>الإيميل والموبايل والعنوان:</b> الشخصيين بتوعك.</li>
+      <li><b>Business Activity:</b> Retail · <b>Subcategory:</b> الأقرب لمجالك · <b>Description:</b> وصف لنشاطك.</li>
+      <li><b>آخر خطوة:</b> رفع Certificate of Incorporation و Share Certificate.</li>
+    </ul>
+    <h3>بعد التفعيل</h3>
+    <ol>
+      <li><b>Turn On Security:</b> هيطلب منك تختار وسيلة أمان (مثلًا 2FA).</li>
+      <li><b>Add Bank Account:</b> ضيف حسابك البنكي. الأفضل تستخدم <b>Wise</b> لربط الدولار.</li>
+      <li><b>Store Currency:</b> من General غيّر عملة المتجر إلى <code>US Dollar (USD)</code>. Shopify هيطلب منك تأكيد (No Match ← Understand).</li>
+    </ol>
+  </div>
+  <div class="warn">
+    <span class="kicker">تنبيه مهم</span>
+    <p>لازم تعدّل أسعار المنتجات يدويًا بعد تغيير العملة. مثال: لو المنتج بـ <b>300 درهم</b> ← هيظهر <b>300 دولار</b> بعد التغيير! يعني Shopify بيغير الرمز بس، مش بيحوّل السعر.</p>
+  </div>
+
+  <div class="practice" data-practice="8">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز ملف الشركة</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">اكتب اسم الشركة النهائي بصيغة <code>BRANDNAME LTD</code> وتأكد إنه نفس اسم البراند.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">جهّز صورة الهوية والباسبور وكشف حساب بنكي بالإنجليزي في فولدر واحد.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">نزّل تطبيق Vyke وافتح حساب Wise.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">بعد تغيير العملة لـ USD، راجع سعر كل منتج يدويًا.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="8"></div>
+</section>
+
+<!-- ============ CH9 ============ -->
+<section class="chapter" id="ch9">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل التاسع <span class="mono">Chapter 9</span></div>
+    <h2>التطبيقات والأسواق واللغات والإيميلات الرسمية</h2>
+    <div class="en">Apps · Markets · Languages · Business Emails</div>
+    <p class="lead">المتجر شغال، دلوقتي هنزوده بالتطبيقات الأساسية، ونحدد الدول اللي هنبيع فيها ولغة المتجر، ونعمل إيميل رسمي يدي ثقة للعميل.</p>
+    <ul class="goals"><li>تثبّت التطبيقات الأساسية</li><li>تفعّل الأسواق واللغات</li><li>تعمل إيميل باسم الدومين</li></ul>
+  </div>
+
+  <div class="prose"><h3>التطبيقات الأساسية</h3></div>
+  <div class="cards">
+    <div class="card"><span class="idx">DSers</span><h4>ربط المورد</h4><p>نقل المنتجات من AliExpress وتنفيذ الطلبات بضغطة.</p></div>
+    <div class="card"><span class="idx">Translate &amp; Adapt</span><h4>الترجمة</h4><p>ترجمة المتجر للعربي أو أي لغة تانية، وتعديل الترجمة يدويًا.</p></div>
+    <div class="card"><span class="idx">Shopify Inbox</span><h4>الشات مع العملاء</h4><p>شات مباشر على المتجر عشان ترد على أسئلة العملاء قبل الشراء. سرعة الرد = مبيعات أكتر.</p></div>
+    <div class="card"><span class="idx">Reviews</span><h4>تقييمات المنتجات</h4><p>عرض تقييمات وصور العملاء على صفحة المنتج. التقييمات من أقوى عوامل الثقة.</p></div>
+  </div>
+  <div class="tip"><span class="kicker">قاعدة التطبيقات</span><p>كل تطبيق بيضيف كود للمتجر ويبطّأه شوية. ثبّت اللي محتاجه فعلًا بس، وامسح أي تطبيق مش بتستخدمه.</p></div>
+
+  <div class="prose">
+    <h3>تفعيل الأسواق (Markets)</h3>
+    <p>من <code>Settings › Markets</code> ضيف الأسواق اللي هتبيع فيها. الأسواق الأساسية في الكورس:</p>
+  </div>
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 720 130" width="100%" style="min-width:520px" role="img" aria-label="الأسواق المستهدفة">
+      <g font-size="13" text-anchor="middle">
+        <rect x="560" y="20" width="140" height="80" rx="12" class="s-accsoft"/><text x="630" y="54" class="s-ink" font-weight="700" direction="ltr">US</text><text x="630" y="78" class="s-muted">الولايات المتحدة · USD</text>
+        <rect x="400" y="20" width="140" height="80" rx="12" class="s-accsoft"/><text x="470" y="54" class="s-ink" font-weight="700" direction="ltr">UK</text><text x="470" y="78" class="s-muted">بريطانيا · GBP</text>
+        <rect x="240" y="20" width="140" height="80" rx="12" class="s-accsoft"/><text x="310" y="54" class="s-ink" font-weight="700" direction="ltr">CA</text><text x="310" y="78" class="s-muted">كندا · CAD</text>
+        <rect x="80" y="20" width="140" height="80" rx="12" class="s-accsoft"/><text x="150" y="54" class="s-ink" font-weight="700" direction="ltr">AU</text><text x="150" y="78" class="s-muted">أستراليا · AUD</text>
+      </g>
+      <text x="360" y="124" text-anchor="middle" class="s-muted" font-size="12">أسواق قدرتها الشرائية عالية ومتعودة على الشراء أونلاين</text>
+    </svg>
+    </div>
+    <figcaption>شكل ١٠ — الأسواق الأربعة الأساسية. Shopify ممكن يعرض الأسعار بعملة كل دولة تلقائيًا.</figcaption>
+  </figure>
+  <div class="prose">
+    <h3>اللغات (Languages)</h3>
+    <p>من <code>Settings › Languages</code> ضيف لغة تانية (العربي مثلًا) وفعّلها، وبعدها استخدم تطبيق <b>Translate &amp; Adapt</b> عشان تترجم المحتوى وتراجع الترجمة.</p>
+    <h3>الإيميلات الرسمية (Business Emails)</h3>
+    <p>اعمل إيميل احترافي باسم الدومين بتاعك بدل Gmail. مثال: <code>support@brandname.com</code>. استخدمه في:</p>
+    <ul>
+      <li>صفحة Contact Us والسياسات.</li>
+      <li><code>Settings › Notifications</code> كإيميل مُرسِل لتنبيهات الطلبات للعملاء.</li>
+      <li>تفعيل Shopify Payments وحسابات ميتا.</li>
+    </ul>
+  </div>
+  <div class="example">
+    <span class="kicker">مقارنة</span>
+    <p>العميل يستلم تأكيد الطلب من <code>zoomiezone.store2024@gmail.com</code> أو من <code>support@zoomiezone.com</code>. التاني بيدي إحساس إن ده براند حقيقي وبيقلل الشكاوى والـ Chargebacks.</p>
+  </div>
+
+  <div class="practice" data-practice="9">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز المتجر للعالم</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">ثبّت Translate &amp; Adapt و Shopify Inbox وتطبيق تقييمات.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">ضيف أسواق US و UK و CA و AU من Markets.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">فعّل اللغة العربية وترجم صفحة منتج واحدة وراجعها.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اعمل <code>support@</code> باسم الدومين وحطه في Notifications و Contact Us.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="9"></div>
+</section>
+
+<!-- ============ CH10 ============ -->
+<section class="chapter" id="ch10">
+  <div class="ch-head">
+    <div class="ch-tag">الفصل العاشر <span class="mono">Chapter 10</span></div>
+    <h2>ميتا والإعلانات والتحسين المستمر</h2>
+    <div class="en">Meta Business Suite · Pixel · Pages · Facebook Ads · Optimization</div>
+    <p class="lead">المتجر جاهز، والزباين لسه ما يعرفوش عنه حاجة. هنجهز حسابات ميتا، نربط البيكسل، نعمل الصفحات، ونطلق أول حملة، وبعدها نحسّن باستمرار.</p>
+    <ul class="goals"><li>تعمل Ad Account وتربط البيكسل</li><li>تجهّز صفحات فيسبوك وإنستجرام</li><li>تطلق حملة وتقرا نتايجها</li></ul>
+  </div>
+
+  <div class="prose">
+    <h3>إنشاء الحسابات الإعلانية (Meta Business Suite)</h3>
+    <ol>
+      <li>ادخل على <b>Meta Business</b> واعمل حساب بيزنس باسم البراند والإيميل الرسمي.</li>
+      <li>أنشئ <b>Ad Account</b> واربطه بوسيلة دفع.</li>
+      <li>اربط المتجر بالبيكسل (<b>Pixel Setup</b>) عن طريق تطبيق Facebook &amp; Instagram على Shopify، أو من <code>Settings › Customer Events</code>.</li>
+    </ol>
+  </div>
+
+  <figure class="fig">
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 190" width="100%" style="min-width:620px" role="img" aria-label="البيكسل بيوصل أحداث المتجر لميتا">
+      <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="s-acc"/></marker></defs>
+      <g font-size="12" text-anchor="middle">
+        <rect x="610" y="30" width="130" height="70" rx="10" class="s-accsoft"/><text x="675" y="60" class="s-ink" font-weight="700">الإعلان</text><text x="675" y="80" class="s-muted">فيسبوك / إنستجرام</text>
+        <rect x="440" y="30" width="130" height="70" rx="10" class="s-accsoft"/><text x="505" y="60" class="s-ink" font-weight="700">زيارة المتجر</text><text x="505" y="80" class="s-muted" direction="ltr">ViewContent</text>
+        <rect x="270" y="30" width="130" height="70" rx="10" class="s-accsoft"/><text x="335" y="60" class="s-ink" font-weight="700">إضافة للسلة</text><text x="335" y="80" class="s-muted" direction="ltr">AddToCart</text>
+        <rect x="100" y="30" width="130" height="70" rx="10" class="s-goldsoft"/><text x="165" y="60" class="s-ink" font-weight="700">شراء</text><text x="165" y="80" class="s-muted" direction="ltr">Purchase</text>
+      </g>
+      <line x1="606" y1="65" x2="576" y2="65" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar2)"/>
+      <line x1="436" y1="65" x2="406" y2="65" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar2)"/>
+      <line x1="266" y1="65" x2="236" y2="65" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar2)"/>
+      <rect x="230" y="128" width="300" height="44" rx="22" class="s-ink"/>
+      <text x="380" y="155" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--bg)">Pixel يبعت كل حدث لميتا</text>
+      <path d="M380 128 L380 108" class="s-stroke-muted" stroke-dasharray="4 4"/>
+      <path d="M535 150 C 700 150, 700 110, 675 102" fill="none" class="s-stroke-muted" stroke-dasharray="4 4" marker-end="url(#ar2)"/>
+      <text x="700" y="170" text-anchor="middle" class="s-muted" font-size="11">ميتا تتعلم وتجيب ناس شبه المشترين</text>
+    </svg>
+    </div>
+    <figcaption>شكل ١١ — من غير البيكسل ميتا مش هتعرف مين اشترى، وإعلاناتك هتفضل عشوائية.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h3>إنشاء صفحة فيسبوك وإنستجرام (Pages Setup)</h3>
+    <ul>
+      <li>صمم لوجو وكفر احترافي (على Canva بنفس ألوان البراند).</li>
+      <li>ضيف معلومات التواصل والموقع (رابط المتجر).</li>
+      <li>انشر أول بوست (فيديو أو صورة) قبل ما تبدأ الإعلان. الصفحة الفاضية بتقلل الثقة.</li>
+    </ul>
+    <h3>إنشاء الحملات الإعلانية (Facebook Ads)</h3>
+    <p>كل حملة على ميتا ليها 3 مستويات:</p>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="idx">Campaign</span><h4>الهدف</h4><p>في المادة بنبدأ بـ <b>Engagement</b> عشان الصفحة تاخد تفاعل وثقة. بعد ما البيكسل يتعلم، تقدر تجرّب هدف <b>Sales</b>.</p></div>
+    <div class="card"><span class="idx">Ad Set</span><h4>الجمهور والميزانية</h4><p>Audience: <b>US / UK / UAE</b><br>Budget: من <b>20 إلى 50 درهم يوميًا</b>.</p></div>
+    <div class="card"><span class="idx">Ad</span><h4>الإعلان نفسه</h4><p>فيديو أو صورة + نص قصير + زرار (Shop Now). الفيديو اللي بيوري المشكلة والحل غالبًا الأقوى.</p></div>
+  </div>
+
+  <div class="prose"><h3>أرقام لازم تتابعها</h3></div>
+  <div class="tbl"><table class="t">
+    <thead><tr><th>المقياس</th><th>معناه</th><th>بيقولك إيه</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">CTR</td><td>نسبة اللي ضغطوا على الإعلان من اللي شافوه</td><td>لو قليل: الإعلان (الفيديو/الصورة) مش جاذب.</td></tr>
+      <tr><td class="mono">CPC</td><td>تكلفة الضغطة الواحدة</td><td>لو عالي: الجمهور أو الإعلان محتاج تغيير.</td></tr>
+      <tr><td class="mono">Conversion Rate</td><td>نسبة اللي اشتروا من زوار المتجر</td><td>لو قليل: المشكلة في المتجر أو السعر أو صفحة المنتج.</td></tr>
+      <tr><td class="mono">ROAS</td><td>المبيعات ÷ مصاريف الإعلان</td><td>لازم يكون أعلى من نقطة التعادل عشان تكسب.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="tool" id="roasTool">
+    <h4>حاسبة ROAS ونقطة التعادل</h4>
+    <div class="tool-grid">
+      <label class="f">مصاريف الإعلان ($)<input type="number" id="ro-spend" value="100" min="0" step="1"></label>
+      <label class="f">المبيعات ($)<input type="number" id="ro-rev" value="240" min="0" step="1"></label>
+      <label class="f">هامش الربح قبل الإعلان ٪<input type="number" id="ro-margin" value="55" min="1" max="100" step="1"></label>
+    </div>
+    <div class="result">
+      <div><span>ROAS</span><b id="ro-roas">—</b></div>
+      <div><span>نقطة التعادل</span><b id="ro-be">—</b></div>
+      <div><span>صافي الربح</span><b id="ro-net">—</b></div>
+    </div>
+    <div class="verdict" id="ro-verdict">—</div>
+  </div>
+
+  <div class="prose">
+    <h3>التحسين المستمر (Optimization)</h3>
+    <ul>
+      <li><b>اختبر منتجات جديدة</b> من ليستة الـ 10 منتجات لو المنتج الحالي مش بيبيع.</li>
+      <li><b>عدّل الأسعار والعناوين</b> وجرّب Bundles وعروض مختلفة.</li>
+      <li><b>حسّن تجربة الموقع:</b> سرعة، صور أوضح، تقييمات، سياسات واضحة، شات سريع.</li>
+    </ul>
+  </div>
+  <div class="example">
+    <span class="kicker">مثال على قراءة النتايج</span>
+    <p>صرفت $100 وجالك 1,000 زيارة لكن 3 طلبات بس (Conversion 0.3%). الـ CTR كويس يبقى الإعلان شغال، والمشكلة في المتجر: راجع صفحة المنتج، السعر، والتقييمات قبل ما تغير الإعلان.</p>
+  </div>
+
+  <div class="practice" data-practice="10">
+    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">أول حملة</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="t">اعمل حساب Meta Business و Ad Account واربطهم بوسيلة دفع.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اربط البيكسل بالمتجر واعمل عملية شراء تجريبية وتأكد إن حدث Purchase ظهر.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">جهّز صفحة فيسبوك وإنستجرام بلوجو وكفر وأول بوست.</span></label></li>
+      <li><label><input type="checkbox"><span class="t">اعمل حملة Engagement بميزانية 20–50 درهم يوميًا وتابع CTR و CPC بعد 3 أيام.</span></label></li>
+    </ul>
+  </div>
+  <div class="quiz" data-quiz="10"></div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final" id="final">
+  <div class="ch-head">
+    <div class="ch-tag" style="color:var(--gold)">الاختبار النهائي</div>
+    <h2>اختبر نفسك في الكورس كله</h2>
+    <p class="lead">20 سؤال من الفصول العشرة بترتيب عشوائي. النجاح من 70٪.</p>
+  </div>
+  <div id="finalBox"></div>
+</section>
+
+</main>
+</div>
+
+<footer class="foot wrap"><div>مادة علمية: E-Commerce Shopify · مبنية على محاضرات الكورس وملخص خطوات إنشاء المتجر. الأسعار والواجهات بتتغير، راجع المواقع الرسمية قبل أي دفع.</div></footer>
+
+</div>
+
+<script>
+(function(){
+const QUIZ = {
+1:[
+ {q:"إيه اللي بيميّز الدروبشيبينج عن تخزين البضاعة؟",o:["إنك بتشتري كمية كبيرة مقدمًا","المورد بيشحن للعميل مباشرة بعد ما يطلب","إنك لازم تفتح محل على أرض الواقع","إن المنتج بيكون بتصميمك دايمًا"],a:1,w:"في الدروبشيبينج ما بتشتريش ولا بتخزن، بتطلب من المورد بعد ما العميل يدفع."},
+ {q:"ربحك من البيعة الواحدة في الدروبشيبينج =",o:["سعر البيع − تكلفة المنتج بس","سعر البيع − (المنتج + الشحن + الإعلان)","سعر البيع × 2","تكلفة الإعلان − الشحن"],a:1,w:"لازم تحسب كل التكاليف: المنتج والشحن والإعلان (وعمولة Shopify)."},
+ {q:"ليه اخترنا Shopify؟",o:["لأنها مجانية بالكامل","لأنها بتدعم الدروبشيبينج والموردين عاملين تطبيقات متوافقة معاها","لأنها محتاجة برمجة","لأنها للمتاجر العربية بس"],a:1,w:"Shopify أشهر منصة، وبتدعم الدروبشيبينج، واشتراكها مش غالي مقارنة بالمكاسب."},
+ {q:"بتبيع منتج بـ $24.99، تكلفته $5، شحن $3، إعلان $9. ربحك؟",o:["$19.99","$7.99","$16.99","$2.99"],a:1,w:"24.99 − (5 + 3 + 9) = 7.99"},
+ {q:"أول خطوة في خريطة إنشاء المتجر هي:",o:["تصميم اللوجو","اختيار الثيم","اختيار المنتج الرابح","إطلاق الإعلانات"],a:2,w:"كل حاجة بتبدأ من المنتج، وبعدها الاسم واللوجو والمتجر."}
+],
+2:[
+ {q:"ليه لازم يكون عندك ليستة 10 منتجات؟",o:["عشان تعرضهم كلهم في نفس الإعلان","عشان تقدر تجرّب وتبدّل لو منتج فشل","عشان Shopify بيطلب 10 منتجات","عشان تاخد خصم من المورد"],a:1,w:"التجريب جزء أساسي من الوصول للمنتج الرابح."},
+ {q:"أي منتج من دول المفروض تتجنبه في البداية؟",o:["طوق طارد للحشرات","شراب 3D","خلاط كهربائي ببطارية","حامل موبايل"],a:2,w:"الأجهزة الكهربائية والبطاريات: شحن صعب، وزن تقيل، وأعطال كتير."},
+ {q:"المنتج اللي مكسبه $3–5 بس بعد كل التكاليف:",o:["ممتاز لأنه رخيص","ما تشتغلش عليه، هامش الربح ضعيف","أحسن اختيار للمبتدئين","مفيش فرق"],a:1,w:"المادة بتقول صراحة: ما تشتغلش على منتج مكسبه $3–5 بس."},
+ {q:"لقيت منتج ترندي على TikTok لكن طريقة تقديمه ضعيفة. ده:",o:["علامة إنه مش هيبيع","فرصة ذهبية","ممنوع تبيعه","لازم تستنى سنة"],a:1,w:"منتج ترندي + ضعيف في التقديم = فرصة ذهبية تقدمه أحسن."},
+ {q:"إزاي تتأكد من جودة المنتج؟",o:["من سعره بس","تقرا الريفيوهات وتشوف تقييمه على Amazon وتجربه بنفسك","من عدد ألوانه","مش مهم الجودة في الدروبشيبينج"],a:1,w:"واسأل نفسك: هل أقدر أهديه لأهلي بثقة؟"}
+],
+3:[
+ {q:"متى تختار اسم البراند؟",o:["قبل ما تعرف هتبيع إيه","بعد ما تحدد النيتش أو المنتج","بعد ما تطلق الإعلانات","مش مهم الاسم"],a:1,w:"ابدأ من المنتج مش الاسم."},
+ {q:"في Namelix، أفضل إعداد لأسلوب التوليد هو:",o:["Low","Medium","High","مفيش إعدادات"],a:1,w:"Medium بيوازن بين الواقعية والإبداع."},
+ {q:"إيه الأهم: اسم البراند ولا شكل اللوجو؟",o:["اللوجو أهم بكتير","اسم البراند أهم","الاتنين ملهمش لازمة","الألوان أهم من الاتنين"],a:1,w:"Apple وتويتر غيروا اللوجو وما حصلش حاجة. الناس بتشتري عشان القيمة."},
+ {q:"بعد ما تختار الاسم لازم تتأكد من:",o:["إن الدومين متاح بنفس الاسم على Namecheap","إن الاسم طويل","إن الاسم فيه أرقام","إن الاسم عربي"],a:0,w:"احجز الدومين بنفس اسم البراند."},
+ {q:"الكورس بيبدأ بأنهي نوع متاجر؟",o:["متجر عام","متجر نيتش متخصص","متجر منتج واحد بس","محل على أرض الواقع"],a:1,w:"بنبدأ بمتجر نيتش ونختبر أكتر من منتج لحد ما نلاقي الرابح."}
+],
+4:[
+ {q:"لما Shopify يسألك «تبيع إيه؟» تختار:",o:["Physical store","Dropshipping","Services","Digital products"],a:1,w:"وفي «تبيع فين» تختار Online Store، وفي المرحلة I'm just starting."},
+ {q:"ليه ما نختارش الباقة الأرخص ($5)؟",o:["لأنها محدودة وعمولتها أعلى (5%)","لأنها غالية","لأنها مش موجودة","لأنها للشركات الكبيرة"],a:0,w:"الباقة الأساسية عمولتها 2% وفيها دعم فني 24 ساعة."},
+ {q:"عشان تتابع الطلبات وترجع للعملاء اللي سابوا السلة، تروح على:",o:["Content","Orders › Checkout","Discounts","Domains"],a:1,w:"Abandoned checkouts جوه Orders وتقدر ترجعلهم بعروض خاصة."},
+ {q:"ربط الدومين بالمتجر بيكون من:",o:["Settings › Domains","Products","Customers","Analytics"],a:0,w:"Domains: ربط اسم النطاق بالمتجر."},
+ {q:"إعداد الضرائب (Taxes) غالبًا الأفضل:",o:["تفعّله يدويًا على كل المنتجات","ما تفعّلهوش يدويًا إلا لو مطلوب قانونيًا","تخليه 50%","تمسحه من المتجر"],a:1,w:"عشان ما ترفعش السعر على العميل من غير مبرر."}
+],
+5:[
+ {q:"الطريقة الأساسية لإضافة منتجات في الدروبشيبينج:",o:["تصوير المنتج بنفسك","ربط مورد بتطبيق زي DSers","كتابة المنتجات في Word","طلب المنتج من Amazon"],a:1,w:"DSers بينقل المنتج من AliExpress وبيسهل تنفيذ الطلبات."},
+ {q:"خانة Compare-at price بتعمل إيه؟",o:["بتحسب الشحن","بتظهر السعر القديم مشطوب جنب السعر الجديد","بتغير العملة","بتمسح المنتج"],a:1,w:"بتدي العميل إحساس بالتوفير."},
+ {q:"رفع منتجات كتير مرة واحدة من ملف Excel بيكون من:",o:["Import","Discounts","Markets","Notifications"],a:0,w:"Import: رفع المنتجات من ملف Excel/CSV أو من متجر تاني."},
+ {q:"إيه الغلط في نقل منتج من AliExpress زي ما هو؟",o:["مفيش غلط","العنوان الطويل والصور اللي فيها لوجو أو كلام صيني بتقلل الثقة","السعر هيبقى أرخص","المنتج مش هيظهر"],a:1,w:"لازم تعدّل العنوان والوصف والصور قبل النشر."},
+ {q:"Collections بتستخدم في:",o:["تنظيم المنتجات في مجموعات","ربط البنك","عمل إعلان","تغيير اللغة"],a:0,w:"زي Pet Care أو Best Sellers."}
+],
+6:[
+ {q:"الثيم بيأثر على:",o:["سرعة الموقع وتجربة المستخدم والمبيعات","أسعار المورد بس","الضرائب","اسم الشركة"],a:0,w:"الثيم = واجهة المتجر = أول انطباع للعميل."},
+ {q:"شرط الثيم المهم جدًا:",o:["يكون Responsive ويشتغل على كل الأجهزة","يكون فيه ألوان كتير","يكون مجاني","يكون فيه موسيقى"],a:0,w:"أغلب العملاء بيشتروا من الموبايل."},
+ {q:"مسار تغيير لون الـ Header:",o:["Settings › Header › Colors","Products › Variants","Orders › Drafts","Markets › Currency"],a:0,w:"ولو عايز لون محدد خد الكود من Canva."},
+ {q:"اللوجو في الثيم الأفضل يكون:",o:["دايرة صغيرة","مستطيل بمقاسات مناسبة","صورة كبيرة بعرض الشاشة","نص بس"],a:1,w:"وجرّب أكتر من مرة لحد ما تظبط حجمه."},
+ {q:"ميزة Generate Theme بالذكاء الاصطناعي بتعمل إيه؟",o:["بتبرمج ثيم جديد من الصفر","بتستخدم ثيم أساسي وتعدّل المحتوى والصور حسب وصف البيزنس","بتشتري ثيم مدفوع","بتعمل إعلان"],a:1,w:"تكتب وصف البيزنس ← Generate ← ثيم مناسب."}
+],
+7:[
+ {q:"لو صفحة About Us مش موجودة، تعملها منين؟",o:["Pages ← Create New Page","Orders","Billing","Taxes"],a:0,w:"Shopify بيقدم قوالب جاهزة تقدر تعدل عليها."},
+ {q:"في Return Policy، مكتوب يرجع على عنوان وأنت معندكش عنوان. تعمل إيه؟",o:["تسيبه","تمسحه","تكتب عنوان بيتك","تكتب عنوان المورد"],a:1,w:"وعدّل مدة الإرجاع (مثلًا 30 يوم بدل 14)."},
+ {q:"أنهي سياسة مش بتيجي جاهزة ولازم تكتبها بنفسك؟",o:["Privacy Policy","Shipping Policy","Terms of Service","Refund Policy"],a:1,w:"ممكن تستعين بـ ChatGPT في صياغتها."},
+ {q:"ليه بنضيف خيار «Do not save money» بسعر المنتج الأصلي؟",o:["عشان نمسح الـ Bundle","للاستفزاز النفسي عشان العميل يختار الـ Bundle","عشان Shopify بيطلبه","عشان نرفع الضرائب"],a:1,w:"المقارنة بتخلي الباقة تبان أوفر."},
+ {q:"الـ Bundles بتزود إيه أساسًا؟",o:["متوسط سعر الطلب (AOV)","تكلفة الإعلان","عدد الصفحات","وقت الشحن"],a:0,w:"العميل بيشتري أكتر في نفس الطلب."}
+],
+8:[
+ {q:"ليه بنضيف LTD لاسم الشركة؟",o:["شكل بس","لأنها هامة للأوراق الرسمية","عشان السعر يقل","مش لازم"],a:1,w:"إضافة LTD هامة للأوراق الرسمية."},
+ {q:"أهم ورقتين هتحتاجهم لتفعيل Shopify Payments:",o:["الفاتورة وسجل الموظفين","Certificate of Incorporation و Share Certificate","الباسبور وشهادة الميلاد","كشف حساب وفاتورة كهرباء"],a:1,w:"دول اللي بترفعهم في خطوة Verification."},
+ {q:"نوع البيزنس اللي تختاره في تفعيل الدفع:",o:["Individual","Registered company","Non-Profit","Government"],a:1,w:"شركة مسجلة، ونوعها Private."},
+ {q:"غيرت عملة المتجر من درهم لدولار، والمنتج كان بـ 300 درهم. هيظهر بكام؟",o:["حوالي $82 تلقائيًا","$300، ولازم تعدّل السعر يدويًا","هيتمسح","مش هيتغير"],a:1,w:"Shopify بيغير الرمز بس، مش بيحوّل السعر."},
+ {q:"الأفضل لربط الدولار وحسابك البنكي:",o:["Wise","كاش","حساب Gmail","Vyke"],a:0,w:"Vyke للرقم البريطاني، و Wise للحساب البنكي."}
+],
+9:[
+ {q:"تطبيق Shopify Inbox بيستخدم في:",o:["الشات مع العملاء على المتجر","ترجمة المتجر","نقل المنتجات","فتح الشركة"],a:0,w:"سرعة الرد على أسئلة العملاء بتزود المبيعات."},
+ {q:"الأسواق الأساسية اللي اتذكرت في الكورس:",o:["US, UK, CA, AU","مصر بس","الصين والهند","أي دولة عشوائي"],a:0,w:"أسواق قدرتها الشرائية عالية ومتعودة على الشراء أونلاين."},
+ {q:"إيه أفضل إيميل للتواصل مع العملاء؟",o:["mystore123@gmail.com","support@brandname.com","إيميلك الشخصي","مفيش داعي لإيميل"],a:1,w:"الإيميل باسم الدومين بيدي ثقة وإحساس إن ده براند حقيقي."},
+ {q:"ترجمة المتجر للعربي بتكون عن طريق:",o:["تطبيق Translate & Adapt بعد إضافة اللغة","DSers","Meta Ads","Canva"],a:0,w:"تضيف اللغة من Settings › Languages وبعدين تترجم وتراجع."},
+ {q:"ليه ما تثبتش تطبيقات كتير؟",o:["لأن كل تطبيق بيبطّأ المتجر شوية","لأنها ممنوعة","لأنها بتغير العملة","مفيش مشكلة خالص"],a:0,w:"ثبّت اللي محتاجه فعلًا بس."}
+],
+10:[
+ {q:"وظيفة البيكسل (Pixel):",o:["تصميم اللوجو","إرسال أحداث المتجر (زيارة، سلة، شراء) لميتا","فتح الشركة","شحن المنتج"],a:1,w:"عشان ميتا تتعلم وتجيب ناس شبه المشترين."},
+ {q:"هدف الحملة الأولى حسب المادة:",o:["Engagement","Traffic بس","Leads","مفيش هدف"],a:0,w:"Campaign Objective: Engagement، وبعدها تقدر تجرب Sales."},
+ {q:"الميزانية اليومية المقترحة للبداية:",o:["من 20 إلى 50 درهم","1000 درهم","5 دراهم","بدون حد"],a:0,w:"Budget: من 20 إلى 50 درهم يوميًا."},
+ {q:"صرفت $100 وجبت مبيعات $240. الـ ROAS =",o:["2.4","0.42","140","24"],a:0,w:"ROAS = المبيعات ÷ مصاريف الإعلان = 240 ÷ 100."},
+ {q:"الـ CTR كويس بس مفيش مبيعات تقريبًا. المشكلة غالبًا في:",o:["الإعلان","المتجر أو السعر أو صفحة المنتج","البيكسل بس","اسم الشركة"],a:1,w:"الناس بتدخل، يبقى الإعلان شغال. راجع المتجر."}
+]};
+
+/* storage */
+const KEY="darbna-shopify-course-v1";
+let S={quiz:{},prac:{},final:null};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+const PASS=0.6;
+function updateProgress(){
+  let done=0;
+  document.querySelectorAll('#railList a[data-ch]').forEach(a=>{
+    const r=S.quiz[a.dataset.ch]; const ok=r && r.best/r.total>=PASS;
+    a.classList.toggle('done',!!ok); if(ok) done++;
+  });
+  document.getElementById('pDone').textContent=done;
+  document.getElementById('pBar').style.width=(done*10)+'%';
+}
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function renderQuiz(box,qs,id,onDone){
+  box.innerHTML="";
+  qs.forEach((q,i)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="qn">'+(i+1)+'.</span>'+esc(q.q)+'</div><div class="opts">'+
+      q.o.map((o,j)=>'<label><input type="radio" name="'+id+'-'+i+'" id="'+id+'-'+i+'-'+j+'" value="'+j+'"><span>'+esc(o)+'</span></label>').join('')+
+      '</div><div class="why" hidden></div>';
+    box.appendChild(d);
+  });
+  const bar=document.createElement('div'); bar.className='btns';
+  bar.innerHTML='<button type="button" class="btn">صحّح إجاباتي</button><button type="button" class="btn ghost">إعادة</button><span class="score" aria-live="polite"></span>';
+  box.appendChild(bar);
+  const [check,reset]=bar.querySelectorAll('button'); const out=bar.querySelector('.score');
+  check.addEventListener('click',()=>{
+    let score=0, answered=0;
+    box.querySelectorAll('.q').forEach((d,i)=>{
+      const q=qs[i]; const sel=d.querySelector('input:checked');
+      d.querySelectorAll('label').forEach((l,j)=>{l.classList.remove('right','wrong'); if(j===q.a) l.classList.add('right');});
+      if(sel){answered++; const v=+sel.value; if(v===q.a) score++; else sel.closest('label').classList.add('wrong');}
+      const w=d.querySelector('.why'); w.hidden=false; w.textContent=(sel&&+sel.value===q.a?'✓ صح. ':'✗ ')+q.w;
+    });
+    const pct=score/qs.length;
+    out.className='score '+(pct>=PASS?'pass':'fail');
+    out.textContent='نتيجتك: '+score+' من '+qs.length+(answered<qs.length?' (فيه أسئلة ما جاوبتش عليها)':'')+(pct>=PASS?' · ناجح ✓':' · راجع الفصل وجرب تاني');
+    onDone && onDone(score,qs.length);
+  });
+  reset.addEventListener('click',()=>{
+    box.querySelectorAll('input').forEach(i=>i.checked=false);
+    box.querySelectorAll('label').forEach(l=>l.classList.remove('right','wrong'));
+    box.querySelectorAll('.why').forEach(w=>w.hidden=true);
+    out.textContent='';
+  });
+}
+
+document.querySelectorAll('.quiz[data-quiz]').forEach(el=>{
+  const ch=el.dataset.quiz; const qs=QUIZ[ch];
+  const head=document.createElement('div'); head.className='sec-title';
+  const prev=S.quiz[ch];
+  head.innerHTML='<h3>اختبار الفصل</h3><span class="meta">'+qs.length+' أسئلة · النجاح من 60٪'+(prev?' · أعلى نتيجة ليك: '+prev.best+'/'+prev.total:'')+'</span>';
+  const body=document.createElement('div'); body.style.display='flex'; body.style.flexDirection='column'; body.style.gap='14px';
+  el.append(head,body);
+  renderQuiz(body,qs,'q'+ch,(s,t)=>{
+    const p=S.quiz[ch]; S.quiz[ch]={best:Math.max(s,p?p.best:0),total:t}; save(); updateProgress();
+    head.querySelector('.meta').textContent=t+' أسئلة · النجاح من 60٪ · أعلى نتيجة ليك: '+S.quiz[ch].best+'/'+t;
+  });
+});
+
+/* final exam: 2 per chapter, shuffled */
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function startFinal(){
+  const pool=[]; Object.keys(QUIZ).forEach(k=>{shuffle(QUIZ[k].slice()).slice(0,2).forEach(q=>pool.push(q));});
+  const qs=shuffle(pool);
+  const box=document.getElementById('finalBox'); box.innerHTML='';
+  const body=document.createElement('div'); body.style.display='flex'; body.style.flexDirection='column'; body.style.gap='14px';
+  const cert=document.createElement('div'); cert.hidden=true;
+  box.append(body,cert);
+  renderQuiz(body,qs,'fin',(s,t)=>{
+    const pct=Math.round(s/t*100); S.final={score:s,total:t}; save();
+    cert.hidden=false;
+    if(pct>=70){cert.className='cert';cert.innerHTML='<div class="kicker" style="color:var(--gold)">مبروك</div><h3>اجتزت الاختبار النهائي بنسبة '+pct+'٪</h3><p>أنت جاهز تبني متجرك على Shopify وتطلق أول حملة. ابدأ من الخطوة 1 في خريطة الطريق ونفّذ تدريبات الفصول على متجرك الحقيقي.</p>';}
+    else{cert.className='warn';cert.innerHTML='<span class="kicker">لسه شوية</span><p>نتيجتك '+pct+'٪ والنجاح من 70٪. راجع الأسئلة اللي غلطت فيها (متعلّمة بالأحمر)، ارجع للفصول بتاعتها، وبعدين اضغط «اختبار جديد».</p>';}
+  });
+  const again=document.createElement('button'); again.type='button'; again.className='btn ghost'; again.textContent='اختبار جديد (أسئلة مختلفة)';
+  again.addEventListener('click',startFinal);
+  body.querySelector('.btns').appendChild(again);
+}
+startFinal();
+
+/* practice checkboxes */
+document.querySelectorAll('.practice[data-practice]').forEach(p=>{
+  const id=p.dataset.practice; const boxes=p.querySelectorAll('input[type=checkbox]');
+  const saved=S.prac[id]||[];
+  boxes.forEach((b,i)=>{b.id='pr'+id+'-'+i; b.checked=!!saved[i]; b.addEventListener('change',()=>{S.prac[id]=[...boxes].map(x=>x.checked); save();});});
+});
+
+/* profit calculator */
+const $=id=>document.getElementById(id);
+const money=v=>(v<0?'-':'')+'$'+Math.abs(v).toFixed(2);
+function calcProfit(){
+  const p=+$('pf-price').value||0,c=+$('pf-cost').value||0,s=+$('pf-ship').value||0,a=+$('pf-ads').value||0,f=(+$('pf-fee').value||0)/100;
+  const total=c+s+a+p*f, prof=p-total, m=p>0?prof/p*100:0;
+  $('pf-total').textContent=money(total); $('pf-profit').textContent=money(prof); $('pf-margin').textContent=m.toFixed(0)+'%';
+  const v=$('pf-verdict');
+  if(prof<5){v.className='verdict bad';v.textContent='ضعيف: الربح أقل من $5. ارفع السعر أو دوّر على مورد أرخص أو منتج تاني.';}
+  else if(prof<10){v.className='verdict mid';v.textContent='مقبول بس على الحافة: أي زيادة في تكلفة الإعلان هتاكل ربحك. جرّب Bundles لرفع قيمة الطلب.';}
+  else{v.className='verdict good';v.textContent='كويس: هامش الربح يسمح بتجريب الإعلانات براحة.';}
+}
+['pf-price','pf-cost','pf-ship','pf-ads','pf-fee'].forEach(i=>$(i).addEventListener('input',calcProfit)); calcProfit();
+
+/* product score */
+const sl=document.querySelectorAll('#scoreList input');
+sl.forEach((b,i)=>{b.id='sc-'+i; b.addEventListener('change',()=>{
+  const n=[...sl].filter(x=>x.checked).length; const o=$('scoreOut');
+  if(n>=6){o.className='verdict good';o.textContent=n+' / 7: منتج قوي، حطه في أول ليستة الاختبار.';}
+  else if(n>=4){o.className='verdict mid';o.textContent=n+' / 7: محتمل، بس شوف تقدر تحسّن أنهي نقطة قبل ما تصرف عليه.';}
+  else{o.className='verdict bad';o.textContent=n+' / 7: ضعيف، دوّر على منتج تاني.';}
+});});
+
+/* ROAS */
+function calcRoas(){
+  const sp=+$('ro-spend').value||0, rv=+$('ro-rev').value||0, m=(+$('ro-margin').value||0)/100;
+  const roas=sp>0?rv/sp:0, be=m>0?1/m:0, net=rv*m-sp;
+  $('ro-roas').textContent=roas.toFixed(2); $('ro-be').textContent=be.toFixed(2); $('ro-net').textContent=money(net);
+  const v=$('ro-verdict');
+  if(sp===0){v.className='verdict mid';v.textContent='دخّل مصاريف الإعلان.';}
+  else if(roas>=be*1.2){v.className='verdict good';v.textContent='الحملة كسبانة: الـ ROAS أعلى من نقطة التعادل. فكّر تزود الميزانية تدريجيًا.';}
+  else if(roas>=be){v.className='verdict mid';v.textContent='قريب من التعادل: حسّن الإعلان أو صفحة المنتج قبل ما تزود الميزانية.';}
+  else{v.className='verdict bad';v.textContent='الحملة خسرانة: الـ ROAS أقل من '+be.toFixed(2)+'. غيّر الإعلان أو السعر أو المنتج.';}
+}
+['ro-spend','ro-rev','ro-margin'].forEach(i=>$(i).addEventListener('input',calcRoas)); calcRoas();
+
+/* bundle */
+const B={1:19.99,2:33.99,3:44.99,4:54.99};
+function calcBundle(){
+  const n=+document.querySelector('input[name=bdl]:checked').value; const t=B[n];
+  $('bdlUnit').textContent=money(t/n); $('bdlSave').textContent=money(B[1]*n-t); $('bdlAov').textContent='×'+(t/B[1]).toFixed(2);
+}
+document.querySelectorAll('input[name=bdl]').forEach(r=>r.addEventListener('change',calcBundle)); calcBundle();
+
+/* admin mock */
+const AD={
+ home:["Home","أول ما تفتح حسابك هتلاقي 7 خطوات أساسية. لما تخلّصهم تبدأ تشوف الإحصائيات والمبيعات هنا."],
+ orders:["Orders","<ul><li>عرض كل الطلبات.</li><li><b>Checkout (Abandoned):</b> لو حد حط منتج في السلة وما اشتراش، تقدر ترجع له بعروض خاصة.</li></ul>"],
+ products:["Products","<ul><li><b>Add Product:</b> إضافة منتج يدويًا.</li><li><b>Import:</b> رفع المنتجات من ملف Excel أو من متجر تاني.</li><li><b>ربط مورد:</b> الطريقة الأساسية، إضافة منتجات تلقائيًا من الموردين.</li><li><b>Collections:</b> تنظيم المنتجات في مجموعات.</li><li><b>Inventory:</b> متابعة الكمية والتوفر.</li><li><b>Purchase Order &amp; Transfer:</b> لأصحاب المخازن (مش مهمة في الدروبشيبينج).</li><li><b>Gift Card:</b> كوبونات شراء أو هدايا لزيادة المبيعات.</li></ul>"],
+ customers:["Customers","بيانات العملاء، الطلبات، التواصل. بتستخدم لبناء ولاء العملاء."],
+ content:["Content","مش هنستخدمها دلوقتي."],
+ analytics:["Analytics","كل الإحصائيات والمتابعة لأداء المتجر: المبيعات، الزيارات، نسبة التحويل."],
+ marketing:["Marketing","ربط المتجر بالإعلانات (Facebook Pixel وغيرها)."],
+ discounts:["Discounts","عمل كوبونات خصم وعروض ترويجية."],
+ online:["Sales Channel › Online Store","<ul><li><b>Online Store:</b> واجهة المتجر اللي العميل بيشوفها.</li><li><b>Theme:</b> شكل المتجر (مجاني / مدفوع).</li><li><b>Performance:</b> تحسين محركات البحث (Meta description وغيرها).</li></ul>"],
+ settings:["Settings","الإعدادات العامة: اسم المتجر، الخطة، الدفع، الشحن، الضرائب، الأسواق، الدومين، اللغات والسياسات. الجدول تحت فيه شرح كل واحد."]
+};
+const pane=$('adminPane');
+function showAd(k){pane.innerHTML='<h4>'+AD[k][0]+'</h4><div>'+AD[k][1]+'</div>';
+  document.querySelectorAll('#adminMock .mock-nav button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));}
+document.querySelectorAll('#adminMock .mock-nav button').forEach(b=>b.addEventListener('click',()=>showAd(b.dataset.k)));
+showAd('home');
+
+/* copy */
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const el=$(b.dataset.copy); const txt=el.textContent.replace(b.textContent,'').trim();
+  const done=()=>{b.textContent='اتنسخ ✓';setTimeout(()=>b.textContent='نسخ',1600);};
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='حدد ونسخ';};
+  try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(e){fallback();}
+}));
+
+/* rail highlight */
+const links=[...document.querySelectorAll('#railList a')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));
+  const on=links.find(l=>l.classList.contains('on')); if(on && window.innerWidth<=900) on.scrollIntoView({block:'nearest',inline:'center'});}});},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('.chapter,#final').forEach(s=>io.observe(s));
+
+updateProgress();
+if(location.hash){const t=document.getElementById(location.hash.slice(1)); if(t) setTimeout(()=>t.scrollIntoView(),50);}
+})();
+</script>
+
+</body>
+</html>
