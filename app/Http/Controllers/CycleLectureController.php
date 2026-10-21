@@ -18,7 +18,12 @@ class CycleLectureController extends Controller
 
         $user = auth()->user();
 
-        if (! $user || ! $user->hasAccessToCycle($cycle)) {
+        if (! $user) {
+            return redirect()->route('login', ['redirect' => route('cycles.show', $cycle)])
+                ->with('error', 'سجّل دخولك الأول عشان تشوف المحاضرة دي — ممكن يكون عندك صلاحية وصول بالفعل.');
+        }
+
+        if (! $user->hasAccessToCycle($cycle)) {
             return redirect()->route('cycles.show', $cycle)
                 ->with('success', 'لازم تكون مسجل في السايكل الأول عشان تشوف المحاضرة دي.');
         }

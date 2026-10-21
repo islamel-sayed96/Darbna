@@ -43,6 +43,11 @@ class Material extends Model
         return $this->hasMany(MaterialPage::class)->orderBy('position');
     }
 
+    public function cycleLinks(): HasMany
+    {
+        return $this->hasMany(CycleMaterial::class);
+    }
+
     public function accesses(): MorphMany
     {
         return $this->morphMany(ContentAccess::class, 'accessible');

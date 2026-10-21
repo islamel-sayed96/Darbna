@@ -295,6 +295,112 @@ class MaterialsAndCyclesTest extends TestCase
         $this->assertSame('Lesson One Introduction', $material->pages()->orderBy('position')->first()->content);
     }
 
+    public function test_guest_visiting_a_locked_cycle_lecture_is_sent_to_login(): void
+    {
+        $cycle = $this->makeCycle();
+        $lecture = $cycle->lectures()->first();
+
+        $this->get(route('cycle-lectures.show', $lecture))
+            ->assertRedirect(route('login', ['redirect' => route('cycles.show', $cycle)]));
+    }
+
+    public function test_cycle_lecture_recording_can_be_a_zoom_link_instead_of_youtube(): void
+    {
+        $admin = User::role('admin')->first();
+        $cycle = $this->makeCycle();
+
+        $this->actingAs($admin)->post(route('admin.cycle-lectures.store', $cycle), [
+            'title' => 'محاضرة بتسجيل زووم',
+            'video_url' => 'https://zoom.us/rec/share/abc123',
+        ])->assertRedirect();
+
+        $lecture = $cycle->lectures()->where('title', 'محاضرة بتسجيل زووم')->first();
+        $this->assertSame('external', $lecture->video_provider);
+        $this->assertNull($lecture->video_id);
+        $this->assertSame('https://zoom.us/rec/share/abc123', $lecture->video_url);
+    }
+
+    public function test_admin_can_attach_a_link_and_an_existing_material_to_a_cycle(): void
+    {
+        $admin = User::role('admin')->first();
+        $cycle = $this->makeCycle();
+        $material = $this->makeMaterial(['price' => 49]);
+
+        $this->actingAs($admin)->post(route('admin.cycle-materials.store', $cycle), [
+            'type' => 'link',
+            'title' => 'ملخص خارجي',
+            'url' => 'https://drive.example.com/summary.pdf',
+        ])->assertRedirect();
+
+        $this->actingAs($admin)->post(route('admin.cycle-materials.store', $cycle), [
+            'type' => 'material',
+            'material_id' => $material->id,
+        ])->assertRedirect();
+
+        $this->assertSame(2, $cycle->materialEntries()->count());
+        $materialEntry = $cycle->materialEntries()->where('type', 'material')->first();
+        $this->assertSame($material->title, $materialEntry->title);
+    }
+
+    public function test_student_enrolled_in_a_cycle_gets_free_access_to_its_linked_material(): void
+    {
+        $admin = User::role('admin')->first();
+        $student = User::role('student')->first();
+        $cycle = $this->makeCycle();
+        $material = $this->makeMaterial(['price' => 49]);
+
+        $this->assertFalse($student->hasAccessToMaterial($material));
+
+        $this->actingAs($admin)->post(route('admin.cycle-materials.store', $cycle), [
+            'type' => 'material',
+            'material_id' => $material->id,
+        ]);
+
+        $this->assertFalse($student->hasAccessToMaterial($material));
+
+        ContentAccess::create([
+            'user_id' => $student->id,
+            'accessible_type' => Cycle::class,
+            'accessible_id' => $cycle->id,
+            'source' => ContentAccess::SOURCE_MANUAL,
+            'granted_at' => now(),
+        ]);
+
+        $this->assertTrue($student->hasAccessToCycle($cycle));
+        $this->assertTrue($student->hasAccessToMaterial($material));
+
+        $page = $material->pages()->first();
+        $this->actingAs($student)->get(route('material-pages.show', $page))->assertOk();
+    }
+
+    public function test_student_dashboard_lists_their_cycles_and_materials(): void
+    {
+        $student = User::role('student')->first();
+        $cycle = $this->makeCycle();
+        $material = $this->makeMaterial();
+
+        ContentAccess::create([
+            'user_id' => $student->id,
+            'accessible_type' => Cycle::class,
+            'accessible_id' => $cycle->id,
+            'source' => ContentAccess::SOURCE_MANUAL,
+            'granted_at' => now(),
+        ]);
+        ContentAccess::create([
+            'user_id' => $student->id,
+            'accessible_type' => Material::class,
+            'accessible_id' => $material->id,
+            'source' => ContentAccess::SOURCE_MANUAL,
+            'granted_at' => now(),
+        ]);
+
+        $this->actingAs($student)->get(route('student.dashboard'))
+            ->assertInertia(fn ($page) => $page
+                ->where('cycles.0.id', $cycle->id)
+                ->where('materials.0.id', $material->id)
+            );
+    }
+
     public function test_admin_can_revoke_manual_content_access(): void
     {
         $admin = User::role('admin')->first();

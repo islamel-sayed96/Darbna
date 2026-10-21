@@ -3,6 +3,8 @@ import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard({
     enrollments,
+    cycles,
+    materials,
     activeSubscription,
     certificatesCount,
 }) {
@@ -97,6 +99,77 @@ export default function Dashboard({
                                 <p className="text-sm text-gray-500">
                                     لسه مسجلتش في أي كورس، ابدأ بتصفح
                                     الكورسات المتاحة.
+                                </p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="mb-3 flex items-center justify-between">
+                            <h3 className="font-semibold text-gray-900 dark:text-white">
+                                السايكلات بتاعتي
+                            </h3>
+                            <Link
+                                href={route('cycles.index')}
+                                className="text-sm text-brand-600 hover:underline"
+                            >
+                                تصفح المزيد من السايكلات
+                            </Link>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            {cycles.map((cycle) => (
+                                <Link
+                                    key={cycle.id}
+                                    href={route('cycles.show', cycle.slug)}
+                                    className="rounded-lg bg-white p-5 shadow transition hover:shadow-md dark:bg-gray-800"
+                                >
+                                    <h4 className="font-semibold text-gray-900 dark:text-white">
+                                        {cycle.title}
+                                    </h4>
+                                </Link>
+                            ))}
+
+                            {cycles.length === 0 && (
+                                <p className="text-sm text-gray-500">
+                                    لسه مسجلتش في أي سايكل.
+                                </p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="mb-3 flex items-center justify-between">
+                            <h3 className="font-semibold text-gray-900 dark:text-white">
+                                موادي العلمية
+                            </h3>
+                            <Link
+                                href={route('materials.index')}
+                                className="text-sm text-brand-600 hover:underline"
+                            >
+                                تصفح المزيد من المواد العلمية
+                            </Link>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            {materials.map((material) => (
+                                <Link
+                                    key={material.id}
+                                    href={route(
+                                        'materials.show',
+                                        material.slug,
+                                    )}
+                                    className="rounded-lg bg-white p-5 shadow transition hover:shadow-md dark:bg-gray-800"
+                                >
+                                    <h4 className="font-semibold text-gray-900 dark:text-white">
+                                        {material.title}
+                                    </h4>
+                                </Link>
+                            ))}
+
+                            {materials.length === 0 && (
+                                <p className="text-sm text-gray-500">
+                                    لسه مشتريتش أي مادة علمية.
                                 </p>
                             )}
                         </div>

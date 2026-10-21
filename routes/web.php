@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\CycleController as AdminCycleController;
 use App\Http\Controllers\Admin\CycleLectureController as AdminCycleLectureController;
+use App\Http\Controllers\Admin\CycleMaterialController as AdminCycleMaterialController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EnrollmentController as AdminEnrollmentController;
 use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructorApplicationController;
@@ -150,6 +151,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::post('/cycles/{cycle}/lectures', [AdminCycleLectureController::class, 'store'])->name('cycle-lectures.store');
         Route::put('/cycle-lectures/{cycleLecture}', [AdminCycleLectureController::class, 'update'])->name('cycle-lectures.update');
         Route::delete('/cycle-lectures/{cycleLecture}', [AdminCycleLectureController::class, 'destroy'])->name('cycle-lectures.destroy');
+
+        Route::post('/cycles/{cycle}/materials', [AdminCycleMaterialController::class, 'store'])->name('cycle-materials.store');
+        Route::delete('/cycle-materials/{cycleMaterial}', [AdminCycleMaterialController::class, 'destroy'])->name('cycle-materials.destroy');
 
         Route::get('/instructor-applications', [AdminInstructorApplicationController::class, 'index'])->name('instructor-applications.index');
         Route::post('/instructor-applications/{instructorApplication}/approve', [AdminInstructorApplicationController::class, 'approve'])->name('instructor-applications.approve');

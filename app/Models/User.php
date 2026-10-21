@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -85,7 +86,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, Subscription>
+     * @return Collection<int, Subscription>
      */
     public function activeSubscriptions()
     {
@@ -117,10 +118,21 @@ class User extends Authenticatable
             return true;
         }
 
-        return $this->contentAccesses()
+        $hasDirectAccess = $this->contentAccesses()
             ->where('accessible_type', Material::class)
             ->where('accessible_id', $material->id)
             ->exists();
+
+        if ($hasDirectAccess) {
+            return true;
+        }
+
+        return $material->cycleLinks()
+            ->with('cycle')
+            ->get()
+            ->pluck('cycle')
+            ->filter()
+            ->contains(fn (Cycle $cycle) => $this->hasAccessToCycle($cycle));
     }
 
     public function hasAccessToCycle(Cycle $cycle): bool

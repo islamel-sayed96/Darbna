@@ -22,7 +22,11 @@ class CycleController extends Controller
     {
         abort_unless($cycle->is_published, 404);
 
-        $cycle->load('category:id,name', 'lectures:id,cycle_id,title,position');
+        $cycle->load(
+            'category:id,name',
+            'lectures:id,cycle_id,title,position',
+            'materialEntries.material:id,title,slug',
+        );
 
         $user = auth()->user();
 

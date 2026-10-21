@@ -38,6 +38,11 @@ class Cycle extends Model
         return $this->hasMany(CycleLecture::class)->orderBy('position');
     }
 
+    public function materialEntries(): HasMany
+    {
+        return $this->hasMany(CycleMaterial::class)->orderBy('position');
+    }
+
     public function accesses(): MorphMany
     {
         return $this->morphMany(ContentAccess::class, 'accessible');

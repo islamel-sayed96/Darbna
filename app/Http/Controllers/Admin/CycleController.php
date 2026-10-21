@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Cycle;
+use App\Models\Material;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -46,11 +47,12 @@ class CycleController extends Controller
 
     public function edit(Cycle $cycle): Response
     {
-        $cycle->load('lectures');
+        $cycle->load('lectures', 'materialEntries.material:id,title,slug');
 
         return Inertia::render('Admin/Cycles/Edit', [
             'cycle' => $cycle,
             'categories' => Category::orderBy('name')->get(['id', 'name']),
+            'materials' => Material::orderBy('title')->get(['id', 'title']),
         ]);
     }
 

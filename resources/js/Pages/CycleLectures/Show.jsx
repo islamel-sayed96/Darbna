@@ -31,6 +31,18 @@ export default function Show({ cycle, lecture, lectures, currentIndex }) {
                                         allowFullScreen
                                     />
                                 </div>
+                            ) : lecture.video_url ? (
+                                <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 bg-gray-800 text-gray-300">
+                                    <p>تسجيل المحاضرة ده رابط خارجي (زووم)</p>
+                                    <a
+                                        href={lecture.video_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="rounded-md bg-brand-600 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-500"
+                                    >
+                                        افتح رابط التسجيل
+                                    </a>
+                                </div>
                             ) : (
                                 <div className="flex aspect-video w-full items-center justify-center bg-gray-800 text-gray-400">
                                     لسه محدّدش فيديو للمحاضرة دي

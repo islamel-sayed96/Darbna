@@ -47,9 +47,6 @@ class CycleLectureController extends Controller
 
     private function withVideoProvider(array $data): array
     {
-        $data['video_provider'] = 'youtube';
-        $data['video_id'] = VideoUrl::extractYoutubeId($data['video_url']);
-
-        return $data;
+        return [...$data, ...VideoUrl::detectProvider($data['video_url'])];
     }
 }
