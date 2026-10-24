@@ -74,4 +74,4 @@ foreach ($commands as [$command, $arguments]) {
     echo str_repeat('-', 60)."\n";
 }
 
-echo "Done. Delete this file now (public/_darbna_setup.php).\n";
+echo "Done. Delete this file now (public/_darbna_ops_k7m2x.php).\n";
