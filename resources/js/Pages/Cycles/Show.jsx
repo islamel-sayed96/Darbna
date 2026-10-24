@@ -140,7 +140,7 @@ export default function Show({ cycle, hasAccess }) {
                             {cycle.material_entries.map((entry) =>
                                 hasAccess ? (
                                     <li key={entry.id}>
-                                        {entry.type === 'material' ? (
+                                        {entry.type === 'material' && (
                                             <Link
                                                 href={route(
                                                     'materials.show',
@@ -150,7 +150,8 @@ export default function Show({ cycle, hasAccess }) {
                                             >
                                                 {entry.title}
                                             </Link>
-                                        ) : (
+                                        )}
+                                        {entry.type === 'link' && (
                                             <a
                                                 href={entry.url}
                                                 target="_blank"
@@ -158,6 +159,22 @@ export default function Show({ cycle, hasAccess }) {
                                                 className="block rounded px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
                                             >
                                                 {entry.title}
+                                            </a>
+                                        )}
+                                        {entry.type === 'pdf' && (
+                                            <a
+                                                href={
+                                                    route(
+                                                        'cycle-materials.view',
+                                                        entry.id,
+                                                    ) +
+                                                    '#toolbar=0&navpanes=0'
+                                                }
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block rounded px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            >
+                                                {entry.title} (معاينة فقط)
                                             </a>
                                         )}
                                     </li>

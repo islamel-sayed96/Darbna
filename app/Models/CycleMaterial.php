@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['cycle_id', 'type', 'title', 'url', 'material_id', 'position'])]
+#[Fillable(['cycle_id', 'type', 'title', 'url', 'material_id', 'file_path', 'position'])]
 class CycleMaterial extends Model
 {
     public const TYPE_LINK = 'link';
 
     public const TYPE_MATERIAL = 'material';
+
+    public const TYPE_PDF = 'pdf';
 
     public function cycle(): BelongsTo
     {

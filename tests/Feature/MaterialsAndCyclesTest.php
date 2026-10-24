@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\ContentAccess;
 use App\Models\Cycle;
+use App\Models\CycleMaterial;
 use App\Models\Material;
 use App\Models\Payment;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class MaterialsAndCyclesTest extends TestCase
@@ -269,32 +271,6 @@ class MaterialsAndCyclesTest extends TestCase
         $this->actingAs($admin)->get(route('admin.enrollments.index'))->assertOk();
     }
 
-    public function test_admin_can_import_pages_from_a_pdf(): void
-    {
-        $admin = User::role('admin')->first();
-        $material = Material::create([
-            'title' => 'مادة من PDF',
-            'slug' => 'material-pdf-'.uniqid(),
-            'price' => 0,
-            'is_published' => true,
-        ]);
-
-        $pdf = new UploadedFile(
-            base_path('tests/Fixtures/sample-material.pdf'),
-            'sample.pdf',
-            'application/pdf',
-            null,
-            true,
-        );
-
-        $this->actingAs($admin)
-            ->post(route('admin.materials.pdf-import', $material), ['pdf' => $pdf])
-            ->assertRedirect();
-
-        $this->assertSame(2, $material->pages()->count());
-        $this->assertSame('Lesson One Introduction', $material->pages()->orderBy('position')->first()->content);
-    }
-
     public function test_guest_visiting_a_locked_cycle_lecture_is_sent_to_login(): void
     {
         $cycle = $this->makeCycle();
@@ -340,6 +316,88 @@ class MaterialsAndCyclesTest extends TestCase
         $this->assertSame(2, $cycle->materialEntries()->count());
         $materialEntry = $cycle->materialEntries()->where('type', 'material')->first();
         $this->assertSame($material->title, $materialEntry->title);
+    }
+
+    public function test_admin_can_attach_a_protected_pdf_to_a_cycle(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $cycle = $this->makeCycle();
+
+        $this->actingAs($admin)->post(route('admin.cycle-materials.store', $cycle), [
+            'type' => 'pdf',
+            'title' => 'ملخص السايكل',
+            'pdf' => UploadedFile::fake()->create('summary.pdf', 100, 'application/pdf'),
+        ])->assertRedirect();
+
+        $entry = $cycle->materialEntries()->where('type', 'pdf')->firstOrFail();
+        $this->assertNotNull($entry->file_path);
+        Storage::disk('local')->assertExists($entry->file_path);
+    }
+
+    public function test_guest_cannot_view_a_cycles_protected_pdf(): void
+    {
+        Storage::fake('local');
+
+        $cycle = $this->makeCycle();
+        $entry = $cycle->materialEntries()->create([
+            'type' => CycleMaterial::TYPE_PDF,
+            'title' => 'ملخص',
+            'file_path' => 'cycle-materials/'.$cycle->id.'/summary.pdf',
+            'position' => 1,
+        ]);
+        Storage::disk('local')->put($entry->file_path, 'fake pdf content');
+
+        $this->get(route('cycle-materials.view', $entry))->assertRedirect(route('login'));
+    }
+
+    public function test_enrolled_student_can_view_a_cycles_protected_pdf(): void
+    {
+        Storage::fake('local');
+
+        $student = User::role('student')->first();
+        $cycle = $this->makeCycle();
+        $entry = $cycle->materialEntries()->create([
+            'type' => CycleMaterial::TYPE_PDF,
+            'title' => 'ملخص',
+            'file_path' => 'cycle-materials/'.$cycle->id.'/summary.pdf',
+            'position' => 1,
+        ]);
+        Storage::disk('local')->put($entry->file_path, 'fake pdf content');
+
+        ContentAccess::create([
+            'user_id' => $student->id,
+            'accessible_type' => Cycle::class,
+            'accessible_id' => $cycle->id,
+            'source' => ContentAccess::SOURCE_MANUAL,
+            'granted_at' => now(),
+        ]);
+
+        $response = $this->actingAs($student)->get(route('cycle-materials.view', $entry));
+        $response->assertOk();
+        $this->assertStringContainsString('inline', $response->headers->get('Content-Disposition'));
+    }
+
+    public function test_deleting_a_pdf_cycle_material_removes_its_file(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $cycle = $this->makeCycle();
+        $entry = $cycle->materialEntries()->create([
+            'type' => CycleMaterial::TYPE_PDF,
+            'title' => 'ملخص',
+            'file_path' => 'cycle-materials/'.$cycle->id.'/summary.pdf',
+            'position' => 1,
+        ]);
+        Storage::disk('local')->put($entry->file_path, 'fake pdf content');
+
+        $this->actingAs($admin)->delete(route('admin.cycle-materials.destroy', $entry))
+            ->assertRedirect();
+
+        Storage::disk('local')->assertMissing($entry->file_path);
+        $this->assertDatabaseMissing('cycle_materials', ['id' => $entry->id]);
     }
 
     public function test_student_enrolled_in_a_cycle_gets_free_access_to_its_linked_material(): void

@@ -6,48 +6,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 
-function PdfImportForm({ material }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        pdf: null,
-    });
-
-    const submit = (e) => {
-        e.preventDefault();
-        if (!data.pdf) return;
-        post(route('admin.materials.pdf-import', material.id), {
-            forceFormData: true,
-            preserveScroll: true,
-            onSuccess: () => reset('pdf'),
-        });
-    };
-
-    return (
-        <form onSubmit={submit} className="mt-4 flex items-end gap-2">
-            <div className="flex-1">
-                <InputLabel
-                    htmlFor="pdf"
-                    value="استخرج صفحات من ملف PDF (كل صفحة في الملف تتحول لصفحة مستقلة)"
-                />
-                <input
-                    id="pdf"
-                    type="file"
-                    accept="application/pdf"
-                    className="mt-1 block w-full text-sm text-gray-700 dark:text-gray-200"
-                    onChange={(e) => setData('pdf', e.target.files[0] ?? null)}
-                />
-                <InputError message={errors.pdf} className="mt-1" />
-            </div>
-            <button
-                type="submit"
-                disabled={processing || !data.pdf}
-                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-60 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
-            >
-                {processing ? 'جاري الاستخراج...' : 'استخراج الصفحات'}
-            </button>
-        </form>
-    );
-}
-
 function AddPageForm({ material }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -302,8 +260,6 @@ export default function Edit({ material, categories, courses }) {
                                 </p>
                             )}
                         </ul>
-
-                        <PdfImportForm material={material} />
 
                         <AddPageForm material={material} />
                     </div>

@@ -25,6 +25,7 @@ class CycleController extends Controller
         $cycle->load(
             'category:id,name',
             'lectures:id,cycle_id,title,position',
+            'materialEntries:id,cycle_id,type,title,url,material_id,position',
             'materialEntries.material:id,title,slug',
         );
 

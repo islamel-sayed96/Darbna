@@ -59,32 +59,35 @@ function AddCycleMaterialForm({ cycle, materials }) {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const [materialId, setMaterialId] = useState('');
+    const [pdf, setPdf] = useState(null);
     const [processing, setProcessing] = useState(false);
+
+    const reset = () => {
+        setTitle('');
+        setUrl('');
+        setMaterialId('');
+        setPdf(null);
+    };
 
     const submit = (e) => {
         e.preventDefault();
         if (type === 'link' && (!title.trim() || !url.trim())) return;
         if (type === 'material' && !materialId) return;
+        if (type === 'pdf' && (!title.trim() || !pdf)) return;
+
+        const formData = new FormData();
+        formData.append('type', type);
+        if (title) formData.append('title', title);
+        if (type === 'link') formData.append('url', url);
+        if (type === 'material') formData.append('material_id', materialId);
+        if (type === 'pdf') formData.append('pdf', pdf);
 
         setProcessing(true);
-        router.post(
-            route('admin.cycle-materials.store', cycle.id),
-            {
-                type,
-                title: title || null,
-                url: type === 'link' ? url : null,
-                material_id: type === 'material' ? materialId : null,
-            },
-            {
-                preserveScroll: true,
-                onFinish: () => setProcessing(false),
-                onSuccess: () => {
-                    setTitle('');
-                    setUrl('');
-                    setMaterialId('');
-                },
-            },
-        );
+        router.post(route('admin.cycle-materials.store', cycle.id), formData, {
+            preserveScroll: true,
+            onFinish: () => setProcessing(false),
+            onSuccess: reset,
+        });
     };
 
     return (
@@ -106,9 +109,17 @@ function AddCycleMaterialForm({ cycle, materials }) {
                     />
                     مادة علمية من الموقع
                 </label>
+                <label className="flex items-center gap-1.5">
+                    <input
+                        type="radio"
+                        checked={type === 'pdf'}
+                        onChange={() => setType('pdf')}
+                    />
+                    ملف PDF (معاينة بدون تحميل سهل)
+                </label>
             </div>
 
-            {type === 'link' ? (
+            {type === 'link' && (
                 <>
                     <TextInput
                         className="block w-full"
@@ -123,7 +134,9 @@ function AddCycleMaterialForm({ cycle, materials }) {
                         onChange={(e) => setUrl(e.target.value)}
                     />
                 </>
-            ) : (
+            )}
+
+            {type === 'material' && (
                 <select
                     className="block w-full rounded-md border-gray-300 text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
                     value={materialId}
@@ -138,12 +151,34 @@ function AddCycleMaterialForm({ cycle, materials }) {
                 </select>
             )}
 
+            {type === 'pdf' && (
+                <>
+                    <TextInput
+                        className="block w-full"
+                        placeholder="عنوان المادة"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <input
+                        type="file"
+                        accept="application/pdf"
+                        className="block w-full text-sm text-gray-700 dark:text-gray-200"
+                        onChange={(e) => setPdf(e.target.files[0] ?? null)}
+                    />
+                    <p className="text-xs text-gray-500">
+                        الملف هيفتح في معاينة داخل الموقع من غير زرار تحميل
+                        ظاهر — ده بيقلل التحميل العشوائي، بس مش حماية كاملة
+                        100% (أي حد عنده خبرة تقنية يقدر يحفظه برضو).
+                    </p>
+                </>
+            )}
+
             <button
                 type="submit"
                 disabled={processing}
-                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-60 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
             >
-                + إضافة مادة علمية
+                {processing ? 'جاري الإضافة...' : '+ إضافة مادة علمية'}
             </button>
         </form>
     );
@@ -342,6 +377,11 @@ export default function Edit({ cycle, categories, materials }) {
                                         {entry.type === 'material' && (
                                             <span className="ms-2 text-xs text-brand-600">
                                                 (مادة من الموقع)
+                                            </span>
+                                        )}
+                                        {entry.type === 'pdf' && (
+                                            <span className="ms-2 text-xs text-brand-600">
+                                                (PDF محمي)
                                             </span>
                                         )}
                                     </span>
