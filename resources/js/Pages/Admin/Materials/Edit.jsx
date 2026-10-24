@@ -38,9 +38,9 @@ function AddPageForm({ material }) {
                 onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
-                rows={4}
-                className="block w-full rounded-md border-gray-300 text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                placeholder="محتوى الصفحة العلمي..."
+                rows={8}
+                className="block w-full rounded-md border-gray-300 font-mono text-sm shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                placeholder="محتوى الصفحة العلمي... (بيدعم Markdown: ## عنوان، **عريض**، - نقاط، > اقتباس، ![صورة](رابط))"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
             />

@@ -1,5 +1,7 @@
 import SiteLayout from '@/Layouts/SiteLayout';
 import { Head, Link } from '@inertiajs/react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default function Show({ material, page, pages, currentIndex }) {
     const prevPage = currentIndex > 0 ? pages[currentIndex - 1] : null;
@@ -26,9 +28,11 @@ export default function Show({ material, page, pages, currentIndex }) {
                             </h1>
 
                             {page.content && (
-                                <p className="mt-3 whitespace-pre-line text-gray-700 dark:text-gray-300">
-                                    {page.content}
-                                </p>
+                                <div className="prose prose-brand mt-3 max-w-none dark:prose-invert">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        {page.content}
+                                    </ReactMarkdown>
+                                </div>
                             )}
 
                             {page.quiz && (

@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -32,8 +33,44 @@ export default {
                     950: '#092827',
                 },
             },
+            typography: ({ theme }) => ({
+                DEFAULT: {
+                    css: {
+                        '--tw-prose-links': theme('colors.brand[600]'),
+                        '--tw-prose-bold': theme('colors.gray[900]'),
+                        '--tw-prose-quotes': theme('colors.brand[700]'),
+                        '--tw-prose-quote-borders': theme('colors.brand[300]'),
+                        '--tw-prose-bullets': theme('colors.brand[500]'),
+                        '--tw-prose-counters': theme('colors.brand[600]'),
+                        'img': {
+                            borderRadius: theme('borderRadius.lg'),
+                            boxShadow: theme('boxShadow.md'),
+                        },
+                        'blockquote': {
+                            backgroundColor: theme('colors.brand[50]'),
+                            borderInlineStartWidth: '4px',
+                            padding: '0.75rem 1rem',
+                            borderRadius: theme('borderRadius.md'),
+                            fontStyle: 'normal',
+                        },
+                    },
+                },
+                invert: {
+                    css: {
+                        '--tw-prose-invert-links': theme('colors.brand[400]'),
+                        '--tw-prose-invert-bold': theme('colors.gray[100]'),
+                        '--tw-prose-invert-quotes': theme('colors.brand[300]'),
+                        '--tw-prose-invert-quote-borders': theme('colors.brand[700]'),
+                        '--tw-prose-invert-bullets': theme('colors.brand[400]'),
+                        '--tw-prose-invert-counters': theme('colors.brand[400]'),
+                        'blockquote': {
+                            backgroundColor: 'rgb(28 127 122 / 0.15)',
+                        },
+                    },
+                },
+            }),
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typography],
 };
