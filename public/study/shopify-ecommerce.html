@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Poppins:ital,wght@0,600;1,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Poppins:ital,wght@0,600;0,800;1,800&display=swap">
 <style>
 /* Layout: diploma workbook in a green "paper note" identity. Course home + one view per chapter (hash routed), chapter rail, paper-card hero per chapter. Arabic (RTL) and English (LTR). */
 :root{
@@ -435,6 +435,92 @@ table.t th,table.t td{text-align:start}
 .commit input{accent-color:var(--accent);width:18px;height:18px}
 .commit:has(input:checked){background:var(--good-soft);border-color:var(--good)}
 
+/* ---------- what is dropshipping ---------- */
+.ic{display:inline-grid;place-items:center;font-style:normal}
+.ic svg{width:100%;height:100%;display:block}
+.ds-banner{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px 20px 0;text-align:center;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:8px}
+.ds-badge{width:76px;height:76px;border-radius:50%;background:var(--surface);padding:12px;box-shadow:0 0 0 4px var(--accent-dark)}
+.ds-title{font-family:var(--font-word);font-weight:800;font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;color:var(--ink);margin-top:6px}
+.ds-title span{display:block;color:var(--accent)}
+.ds-ar{font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--accent-dark)}
+.ds-flow{margin-top:18px;align-self:stretch;margin-inline:-20px;background:var(--accent-dark);padding:16px 12px;display:flex;justify-content:center;align-items:center;gap:8px;border-radius:50% 50% 0 0 / 28px 28px 0 0}
+.ds-flow .ic{width:50px;height:50px;background:var(--surface);border-radius:50%;padding:8px}
+.ds-flow b{width:min(56px,10vw);border-top:2px dashed var(--accent-ink);opacity:.8}
+.ds-def{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.ds-def > div{display:flex;flex-direction:column;gap:6px}
+.ds-def-main{font-family:var(--font-display);font-weight:800;font-size:1.3rem;line-height:1.6}
+mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border-radius:4px}
+.ds-def-sub{color:var(--muted)}
+.ds-motto{margin:0;background:var(--accent-dark);color:var(--accent-ink);border-radius:14px;padding:18px 16px;font-family:var(--font-display);font-weight:800;font-size:1.25rem;text-align:center;line-height:1.7}
+.ds-motto em{font-style:normal;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.nos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.no{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.no .ic{width:64px;height:64px;position:relative}
+.no:not(.yes) .ic::after{content:"";position:absolute;inset:2px;background:linear-gradient(45deg,transparent 45%,var(--bad) 45% 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--bad) 45% 55%,transparent 55%)}
+.no b{font-family:var(--font-display);font-size:1.15rem}
+.no b em{font-style:normal;color:var(--bad)}
+.no small{color:var(--muted);font-size:.85rem}
+.no.yes{background:var(--accent-soft);border-color:var(--accent)}
+.no.yes small{color:var(--accent-dark);font-weight:700}
+.vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch}
+.vs-col{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.vs-col.old{background:var(--sunk);filter:grayscale(1)}
+.vs-col.new{background:var(--accent-soft)}
+.vs-tag{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:800;font-size:1.15rem}
+.vs-tag .ic{width:34px;height:34px}
+.vs-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.vs-steps li{display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:10px;padding:8px 10px;font-weight:600}
+.vs-steps .ic{width:36px;height:36px;flex:none}
+.vs-steps li.bad{color:var(--bad)} .vs-steps li.good{color:var(--good)}
+.vs-mid{align-self:center;font-family:var(--font-poster);font-size:1.6rem;color:var(--muted)}
+.journey5{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.journey5 li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 10px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-width:0}
+.journey5 li.you{border:2px solid var(--accent);background:var(--accent-soft)}
+.journey5 .who{font-family:var(--font-display);font-weight:800;background:var(--accent-dark);color:var(--accent-ink);border-radius:8px;padding:2px 10px;font-size:.88rem;line-height:1.6}
+.journey5 .ic{width:60px;height:60px}
+.journey5 p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.journey5 li:not(:last-child)::after{content:"";position:absolute;top:50%;inset-inline-end:-14px;width:14px;border-top:2px dashed var(--accent)}
+.journey5 .money{position:absolute;top:calc(50% - 30px);inset-inline-end:-20px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem;z-index:1}
+.journey-note{text-align:center;font-weight:700;color:var(--accent-dark)}
+.ds-facts{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.ds-facts h3{font-size:1.2rem}
+.ds-facts ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ds-facts li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.ds-facts li:last-child{border-bottom:0}
+.ds-facts .ic{width:42px;height:42px;flex:none;border-radius:50%;border:2px solid var(--accent);padding:6px}
+.ds-facts b{color:var(--accent-dark)}
+.why5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.why5 > div{padding:16px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;border-inline-start:1px solid var(--line);min-width:0}
+.why5 > div:first-child{border-inline-start:0}
+.why5 .ic{width:52px;height:52px}
+.why5 p{font-weight:700;font-size:.9rem;line-height:1.6}
+.pillars-band{background:var(--night);border-radius:18px;padding:34px 16px 26px}
+.pillars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 12px}
+.pillar{--pc:#8FCB52;position:relative;text-decoration:none;color:var(--night-ink);display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:26px 10px 14px;border-radius:14px 14px 6px 6px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid color-mix(in srgb,var(--pc) 55%,transparent);box-shadow:0 0 26px -12px var(--pc);transition:transform .2s;min-width:0}
+.pillar::after{content:"";position:absolute;bottom:-9px;left:6px;right:6px;height:8px;border-radius:0 0 6px 6px;background:var(--pc);opacity:.55}
+.pillar.p2{--pc:#5AB0F5}.pillar.p3{--pc:#B48CF0}.pillar.p4{--pc:#F49A4A}.pillar.p5{--pc:#E8B84E}
+.pillar:hover{transform:translateY(-3px)}
+.pillar:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
+.pillar .pn{position:absolute;top:-17px;width:34px;height:34px;border-radius:50%;background:var(--night);border:2px solid var(--pc);color:var(--pc);display:grid;place-items:center;font-family:var(--font-poster);font-size:1.1rem}
+.pillar .ic{width:60px;height:60px;padding:8px;background:#F4F5EE;border-radius:12px}
+.pillar b{font-family:var(--font-display);font-size:1.15rem}
+.pillar small{color:var(--pc);font-weight:700;font-family:var(--font-word)}
+#root[data-lang="en"] .pillar small{display:none}
+.pillar p{font-size:.85rem;opacity:.88;line-height:1.6}
+.pillar .where{margin-top:auto;font-size:.75rem;border:1px solid var(--pc);color:var(--pc);border-radius:99px;padding:1px 10px}
+@media (max-width:900px){
+  .nos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .journey5{grid-template-columns:minmax(0,1fr);max-width:420px;margin-inline:auto;width:100%}
+  .journey5 li:not(:last-child)::after{top:auto;bottom:-14px;inset-inline-end:50%;width:0;height:14px;border-top:0;border-inline-start:2px dashed var(--accent)}
+  .journey5 .money{top:auto;bottom:-24px;inset-inline-end:calc(50% + 10px)}
+  .why5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .why5 > div{border-inline-start:0;border-top:1px solid var(--line)}
+  .why5 > div:last-child{grid-column:1/-1}
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pillar.p5{grid-column:1/-1}
+}
+@media (max-width:700px){.vs{grid-template-columns:minmax(0,1fr)}.vs-mid{justify-self:center}.ds-def{grid-template-columns:minmax(0,1fr)}}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -577,7 +663,7 @@ table.t th,table.t td{text-align:start}
   <div class="home-meta">
     <div><b>10</b><span data-l="ar">فصول عملية</span><span data-l="en">practical chapters</span></div>
     <div><b>10</b><span data-l="ar">تدريبات تطبقها على متجرك</span><span data-l="en">exercises on your own store</span></div>
-    <div><b>147</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
+    <div><b>153</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
     <div><b><span id="pDone">0</span>/10</b><span data-l="ar">فصول خلّصتها</span><span data-l="en">chapters completed</span><div class="bar"><i id="pBar"></i></div></div>
   </div>
   <div class="sec-head"><div class="en">COURSE CONTENT</div><h2><span data-l="ar">محتوى الدبلوم</span><span data-l="en">What's inside</span></h2>
@@ -777,39 +863,100 @@ table.t th,table.t td{text-align:start}
     <h3><span data-l="ar">يعني إيه تجارة إلكترونية؟</span><span data-l="en">What is e-commerce?</span></h3>
     <p data-l="ar">التجارة الإلكترونية (E-Commerce) هي إنك تبيع منتج أو خدمة عن طريق الإنترنت: العميل يشوف المنتج على موقعك، يدفع أونلاين، والمنتج يوصله لحد البيت. الفكرة نفسها زي أي محل، بس المحل هنا هو <b>المتجر الإلكتروني</b>، والزباين جايين من <b>الإعلانات والسوشيال ميديا</b>.</p>
     <p data-l="en">E-commerce means selling a product or service over the internet: the customer sees the product on your site, pays online, and it's delivered to their door. It's like any shop, except the shop is your <b>online store</b> and customers come from <b>ads and social media</b>.</p>
-    <h3><span data-l="ar">نماذج البيع أونلاين</span><span data-l="en">Ways to sell online</span></h3>
   </div>
-  <div class="cards">
-    <div class="card"><span class="idx">Inventory</span><h4><span data-l="ar">تخزين بضاعة</span><span data-l="en">Holding stock</span></h4><p data-l="ar">بتشتري كمية وتخزنها وتشحنها بنفسك. ربح أعلى للقطعة، بس محتاج رأس مال ومخزن، ولو المنتج ما اتباعش البضاعة بتفضل عندك.</p><p data-l="en">You buy stock, store it and ship it yourself. Higher profit per item, but you need capital and storage, and unsold stock stays with you.</p></div>
-    <div class="card"><span class="idx">Dropshipping</span><h4><span data-l="ar">دروبشيبينج</span><span data-l="en">Dropshipping</span></h4><p data-l="ar">بتعرض المنتج في متجرك من غير ما تشتريه. لما عميل يطلب، بتطلبه أنت من المورد وهو يشحنه للعميل مباشرة. ده النموذج اللي هنشتغل عليه.</p><p data-l="en">You list the product without buying it. When a customer orders, you order from the supplier, who ships directly to the customer. This is the model we'll use.</p></div>
-    <div class="card"><span class="idx">Print on Demand</span><h4><span data-l="ar">طباعة عند الطلب</span><span data-l="en">Print on demand</span></h4><p data-l="ar">تصاميمك على تيشيرتات أو مجات، والمورد بيطبع ويشحن لما ييجي طلب.</p><p data-l="en">Your designs on t-shirts or mugs; the supplier prints and ships when an order comes in.</p></div>
+  <!-- ===== What is dropshipping ===== -->
+  <div class="ds-banner">
+    <i class="ic ds-badge" data-ic="cart"></i>
+    <div class="ds-title" dir="ltr">What is <span>Dropshipping?</span></div>
+    <div class="ds-ar" data-l="ar">يعني إيه دروب شيبينج؟</div>
+    <div class="ds-flow" aria-hidden="true"><i class="ic" data-ic="user"></i><b></b><i class="ic" data-ic="shop"></i><b></b><i class="ic" data-ic="truck"></i><b></b><i class="ic" data-ic="parcel"></i></div>
   </div>
-  <figure class="fig">
-    <div class="scroll-x">
-    <svg viewBox="0 0 760 230" width="100%" style="min-width:600px" role="img" aria-label="Dropshipping order cycle">
-      <defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="s-acc"/></marker></defs>
-      <g data-l="ar">
-        <rect x="590" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="670" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">١. العميل يطلب</text><text x="670" y="100" text-anchor="middle" class="s-muted" font-size="12">يشوف الإعلان ويدفع</text><text x="670" y="118" text-anchor="middle" class="s-muted" font-size="12">$39.99 في متجرك</text>
-        <rect x="400" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="480" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٢. متجرك يستلم</text><text x="480" y="100" text-anchor="middle" class="s-muted" font-size="12">الطلب يظهر في Orders</text><text x="480" y="118" text-anchor="middle" class="s-muted" font-size="12">والفلوس في Payments</text>
-        <rect x="210" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="290" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٣. تطلب من المورد</text><text x="290" y="100" text-anchor="middle" class="s-muted" font-size="12">عن طريق DSers</text><text x="290" y="118" text-anchor="middle" class="s-muted" font-size="12">وتدفع $12 مثلًا</text>
-        <rect x="20" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="100" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">٤. المورد يشحن</text><text x="100" y="100" text-anchor="middle" class="s-muted" font-size="12">على عنوان العميل</text><text x="100" y="118" text-anchor="middle" class="s-muted" font-size="12">باسم البراند بتاعك</text>
-        <line x1="586" y1="88" x2="566" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/><line x1="396" y1="88" x2="376" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/><line x1="206" y1="88" x2="186" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/>
-        <path d="M100 140 C100 200, 670 200, 670 142" fill="none" class="s-stroke-muted" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#ar1)"/>
-        <text x="385" y="214" text-anchor="middle" class="s-gold" font-size="13" font-weight="700">ربحك = سعر البيع − (المنتج + الشحن + الإعلان)</text>
-      </g>
-      <g data-l="en">
-        <rect x="20" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="100" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">1. Customer orders</text><text x="100" y="100" text-anchor="middle" class="s-muted" font-size="12">sees the ad and pays</text><text x="100" y="118" text-anchor="middle" class="s-muted" font-size="12">$39.99 in your store</text>
-        <rect x="210" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="290" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">2. Your store receives</text><text x="290" y="100" text-anchor="middle" class="s-muted" font-size="12">order shows in Orders</text><text x="290" y="118" text-anchor="middle" class="s-muted" font-size="12">money in Payments</text>
-        <rect x="400" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="480" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">3. You order</text><text x="480" y="100" text-anchor="middle" class="s-muted" font-size="12">from the supplier via DSers</text><text x="480" y="118" text-anchor="middle" class="s-muted" font-size="12">paying e.g. $12</text>
-        <rect x="590" y="40" width="160" height="96" rx="12" class="s-accsoft"/><text x="670" y="76" text-anchor="middle" class="s-ink" font-size="15" font-weight="700">4. Supplier ships</text><text x="670" y="100" text-anchor="middle" class="s-muted" font-size="12">to the customer</text><text x="670" y="118" text-anchor="middle" class="s-muted" font-size="12">under your brand</text>
-        <line x1="184" y1="88" x2="204" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/><line x1="374" y1="88" x2="394" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/><line x1="564" y1="88" x2="584" y2="88" class="s-stroke-acc" stroke-width="2.5" marker-end="url(#ar1)"/>
-        <path d="M670 140 C670 200, 100 200, 100 142" fill="none" class="s-stroke-muted" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#ar1)"/>
-        <text x="385" y="214" text-anchor="middle" class="s-gold" font-size="13" font-weight="700">Profit = price − (product + shipping + ads)</text>
-      </g>
-    </svg>
+
+  <div class="ds-def">
+    <div>
+      <span class="kicker"><span data-l="ar">التعريف</span><span data-l="en">Definition</span></span>
+      <p class="ds-def-main"><span data-l="ar">الدروب شيبينج هو نوع من أنواع التجارة المبنية على مبدأ <mark>العرض والطلب</mark>.</span><span data-l="en">Dropshipping is a type of commerce built on the principle of <mark>supply and demand</mark>.</span></p>
+      <p class="ds-def-sub"><span data-l="ar">بتعرض المنتجات في متجرك، والعميل يطلب، وأنت بتحوّل الطلب للمورد.</span><span data-l="en">You list products in your store, the customer orders, and you pass the order to the supplier.</span></p>
     </div>
-    <figcaption><span data-l="ar">دورة الطلب في الدروبشيبينج: أنت ما بتلمسش المنتج، بس بتتحكم في المتجر والتسويق وخدمة العملاء.</span><span data-l="en">The dropshipping order cycle: you never touch the product, but you run the store, the marketing and customer service.</span></figcaption>
-  </figure>
+    <blockquote class="ds-motto"><span data-l="ar">أنا <em>لا</em> بصنع، و<em>لا</em> بخزّن، و<em>لا</em> بشحن المنتج.</span><span data-l="en">I <em>don't</em> make it, I <em>don't</em> store it, I <em>don't</em> ship it.</span></blockquote>
+  </div>
+
+  <div class="nos">
+    <div class="no"><i class="ic" data-ic="factory"></i><b><em data-l="ar">لا</em><em data-l="en">No</em> <span data-l="ar">تصنع</span><span data-l="en">manufacturing</span></b><small data-l="ar">المورد هو اللي بيصنع</small><small data-l="en">The supplier makes it</small></div>
+    <div class="no"><i class="ic" data-ic="shelves"></i><b><em data-l="ar">لا</em><em data-l="en">No</em> <span data-l="ar">تخزن</span><span data-l="en">storage</span></b><small data-l="ar">مفيش مخزن ولا بضاعة راكدة</small><small data-l="en">No warehouse, no dead stock</small></div>
+    <div class="no"><i class="ic" data-ic="truck"></i><b><em data-l="ar">لا</em><em data-l="en">No</em> <span data-l="ar">تشحن</span><span data-l="en">shipping</span></b><small data-l="ar">المورد بيشحن للعميل مباشرة</small><small data-l="en">The supplier ships to the customer</small></div>
+    <div class="no yes"><i class="ic" data-ic="bulb"></i><b><span data-l="ar">أنت بتركز على</span><span data-l="en">You focus on</span></b><small data-l="ar">التسويق والمبيعات وخدمة العملاء</small><small data-l="en">Marketing, sales and customer service</small></div>
+  </div>
+
+  <div class="sec-head"><div class="en">TRADITIONAL VS DROPSHIPPING</div><h2><span data-l="ar">التجارة التقليدية والدروب شيبينج</span><span data-l="en">Traditional commerce vs dropshipping</span></h2></div>
+  <div class="vs">
+    <div class="vs-col old">
+      <div class="vs-tag"><i class="ic" data-ic="cart"></i><span data-l="ar">التجارة التقليدية</span><span data-l="en">Traditional commerce</span></div>
+      <ol class="vs-steps">
+        <li><i class="ic" data-ic="factory"></i><span data-l="ar">تصنع أو تشتري كمية</span><span data-l="en">Make or buy in bulk</span></li>
+        <li><i class="ic" data-ic="warehouse"></i><span data-l="ar">تخزن</span><span data-l="en">Store it</span></li>
+        <li><i class="ic" data-ic="truck"></i><span data-l="ar">تشحن بنفسك</span><span data-l="en">Ship it yourself</span></li>
+        <li class="bad"><i class="ic" data-ic="stress"></i><span data-l="ar">تكاليف عالية ومخاطر كبيرة</span><span data-l="en">High costs, big risks</span></li>
+      </ol>
+    </div>
+    <div class="vs-mid" aria-hidden="true">VS</div>
+    <div class="vs-col new">
+      <div class="vs-tag"><i class="ic" data-ic="bagw"></i><span data-l="ar">الدروب شيبينج</span><span data-l="en">Dropshipping</span></div>
+      <ol class="vs-steps">
+        <li><i class="ic" data-ic="laptopUser"></i><span data-l="ar">تنشئ متجرك</span><span data-l="en">Build your store</span></li>
+        <li><i class="ic" data-ic="shop"></i><span data-l="ar">العميل يطلب من متجرك</span><span data-l="en">Customer orders from you</span></li>
+        <li><i class="ic" data-ic="truck"></i><span data-l="ar">المورد يشحن للعميل مباشرة</span><span data-l="en">Supplier ships directly</span></li>
+        <li class="good"><i class="ic" data-ic="grow"></i><span data-l="ar">تكلفة أقل وأرباح أكتر</span><span data-l="en">Lower cost, more profit</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sec-head"><div class="en">HOW AN ORDER MOVES</div><h2><span data-l="ar">رحلة الطلب خطوة بخطوة</span><span data-l="en">The order journey, step by step</span></h2>
+    <p data-l="ar">من لحظة ما العميل يدوس «اطلب الآن» لحد ما الشحنة توصله.</p><p data-l="en">From the moment the customer taps "Buy now" until the parcel arrives.</p></div>
+  <ol class="journey5">
+    <li><span class="who"><span data-l="ar">العميل</span><span data-l="en">Customer</span></span><i class="ic" data-ic="laptopUser"></i><p data-l="ar">يختار المنتج ويطلب ويدفع لك</p><p data-l="en">Picks the product, orders and pays you</p><span class="money" title="$">$</span></li>
+    <li class="you"><span class="who"><span data-l="ar">أنت (صاحب المتجر)</span><span data-l="en">You (store owner)</span></span><i class="ic" data-ic="shop"></i><p data-l="ar">تستقبل الطلب وتحوّله للمورد وتدفع له</p><p data-l="en">Receive the order, forward it and pay the supplier</p><span class="money">$</span></li>
+    <li><span class="who"><span data-l="ar">المورد (المصنع)</span><span data-l="en">Supplier (factory)</span></span><i class="ic" data-ic="factory"></i><p data-l="ar">يصنع المنتج ويجهزه للشحن</p><p data-l="en">Makes the product and packs it</p></li>
+    <li><span class="who"><span data-l="ar">الشحن والتوصيل</span><span data-l="en">Shipping &amp; delivery</span></span><i class="ic" data-ic="truck"></i><p data-l="ar">المورد يشحن ويوصل للعميل</p><p data-l="en">The supplier ships and delivers</p></li>
+    <li><span class="who"><span data-l="ar">العميل</span><span data-l="en">Customer</span></span><i class="ic" data-ic="parcel"></i><p data-l="ar">يستلم المنتج باسم البراند بتاعك</p><p data-l="en">Receives it under your brand</p></li>
+  </ol>
+  <p class="journey-note"><span data-l="ar">الفرق بين اللي العميل دفعه لك واللي أنت دفعته للمورد والإعلان = ربحك.</span><span data-l="en">What the customer paid you, minus what you paid the supplier and for ads, is your profit.</span></p>
+
+  <div class="ds-facts">
+    <h3><span data-l="ar">الخلاصة في 5 نقاط</span><span data-l="en">The idea in five points</span></h3>
+    <ul>
+      <li><i class="ic" data-ic="users"></i><span data-l="ar">الدروب شيبينج نوع من التجارة مبني على مبدأ العرض والطلب.</span><span data-l="en">Dropshipping is commerce built on supply and demand.</span></li>
+      <li><i class="ic" data-ic="xbox"></i><span data-l="ar">الفرق عن التجارة التقليدية إنك <b>مش بتصنع</b>، و<b>لا بتخزن</b>، و<b>لا بتشحن بنفسك</b>.</span><span data-l="en">Unlike traditional commerce, you <b>don't make</b>, <b>don't store</b> and <b>don't ship</b> anything yourself.</span></li>
+      <li><i class="ic" data-ic="book"></i><span data-l="ar">بتعرض المنتجات من خلال كتالوج (متجرك)، والعميل يطلب، وأنت تحوّل الطلب للمورد.</span><span data-l="en">You show products in a catalog (your store); the customer orders and you forward it to the supplier.</span></li>
+      <li><i class="ic" data-ic="truck"></i><span data-l="ar">المورد هو اللي بيصنع ويشحن ويوصّل المنتج للعميل.</span><span data-l="en">The supplier makes, ships and delivers the product.</span></li>
+      <li><i class="ic" data-ic="handsoff"></i><span data-l="ar">أنت مش بتمتلك المنتج، ولا بتدخل في أي تفاصيل لوجستية.</span><span data-l="en">You don't own the product or handle any logistics.</span></li>
+    </ul>
+  </div>
+
+  <div class="sec-head"><div class="en">WHY DROPSHIPPING</div><h2><span data-l="ar">ليه الدروب شيبينج؟</span><span data-l="en">Why dropshipping?</span></h2></div>
+  <div class="why5">
+    <div><i class="ic" data-ic="target"></i><p data-l="ar">نمو مشروعك أسهل وأسرع</p><p data-l="en">Your business grows faster and more easily</p></div>
+    <div><i class="ic" data-ic="moneyLens"></i><p data-l="ar">تركيزك فقط على التسويق والمبيعات وخدمة العملاء</p><p data-l="en">You focus only on marketing, sales and service</p></div>
+    <div><i class="ic" data-ic="grow"></i><p data-l="ar">تكلفة أقل، مخاطر أقل، ربح أكبر</p><p data-l="en">Lower cost, lower risk, higher profit</p></div>
+    <div><i class="ic" data-ic="nobox"></i><p data-l="ar">مش محتاج تسافر أو تخزن منتجات أو تتعامل مع شحنات ضخمة</p><p data-l="en">No travel, no storage, no huge shipments</p></div>
+    <div><i class="ic" data-ic="shield"></i><p data-l="ar">مفيش مخاطر زي التجارة العادية، زي غرق الشحنة في البحر أو سرقة البضاعة</p><p data-l="en">None of the classic trade risks, like cargo lost at sea or stolen stock</p></div>
+  </div>
+  <div class="tip"><span class="kicker"><span data-l="ar">معلومة</span><span data-l="en">Good to know</span></span>
+    <p data-l="ar">فيه كمان نموذج <b>Print on Demand</b> (طباعة عند الطلب): تصاميمك على تيشيرتات أو مجات، والمورد بيطبع ويشحن لما ييجي طلب. هو قريب جدًا من الدروب شيبينج.</p>
+    <p data-l="en">There's also <b>Print on Demand</b>: your designs on t-shirts or mugs, printed and shipped by the supplier only when someone orders. It's a close cousin of dropshipping.</p></div>
+
+  <div class="sec-head"><div class="en">THE 5 PILLARS OF SUCCESSFUL DROPSHIPPING</div><h2><span data-l="ar">الأعمدة الخمسة للدروب شيبينج الناجح</span><span data-l="en">The five pillars of successful dropshipping</span></h2>
+    <p data-l="ar">أي متجر ناجح واقف على الخمسة دول. لو عمود واحد وقع، المتجر كله بيتأثر. وكل عمود ليه فصل في الدبلوم.</p>
+    <p data-l="en">Every successful store stands on these five. If one falls, the whole store suffers, and each has its own chapter in the diploma.</p></div>
+  <div class="pillars-band"><div class="pillars">
+    <a class="pillar p1" href="#ch2"><span class="pn">1</span><i class="ic" data-ic="box"></i><b><span data-l="ar">المنتج</span><span data-l="en">Product</span></b><small>Product</small><p data-l="ar">منتج بيحل مشكلة وعليه طلب حقيقي وهامش ربح كويس.</p><p data-l="en">Solves a real problem, has real demand and a healthy margin.</p><span class="where"><span data-l="ar">الفصل 2</span><span data-l="en">Chapter 2</span></span></a>
+    <a class="pillar p2" href="#ch4"><span class="pn">2</span><i class="ic" data-ic="shop"></i><b><span data-l="ar">المتجر</span><span data-l="en">Store</span></b><small>Store</small><p data-l="ar">متجر سريع وواضح وموثوق، يقنع الزائر يشتري.</p><p data-l="en">A fast, clear, trustworthy store that turns visitors into buyers.</p><span class="where"><span data-l="ar">الفصول 4–7</span><span data-l="en">Chapters 4–7</span></span></a>
+    <a class="pillar p3" href="#ch10"><span class="pn">3</span><i class="ic" data-ic="ugc"></i><b><span data-l="ar">المحتوى (UGC)</span><span data-l="en">Content (UGC)</span></b><small>Content (UGC)</small><p data-l="ar">UGC = محتوى بيعمله مستخدمين حقيقيين: فيديوهات قصيرة لناس بتجرب المنتج، وهو أقوى أنواع الإعلانات.</p><p data-l="en">UGC = user-generated content: short videos of real people using the product, the strongest kind of ad creative.</p><span class="where"><span data-l="ar">الفصل 10</span><span data-l="en">Chapter 10</span></span></a>
+    <a class="pillar p4" href="#ch10"><span class="pn">4</span><i class="ic" data-ic="mega"></i><b><span data-l="ar">التسويق</span><span data-l="en">Marketing</span></b><small>Marketing</small><p data-l="ar">إعلانات على فيسبوك وإنستجرام وتيك توك توصّل المنتج للجمهور الصح.</p><p data-l="en">Ads on Facebook, Instagram and TikTok that reach the right audience.</p><span class="where"><span data-l="ar">الفصل 10</span><span data-l="en">Chapter 10</span></span></a>
+    <a class="pillar p5" href="#ch3"><span class="pn">5</span><i class="ic" data-ic="crown"></i><b><span data-l="ar">البراندينج</span><span data-l="en">Branding</span></b><small>Branding</small><p data-l="ar">اسم ولوجو وألوان وهوية بتخلي العميل يثق فيك ويرجعلك.</p><p data-l="en">A name, logo, colors and identity that earn trust and repeat buyers.</p><span class="where"><span data-l="ar">الفصل 3</span><span data-l="en">Chapter 3</span></span></a>
+  </div>
+  </div>
+
   <div class="example">
     <span class="kicker"><span data-l="ar">مثال بالأرقام</span><span data-l="en">Worked example</span></span>
     <p data-l="ar">بتبيع طوق ضد البراغيث للكلاب بسعر <b>$29.99</b>. تكلفة المنتج <b>$6</b> والشحن <b>$4</b>، وكل بيعة بتكلفك إعلانات حوالي <b>$10</b>. يبقى ربحك من البيعة تقريبًا <b>$9.99</b>، ولو بعت 10 قطع في اليوم يبقى حوالي <b>$100</b> ربح يومي.</p>
@@ -829,6 +976,8 @@ table.t th,table.t td{text-align:start}
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">ابعت كارت التعارف للمحاضر.</span><span data-l="en">Send your introduction to the instructor.</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">اكتب في ورقة هدفك من الدبلوم بالأرقام (مثلًا: أول 50 أوردر في شهرين) وعلّقها قدامك.</span><span data-l="en">Write your goal as numbers (e.g. first 50 orders in two months) and keep it where you can see it.</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">ادخل على متجرين ناجحين (Mooshwalks و Meowingtons) واكتب 3 حاجات عجبتك في كل واحد.</span><span data-l="en">Visit two successful stores (Mooshwalks and Meowingtons) and note 3 things you like about each.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="t"><span data-l="ar">ارسم رحلة الطلب (العميل ← أنت ← المورد ← الشحن ← العميل) لمنتج في بالك، واكتب مين بيدفع لمين.</span><span data-l="en">Sketch the order journey (customer → you → supplier → shipping → customer) for a product you have in mind, and note who pays whom.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="t"><span data-l="ar">اكتب خطوة واحدة هتعملها في كل عمود من الأعمدة الخمسة (المنتج، المتجر، المحتوى، التسويق، البراندينج).</span><span data-l="en">Write one action you'll take for each of the five pillars (product, store, content, marketing, branding).</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">احسب ربح منتج: سعر بيع $24.99، منتج $5، شحن $3، إعلان $9.</span><span data-l="en">Work out the profit: price $24.99, product $5, shipping $3, ads $9.</span></span></label></li>
     </ul>
   </div>
@@ -1979,6 +2128,23 @@ const QUIZ = {
  {t:"mc",q:{ar:"أنهي واحدة من دول مش من فوايد الدبلوم؟",en:"Which of these is NOT one of the diploma's benefits?"},
   o:[{ar:"اختيار منتجات ونيتش ربحية",en:"Choosing profitable products and niches"},{ar:"ربط المتجر بالموردين",en:"Connecting the store to suppliers"},{ar:"برمجة ألعاب موبايل",en:"Programming mobile games"},{ar:"تسويق احترافي وجذب العملاء",en:"Professional marketing to attract customers"}],a:2,
   w:{ar:"الدبلوم عن التجارة الإلكترونية وShopify، مش برمجة الألعاب.",en:"The diploma is about e-commerce and Shopify, not game programming."}},
+ {t:"mc",q:{ar:"الدروب شيبينج نوع من التجارة مبني على مبدأ:",en:"Dropshipping is commerce built on the principle of:"},
+  o:[{ar:"العرض والطلب",en:"Supply and demand"},{ar:"التخزين بكميات كبيرة",en:"Bulk storage"},{ar:"التصنيع المحلي",en:"Local manufacturing"},{ar:"البيع في المحلات",en:"Selling in shops"}],a:0,
+  w:{ar:"بتعرض اللي عليه طلب، والمورد بيوفّر المنتج.",en:"You offer what's in demand and the supplier provides the product."}},
+ {t:"multi",q:{ar:"«أنا لا … ولا … ولا … المنتج». إيه التلات حاجات اللي صاحب متجر الدروب شيبينج ما بيعملهاش؟",en:"\"I don't … , … or … the product.\" Which three things does a dropshipper NOT do?"},
+  o:[{ar:"يصنع",en:"Make it"},{ar:"يخزن",en:"Store it"},{ar:"يشحن",en:"Ship it"},{ar:"يسوّق",en:"Market it"}],a:[0,1,2],
+  w:{ar:"أنت بتركز على التسويق والمبيعات وخدمة العملاء.",en:"You focus on marketing, sales and customer service."}},
+ {t:"mc",q:{ar:"في رحلة الطلب، مين اللي بيستقبل الطلب ويحوّله للمورد؟",en:"In the order journey, who receives the order and forwards it to the supplier?"},
+  o:[{ar:"العميل",en:"The customer"},{ar:"شركة الشحن",en:"The shipping company"},{ar:"أنت (صاحب المتجر)",en:"You (the store owner)"},{ar:"المصنع",en:"The factory"}],a:2,
+  w:{ar:"العميل يطلب منك، وأنت تحوّل الطلب للمورد.",en:"The customer orders from you, and you forward it to the supplier."}},
+ {t:"tf",q:{ar:"في الدروب شيبينج مفيش خطر إن البضاعة تغرق في البحر أو تتسرق من مخزنك.",en:"In dropshipping you don't carry the risk of stock lost at sea or stolen from your warehouse."},a:true,
+  w:{ar:"صح، لأنك مش بتمتلك المنتج ولا بتدخل في اللوجستيات.",en:"True, because you don't own the product or handle logistics."}},
+ {t:"multi",q:{ar:"أنهي من دول من الأعمدة الخمسة للدروب شيبينج الناجح؟",en:"Which of these are among the five pillars of successful dropshipping?"},
+  o:[{ar:"المنتج",en:"Product"},{ar:"المتجر",en:"Store"},{ar:"المحتوى (UGC)",en:"Content (UGC)"},{ar:"المخزن",en:"Warehouse"},{ar:"التسويق",en:"Marketing"},{ar:"البراندينج",en:"Branding"}],a:[0,1,2,4,5],
+  w:{ar:"الأعمدة: المنتج، المتجر، المحتوى، التسويق، البراندينج. المخزن مش منهم.",en:"The pillars are product, store, content, marketing and branding. A warehouse isn't one."}},
+ {t:"mc",q:{ar:"يعني إيه UGC؟",en:"What does UGC mean?"},
+  o:[{ar:"محتوى بيعمله مستخدمين حقيقيين، زي فيديوهات لناس بتجرب المنتج",en:"Content made by real users, like videos of people trying the product"},{ar:"نوع من أنواع الشحن",en:"A type of shipping"},{ar:"تطبيق على Shopify",en:"A Shopify app"},{ar:"خصم على المنتج",en:"A product discount"}],a:0,
+  w:{ar:"User Generated Content، ومن أقوى أنواع الإعلانات.",en:"User-generated content, one of the strongest kinds of ad creative."}},
  {t:"tf",q:{ar:"في خريطة الطريق، إطلاق إعلانات فيسبوك بييجي قبل اختيار المنتج.",en:"On the roadmap, launching Facebook ads comes before choosing the product."},a:false,
   w:{ar:"الإعلانات من آخر الخطوات، والمنتج هو أول خطوة.",en:"Ads come near the end; the product is step one."}},
  {t:"mc",q:{ar:"«ما بين الاستسلام والنجاح قرار واحد»، القرار ده هو:",en:"\"Between giving up and success there is one decision.\" That decision is:"},
@@ -2289,6 +2455,24 @@ const IC={
  trophy:`<svg viewBox="0 0 64 64"><path d="M18 8h28v12a14 14 0 0 1-28 0z" fill="var(--gold)"/><path d="M18 12H8c0 10 6 14 12 14M46 12h10c0 10-6 14-12 14" fill="none" stroke="var(--gold)" stroke-width="3.5"/><rect x="28" y="34" width="8" height="10" fill="var(--gold)"/><rect x="18" y="44" width="28" height="10" rx="2" fill="${D}"/><path d="M32 12 l2.6 5.4 6 .8-4.4 4.2 1 6-5.2-2.8-5.2 2.8 1-6-4.4-4.2 6-.8z" fill="#fff"/></svg>`,
  head:`<svg viewBox="0 0 64 64"><path d="M20 58v-10c-8-4-12-12-10-22 2-12 14-20 26-18 12 2 20 12 18 24l4 8h-6v8c0 4-4 6-8 6h-4v4z" fill="${G}"/><circle cx="32" cy="26" r="7" fill="var(--gold)"/><path d="M32 16v-3M40 20l2-2M24 20l-2-2" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/></svg>`,
  shield:`<svg viewBox="0 0 64 64"><path d="M32 4 L54 12 V30 C54 46 44 56 32 60 C20 56 10 46 10 30 V12Z" fill="${G}"/><path d="M22 32 l7 7 14-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ user:`<svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="11" fill="${G}"/><path d="M12 58c0-12 9-20 20-20s20 8 20 20z" fill="${G}"/></svg>`,
+ shop:`<svg viewBox="0 0 64 64"><rect x="8" y="26" width="48" height="30" rx="3" fill="${P}" stroke="${K}" stroke-width="2.5"/><path d="M6 14h52l-2 12H8z" fill="${G}"/><path d="M8 26 q6 8 12 0 q6 8 12 0 q6 8 12 0 q6 8 12 0" fill="${G}"/><rect x="16" y="36" width="14" height="20" fill="${L}"/><path d="M36 38h4l3 9h9l3-7H41" fill="none" stroke="${D}" stroke-width="2.4" stroke-linecap="round"/></svg>`,
+ truck:`<svg viewBox="0 0 64 64"><rect x="4" y="18" width="34" height="26" rx="2" fill="${G}"/><path d="M38 26h12l8 10v8H38z" fill="${D}"/><rect x="42" y="29" width="8" height="6" fill="${P}"/><circle cx="16" cy="48" r="6" fill="${K}"/><circle cx="48" cy="48" r="6" fill="${K}"/><path d="M10 26h18M10 32h12" stroke="${P}" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+ parcel:`<svg viewBox="0 0 64 64"><path d="M8 22 L30 12 L52 22 V46 L30 56 L8 46Z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2.5"/><path d="M8 22 L30 32 L52 22M30 32V56" fill="none" stroke="var(--gold)" stroke-width="2.5"/><circle cx="48" cy="46" r="11" fill="${G}"/><path d="M43 46l4 4 6-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ factory:`<svg viewBox="0 0 64 64"><path d="M4 58V30l14 8v-8l14 8v-8l14 8V14h10v44z" fill="${G}"/><rect x="46" y="6" width="10" height="8" fill="${D}"/><path d="M50 4 q4-4 8 0" fill="none" stroke="var(--muted)" stroke-width="2.5"/><g fill="${P}"><rect x="10" y="44" width="6" height="6"/><rect x="24" y="44" width="6" height="6"/><rect x="38" y="44" width="6" height="6"/></g></svg>`,
+ shelves:`<svg viewBox="0 0 64 64"><path d="M6 6v54M58 6v54M6 22h52M6 40h52M6 58h52" stroke="${K}" stroke-width="3"/><g fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"><rect x="12" y="10" width="14" height="12"/><rect x="30" y="12" width="12" height="10"/><rect x="14" y="28" width="12" height="12"/><rect x="30" y="28" width="14" height="12"/><rect x="46" y="30" width="8" height="10"/><rect x="12" y="46" width="16" height="12"/><rect x="34" y="48" width="12" height="10"/></g></svg>`,
+ warehouse:`<svg viewBox="0 0 64 64"><path d="M4 26 L32 8 L60 26 V58 H4Z" fill="${G}"/><rect x="16" y="32" width="32" height="26" fill="${P}"/><g fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"><rect x="18" y="46" width="12" height="12"/><rect x="32" y="46" width="12" height="12"/><rect x="25" y="36" width="12" height="10"/></g></svg>`,
+ stress:`<svg viewBox="0 0 64 64"><path d="M32 6 L60 56 H4Z" fill="${R}"/><rect x="29" y="22" width="6" height="20" rx="3" fill="#fff"/><circle cx="32" cy="48" r="3.5" fill="#fff"/></svg>`,
+ bagw:`<svg viewBox="0 0 64 72"><use href="#bag"/></svg>`,
+ laptopUser:`<svg viewBox="0 0 64 64"><circle cx="32" cy="16" r="9" fill="${G}"/><path d="M14 46c0-11 8-18 18-18s18 7 18 18z" fill="${G}"/><rect x="18" y="36" width="28" height="18" rx="2" fill="var(--muted)"/><rect x="10" y="54" width="44" height="4" rx="2" fill="${K}"/><circle cx="32" cy="45" r="2.5" fill="${P}"/></svg>`,
+ users:`<svg viewBox="0 0 64 64"><circle cx="22" cy="20" r="9" fill="${G}"/><path d="M4 54c0-11 8-18 18-18s18 7 18 18z" fill="${G}"/><circle cx="44" cy="22" r="8" fill="${L}"/><path d="M34 54c0-9 4-15 10-15s16 6 16 15z" fill="${L}"/></svg>`,
+ xbox:`<svg viewBox="0 0 64 64"><path d="M8 24 L30 14 L52 24 V48 L30 58 L8 48Z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2.5"/><circle cx="48" cy="16" r="11" fill="${R}"/><path d="M43 11l10 10M53 11l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>`,
+ book:`<svg viewBox="0 0 64 64"><path d="M32 16 C24 10 12 10 4 12 V54 C12 52 24 52 32 58 C40 52 52 52 60 54 V12 C52 10 40 10 32 16Z" fill="${P}" stroke="${G}" stroke-width="3"/><path d="M32 16V58" stroke="${G}" stroke-width="3"/><path d="M10 22h16M10 30h16M38 22h16M38 30h16" stroke="${L}" stroke-width="2.5"/></svg>`,
+ handsoff:`<svg viewBox="0 0 64 64"><circle cx="30" cy="18" r="10" fill="${G}"/><path d="M10 58c0-13 9-22 20-22s20 9 20 22z" fill="${G}"/><path d="M16 46 L44 46" stroke="${D}" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="16" r="10" fill="${P}" stroke="${R}" stroke-width="3"/><path d="M43 23 L57 9" stroke="${R}" stroke-width="3"/></svg>`,
+ moneyLens:`<svg viewBox="0 0 64 64"><circle cx="26" cy="26" r="20" fill="none" stroke="${G}" stroke-width="5"/><path d="M41 41 L58 58" stroke="${D}" stroke-width="7" stroke-linecap="round"/><text x="26" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="${G}" font-family="Arial">$</text></svg>`,
+ nobox:`<svg viewBox="0 0 64 64"><path d="M14 24 L32 16 L50 24 V44 L32 52 L14 44Z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><circle cx="32" cy="34" r="26" fill="none" stroke="${G}" stroke-width="5"/><path d="M14 16 L50 52" stroke="${G}" stroke-width="5"/></svg>`,
+ ugc:`<svg viewBox="0 0 64 64"><rect x="16" y="4" width="32" height="56" rx="6" fill="${K}"/><rect x="19" y="10" width="26" height="42" rx="2" fill="var(--sunk)"/><path d="M28 24 l10 7 -10 7z" fill="${G}"/><path d="M50 18 c-3-5-10-2-8 3 l8 8 8-8 c2-5-5-8-8-3z" fill="${R}"/></svg>`,
+ crown:`<svg viewBox="0 0 64 64"><path d="M22 18 C22 6, 42 6, 42 18" fill="none" stroke="${K}" stroke-width="3.5"/><path d="M10 18 H54 L58 60 H6Z" fill="${K}"/><path d="M20 44 l3-14 7 7 2-10 2 10 7-7 3 14z" fill="var(--gold)"/></svg>`,
  person:`<svg viewBox="0 0 20 40"><circle cx="10" cy="7" r="6"/><path d="M2 40V22c0-6 3-9 8-9s8 3 8 9v18z"/></svg>`
 };
 
@@ -2487,6 +2671,7 @@ function renderI18n(){
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
   renderAdmin();
 }
+document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
 show(location.hash.slice(1)||'home');
 
