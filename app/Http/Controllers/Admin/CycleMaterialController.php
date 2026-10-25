@@ -19,7 +19,7 @@ class CycleMaterialController extends Controller
             'title' => ['required_if:type,link,pdf', 'nullable', 'string', 'max:255'],
             'url' => ['required_if:type,link', 'nullable', 'url', 'max:500'],
             'material_id' => ['required_if:type,material', 'nullable', 'exists:materials,id'],
-            'pdf' => ['required_if:type,pdf', 'nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'pdf' => ['required_if:type,pdf', 'nullable', 'file', 'mimes:pdf', 'max:102400'],
         ]);
 
         $data['material_id'] = null;

@@ -61,6 +61,7 @@ function AddCycleMaterialForm({ cycle, materials }) {
     const [materialId, setMaterialId] = useState('');
     const [pdf, setPdf] = useState(null);
     const [processing, setProcessing] = useState(false);
+    const [errors, setErrors] = useState({});
 
     const reset = () => {
         setTitle('');
@@ -71,6 +72,7 @@ function AddCycleMaterialForm({ cycle, materials }) {
 
     const submit = (e) => {
         e.preventDefault();
+        setErrors({});
         if (type === 'link' && (!title.trim() || !url.trim())) return;
         if (type === 'material' && !materialId) return;
         if (type === 'pdf' && (!title.trim() || !pdf)) return;
@@ -85,8 +87,10 @@ function AddCycleMaterialForm({ cycle, materials }) {
         setProcessing(true);
         router.post(route('admin.cycle-materials.store', cycle.id), formData, {
             preserveScroll: true,
+            forceFormData: true,
             onFinish: () => setProcessing(false),
             onSuccess: reset,
+            onError: setErrors,
         });
     };
 
@@ -168,10 +172,17 @@ function AddCycleMaterialForm({ cycle, materials }) {
                     <p className="text-xs text-gray-500">
                         الملف هيفتح في معاينة داخل الموقع من غير زرار تحميل
                         ظاهر — ده بيقلل التحميل العشوائي، بس مش حماية كاملة
-                        100% (أي حد عنده خبرة تقنية يقدر يحفظه برضو).
+                        100% (أي حد عنده خبرة تقنية يقدر يحفظه برضو). الحد
+                        الأقصى لحجم الملف 100 ميجا.
                     </p>
                 </>
             )}
+
+            {Object.values(errors).map((message, i) => (
+                <p key={i} className="text-xs text-red-600">
+                    {message}
+                </p>
+            ))}
 
             <button
                 type="submit"
