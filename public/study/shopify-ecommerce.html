@@ -521,6 +521,110 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 }
 @media (max-width:700px){.vs{grid-template-columns:minmax(0,1fr)}.vs-mid{justify-self:center}.ds-def{grid-template-columns:minmax(0,1fr)}}
 
+/* ---------- polls + niche ---------- */
+.poll{display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:center;background:linear-gradient(135deg,#E3F6F6,#BFE8E9);border-radius:18px;padding:20px;color:#14373A}
+.poll-art svg{width:100%;height:auto;max-height:260px}
+.poll-body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.poll-q{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:12px 16px;font-family:var(--font-display);font-weight:800;font-size:clamp(1.3rem,3.4vw,2rem);color:#147F84;box-shadow:0 8px 20px -14px rgba(20,90,95,.6)}
+.poll-q .qm{width:48px;height:48px;border-radius:50%;background:#1FA4A9;color:#fff;display:grid;place-items:center;flex:none;font-size:1.6rem}
+.poll-sub{font-size:.92rem;color:#2C5457}
+.reacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;background:#fff;border-radius:16px;padding:12px}
+.react{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:700;font-size:.9rem;color:#14373A;border-radius:12px;padding:6px 2px;text-align:center}
+.react i{font-style:normal;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;box-shadow:0 4px 10px -4px rgba(0,0,0,.35);transition:transform .15s}
+.react:hover i{transform:scale(1.08)}
+.react:focus-visible{outline:2px solid #147F84}
+.react.on{background:#E3F6F6;box-shadow:inset 0 0 0 2px #1FA4A9}
+.results{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink)}
+.results .rh{display:flex;justify-content:space-between;gap:8px;font-size:.85rem;color:var(--muted)}
+.rrow{display:grid;grid-template-columns:minmax(80px,auto) minmax(0,1fr) 46px;gap:10px;align-items:center;font-size:.88rem;font-weight:600}
+.rbar{height:10px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.rbar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+.rrow.me .rbar i{background:var(--gold)}
+.rrow .pc{font-family:var(--font-mono);font-size:.8rem;text-align:end;direction:ltr}
+.niche-band{background:var(--night);color:var(--night-ink);border-radius:18px;padding:26px 22px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center}
+.nb-title{font-family:var(--font-word);font-weight:800;font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.05;border-inline-start:4px solid #4FD1A5;padding-inline-start:14px}
+#root[data-lang="ar"] .nb-title{border-inline-start:0;border-inline-end:4px solid #4FD1A5;padding-inline:0 14px;text-align:left}
+.nb-title span{display:block;color:#4FD1A5}
+.nb-ar{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.5rem;margin-top:12px}
+.nb-ar em{font-style:normal;color:#4FD1A5}
+.nb-ar .ic{width:40px;height:40px;background:#F4F5EE;border-radius:50%;padding:5px}
+.nb-def{margin-top:10px;opacity:.9;max-width:52ch}
+.nb-def b{color:#4FD1A5}
+.nb-art{display:flex;justify-content:center;gap:12px}
+.nb-art .ic{width:110px;height:110px;background:#F4F5EE;border-radius:50%;padding:14px;box-shadow:0 0 0 6px rgba(79,209,165,.25)}
+.nb-benefits{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);padding-top:16px}
+.nb-benefits > div{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-weight:700;font-size:.92rem;padding:4px 8px;border-inline-start:1px solid rgba(255,255,255,.12)}
+.nb-benefits > div:first-child{border-inline-start:0}
+.nb-benefits .ic{width:46px;height:46px;background:#F4F5EE;border-radius:12px;padding:6px}
+.stypes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stype{--tc:#1FA4A9;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--tc);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.stype.t2{--tc:#2D7FF0}.stype.t3{--tc:var(--accent)}
+.st-head{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:10px;align-items:center}
+.st-head .pn{width:28px;height:28px;border-radius:50%;border:2px solid var(--tc);color:var(--tc);display:grid;place-items:center;font-family:var(--font-poster)}
+.st-head .ic{width:44px;height:44px;border-radius:50%;background:var(--sunk);padding:7px}
+.st-head b{display:block;font-family:var(--font-word);font-weight:600;color:var(--tc);font-size:1.05rem}
+.st-head small{color:var(--muted);font-size:.85rem;line-height:1.5}
+.browser{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;color:#1B2420;font-size:.75rem;margin-top:auto}
+.bar3{display:flex;gap:4px;padding:6px 8px;background:#EDEFEA}
+.bar3 i{width:7px;height:7px;border-radius:50%;background:#C9CEC6}
+.one{display:grid;grid-template-columns:60px minmax(0,1fr);gap:10px;align-items:center;padding:10px}
+.one svg{width:60px;height:auto}
+.one b{display:block;font-size:.95rem}
+.one small{display:block;color:#66706A}
+.one .price{display:block;font-weight:700;margin-block:4px}
+.one .buy{display:inline-block;background:#1FA4A9;color:#fff;border-radius:4px;padding:2px 10px;font-weight:700}
+.gen,.kids{padding:10px;display:flex;flex-direction:column;gap:8px}
+.gen .logo{font-weight:800;background:#FEE000;width:max-content;padding:0 8px;border-radius:3px}
+.kids .logo{font-weight:800;color:#2D7FF0}
+.kids b{font-size:1rem}
+.kids em{font-style:normal;color:#E8414F}
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cats span{display:flex;flex-direction:column;align-items:center;font-size:1.1rem;width:52px}
+.cats small{font-size:.6rem;color:#66706A}
+.deal{background:#2D7FF0;color:#fff;font-weight:800;border-radius:4px;padding:4px 8px;text-align:center}
+.guess-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gopt{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;justify-content:center;background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:12px;font-family:var(--font-word);font-weight:600;text-align:center}
+.gopt .pn{width:28px;height:28px;border-radius:50%;background:var(--sunk);display:grid;place-items:center;font-family:var(--font-poster)}
+.gopt:hover{border-color:var(--accent)}
+.gopt:focus-visible{outline:2px solid var(--gold)}
+.gopt.on{border-color:var(--accent);background:var(--accent-soft)}
+.gopt.right{border-color:var(--good);background:var(--good-soft)}
+.gopt.on:not(.right){border-color:var(--bad);background:var(--bad-soft)}
+.niche-answer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.na-best,.na-how{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.na-best{border:2px solid var(--accent)}
+.na-best h3,.na-how h3{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800}
+.na-best h3{font-size:1.8rem;color:var(--accent)}
+.na-best h3 .ic{width:46px;height:46px}
+.na-how h3{font-size:1.2rem}
+.na-how h3 .ic{width:34px;height:34px}
+.because{background:var(--accent-soft);color:var(--accent-dark);font-weight:700;border-radius:99px;padding:1px 14px;width:max-content;font-family:var(--font-word)}
+.na-best ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.na-best li{display:flex;gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:8px 10px}
+.na-best li .ic{width:32px;height:32px;flex:none}
+.na-best li b{color:var(--accent-dark)}
+.how{display:grid;grid-template-columns:auto minmax(0,1fr) 54px;gap:12px;align-items:center;background:var(--bg);border-radius:12px;padding:12px}
+.how .num{width:40px;height:40px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;font-family:var(--font-poster);color:var(--accent-dark)}
+.how b{font-family:var(--font-display);color:var(--accent-dark)}
+.how p{font-size:.9rem;color:var(--muted)}
+.how .ic{width:54px;height:54px}
+.coffee{display:flex;gap:10px;align-items:center;border:1px dashed var(--leaf);border-radius:12px;padding:10px 12px;font-size:.92rem}
+.coffee .ic{width:34px;height:34px;flex:none}
+@media (max-width:900px){
+  .niche-band{grid-template-columns:minmax(0,1fr)}
+  .nb-art{display:none}
+  .nb-benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 0}
+  .nb-benefits > div:nth-child(3){border-inline-start:0}
+  .stypes{grid-template-columns:minmax(0,1fr)}
+  .niche-answer{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .poll{grid-template-columns:minmax(0,1fr)}
+  .poll-art{max-width:120px;justify-self:center}
+  .reacts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guess-opts{grid-template-columns:minmax(0,1fr)}
+}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -663,7 +767,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <div class="home-meta">
     <div><b>10</b><span data-l="ar">فصول عملية</span><span data-l="en">practical chapters</span></div>
     <div><b>10</b><span data-l="ar">تدريبات تطبقها على متجرك</span><span data-l="en">exercises on your own store</span></div>
-    <div><b>153</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
+    <div><b>154</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
     <div><b><span id="pDone">0</span>/10</b><span data-l="ar">فصول خلّصتها</span><span data-l="en">chapters completed</span><div class="bar"><i id="pBar"></i></div></div>
   </div>
   <div class="sec-head"><div class="en">COURSE CONTENT</div><h2><span data-l="ar">محتوى الدبلوم</span><span data-l="en">What's inside</span></h2>
@@ -957,6 +1061,106 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   </div>
 
+  <!-- ===== Product poll ===== -->
+  <div class="poll" id="poll-blender">
+    <div class="poll-art" aria-hidden="true">
+      <svg viewBox="0 0 160 260">
+        <ellipse cx="80" cy="248" rx="62" ry="9" fill="var(--sunk)"/>
+        <path d="M118 30 q24 4 22 40 q-2 30 -14 38" fill="none" stroke="#2FA3A6" stroke-width="7" stroke-linecap="round"/>
+        <rect x="36" y="18" width="88" height="40" rx="10" fill="#38B5B8"/>
+        <rect x="40" y="56" width="80" height="120" rx="6" fill="#DDF3F3" opacity=".7" stroke="#38B5B8" stroke-width="3"/>
+        <circle cx="62" cy="80" r="12" fill="#2A2238"/><circle cx="92" cy="92" r="14" fill="#E2404B"/><circle cx="66" cy="110" r="13" fill="#E2404B"/>
+        <circle cx="96" cy="128" r="12" fill="#C8314A"/><circle cx="62" cy="146" r="12" fill="#2A2238"/><circle cx="92" cy="158" r="11" fill="#E2404B"/>
+        <rect x="74" y="66" width="12" height="12" rx="2" fill="#fff" opacity=".8"/><rect x="74" y="134" width="12" height="12" rx="2" fill="#fff" opacity=".8"/>
+        <path d="M40 176 h80 l-6 66 h-68z" fill="#38B5B8"/>
+        <rect x="64" y="196" width="32" height="38" rx="6" fill="#1E2A30"/>
+        <circle cx="80" cy="206" r="3" fill="#4DA3FF"/><path d="M74 220 a7 7 0 1 0 12 0 M80 212 v8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="poll-body">
+      <div class="poll-q"><span class="qm">?</span><span><span data-l="ar">ما رأيك في هذا المنتج؟</span><span data-l="en">What do you think of this product?</span></span></div>
+      <p class="poll-sub"><span data-l="ar">خلاط عصير محمول (Portable Blender) بيشتغل بالشحن. صوّت بأول إحساس جالك، وشوف رأي الدفعة.</span><span data-l="en">A rechargeable portable blender. Vote with your first impression, then see what the cohort thinks.</span></p>
+      <div class="reacts" role="group" aria-label="Vote">
+        <button type="button" class="react" data-poll="blender" data-v="love"><i style="background:#E8414F">❤️</i><span data-l="ar">أعجبني</span><span data-l="en">Love it</span></button>
+        <button type="button" class="react" data-poll="blender" data-v="great"><i style="background:#2D7FF0">👍</i><span data-l="ar">رائع</span><span data-l="en">Great</span></button>
+        <button type="button" class="react" data-poll="blender" data-v="hmm"><i style="background:#F4C430">🤔</i><span data-l="ar">مهم</span><span data-l="en">Interesting</span></button>
+        <button type="button" class="react" data-poll="blender" data-v="no"><i style="background:#F28A1E">⭐</i><span data-l="ar">غير مناسب لي</span><span data-l="en">Not for me</span></button>
+      </div>
+      <div class="results" id="res-blender" hidden></div>
+    </div>
+  </div>
+  <div class="tip" id="blenderLesson" hidden><span class="kicker"><span data-l="ar">الدرس من التصويت</span><span data-l="en">What the vote teaches</span></span>
+    <p data-l="ar">لاحظ إن الآراء اختلفت. عشان كده بنقول: <b>رأيك مش مهم، الأرقام هي المهمة</b>. الحكم الحقيقي على أي منتج بيكون بالمبيعات والطلب عليه، مش بإعجابنا بيه. وده كمان مثال على <b>متجر المنتج الواحد</b> اللي هنشوفه دلوقتي.</p>
+    <p data-l="en">Notice how opinions differ. That's why we say <b>your opinion doesn't matter, the numbers do</b>. The real verdict on any product comes from sales and demand, not from whether we like it. It's also an example of the <b>one-product store</b> we'll look at next.</p></div>
+
+  <!-- ===== What is a niche ===== -->
+  <div class="niche-band">
+    <div class="nb-text">
+      <div class="nb-title" dir="ltr">What is a <span>Niche?</span></div>
+      <div class="nb-ar"><i class="ic" data-ic="compass"></i><span data-l="ar">ما هو مجال <em>النيش</em>؟</span><span data-l="en">Finding your <em>niche</em></span></div>
+      <p class="nb-def"><span data-l="ar"><b>النيش هو التخصص:</b> إنك تركز على فئة أو سوق محدد بدل ما تبيع أي حاجة لأي حد.</span><span data-l="en"><b>A niche is specialization:</b> focusing on one specific category or market instead of selling anything to anyone.</span></p>
+    </div>
+    <div class="nb-art" aria-hidden="true"><i class="ic" data-ic="compass"></i><i class="ic" data-ic="target"></i></div>
+    <div class="nb-benefits">
+      <div><i class="ic" data-ic="users"></i><span data-l="ar">جمهور محدد واحتياج واضح</span><span data-l="en">A defined audience with a clear need</span></div>
+      <div><i class="ic" data-ic="lens"></i><span data-l="ar">تركيز أفضل ونتائج أسرع</span><span data-l="en">Sharper focus, faster results</span></div>
+      <div><i class="ic" data-ic="target"></i><span data-l="ar">منافسة أقل وفرص أكبر</span><span data-l="en">Less competition, more opportunity</span></div>
+      <div><i class="ic" data-ic="grow"></i><span data-l="ar">ربحية أعلى على المدى الطويل</span><span data-l="en">Higher long-term profitability</span></div>
+    </div>
+  </div>
+
+  <div class="sec-head"><div class="en">STORE TYPES</div><h2><span data-l="ar">أنواع المتاجر</span><span data-l="en">Types of stores</span></h2></div>
+  <div class="stypes">
+    <div class="stype t1">
+      <div class="st-head"><span class="pn">1</span><i class="ic" data-ic="bagw"></i><div><b>One Product Store</b><small data-l="ar">متجر مبني على منتج واحد فقط</small><small data-l="en">A store built around a single product</small></div></div>
+      <div class="browser" dir="ltr"><div class="bar3"><i></i><i></i><i></i></div>
+        <div class="one"><svg viewBox="0 0 60 110" aria-hidden="true"><rect x="12" y="6" width="36" height="16" rx="4" fill="#38B5B8"/><rect x="14" y="22" width="32" height="50" rx="3" fill="#DDF3F3" stroke="#38B5B8" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="#E2404B"/><circle cx="36" cy="48" r="6" fill="#2A2238"/><circle cx="25" cy="60" r="5" fill="#E2404B"/><path d="M14 72h32l-3 30H17z" fill="#38B5B8"/></svg>
+          <div><b>Portable Blender</b><small>Fresh. Anywhere.</small><span class="price">$39.99</span><span class="buy">BUY NOW</span></div></div>
+      </div>
+    </div>
+    <div class="stype t2">
+      <div class="st-head"><span class="pn">2</span><i class="ic" data-ic="shop"></i><div><b>General Store</b><small data-l="ar">متجر عام فيه مجالات ومنتجات كتير (زي Noon و Amazon)</small><small data-l="en">A general store with many categories (like Noon or Amazon)</small></div></div>
+      <div class="browser" dir="ltr"><div class="bar3"><i></i><i></i><i></i></div>
+        <div class="gen"><div class="logo">MegaMart</div><div class="cats"><span>🎧<small>Electronics</small></span><span>👕<small>Fashion</small></span><span>🛋️<small>Home</small></span><span>💄<small>Beauty</small></span><span>⚽<small>Sports</small></span><span>🧸<small>Toys</small></span></div><div class="deal">UP TO 60% OFF</div></div>
+      </div>
+    </div>
+    <div class="stype t3">
+      <div class="st-head"><span class="pn">3</span><i class="ic" data-ic="target"></i><div><b>Niche Store</b><small data-l="ar">متجر متخصص في فئة واحدة فقط (أطفال، أحذية، إكسسوارات…)</small><small data-l="en">A store focused on one category (kids, shoes, accessories…)</small></div></div>
+      <div class="browser" dir="ltr"><div class="bar3"><i></i><i></i><i></i></div>
+        <div class="kids"><div class="logo">Kids World</div><b>Everything for Happy <em>Kids</em></b><div class="cats"><span>👕<small>Clothing</small></span><span>👟<small>Shoes</small></span><span>🎀<small>Accessories</small></span><span>🧸<small>Toys</small></span><span>🎒<small>Bags</small></span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="callout"><span class="pillbar"><span data-l="ar">كل ما كان تخصصك أدق.. كان تواصلك مع جمهورك أقوى، وثقتك أعلى، ونتائجك أفضل!</span><span data-l="en">The sharper your niche, the stronger your connection with your audience, the higher their trust, and the better your results!</span></span></div>
+
+  <!-- ===== Which store type to start with ===== -->
+  <div class="qbar"><span class="qm">?</span><span><span data-l="ar">تفتكروا أي أفضل نوع أبدأ بيه متجري الإلكتروني؟</span><span data-l="en">Which store type should I start my online store with?</span></span></div>
+  <div class="guess-opts" role="group" aria-label="Guess">
+    <button type="button" class="gopt" data-poll="niche" data-v="one"><span class="pn">1</span>One Product Store</button>
+    <button type="button" class="gopt" data-poll="niche" data-v="general"><span class="pn">2</span>General Store</button>
+    <button type="button" class="gopt" data-poll="niche" data-v="niche"><span class="pn">3</span>Niche Store</button>
+  </div>
+  <div class="results" id="res-niche" hidden></div>
+  <div class="niche-answer" id="nicheAnswer" hidden>
+    <div class="na-best">
+      <span class="kicker"><span data-l="ar">الإجابة: أفضل نوع هو</span><span data-l="en">The answer: the best type is</span></span>
+      <h3><i class="ic" data-ic="bagw"></i><span data-l="ar">النيش ستور</span><span data-l="en">The niche store</span></h3>
+      <span class="because" dir="ltr">Because:</span>
+      <ul>
+        <li><i class="ic" data-ic="target"></i><span data-l="ar">بتركز على <b>مجال معين</b></span><span data-l="en">You focus on <b>one field</b></span></li>
+        <li><i class="ic" data-ic="box"></i><span data-l="ar">عندك منتجات كتير داخل <b>نفس التخصص</b>، فلو منتج وقع تجرب غيره في نفس المتجر</span><span data-l="en">You have many products in <b>the same specialty</b>, so if one fails you test another in the same store</span></li>
+        <li><i class="ic" data-ic="shield"></i><span data-l="ar">تقدر تعمل <b>براند أقوى</b></span><span data-l="en">You can build a <b>stronger brand</b></span></li>
+        <li><i class="ic" data-ic="users"></i><span data-l="ar">العملاء <b>بيتعرفوا عليك</b> في المجال ده بسهولة</span><span data-l="en">Customers <b>recognize you</b> in that field easily</span></li>
+      </ul>
+    </div>
+    <div class="na-how">
+      <h3><i class="ic" data-ic="lens"></i><span data-l="ar">اختيار النيش بيتم بناءً على:</span><span data-l="en">Choose your niche based on:</span></h3>
+      <div class="how"><span class="num">01</span><div><b><span data-l="ar">البحث</span><span data-l="en">Research</span> (Research)</b><p data-l="ar">تشوف النيتشات الناجحة حاليًا: إيه اللي بيتباع وعليه إعلانات شغالة.</p><p data-l="en">Look at niches that are winning right now: what's selling and running ads.</p></div><i class="ic" data-ic="chart"></i></div>
+      <div class="how"><span class="num">02</span><div><b><span data-l="ar">شغفك أو خبرتك</span><span data-l="en">Your passion or experience</span></b><p data-l="ar">لو بتحب مجال معين، هتعرف تسوّق له كويس.</p><p data-l="en">If you love a field, you'll know how to market it well.</p></div><i class="ic" data-ic="coffee"></i></div>
+      <div class="coffee"><i class="ic" data-ic="bulb"></i><span data-l="ar"><b>مثال:</b> بتحب القهوة؟ هتعرف تسوّق لمكن القهوة وأدواتها وتبدع فيها.</span><span data-l="en"><b>Example:</b> love coffee? You'll market coffee machines and gear with real flair.</span></div>
+    </div>
+  </div>
+
   <div class="example">
     <span class="kicker"><span data-l="ar">مثال بالأرقام</span><span data-l="en">Worked example</span></span>
     <p data-l="ar">بتبيع طوق ضد البراغيث للكلاب بسعر <b>$29.99</b>. تكلفة المنتج <b>$6</b> والشحن <b>$4</b>، وكل بيعة بتكلفك إعلانات حوالي <b>$10</b>. يبقى ربحك من البيعة تقريبًا <b>$9.99</b>، ولو بعت 10 قطع في اليوم يبقى حوالي <b>$100</b> ربح يومي.</p>
@@ -978,6 +1182,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">ادخل على متجرين ناجحين (Mooshwalks و Meowingtons) واكتب 3 حاجات عجبتك في كل واحد.</span><span data-l="en">Visit two successful stores (Mooshwalks and Meowingtons) and note 3 things you like about each.</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">ارسم رحلة الطلب (العميل ← أنت ← المورد ← الشحن ← العميل) لمنتج في بالك، واكتب مين بيدفع لمين.</span><span data-l="en">Sketch the order journey (customer → you → supplier → shipping → customer) for a product you have in mind, and note who pays whom.</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">اكتب خطوة واحدة هتعملها في كل عمود من الأعمدة الخمسة (المنتج، المتجر، المحتوى، التسويق، البراندينج).</span><span data-l="en">Write one action you'll take for each of the five pillars (product, store, content, marketing, branding).</span></span></label></li>
+      <li><label><input type="checkbox"><span class="t"><span data-l="ar">اكتب 3 نيتشات ممكن تبدأ بيهم: واحد من بحثك عن النيتشات الناجحة، وواحد من شغفك أو خبرتك، وقارن بينهم.</span><span data-l="en">List 3 niches you could start with: one from researching winning niches, one from your passion or experience, then compare them.</span></span></label></li>
       <li><label><input type="checkbox"><span class="t"><span data-l="ar">احسب ربح منتج: سعر بيع $24.99، منتج $5، شحن $3، إعلان $9.</span><span data-l="en">Work out the profit: price $24.99, product $5, shipping $3, ads $9.</span></span></label></li>
     </ul>
   </div>
@@ -2085,10 +2290,6 @@ const QUIZ = {
  {t:"mc",q:{ar:"إيه أول خطوة في خريطة إنشاء المتجر؟",en:"What is the first step on the store roadmap?"},
   o:[{ar:"تصميم اللوجو",en:"Designing the logo"},{ar:"اختيار الثيم",en:"Choosing a theme"},{ar:"اختيار المنتج الرابح",en:"Choosing a winning product"},{ar:"إطلاق الإعلانات",en:"Launching ads"}],a:2,
   w:{ar:"كل حاجة بتبدأ من المنتج، وبعده الاسم واللوجو والمتجر.",en:"Everything starts from the product, then the name, logo and store."}},
- {t:"mc",q:{ar:"أنهي نموذج بيتطبع فيه تصميمك على المنتج لما ييجي طلب؟",en:"Which model prints your design on the product when an order comes in?"},
-  o:["Inventory","Dropshipping","Print on Demand","Wholesale"],a:2,w:{ar:"Print on Demand: طباعة عند الطلب.",en:"Print on Demand prints only when someone orders."}},
- {t:"tf",q:{ar:"لازم تكون مبرمج عشان تبني متجر على Shopify.",en:"You need to be a programmer to build a Shopify store."},a:false,
-  w:{ar:"Shopify سهلة من غير برمجة، وده من أسباب اختيارها.",en:"Shopify works without code, which is one reason we chose it."}},
  {t:"mc",q:{ar:"إيه الهدف الأساسي من الدبلوم؟",en:"What is the main goal of the diploma?"},
   o:[{ar:"نحفظ معلومات عن التجارة الإلكترونية",en:"Memorize facts about e-commerce"},{ar:"إنشاء متجر إلكتروني رابح",en:"Build a profitable online store"},{ar:"نتعلم البرمجة",en:"Learn programming"},{ar:"نجمع متابعين على السوشيال",en:"Gain social media followers"}],a:1,
   w:{ar:"الهدف متجر رابح، والأهم إننا نحقق أرباح.",en:"The goal is a profitable store, and above all, making profit."}},
@@ -2122,9 +2323,6 @@ const QUIZ = {
  {t:"multi",q:{ar:"إيه اللي بيحصل في المرحلة الصعبة اللي قبل النجاح؟",en:"What happens in the hard phase before success?"},
   o:[{ar:"شغل كتير",en:"A lot of work"},{ar:"فشل",en:"Failure"},{ar:"سهر وتعب",en:"Late nights and fatigue"},{ar:"أرباح فورية",en:"Instant profit"},{ar:"مبيعات مضمونة",en:"Guaranteed sales"}],a:[0,1,2],
   w:{ar:"النجاح بيبدأ بعد المرحلة اللي فيها شغل كتير وفشل وسهر وتعب.",en:"Success starts after the phase of hard work, failure and late nights."}},
- {t:"mc",q:{ar:"بعد ما توصل للنجاح، بتبدأ:",en:"Once you reach success, you start to:"},
-  o:[{ar:"تفهم، وتكسب، وتثبت نفسك",en:"Understand, earn and prove yourself"},{ar:"توقف شغل",en:"Stop working"},{ar:"تغيّر المجال",en:"Switch fields"},{ar:"تبدأ من الصفر",en:"Start from zero"}],a:0,
-  w:{ar:"بعد النجاح بتفهم المجال، وتكسب، وتثبت نفسك.",en:"After success you understand the field, earn, and prove yourself."}},
  {t:"mc",q:{ar:"أنهي واحدة من دول مش من فوايد الدبلوم؟",en:"Which of these is NOT one of the diploma's benefits?"},
   o:[{ar:"اختيار منتجات ونيتش ربحية",en:"Choosing profitable products and niches"},{ar:"ربط المتجر بالموردين",en:"Connecting the store to suppliers"},{ar:"برمجة ألعاب موبايل",en:"Programming mobile games"},{ar:"تسويق احترافي وجذب العملاء",en:"Professional marketing to attract customers"}],a:2,
   w:{ar:"الدبلوم عن التجارة الإلكترونية وShopify، مش برمجة الألعاب.",en:"The diploma is about e-commerce and Shopify, not game programming."}},
@@ -2145,8 +2343,21 @@ const QUIZ = {
  {t:"mc",q:{ar:"يعني إيه UGC؟",en:"What does UGC mean?"},
   o:[{ar:"محتوى بيعمله مستخدمين حقيقيين، زي فيديوهات لناس بتجرب المنتج",en:"Content made by real users, like videos of people trying the product"},{ar:"نوع من أنواع الشحن",en:"A type of shipping"},{ar:"تطبيق على Shopify",en:"A Shopify app"},{ar:"خصم على المنتج",en:"A product discount"}],a:0,
   w:{ar:"User Generated Content، ومن أقوى أنواع الإعلانات.",en:"User-generated content, one of the strongest kinds of ad creative."}},
- {t:"tf",q:{ar:"في خريطة الطريق، إطلاق إعلانات فيسبوك بييجي قبل اختيار المنتج.",en:"On the roadmap, launching Facebook ads comes before choosing the product."},a:false,
-  w:{ar:"الإعلانات من آخر الخطوات، والمنتج هو أول خطوة.",en:"Ads come near the end; the product is step one."}},
+ {t:"mc",q:{ar:"يعني إيه نيش (Niche)؟",en:"What is a niche?"},
+  o:[{ar:"التخصص: التركيز على فئة أو سوق محدد",en:"Specialization: focusing on a specific category or market"},{ar:"بيع أي منتج لأي حد",en:"Selling any product to anyone"},{ar:"نوع من الشحن",en:"A type of shipping"},{ar:"اسم البراند",en:"The brand name"}],a:0,
+  w:{ar:"النيش هو التخصص في فئة أو سوق محدد.",en:"A niche is specializing in one category or market."}},
+ {t:"multi",q:{ar:"إيه مميزات إنك تشتغل في نيش محدد؟",en:"What are the benefits of working in a defined niche?"},
+  o:[{ar:"جمهور محدد واحتياج واضح",en:"A defined audience with a clear need"},{ar:"تركيز أفضل ونتائج أسرع",en:"Sharper focus, faster results"},{ar:"منافسة أقل وفرص أكبر",en:"Less competition, more opportunity"},{ar:"ربحية أعلى على المدى الطويل",en:"Higher long-term profit"},{ar:"مش محتاج تسوّق خالص",en:"No marketing needed at all"}],a:[0,1,2,3],
+  w:{ar:"كل دول مميزات، لكن التسويق لازم في أي نيش.",en:"All are benefits, but every niche still needs marketing."}},
+ {t:"mc",q:{ar:"متجر زي Noon أو Amazon فيه مجالات ومنتجات كتير. ده نوعه:",en:"A store like Noon or Amazon with many categories is a:"},
+  o:["One Product Store","General Store","Niche Store","Print on Demand"],a:1,
+  w:{ar:"General Store: متجر عام.",en:"A general store."}},
+ {t:"mc",q:{ar:"أفضل نوع متاجر تبدأ بيه في الدبلوم:",en:"The best store type to start with in this diploma:"},
+  o:["One Product Store","General Store","Niche Store",{ar:"مفيش فرق",en:"It makes no difference"}],a:2,
+  w:{ar:"النيش ستور: تركيز على مجال، منتجات كتير في نفس التخصص، براند أقوى، والعملاء بيعرفوك بسهولة.",en:"A niche store: one field, many products within it, a stronger brand, and easy recognition."}},
+ {t:"multi",q:{ar:"اختيار النيش بيتم بناءً على إيه؟",en:"What should your niche choice be based on?"},
+  o:[{ar:"البحث عن النيتشات الناجحة حاليًا",en:"Researching niches that are winning now"},{ar:"شغفك أو خبرتك",en:"Your passion or experience"},{ar:"أول نيش يقابلك",en:"The first niche you come across"},{ar:"اللي صاحبك بيبيعه",en:"Whatever a friend is selling"}],a:[0,1],
+  w:{ar:"البحث + الشغف أو الخبرة. مثلًا لو بتحب القهوة هتعرف تسوّق لمكن القهوة كويس.",en:"Research plus passion or experience. If you love coffee, you'll market coffee machines well."}},
  {t:"mc",q:{ar:"«ما بين الاستسلام والنجاح قرار واحد»، القرار ده هو:",en:"\"Between giving up and success there is one decision.\" That decision is:"},
   o:[{ar:"أغيّر المجال",en:"Switch fields"},{ar:"أكمل",en:"Keep going"},{ar:"أستنى الظروف تتحسن",en:"Wait for better conditions"},{ar:"أقلل المجهود",en:"Put in less effort"}],a:1,
   w:{ar:"أكمل! اللي بيكمل المرحلة الصعبة هو اللي بيوصل.",en:"Keep going! Those who get through the hard phase are the ones who arrive."}}
@@ -2473,6 +2684,9 @@ const IC={
  nobox:`<svg viewBox="0 0 64 64"><path d="M14 24 L32 16 L50 24 V44 L32 52 L14 44Z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><circle cx="32" cy="34" r="26" fill="none" stroke="${G}" stroke-width="5"/><path d="M14 16 L50 52" stroke="${G}" stroke-width="5"/></svg>`,
  ugc:`<svg viewBox="0 0 64 64"><rect x="16" y="4" width="32" height="56" rx="6" fill="${K}"/><rect x="19" y="10" width="26" height="42" rx="2" fill="var(--sunk)"/><path d="M28 24 l10 7 -10 7z" fill="${G}"/><path d="M50 18 c-3-5-10-2-8 3 l8 8 8-8 c2-5-5-8-8-3z" fill="${R}"/></svg>`,
  crown:`<svg viewBox="0 0 64 64"><path d="M22 18 C22 6, 42 6, 42 18" fill="none" stroke="${K}" stroke-width="3.5"/><path d="M10 18 H54 L58 60 H6Z" fill="${K}"/><path d="M20 44 l3-14 7 7 2-10 2 10 7-7 3 14z" fill="var(--gold)"/></svg>`,
+ compass:`<svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="26" fill="#2B3A35" stroke="#9AA5A1" stroke-width="3"/><circle cx="32" cy="6" r="4" fill="none" stroke="#9AA5A1" stroke-width="2.5"/><path d="M32 12 L37 34 L32 56 L27 34Z" fill="#E6ECEA"/><path d="M10 34 L32 29 L54 34 L32 39Z" fill="#9AA5A1"/><path d="M32 34 L46 18 L36 37Z" fill="#4FD1A5"/><circle cx="32" cy="34" r="3" fill="#E6ECEA"/></svg>`,
+ lens:`<svg viewBox="0 0 64 64"><circle cx="26" cy="26" r="18" fill="none" stroke="${G}" stroke-width="5"/><path d="M39 39 L58 58" stroke="${D}" stroke-width="7" stroke-linecap="round"/></svg>`,
+ coffee:`<svg viewBox="0 0 64 64"><path d="M10 26h34v14a14 14 0 0 1-14 14h-6A14 14 0 0 1 10 40z" fill="${G}"/><path d="M44 30h4a7 7 0 0 1 0 14h-6" fill="none" stroke="${G}" stroke-width="4"/><path d="M20 8 q4 6 0 12M30 8 q4 6 0 12" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="27" cy="28" rx="13" ry="3" fill="#7A4A26"/><path d="M6 58h44" stroke="${D}" stroke-width="3" stroke-linecap="round"/></svg>`,
  person:`<svg viewBox="0 0 20 40"><circle cx="10" cy="7" r="6"/><path d="M2 40V22c0-6 3-9 8-9s8 3 8 9v18z"/></svg>`
 };
 
@@ -2669,8 +2883,60 @@ function renderI18n(){
   if(msgKey) msg.textContent=tr(M[msgKey]); if(modeKey) mode.textContent=tr(M[modeKey]);
   $('introSave').textContent=tr(hasDoc?M.update:M.send);
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
-  renderAdmin();
+  renderAdmin(); if(typeof renderPolls==="function") renderPolls();
 }
+/* ---------- class polls (shared counts, no names) ---------- */
+const POLLS={
+ blender:{coll:'poll-blender',opts:{love:{ar:'❤️ أعجبني',en:'❤️ Love it'},great:{ar:'👍 رائع',en:'👍 Great'},hmm:{ar:'🤔 مهم',en:'🤔 Interesting'},no:{ar:'⭐ غير مناسب لي',en:'⭐ Not for me'}}},
+ niche:{coll:'poll-niche',opts:{one:{ar:'One Product Store',en:'One Product Store'},general:{ar:'General Store',en:'General Store'},niche:{ar:'Niche Store',en:'Niche Store'}}}
+};
+S.polls=S.polls||{};
+const PC={blender:null,niche:null};
+let pdb=null,puid=null,pro=false;
+function renderPoll(id){
+  const mine=S.polls[id], P=POLLS[id];
+  document.querySelectorAll('[data-poll="'+id+'"]').forEach(b=>{b.classList.toggle('on',b.dataset.v===mine);b.setAttribute('aria-pressed',b.dataset.v===mine?'true':'false');
+    if(id==='niche') b.classList.toggle('right',!!mine&&b.dataset.v==='niche');});
+  const box=$('res-'+id); box.hidden=!mine; if(!mine) return;
+  const counts=PC[id]; box.innerHTML='';
+  const h=document.createElement('div'); h.className='rh';
+  if(counts){const total=Object.values(counts).reduce((a,b)=>a+b,0);
+    h.innerHTML='<span>'+(LANG==='ar'?'رأي الدفعة':'Cohort results')+'</span><span>'+total+' '+(LANG==='ar'?'صوت':'votes')+'</span>'; box.append(h);
+    Object.keys(P.opts).forEach(k=>{const c=counts[k]||0,pct=total?Math.round(c/total*100):0;
+      const r=document.createElement('div'); r.className='rrow'+(k===mine?' me':'');
+      const l=document.createElement('span'); l.textContent=tr(P.opts[k])+(k===mine?(LANG==='ar'?' (صوتك)':' (you)'):'');
+      const bar=document.createElement('span'); bar.className='rbar'; bar.innerHTML='<i style="width:'+pct+'%"></i>';
+      const p=document.createElement('span'); p.className='pc'; p.textContent=pct+'%';
+      r.append(l,bar,p); box.append(r);});
+  } else {
+    h.innerHTML='<span>'+(LANG==='ar'?'اخترت: ':'You chose: ')+esc(tr(P.opts[mine]))+'</span>'; box.append(h);
+    const n=document.createElement('small'); n.style.color='var(--muted)'; n.textContent=LANG==='ar'?'نتيجة الدفعة بتظهر لما تفتح الدبلوم من الرابط الرسمي وانت مسجل دخول.':'Cohort results appear when you open the diploma from its official link while signed in.'; box.append(n);
+  }
+  if(id==='blender') $('blenderLesson').hidden=false;
+  if(id==='niche') $('nicheAnswer').hidden=false;
+}
+function vote(id,v){
+  S.polls[id]=v; save();
+  if(PC[id]&&pdb&&puid&&!pro){ /* optimistic: snapshot will correct */ }
+  renderPoll(id);
+  if(pdb&&puid&&!pro){pdb.doc(POLLS[id].coll+'/'+puid).set({v:v,at:new Date().toISOString()}).catch(e=>{if(e&&e.code==='invalid_argument')pro=true;});}
+}
+document.querySelectorAll('[data-poll]').forEach(b=>b.addEventListener('click',()=>vote(b.dataset.poll,b.dataset.v)));
+function renderPolls(){Object.keys(POLLS).forEach(renderPoll);}
+(async()=>{
+  const c=window.claude; if(!c||!c.use) return;
+  const [d,u]=await Promise.all([c.use('db'),c.use('user')]); if(!d||!u) return;
+  pdb=d; try{puid=await u.id();}catch(e){}
+  const w=await u.can('data.write'); if(w===false){let o=false;try{o=await u.isOwner();}catch(e){} if(!o) pro=true;}
+  Object.keys(POLLS).forEach(id=>{
+    pdb.collection(POLLS[id].coll).onSnapshot(snap=>{
+      const cnt={}; snap.docs.forEach(x=>{if(x.exists===false)return;const v=(x.data()||{}).v; if(typeof v==='string'&&POLLS[id].opts[v]) cnt[v]=(cnt[v]||0)+1;
+        if(x.id===puid&&typeof v==='string'&&POLLS[id].opts[v]&&!S.polls[id]){S.polls[id]=v;save();}});
+      PC[id]=cnt; renderPoll(id);
+    },()=>{});
+  });
+})();
+
 document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
 show(location.hash.slice(1)||'home');
