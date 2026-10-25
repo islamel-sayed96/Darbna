@@ -625,6 +625,95 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   .guess-opts{grid-template-columns:minmax(0,1fr)}
 }
 
+/* ---------- e-commerce, 3-step cycle, needs, skills ---------- */
+.ec{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;align-items:center}
+.ec-main{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ec-title{display:flex;align-items:center;gap:12px}
+.ec-title h3{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--accent-dark);line-height:1.3}
+.ec-badge{width:62px;height:62px;border-radius:50%;background:var(--surface);border:3px solid var(--accent-dark);padding:10px;flex:none}
+.ec-card{display:flex;align-items:center;gap:14px;border-radius:16px;padding:16px;font-size:1.05rem;line-height:1.8}
+.ec-card .ic{width:56px;height:56px;flex:none;border-radius:50%;padding:9px;background:var(--surface)}
+.ec-card.light{background:var(--surface);border:1px solid var(--line);font-weight:600}
+.ec-card.light b{color:var(--accent)}
+.ec-card.dark{background:var(--accent-dark);color:var(--accent-ink);font-weight:600}
+.ec-card.dark b{text-decoration:underline;text-underline-offset:5px}
+.ec-plain{color:var(--muted)}
+.ec-orbit{display:flex;flex-direction:column;gap:10px}
+.ec-orbit > div{display:grid;grid-template-columns:56px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.ec-orbit .ic{grid-row:1/3;width:56px;height:56px;border-radius:50%;background:var(--accent-dark);padding:12px}
+.ec-orbit b{font-family:var(--font-display);font-size:1.1rem}
+.ec-orbit small{color:var(--muted)}
+.ec-ben{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-top:1px solid var(--line);padding-top:12px}
+.ec-ben > span{display:flex;align-items:center;gap:8px;font-weight:700;padding:4px 20px;border-inline-start:1px solid var(--line)}
+.ec-ben > span:first-child{border-inline-start:0}
+.ec-ben .ic{width:34px;height:34px}
+.cyc3{position:relative;width:100%;max-width:640px;margin-inline:auto;aspect-ratio:600/380}
+.cyc3-arrows{position:absolute;inset:0;width:100%;height:100%}
+.cn{position:absolute;width:30%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.cn .ic{width:clamp(64px,13vw,96px);height:clamp(64px,13vw,96px);border-radius:50%;background:var(--surface);border:2px solid var(--line);padding:14%}
+.cn b{background:var(--accent-dark);color:var(--accent-ink);border-radius:8px;padding:1px 16px;font-family:var(--font-display);font-weight:800}
+.cn small{color:var(--muted);font-size:.85rem;line-height:1.5}
+.cn.sup{top:0;left:35%}
+.cn.you{bottom:0;left:2%}
+.cn.cus{bottom:0;right:2%}
+#root[data-lang="en"] .cn.you{left:auto;right:2%}
+#root[data-lang="en"] .cn.cus{right:auto;left:2%}
+.cs{position:absolute;display:flex;align-items:center;gap:4px}
+.cs b{width:28px;height:28px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--font-poster);font-weight:400}
+.cs .ic{width:36px;height:36px}
+.cs.s1{bottom:2%;left:44%}
+.cs.s2{top:24%;left:12%}
+.cs.s3{top:24%;right:12%}
+#root[data-lang="en"] .cs.s2{left:auto;right:12%}
+#root[data-lang="en"] .cs.s3{right:auto;left:12%}
+#root[data-lang="en"] .cyc3-arrows{transform:scaleX(-1)}
+.cyc3-center{position:absolute;top:62%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;border:2px dashed var(--accent);padding:14px}
+.cyc3-list{display:none;list-style:none;margin:0;padding:0;flex-direction:column;gap:8px}
+.cyc3-list li{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.cyc3-list b{width:28px;height:28px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.cyc3-list strong{color:var(--accent-dark)}
+.cyc3-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.chipsline{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--surface);font-weight:700}
+.chipsline i{width:1px;height:18px;background:var(--line)}
+.cyc3-foot p{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-weight:700}
+.cyc3-foot .ic{width:34px;height:34px;flex:none}
+.needs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.need{--nc:#2D6FD6;position:relative;display:grid;grid-template-columns:72px minmax(0,1fr);grid-template-rows:auto auto;column-gap:14px;row-gap:6px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 16px 14px;cursor:pointer}
+.need.n2{--nc:var(--accent)}.need.n3{--nc:#7A4FB5}.need.n4{--nc:#E07A1F}
+.need .num{position:absolute;top:-12px;inset-inline-start:14px;width:38px;height:38px;border-radius:50%;background:var(--nc);color:#fff;display:grid;place-items:center;font-family:var(--font-poster);box-shadow:0 0 0 4px var(--bg)}
+.need .ic{grid-row:1/3;width:72px;height:72px;border-radius:50%;background:var(--sunk);padding:12px}
+.need .tx{font-weight:700;font-size:1.02rem;line-height:1.6}
+.need .have{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--muted)}
+.need .have input{accent-color:var(--nc);width:18px;height:18px}
+.need::after{content:"";position:absolute;bottom:0;inset-inline-start:30%;inset-inline-end:30%;height:3px;border-radius:3px;background:var(--nc);opacity:.6}
+.need:has(input:checked){border-color:var(--nc);background:var(--accent-soft)}
+.ready-msg{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;border:1px solid var(--line);border-radius:999px;padding:10px 18px;background:var(--surface);font-weight:700}
+.ready-msg .ic{width:36px;height:36px;flex:none}
+.ready-msg b{color:var(--accent)}
+.ready-msg.all{background:var(--good-soft);border-color:var(--good)}
+.skills{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.skill{position:relative;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 12px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-width:0}
+.skill:hover{border-color:var(--accent)}
+.skill .num{position:absolute;top:10px;inset-inline-start:10px;width:34px;height:34px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--font-poster);font-size:.95rem}
+.skill .ic{width:76px;height:76px;border-radius:50%;background:var(--sunk);padding:14px}
+.skill b{font-family:var(--font-display);font-size:1rem;line-height:1.5}
+.skill p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.skill .where{margin-top:auto;font-size:.75rem;border:1px solid var(--accent);color:var(--accent-dark);border-radius:99px;padding:1px 10px}
+.zero-pro{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--accent-dark);color:var(--accent-ink);border-radius:999px;padding:10px 20px;font-family:var(--font-display);font-weight:800;width:max-content;max-width:100%;margin-inline:auto;text-align:center}
+.zero-pro .ic{width:34px;height:34px;background:var(--surface);border-radius:50%;padding:5px;flex:none}
+@media (max-width:900px){
+  .ec{grid-template-columns:minmax(0,1fr)}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skill:last-child{grid-column:1/-1}
+  .cyc3-foot{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .cyc3{display:none}
+  .cyc3-list{display:flex}
+  .needs{grid-template-columns:minmax(0,1fr)}
+  .ec-ben > span{border-inline-start:0}
+}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -963,10 +1052,23 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 
   <!-- lesson 1 -->
   <div class="lesson-head"><h2><span data-l="ar">الدرس الأول: مدخل للتجارة الإلكترونية</span><span data-l="en">Lesson 1: Introduction to e-commerce</span></h2></div>
-  <div class="prose">
-    <h3><span data-l="ar">يعني إيه تجارة إلكترونية؟</span><span data-l="en">What is e-commerce?</span></h3>
-    <p data-l="ar">التجارة الإلكترونية (E-Commerce) هي إنك تبيع منتج أو خدمة عن طريق الإنترنت: العميل يشوف المنتج على موقعك، يدفع أونلاين، والمنتج يوصله لحد البيت. الفكرة نفسها زي أي محل، بس المحل هنا هو <b>المتجر الإلكتروني</b>، والزباين جايين من <b>الإعلانات والسوشيال ميديا</b>.</p>
-    <p data-l="en">E-commerce means selling a product or service over the internet: the customer sees the product on your site, pays online, and it's delivered to their door. It's like any shop, except the shop is your <b>online store</b> and customers come from <b>ads and social media</b>.</p>
+  <div class="ec">
+    <div class="ec-main">
+      <div class="ec-title"><i class="ic ec-badge" data-ic="cart"></i><h3><span data-l="ar">ما هي التجارة الإلكترونية؟</span><span data-l="en">What is e-commerce?</span></h3></div>
+      <div class="ec-card light"><i class="ic" data-ic="globeCart"></i><p><span data-l="ar">التجارة الإلكترونية هي عملية <b>بيع وشراء</b> المنتجات أو الخدمات <b>عبر الإنترنت</b>.</span><span data-l="en">E-commerce is <b>buying and selling</b> products or services <b>over the internet</b>.</span></p></div>
+      <div class="ec-card dark"><i class="ic" data-ic="shopLine"></i><p><span data-l="ar">بتتيح لأصحاب المشاريع إنشاء متاجر رقمية <b>من غير محل فعلي</b>، وبتوفر وصول أوسع للعملاء في <b>أي مكان</b>.</span><span data-l="en">It lets business owners open digital stores <b>without a physical shop</b>, and reach customers <b>anywhere</b>.</span></p></div>
+      <p class="ec-plain"><span data-l="ar">يعني الفكرة زي أي محل: العميل يشوف المنتج على موقعك، يدفع أونلاين، والمنتج يوصله لحد البيت. بس المحل هنا هو <b>المتجر الإلكتروني</b>، والزباين جايين من <b>الإعلانات والسوشيال ميديا</b>.</span><span data-l="en">It works like any shop: the customer sees the product on your site, pays online, and it's delivered to their door. The shop is your <b>online store</b>, and customers come from <b>ads and social media</b>.</span></p>
+    </div>
+    <div class="ec-orbit">
+      <div><i class="ic" data-ic="card"></i><b><span data-l="ar">دفع أونلاين</span><span data-l="en">Online payment</span></b><small data-l="ar">العميل يدفع بالكارت من مكانه</small><small data-l="en">Customers pay by card from anywhere</small></div>
+      <div><i class="ic" data-ic="clock"></i><b>24/7</b><small data-l="ar">متجرك شغال حتى وانت نايم</small><small data-l="en">Your store sells while you sleep</small></div>
+      <div><i class="ic" data-ic="globe"></i><b><span data-l="ar">أي دولة</span><span data-l="en">Any country</span></b><small data-l="ar">تبيع للعالم مش لمدينتك بس</small><small data-l="en">Sell to the world, not just your city</small></div>
+    </div>
+    <div class="ec-ben">
+      <span><i class="ic" data-ic="grow"></i><span data-l="ar">فرص نمو أكبر</span><span data-l="en">Bigger growth potential</span></span>
+      <span><i class="ic" data-ic="shopLine"></i><span data-l="ar">تكلفة أقل</span><span data-l="en">Lower cost</span></span>
+      <span><i class="ic" data-ic="globe"></i><span data-l="ar">وصول عالمي</span><span data-l="en">Global reach</span></span>
+    </div>
   </div>
   <!-- ===== What is dropshipping ===== -->
   <div class="ds-banner">
@@ -983,6 +1085,34 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
       <p class="ds-def-sub"><span data-l="ar">بتعرض المنتجات في متجرك، والعميل يطلب، وأنت بتحوّل الطلب للمورد.</span><span data-l="en">You list products in your store, the customer orders, and you pass the order to the supplier.</span></p>
     </div>
     <blockquote class="ds-motto"><span data-l="ar">أنا <em>لا</em> بصنع، و<em>لا</em> بخزّن، و<em>لا</em> بشحن المنتج.</span><span data-l="en">I <em>don't</em> make it, I <em>don't</em> store it, I <em>don't</em> ship it.</span></blockquote>
+  </div>
+
+  <div class="sec-head"><div class="en">HOW DOES IT WORK?</div><h2><span data-l="ar">كيف يعمل الدروب شيبينج؟</span><span data-l="en">How does dropshipping work?</span></h2>
+    <p data-l="ar">نموذج عمل في التجارة الإلكترونية ما بتحتاجش فيه تخزّن أي منتجات عندك. كل الحكاية 3 خطوات:</p>
+    <p data-l="en">A business model where you never need to keep stock yourself. It comes down to three steps:</p></div>
+  <div class="cyc3">
+    <svg class="cyc3-arrows" viewBox="0 0 600 360" aria-hidden="true" preserveAspectRatio="none">
+      <defs><marker id="arC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="var(--accent-dark)"/></marker></defs>
+      <path d="M420 300 Q300 345 185 300" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#arC)"/>
+      <path d="M150 220 Q150 120 235 85" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#arC)"/>
+      <path d="M365 85 Q450 120 450 220" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#arC)"/>
+    </svg>
+    <div class="cn sup"><i class="ic" data-ic="warehouse"></i><b><span data-l="ar">المورد</span><span data-l="en">Supplier</span></b><small data-l="ar">يشحن المنتج مباشرةً للعميل</small><small data-l="en">Ships the product straight to the customer</small></div>
+    <div class="cn you"><i class="ic" data-ic="shop"></i><b><span data-l="ar">أنت</span><span data-l="en">You</span></b><small data-l="ar">تبعت الطلب للمورد</small><small data-l="en">Send the order to the supplier</small></div>
+    <div class="cn cus"><i class="ic" data-ic="user"></i><b><span data-l="ar">العميل</span><span data-l="en">Customer</span></b><small data-l="ar">يشتري من متجرك</small><small data-l="en">Buys from your store</small></div>
+    <span class="cs s1"><b>1</b><i class="ic" data-ic="cart"></i></span>
+    <span class="cs s2"><b>2</b><i class="ic" data-ic="checklist"></i></span>
+    <span class="cs s3"><b>3</b><i class="ic" data-ic="truck"></i></span>
+    <i class="ic cyc3-center" data-ic="parcel"></i>
+  </div>
+  <ol class="cyc3-list">
+    <li><b>1</b><span data-l="ar"><strong>العميل</strong> يشتري من متجرك.</span><span data-l="en">The <strong>customer</strong> buys from your store.</span></li>
+    <li><b>2</b><span data-l="ar"><strong>أنت</strong> تبعت الطلب للمورد.</span><span data-l="en"><strong>You</strong> send the order to the supplier.</span></li>
+    <li><b>3</b><span data-l="ar"><strong>المورد</strong> يشحن المنتج مباشرةً للعميل.</span><span data-l="en">The <strong>supplier</strong> ships it straight to the customer.</span></li>
+  </ol>
+  <div class="cyc3-foot">
+    <div class="chipsline"><span data-l="ar">بدون مخزون</span><span data-l="en">No inventory</span><i></i><span data-l="ar">بدون تعقيد</span><span data-l="en">No complexity</span><i></i><span data-l="ar">برأس مال أقل</span><span data-l="en">Less capital</span><i></i><span data-l="ar">مرونة أعلى</span><span data-l="en">More flexibility</span></div>
+    <p><i class="ic" data-ic="bulb"></i><span data-l="ar">أنت تركز على التسويق وخدمة العملاء، والباقي على المورد!</span><span data-l="en">You focus on marketing and customer service; the supplier handles the rest!</span></p>
   </div>
 
   <div class="nos">
@@ -1015,7 +1145,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     </div>
   </div>
 
-  <div class="sec-head"><div class="en">HOW AN ORDER MOVES</div><h2><span data-l="ar">رحلة الطلب خطوة بخطوة</span><span data-l="en">The order journey, step by step</span></h2>
+  <div class="sec-head"><div class="en">HOW AN ORDER MOVES</div><h2><span data-l="ar">رحلة الطلب بالتفصيل</span><span data-l="en">The order journey in detail</span></h2>
     <p data-l="ar">من لحظة ما العميل يدوس «اطلب الآن» لحد ما الشحنة توصله.</p><p data-l="en">From the moment the customer taps "Buy now" until the parcel arrives.</p></div>
   <ol class="journey5">
     <li><span class="who"><span data-l="ar">العميل</span><span data-l="en">Customer</span></span><i class="ic" data-ic="laptopUser"></i><p data-l="ar">يختار المنتج ويطلب ويدفع لك</p><p data-l="en">Picks the product, orders and pays you</p><span class="money" title="$">$</span></li>
@@ -1166,6 +1296,28 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p data-l="ar">بتبيع طوق ضد البراغيث للكلاب بسعر <b>$29.99</b>. تكلفة المنتج <b>$6</b> والشحن <b>$4</b>، وكل بيعة بتكلفك إعلانات حوالي <b>$10</b>. يبقى ربحك من البيعة تقريبًا <b>$9.99</b>، ولو بعت 10 قطع في اليوم يبقى حوالي <b>$100</b> ربح يومي.</p>
     <p data-l="en">You sell an anti-flea dog collar for <b>$29.99</b>. The product costs <b>$6</b>, shipping <b>$4</b>, and each sale costs about <b>$10</b> in ads. Profit per sale is about <b>$9.99</b>; at 10 sales a day that's roughly <b>$100</b> daily profit.</p>
   </div>
+  <!-- ===== What you need / what you'll learn ===== -->
+  <div class="sec-head"><div class="en">WHAT DO YOU NEED TO START?</div><h2><span data-l="ar">إيه اللي محتاجه عشان تتعلم الدروب شيبينج؟</span><span data-l="en">What do you need to learn dropshipping?</span></h2>
+    <p data-l="ar">مش محتاج خبرة ولا رأس مال كبير. علّم على اللي عندك:</p><p data-l="en">No experience or big budget needed. Tick what you already have:</p></div>
+  <div class="needs" id="needs">
+    <label class="need n1"><span class="num">01</span><i class="ic" data-ic="hourglass"></i><span class="tx"><span data-l="ar">شوية صبر ورغبة في التعلم والتجربة</span><span data-l="en">A little patience and the will to learn and experiment</span></span><span class="have"><input type="checkbox" id="need-0"><span data-l="ar">عندي</span><span data-l="en">I have this</span></span></label>
+    <label class="need n2"><span class="num">02</span><i class="ic" data-ic="mega"></i><span class="tx"><span data-l="ar">فهم أساسي للتسويق الرقمي (خاصة السوشيال ميديا)</span><span data-l="en">A basic grasp of digital marketing (especially social media)</span></span><span class="have"><input type="checkbox" id="need-1"><span data-l="ar">عندي</span><span data-l="en">I have this</span></span></label>
+    <label class="need n3"><span class="num">03</span><i class="ic" data-ic="devices"></i><span class="tx"><span data-l="ar">جهاز كمبيوتر أو موبايل متصل بالإنترنت</span><span data-l="en">A computer or phone with internet access</span></span><span class="have"><input type="checkbox" id="need-2"><span data-l="ar">عندي</span><span data-l="en">I have this</span></span></label>
+    <label class="need n4"><span class="num">04</span><i class="ic" data-ic="bagw"></i><span class="tx"><span data-l="ar">حساب على Shopify أو منصة مشابهة</span><span data-l="en">A Shopify account or a similar platform</span></span><span class="have"><input type="checkbox" id="need-3"><span data-l="ar">عندي</span><span data-l="en">I have this</span></span></label>
+  </div>
+  <div class="ready-msg" id="readyMsg"><i class="ic" data-ic="rocket"></i><span data-l="ar">كل اللي محتاجه هو <b>البداية</b>… والباقي هنتعلمه مع بعض خطوة بخطوة!</span><span data-l="en">All you need is to <b>start</b>… we'll learn the rest together, step by step!</span></div>
+
+  <div class="sec-head"><div class="en">WHAT WILL YOU LEARN?</div><h2><span data-l="ar">هتتعلم إيه في الدبلوم؟</span><span data-l="en">What will you learn?</span></h2>
+    <div class="ribbon dark"><span data-l="ar">مهارات عملية تؤهلك لبناء متجر دروبشيبينج ناجح</span><span data-l="en">Practical skills to build a successful dropshipping store</span></div></div>
+  <div class="skills">
+    <a class="skill" href="#ch2"><span class="num">01</span><i class="ic" data-ic="target"></i><b><span data-l="ar">اختيار نيش (تخصص) مناسب ومربح</span><span data-l="en">Choosing a profitable niche</span></b><p data-l="ar">تختار مجال مربح يحقق لك نجاح مستدام.</p><p data-l="en">Pick a profitable field that lasts.</p><span class="where"><span data-l="ar">الفصل 2</span><span data-l="en">Chapter 2</span></span></a>
+    <a class="skill" href="#ch5"><span class="num">02</span><i class="ic" data-ic="supplier"></i><b><span data-l="ar">العثور على موردين محترفين</span><span data-l="en">Finding reliable suppliers</span></b><p data-l="ar">إزاي تلاقي موردين موثوقين بأفضل الأسعار.</p><p data-l="en">How to find trustworthy suppliers at the best prices.</p><span class="where"><span data-l="ar">الفصل 5</span><span data-l="en">Chapter 5</span></span></a>
+    <a class="skill" href="#ch4"><span class="num">03</span><i class="ic" data-ic="shop"></i><b><span data-l="ar">إنشاء متجر احترافي على Shopify</span><span data-l="en">Building a professional Shopify store</span></b><p data-l="ar">خطوات إنشاء متجر احترافي جاهز للبيع.</p><p data-l="en">Every step to a store that's ready to sell.</p><span class="where"><span data-l="ar">الفصول 4–7</span><span data-l="en">Chapters 4–7</span></span></a>
+    <a class="skill" href="#ch10"><span class="num">04</span><i class="ic" data-ic="ugc"></i><b><span data-l="ar">تسويق المنتجات على Instagram و TikTok وغيرهم</span><span data-l="en">Marketing on Instagram, TikTok and more</span></b><p data-l="ar">استراتيجيات فعّالة لجذب العملاء وزيادة المبيعات.</p><p data-l="en">Effective strategies to attract customers and grow sales.</p><span class="where"><span data-l="ar">الفصل 10</span><span data-l="en">Chapter 10</span></span></a>
+    <a class="skill" href="#ch9"><span class="num">05</span><i class="ic" data-ic="headset"></i><b><span data-l="ar">التعامل مع الطلبات وخدمة العملاء</span><span data-l="en">Handling orders and customer service</span></b><p data-l="ar">إدارة الطلبات والتواصل الاحترافي مع العملاء.</p><p data-l="en">Managing orders and talking to customers professionally.</p><span class="where"><span data-l="ar">الفصول 4 و 9</span><span data-l="en">Chapters 4 &amp; 9</span></span></a>
+  </div>
+  <div class="zero-pro"><i class="ic" data-ic="cap"></i><span data-l="ar">من الصفر إلى الاحتراف في عالم الدروب شيبينج 🚀</span><span data-l="en">From zero to pro in the world of dropshipping 🚀</span></div>
+
   <div class="prose">
     <h3><span data-l="ar">ليه Shopify؟</span><span data-l="en">Why Shopify?</span></h3>
     <ul data-l="ar"><li>أشهر منصة للتجارة الإلكترونية في العالم، وسهلة من غير برمجة.</li><li>بتدعم الدروبشيبينج بشكل كبير، والموردين عاملين تطبيقات متوافقة معاها.</li><li>اشتراكها مش غالي مقارنة بالمكاسب اللي ممكن تحققها.</li></ul>
@@ -2300,9 +2452,6 @@ const QUIZ = {
   w:{ar:"الكسل وعدم الاستمرارية هما السبب الرئيسي.",en:"Laziness and inconsistency are the main reason."}},
  {t:"tf",q:{ar:"«رأيك مش مهم، الأرقام هي المهمة»: يعني بنحكم على المنتج والإعلان بالنتايج مش بإحساسنا.",en:"\"Your opinion doesn't matter, numbers do\" means we judge products and ads by results, not feelings."},a:true,
   w:{ar:"صح. المبيعات والتكلفة ونسب التحويل هي اللي بتقول المنتج ناجح ولا لأ.",en:"Correct. Sales, costs and conversion rates decide whether a product works."}},
- {t:"mc",q:{ar:"إمتى المفروض تبدأ تطبق اللي بتتعلمه؟",en:"When should you start applying what you learn?"},
-  o:[{ar:"بعد ما تخلص الدبلوم كله",en:"After finishing the whole diploma"},{ar:"من أول يوم",en:"From day one"},{ar:"لما يكون معاك وقت فاضي",en:"Whenever you have free time"},{ar:"بعد سنة",en:"After a year"}],a:1,
-  w:{ar:"اشتغل وطبق من أول يوم، ومتستناش تخلص الدبلوم.",en:"Work and apply from day one; don't wait to finish the diploma."}},
  {t:"multi",q:{ar:"أنهي عادات من دول بتاعة الناس اللي بتنجح في الدبلوم؟",en:"Which of these habits belong to people who succeed in the diploma?"},
   o:[{ar:"يطبق كل خطوة في وقتها",en:"Applies each step on time"},{ar:"يستنى يخلص الدبلوم عشان يبدأ",en:"Waits to finish before starting"},{ar:"يتفاعل ويسأل",en:"Engages and asks questions"},{ar:"يقول «هرجع لها بعدين»",en:"Says \"I'll come back to it later\""},{ar:"يشتغل من أول يوم",en:"Works from day one"}],a:[0,2,4],
   w:{ar:"النجاح مرتبط بالتفاعل والتطبيق في الوقت، من غير تأجيل.",en:"Success comes from engaging and applying on time, without postponing."}},
@@ -2317,15 +2466,9 @@ const QUIZ = {
  {t:"mc",q:{ar:"الدورة اللي بيكررها اللي بيتنقل من مجال لمجال:",en:"The cycle repeated by people who keep switching fields is:"},
   o:[{ar:"حماس ← صعوبة ← انسحاب",en:"Excitement → difficulty → quitting"},{ar:"حماس ← نجاح ← حماس",en:"Excitement → success → excitement"},{ar:"صعوبة ← صبر ← نجاح",en:"Difficulty → patience → success"},{ar:"تعلم ← تطبيق ← ربح",en:"Learn → apply → profit"}],a:0,
   w:{ar:"كل ما يحس إن المجال صعب يدور على مجال تاني، ويكرر نفس الدورة.",en:"Each time a field feels hard they look for another one and repeat the cycle."}},
- {t:"mc",q:{ar:"ليه الحماس بيكون عالي في البداية؟",en:"Why is excitement high at the start?"},
-  o:[{ar:"لأن الفكرة شكلها بسيطة وسهلة",en:"Because the idea looks simple and easy"},{ar:"لأن الأرباح بتيجي بسرعة",en:"Because profits come quickly"},{ar:"لأن مفيش منافسين",en:"Because there are no competitors"},{ar:"لأن الكورس قصير",en:"Because the course is short"}],a:0,
-  w:{ar:"في البداية الفكرة بتبان سهلة، وبعد أول تجربة حقيقية بتكتشف إن المجال مش سهل.",en:"At first it looks easy; after the first real attempt you find out it isn't."}},
  {t:"multi",q:{ar:"إيه اللي بيحصل في المرحلة الصعبة اللي قبل النجاح؟",en:"What happens in the hard phase before success?"},
   o:[{ar:"شغل كتير",en:"A lot of work"},{ar:"فشل",en:"Failure"},{ar:"سهر وتعب",en:"Late nights and fatigue"},{ar:"أرباح فورية",en:"Instant profit"},{ar:"مبيعات مضمونة",en:"Guaranteed sales"}],a:[0,1,2],
   w:{ar:"النجاح بيبدأ بعد المرحلة اللي فيها شغل كتير وفشل وسهر وتعب.",en:"Success starts after the phase of hard work, failure and late nights."}},
- {t:"mc",q:{ar:"أنهي واحدة من دول مش من فوايد الدبلوم؟",en:"Which of these is NOT one of the diploma's benefits?"},
-  o:[{ar:"اختيار منتجات ونيتش ربحية",en:"Choosing profitable products and niches"},{ar:"ربط المتجر بالموردين",en:"Connecting the store to suppliers"},{ar:"برمجة ألعاب موبايل",en:"Programming mobile games"},{ar:"تسويق احترافي وجذب العملاء",en:"Professional marketing to attract customers"}],a:2,
-  w:{ar:"الدبلوم عن التجارة الإلكترونية وShopify، مش برمجة الألعاب.",en:"The diploma is about e-commerce and Shopify, not game programming."}},
  {t:"mc",q:{ar:"الدروب شيبينج نوع من التجارة مبني على مبدأ:",en:"Dropshipping is commerce built on the principle of:"},
   o:[{ar:"العرض والطلب",en:"Supply and demand"},{ar:"التخزين بكميات كبيرة",en:"Bulk storage"},{ar:"التصنيع المحلي",en:"Local manufacturing"},{ar:"البيع في المحلات",en:"Selling in shops"}],a:0,
   w:{ar:"بتعرض اللي عليه طلب، والمورد بيوفّر المنتج.",en:"You offer what's in demand and the supplier provides the product."}},
@@ -2358,6 +2501,15 @@ const QUIZ = {
  {t:"multi",q:{ar:"اختيار النيش بيتم بناءً على إيه؟",en:"What should your niche choice be based on?"},
   o:[{ar:"البحث عن النيتشات الناجحة حاليًا",en:"Researching niches that are winning now"},{ar:"شغفك أو خبرتك",en:"Your passion or experience"},{ar:"أول نيش يقابلك",en:"The first niche you come across"},{ar:"اللي صاحبك بيبيعه",en:"Whatever a friend is selling"}],a:[0,1],
   w:{ar:"البحث + الشغف أو الخبرة. مثلًا لو بتحب القهوة هتعرف تسوّق لمكن القهوة كويس.",en:"Research plus passion or experience. If you love coffee, you'll market coffee machines well."}},
+ {t:"mc",q:{ar:"التجارة الإلكترونية هي:",en:"E-commerce is:"},
+  o:[{ar:"بيع وشراء المنتجات أو الخدمات عبر الإنترنت",en:"Buying and selling products or services online"},{ar:"فتح محل في مول",en:"Opening a shop in a mall"},{ar:"تصنيع المنتجات",en:"Manufacturing products"},{ar:"شحن البضاعة بين الدول",en:"Moving freight between countries"}],a:0,
+  w:{ar:"وبتتيح متاجر رقمية من غير محل فعلي، ووصول أوسع للعملاء.",en:"It enables digital stores without a physical shop, with wider reach."}},
+ {t:"mc",q:{ar:"في الـ 3 خطوات بتوع الدروب شيبينج، الخطوة التانية هي:",en:"In the three-step dropshipping cycle, step two is:"},
+  o:[{ar:"العميل يشتري من متجرك",en:"The customer buys from your store"},{ar:"أنت تبعت الطلب للمورد",en:"You send the order to the supplier"},{ar:"المورد يشحن للعميل",en:"The supplier ships to the customer"},{ar:"أنت تشحن المنتج بنفسك",en:"You ship the product yourself"}],a:1,
+  w:{ar:"1 العميل يشتري، 2 أنت تبعت الطلب للمورد، 3 المورد يشحن للعميل.",en:"1 customer buys, 2 you send the order to the supplier, 3 the supplier ships."}},
+ {t:"multi",q:{ar:"إيه اللي محتاجه عشان تبدأ تتعلم الدروب شيبينج؟",en:"What do you need to start learning dropshipping?"},
+  o:[{ar:"شوية صبر ورغبة في التعلم",en:"Some patience and will to learn"},{ar:"فهم أساسي للتسويق الرقمي",en:"A basic grasp of digital marketing"},{ar:"جهاز متصل بالإنترنت",en:"A device with internet access"},{ar:"حساب على Shopify أو منصة مشابهة",en:"A Shopify (or similar) account"},{ar:"مخزن كبير ورأس مال ضخم",en:"A big warehouse and huge capital"}],a:[0,1,2,3],
+  w:{ar:"مش محتاج مخزن ولا رأس مال ضخم. كل اللي محتاجه هو البداية.",en:"No warehouse or big capital needed. All you need is to start."}},
  {t:"mc",q:{ar:"«ما بين الاستسلام والنجاح قرار واحد»، القرار ده هو:",en:"\"Between giving up and success there is one decision.\" That decision is:"},
   o:[{ar:"أغيّر المجال",en:"Switch fields"},{ar:"أكمل",en:"Keep going"},{ar:"أستنى الظروف تتحسن",en:"Wait for better conditions"},{ar:"أقلل المجهود",en:"Put in less effort"}],a:1,
   w:{ar:"أكمل! اللي بيكمل المرحلة الصعبة هو اللي بيوصل.",en:"Keep going! Those who get through the hard phase are the ones who arrive."}}
@@ -2687,6 +2839,15 @@ const IC={
  compass:`<svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="26" fill="#2B3A35" stroke="#9AA5A1" stroke-width="3"/><circle cx="32" cy="6" r="4" fill="none" stroke="#9AA5A1" stroke-width="2.5"/><path d="M32 12 L37 34 L32 56 L27 34Z" fill="#E6ECEA"/><path d="M10 34 L32 29 L54 34 L32 39Z" fill="#9AA5A1"/><path d="M32 34 L46 18 L36 37Z" fill="#4FD1A5"/><circle cx="32" cy="34" r="3" fill="#E6ECEA"/></svg>`,
  lens:`<svg viewBox="0 0 64 64"><circle cx="26" cy="26" r="18" fill="none" stroke="${G}" stroke-width="5"/><path d="M39 39 L58 58" stroke="${D}" stroke-width="7" stroke-linecap="round"/></svg>`,
  coffee:`<svg viewBox="0 0 64 64"><path d="M10 26h34v14a14 14 0 0 1-14 14h-6A14 14 0 0 1 10 40z" fill="${G}"/><path d="M44 30h4a7 7 0 0 1 0 14h-6" fill="none" stroke="${G}" stroke-width="4"/><path d="M20 8 q4 6 0 12M30 8 q4 6 0 12" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="27" cy="28" rx="13" ry="3" fill="#7A4A26"/><path d="M6 58h44" stroke="${D}" stroke-width="3" stroke-linecap="round"/></svg>`,
+ card:`<svg viewBox="0 0 64 64"><rect x="4" y="14" width="56" height="36" rx="6" fill="#fff"/><rect x="4" y="22" width="56" height="7" fill="${K}"/><rect x="10" y="36" width="18" height="5" rx="2" fill="${L}"/></svg>`,
+ clock:`<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="#fff" stroke-width="5"/><path d="M32 16v16l10 7" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>`,
+ globe:`<svg viewBox="0 0 64 64" fill="none" stroke="${G}" stroke-width="4"><circle cx="32" cy="32" r="26"/><ellipse cx="32" cy="32" rx="11" ry="26"/><path d="M6 32h52M10 18h44M10 46h44"/></svg>`,
+ globeCart:`<svg viewBox="0 0 64 64"><g fill="none" stroke="${G}" stroke-width="3.5"><circle cx="28" cy="28" r="22"/><ellipse cx="28" cy="28" rx="9" ry="22"/><path d="M6 28h44"/></g><circle cx="46" cy="46" r="16" fill="${D}"/><path d="M37 40h3l3 10h9l2-7H41" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ shopLine:`<svg viewBox="0 0 64 64" fill="none" stroke="${G}" stroke-width="3.5" stroke-linejoin="round"><rect x="8" y="12" width="48" height="34" rx="3"/><path d="M8 20h48M8 20 q6 8 12 0 q6 8 12 0 q6 8 12 0 q6 8 12 0"/><path d="M22 54h20M32 46v8"/><path d="M24 30h3l2 8h8l2-6H27"/></svg>`,
+ hourglass:`<svg viewBox="0 0 64 64"><path d="M16 6h32M16 58h32" stroke="#7A4A26" stroke-width="5" stroke-linecap="round"/><path d="M20 8 C20 24 30 28 32 32 C30 36 20 40 20 56 H44 C44 40 34 36 32 32 C34 28 44 24 44 8Z" fill="#DCEBFA" stroke="#2D6FD6" stroke-width="2.5"/><path d="M24 54 C26 46 30 44 32 40 C34 44 38 46 40 54Z" fill="#E8B84E"/></svg>`,
+ devices:`<svg viewBox="0 0 64 64"><rect x="4" y="12" width="42" height="28" rx="3" fill="${K}"/><rect x="7" y="15" width="36" height="22" fill="#8FC3F5"/><rect x="0" y="40" width="50" height="5" rx="2" fill="var(--muted)"/><rect x="44" y="24" width="18" height="32" rx="3" fill="${K}"/><rect x="46" y="27" width="14" height="24" fill="#8FC3F5"/></svg>`,
+ headset:`<svg viewBox="0 0 64 64"><path d="M12 36 V30 a20 20 0 0 1 40 0 V36" fill="none" stroke="${K}" stroke-width="5"/><rect x="6" y="32" width="12" height="20" rx="5" fill="${G}"/><rect x="46" y="32" width="12" height="20" rx="5" fill="${G}"/><path d="M52 50 q0 8-14 8" fill="none" stroke="${K}" stroke-width="3"/><circle cx="36" cy="58" r="3.5" fill="${K}"/></svg>`,
+ supplier:`<svg viewBox="0 0 64 64"><path d="M4 30 L22 22 L40 30 V52 L22 60 L4 52Z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><g fill="none" stroke="${G}" stroke-width="3"><circle cx="46" cy="30" r="14"/><ellipse cx="46" cy="30" rx="6" ry="14"/><path d="M32 30h28"/></g><path d="M46 2 a8 8 0 0 1 8 8 c0 6-8 14-8 14 s-8-8-8-14 a8 8 0 0 1 8-8z" fill="${D}"/><circle cx="46" cy="10" r="3" fill="#fff"/></svg>`,
  person:`<svg viewBox="0 0 20 40"><circle cx="10" cy="7" r="6"/><path d="M2 40V22c0-6 3-9 8-9s8 3 8 9v18z"/></svg>`
 };
 
@@ -2937,6 +3098,13 @@ function renderPolls(){Object.keys(POLLS).forEach(renderPoll);}
   });
 })();
 
+
+/* readiness checklist */
+S.needs=S.needs||[];
+const needBoxes=[...document.querySelectorAll('#needs input')];
+function syncNeeds(){needBoxes.forEach((b,i)=>b.checked=!!S.needs[i]);$('readyMsg').classList.toggle('all',needBoxes.every(b=>b.checked));}
+needBoxes.forEach((b,i)=>b.addEventListener('change',()=>{S.needs[i]=b.checked;save();syncNeeds();}));
+syncNeeds();
 document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
 show(location.hash.slice(1)||'home');
