@@ -107,6 +107,28 @@ class MaterialsAndCyclesTest extends TestCase
             ->assertRedirect(route('materials.show', $material));
     }
 
+    public function test_admin_can_preview_an_unpublished_material_but_a_student_cannot(): void
+    {
+        $admin = User::role('admin')->first();
+        $student = User::role('student')->first();
+        $material = $this->makeMaterial(['is_published' => false]);
+
+        $this->actingAs($admin)->get(route('materials.show', $material))->assertOk();
+        $this->actingAs($student)->get(route('materials.show', $material))->assertNotFound();
+        $this->get(route('materials.show', $material))->assertNotFound();
+    }
+
+    public function test_instructor_can_preview_their_own_unpublished_material(): void
+    {
+        $instructor = User::role('instructor')->first();
+        $material = $this->makeMaterial([
+            'instructor_id' => $instructor->id,
+            'is_published' => false,
+        ]);
+
+        $this->actingAs($instructor)->get(route('materials.show', $material))->assertOk();
+    }
+
     public function test_purchasing_a_material_grants_access_and_unlocks_its_pages(): void
     {
         Http::fake([

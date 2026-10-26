@@ -14,9 +14,9 @@ class MaterialPageController extends Controller
         $materialPage->load('material', 'quiz');
         $material = $materialPage->material;
 
-        abort_unless($material->is_published, 404);
-
         $user = auth()->user();
+
+        abort_unless($material->isVisibleTo($user), 404);
 
         if (! $user || ! $user->hasAccessToMaterial($material)) {
             return redirect()->route('materials.show', $material)

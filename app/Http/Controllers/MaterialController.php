@@ -20,11 +20,11 @@ class MaterialController extends Controller
 
     public function show(Material $material): Response
     {
-        abort_unless($material->is_published, 404);
+        $user = auth()->user();
+
+        abort_unless($material->isVisibleTo($user), 404);
 
         $material->load('category:id,name', 'course:id,title,slug', 'pages:id,material_id,title,position');
-
-        $user = auth()->user();
 
         return Inertia::render('Materials/Show', [
             'material' => $material,

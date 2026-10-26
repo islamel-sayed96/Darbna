@@ -52,4 +52,18 @@ class Material extends Model
     {
         return $this->morphMany(ContentAccess::class, 'accessible');
     }
+
+    /**
+     * Published materials are visible to anyone; unpublished ones are
+     * previewable by the admin or the instructor who owns them, so they
+     * can check how it looks before flipping it live.
+     */
+    public function isVisibleTo(?User $user): bool
+    {
+        if ($this->is_published) {
+            return true;
+        }
+
+        return $user && ($user->hasRole('admin') || $user->id === $this->instructor_id);
+    }
 }

@@ -164,9 +164,19 @@ export default function Edit({ material, categories, courses }) {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    إدارة المادة: {material.title}
-                </h2>
+                <div className="flex items-center justify-between">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                        إدارة المادة: {material.title}
+                    </h2>
+                    <a
+                        href={route('materials.show', material.slug)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-md border border-brand-600 px-3 py-1.5 text-sm font-medium text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/30"
+                    >
+                        معاينة كطالب ↗
+                    </a>
+                </div>
             }
         >
             <Head title={`إدارة: ${material.title}`} />

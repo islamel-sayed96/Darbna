@@ -11,10 +11,10 @@ class MaterialHtmlController extends Controller
 {
     public function show(Material $material, string $path = 'index.html'): BinaryFileResponse|RedirectResponse
     {
-        abort_unless($material->is_published, 404);
-        abort_unless($material->html_path, 404);
-
         $user = auth()->user();
+
+        abort_unless($material->isVisibleTo($user), 404);
+        abort_unless($material->html_path, 404);
 
         if (! $user) {
             return redirect()->route('login', ['redirect' => route('materials.show', $material)])
