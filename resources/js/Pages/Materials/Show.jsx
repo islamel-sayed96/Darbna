@@ -23,6 +23,83 @@ export default function Show({ material, hasAccess }) {
         );
     };
 
+    if (material.html_path) {
+        return (
+            <SiteLayout>
+                <Head title={material.title} />
+
+                <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white px-5 py-3 shadow dark:bg-gray-800">
+                        <div>
+                            <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+                                {material.title}
+                            </h1>
+                            {material.course && (
+                                <p className="text-xs text-gray-500">
+                                    ملحقة بكورس:{' '}
+                                    <Link
+                                        href={route(
+                                            'courses.show',
+                                            material.course.slug,
+                                        )}
+                                        className="text-brand-600 hover:underline"
+                                    >
+                                        {material.course.title}
+                                    </Link>
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            {!isFree && (
+                                <span className="text-lg font-bold text-brand-600">
+                                    {material.price} {material.currency}
+                                </span>
+                            )}
+
+                            {hasAccess ? (
+                                <span className="rounded-md bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-700 dark:bg-green-900/40 dark:text-green-300">
+                                    المادة مفتوحة ليك
+                                </span>
+                            ) : (
+                                !isFree && (
+                                    <button
+                                        onClick={purchase}
+                                        disabled={purchasing}
+                                        className="rounded-md bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-60"
+                                    >
+                                        {purchasing
+                                            ? 'جاري التحويل للدفع...'
+                                            : 'اشترِ المادة الآن'}
+                                    </button>
+                                )
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="mt-3 overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
+                        {hasAccess || isFree ? (
+                            <iframe
+                                src={route(
+                                    'materials.html-content',
+                                    material.id,
+                                )}
+                                title={material.title}
+                                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                                className="h-[calc(100vh-9rem)] w-full border-0"
+                            />
+                        ) : (
+                            <div className="flex h-64 items-center justify-center p-8 text-center text-sm text-gray-500">
+                                محتوى المادة مقفول — اشترِ المادة الأول عشان
+                                تقدر تشوفه.
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </SiteLayout>
+        );
+    }
+
     return (
         <SiteLayout>
             <Head title={material.title} />
@@ -81,60 +158,39 @@ export default function Show({ material, hasAccess }) {
                     </div>
                 </div>
 
-                {material.html_path ? (
-                    <div className="mt-8 overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
-                        {hasAccess || isFree ? (
-                            <iframe
-                                src={route(
-                                    'materials.html-content',
-                                    material.id,
+                <div className="mt-8 rounded-lg bg-white p-8 shadow dark:bg-gray-800">
+                    <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+                        صفحات المادة
+                    </h2>
+
+                    <ul className="space-y-1">
+                        {material.pages.map((page) => (
+                            <li key={page.id}>
+                                {hasAccess || isFree ? (
+                                    <Link
+                                        href={route(
+                                            'material-pages.show',
+                                            page.id,
+                                        )}
+                                        className="block rounded px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    >
+                                        {page.title}
+                                    </Link>
+                                ) : (
+                                    <div className="px-2 py-1.5 text-sm text-gray-400">
+                                        {page.title}
+                                    </div>
                                 )}
-                                title={material.title}
-                                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                                className="h-[85vh] w-full border-0"
-                            />
-                        ) : (
-                            <div className="flex h-64 items-center justify-center p-8 text-center text-sm text-gray-500">
-                                محتوى المادة مقفول — اشترِ المادة الأول عشان
-                                تقدر تشوفه.
-                            </div>
+                            </li>
+                        ))}
+
+                        {material.pages.length === 0 && (
+                            <p className="text-sm text-gray-500">
+                                سيتم إضافة المحتوى قريبًا.
+                            </p>
                         )}
-                    </div>
-                ) : (
-                    <div className="mt-8 rounded-lg bg-white p-8 shadow dark:bg-gray-800">
-                        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-                            صفحات المادة
-                        </h2>
-
-                        <ul className="space-y-1">
-                            {material.pages.map((page) => (
-                                <li key={page.id}>
-                                    {hasAccess || isFree ? (
-                                        <Link
-                                            href={route(
-                                                'material-pages.show',
-                                                page.id,
-                                            )}
-                                            className="block rounded px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
-                                        >
-                                            {page.title}
-                                        </Link>
-                                    ) : (
-                                        <div className="px-2 py-1.5 text-sm text-gray-400">
-                                            {page.title}
-                                        </div>
-                                    )}
-                                </li>
-                            ))}
-
-                            {material.pages.length === 0 && (
-                                <p className="text-sm text-gray-500">
-                                    سيتم إضافة المحتوى قريبًا.
-                                </p>
-                            )}
-                        </ul>
-                    </div>
-                )}
+                    </ul>
+                </div>
             </div>
         </SiteLayout>
     );
