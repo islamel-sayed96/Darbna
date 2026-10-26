@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 #[Fillable([
     'instructor_id', 'category_id', 'course_id', 'title', 'slug', 'description',
-    'price', 'currency', 'is_published', 'published_at',
+    'html_path', 'price', 'currency', 'is_published', 'published_at',
 ])]
 class Material extends Model
 {

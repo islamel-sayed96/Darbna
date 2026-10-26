@@ -400,6 +400,81 @@ class MaterialsAndCyclesTest extends TestCase
         $this->assertDatabaseMissing('cycle_materials', ['id' => $entry->id]);
     }
 
+    public function test_admin_can_upload_an_interactive_html_page_for_a_material(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+
+        $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
+            'html' => UploadedFile::fake()->create('course.html', 50, 'text/html'),
+        ])->assertRedirect();
+
+        $material->refresh();
+        $this->assertNotNull($material->html_path);
+        Storage::disk('local')->assertExists($material->html_path);
+    }
+
+    public function test_guest_cannot_view_a_materials_interactive_html_page(): void
+    {
+        Storage::fake('local');
+
+        $material = $this->makeMaterial(['price' => 0]);
+        $material->update(['html_path' => 'materials-html/'.$material->id.'-x.html']);
+        Storage::disk('local')->put($material->html_path, '<html>course</html>');
+
+        $this->get(route('materials.html-content', $material))
+            ->assertRedirect(route('login', ['redirect' => route('materials.show', $material)]));
+    }
+
+    public function test_student_with_access_can_view_a_materials_interactive_html_page(): void
+    {
+        Storage::fake('local');
+
+        $student = User::role('student')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+        $material->update(['html_path' => 'materials-html/'.$material->id.'-x.html']);
+        Storage::disk('local')->put($material->html_path, '<html>course</html>');
+
+        $this->actingAs($student)->get(route('materials.html-content', $material))
+            ->assertOk();
+    }
+
+    public function test_replacing_an_interactive_html_page_deletes_the_old_file(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial();
+        $material->update(['html_path' => 'materials-html/old.html']);
+        Storage::disk('local')->put($material->html_path, 'old content');
+        $oldPath = $material->html_path;
+
+        $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
+            'html' => UploadedFile::fake()->create('course.html', 10, 'text/html'),
+        ])->assertRedirect();
+
+        Storage::disk('local')->assertMissing($oldPath);
+        Storage::disk('local')->assertExists($material->refresh()->html_path);
+    }
+
+    public function test_admin_can_delete_a_materials_interactive_html_page(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial();
+        $material->update(['html_path' => 'materials-html/x.html']);
+        Storage::disk('local')->put($material->html_path, 'content');
+
+        $this->actingAs($admin)->delete(route('admin.materials.html.destroy', $material))
+            ->assertRedirect();
+
+        Storage::disk('local')->assertMissing('materials-html/x.html');
+        $this->assertNull($material->refresh()->html_path);
+    }
+
     public function test_student_enrolled_in_a_cycle_gets_free_access_to_its_linked_material(): void
     {
         $admin = User::role('admin')->first();

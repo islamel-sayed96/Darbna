@@ -6,6 +6,85 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 
+function InteractiveHtmlForm({ material }) {
+    const [file, setFile] = useState(null);
+    const [processing, setProcessing] = useState(false);
+    const [error, setError] = useState('');
+
+    const submit = (e) => {
+        e.preventDefault();
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('html', file);
+
+        setProcessing(true);
+        setError('');
+        router.post(route('admin.materials.html.store', material.id), formData, {
+            preserveScroll: true,
+            forceFormData: true,
+            onFinish: () => setProcessing(false),
+            onSuccess: () => setFile(null),
+            onError: (errors) => setError(errors.html ?? ''),
+        });
+    };
+
+    const remove = () => {
+        if (!confirm('تحذف الصفحة التفاعلية؟ المادة هترجع تعرض الصفحات النصية العادية.'))
+            return;
+        router.delete(route('admin.materials.html.destroy', material.id), {
+            preserveScroll: true,
+        });
+    };
+
+    return (
+        <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
+            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
+                صفحة تفاعلية كاملة (بديل للصفحات النصية)
+            </h3>
+            <p className="mb-4 text-sm text-gray-500">
+                ارفع ملف HTML واحد مستقل (فيه كل التصميم والتفاعل جوه)، وهيتعرض
+                للطالب بدل صفحات المادة العادية. رفع ملف جديد بيستبدل القديم.
+            </p>
+
+            {material.html_path ? (
+                <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-2 text-sm dark:bg-gray-700">
+                    <span className="text-green-700 dark:text-green-400">
+                        ✓ فيه صفحة تفاعلية مرفوعة حاليًا
+                    </span>
+                    <button
+                        onClick={remove}
+                        className="text-xs text-red-600 hover:underline"
+                    >
+                        حذف
+                    </button>
+                </div>
+            ) : (
+                <p className="text-sm text-gray-500">
+                    لسه مفيش صفحة تفاعلية مرفوعة.
+                </p>
+            )}
+
+            <form onSubmit={submit} className="mt-4 flex items-end gap-2">
+                <input
+                    type="file"
+                    accept=".html,.htm,text/html"
+                    className="block flex-1 text-sm text-gray-700 dark:text-gray-200"
+                    onChange={(e) => setFile(e.target.files[0] ?? null)}
+                />
+                <button
+                    type="submit"
+                    disabled={processing || !file}
+                    className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-60 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                >
+                    {processing ? 'جاري الرفع...' : 'رفع'}
+                </button>
+            </form>
+            {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+        </div>
+    );
+}
+
 function AddPageForm({ material }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -219,6 +298,8 @@ export default function Edit({ material, categories, courses }) {
                             حفظ التعديلات
                         </PrimaryButton>
                     </form>
+
+                    <InteractiveHtmlForm material={material} />
 
                     <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
                         <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">

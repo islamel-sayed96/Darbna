@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\InstructorApplicationController as AdminInstructo
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LearningPathController as AdminLearningPathController;
 use App\Http\Controllers\Admin\MaterialController as AdminMaterialController;
+use App\Http\Controllers\Admin\MaterialHtmlController as AdminMaterialHtmlController;
 use App\Http\Controllers\Admin\MaterialPageController as AdminMaterialPageController;
 use App\Http\Controllers\Admin\QuizController as AdminQuizController;
 use App\Http\Controllers\Admin\QuizQuestionController as AdminQuizQuestionController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\LearningPathController;
 use App\Http\Controllers\LessonProgressController;
 use App\Http\Controllers\LessonViewController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\MaterialHtmlController;
 use App\Http\Controllers\MaterialPageController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
@@ -59,6 +61,7 @@ Route::get('/learning-paths/{learningPath:slug}', [LearningPathController::class
 
 Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
 Route::get('/materials/{material:slug}', [MaterialController::class, 'show'])->name('materials.show');
+Route::get('/materials/{material}/html-content', [MaterialHtmlController::class, 'show'])->name('materials.html-content');
 
 Route::get('/cycles', [CycleController::class, 'index'])->name('cycles.index');
 Route::get('/cycles/{cycle:slug}', [CycleController::class, 'show'])->name('cycles.show');
@@ -128,6 +131,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         Route::get('/materials/{material}/edit', [AdminMaterialController::class, 'edit'])->name('materials.edit');
         Route::put('/materials/{material}', [AdminMaterialController::class, 'update'])->name('materials.update');
         Route::delete('/materials/{material}', [AdminMaterialController::class, 'destroy'])->name('materials.destroy');
+
+        Route::post('/materials/{material}/html', [AdminMaterialHtmlController::class, 'store'])->name('materials.html.store');
+        Route::delete('/materials/{material}/html', [AdminMaterialHtmlController::class, 'destroy'])->name('materials.html.destroy');
 
         Route::post('/materials/{material}/pages', [AdminMaterialPageController::class, 'store'])->name('material-pages.store');
         Route::put('/material-pages/{materialPage}', [AdminMaterialPageController::class, 'update'])->name('material-pages.update');
