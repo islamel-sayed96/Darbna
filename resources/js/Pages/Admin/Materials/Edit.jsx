@@ -16,7 +16,7 @@ function InteractiveHtmlForm({ material }) {
         if (!file) return;
 
         const formData = new FormData();
-        formData.append('html', file);
+        formData.append('file', file);
 
         setProcessing(true);
         setError('');
@@ -25,7 +25,7 @@ function InteractiveHtmlForm({ material }) {
             forceFormData: true,
             onFinish: () => setProcessing(false),
             onSuccess: () => setFile(null),
-            onError: (errors) => setError(errors.html ?? ''),
+            onError: (errors) => setError(errors.file ?? ''),
         });
     };
 
@@ -43,8 +43,13 @@ function InteractiveHtmlForm({ material }) {
                 صفحة تفاعلية كاملة (بديل للصفحات النصية)
             </h3>
             <p className="mb-4 text-sm text-gray-500">
-                ارفع ملف HTML واحد مستقل (فيه كل التصميم والتفاعل جوه)، وهيتعرض
-                للطالب بدل صفحات المادة العادية. رفع ملف جديد بيستبدل القديم.
+                ارفع ملف HTML واحد مستقل، أو ملف ZIP لو المشروع فيه أكتر من
+                ملف (HTML + CSS + JS + صور) — لازم يبقى فيه ملف اسمه بالظبط{' '}
+                <code className="rounded bg-gray-100 px-1 dark:bg-gray-700">
+                    index.html
+                </code>{' '}
+                في جذر الملف المضغوط أو جوه فولدر واحد بس. هيتعرض للطالب بدل
+                صفحات المادة العادية، ورفع ملف جديد بيستبدل القديم بالكامل.
             </p>
 
             {material.html_path ? (
@@ -68,7 +73,7 @@ function InteractiveHtmlForm({ material }) {
             <form onSubmit={submit} className="mt-4 flex items-end gap-2">
                 <input
                     type="file"
-                    accept=".html,.htm,text/html"
+                    accept=".html,.htm,.zip"
                     className="block flex-1 text-sm text-gray-700 dark:text-gray-200"
                     onChange={(e) => setFile(e.target.files[0] ?? null)}
                 />

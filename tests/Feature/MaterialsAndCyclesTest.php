@@ -400,7 +400,20 @@ class MaterialsAndCyclesTest extends TestCase
         $this->assertDatabaseMissing('cycle_materials', ['id' => $entry->id]);
     }
 
-    public function test_admin_can_upload_an_interactive_html_page_for_a_material(): void
+    private function makeTestZip(array $files): string
+    {
+        $zipPath = tempnam(sys_get_temp_dir(), 'test').'.zip';
+        $zip = new \ZipArchive;
+        $zip->open($zipPath, \ZipArchive::CREATE);
+        foreach ($files as $name => $contents) {
+            $zip->addFromString($name, $contents);
+        }
+        $zip->close();
+
+        return $zipPath;
+    }
+
+    public function test_admin_can_upload_a_single_html_file_for_a_material(): void
     {
         Storage::fake('local');
 
@@ -408,12 +421,75 @@ class MaterialsAndCyclesTest extends TestCase
         $material = $this->makeMaterial(['price' => 0]);
 
         $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
-            'html' => UploadedFile::fake()->create('course.html', 50, 'text/html'),
+            'file' => UploadedFile::fake()->create('course.html', 50, 'text/html'),
         ])->assertRedirect();
 
         $material->refresh();
         $this->assertNotNull($material->html_path);
-        Storage::disk('local')->assertExists($material->html_path);
+        Storage::disk('local')->assertExists($material->html_path.'/index.html');
+    }
+
+    public function test_admin_can_upload_a_multi_file_zip_with_css_for_a_material(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+
+        $zipPath = $this->makeTestZip([
+            'index.html' => '<html><link rel="stylesheet" href="style.css"></html>',
+            'style.css' => 'body { color: red; }',
+        ]);
+
+        $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
+            'file' => new UploadedFile($zipPath, 'course.zip', 'application/zip', null, true),
+        ])->assertRedirect();
+
+        $material->refresh();
+        Storage::disk('local')->assertExists($material->html_path.'/index.html');
+        Storage::disk('local')->assertExists($material->html_path.'/style.css');
+        $this->assertSame(
+            'body { color: red; }',
+            Storage::disk('local')->get($material->html_path.'/style.css'),
+        );
+    }
+
+    public function test_zip_wrapped_in_a_single_folder_is_flattened(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+
+        $zipPath = $this->makeTestZip([
+            'my-project/index.html' => '<html></html>',
+            'my-project/style.css' => 'body {}',
+        ]);
+
+        $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
+            'file' => new UploadedFile($zipPath, 'course.zip', 'application/zip', null, true),
+        ])->assertRedirect();
+
+        $material->refresh();
+        Storage::disk('local')->assertExists($material->html_path.'/index.html');
+        Storage::disk('local')->assertExists($material->html_path.'/style.css');
+        Storage::disk('local')->assertMissing($material->html_path.'/my-project/index.html');
+    }
+
+    public function test_zip_without_index_html_is_rejected(): void
+    {
+        Storage::fake('local');
+
+        $admin = User::role('admin')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+
+        $zipPath = $this->makeTestZip(['readme.txt' => 'no index here']);
+
+        $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
+            'file' => new UploadedFile($zipPath, 'course.zip', 'application/zip', null, true),
+        ])->assertSessionHasErrors('file');
+
+        $this->assertNull($material->refresh()->html_path);
     }
 
     public function test_guest_cannot_view_a_materials_interactive_html_page(): void
@@ -421,42 +497,63 @@ class MaterialsAndCyclesTest extends TestCase
         Storage::fake('local');
 
         $material = $this->makeMaterial(['price' => 0]);
-        $material->update(['html_path' => 'materials-html/'.$material->id.'-x.html']);
-        Storage::disk('local')->put($material->html_path, '<html>course</html>');
+        $dir = 'materials-html/'.$material->id;
+        Storage::disk('local')->put($dir.'/index.html', '<html>course</html>');
+        $material->update(['html_path' => $dir]);
 
         $this->get(route('materials.html-content', $material))
             ->assertRedirect(route('login', ['redirect' => route('materials.show', $material)]));
     }
 
-    public function test_student_with_access_can_view_a_materials_interactive_html_page(): void
+    public function test_student_with_access_can_view_a_materials_interactive_html_page_and_its_assets(): void
     {
         Storage::fake('local');
 
         $student = User::role('student')->first();
         $material = $this->makeMaterial(['price' => 0]);
-        $material->update(['html_path' => 'materials-html/'.$material->id.'-x.html']);
-        Storage::disk('local')->put($material->html_path, '<html>course</html>');
+        $dir = 'materials-html/'.$material->id;
+        Storage::disk('local')->put($dir.'/index.html', '<html>course</html>');
+        Storage::disk('local')->put($dir.'/style.css', 'body {}');
+        $material->update(['html_path' => $dir]);
 
-        $this->actingAs($student)->get(route('materials.html-content', $material))
+        $this->actingAs($student)->get(route('materials.html-content', $material))->assertOk();
+        $this->actingAs($student)
+            ->get(route('materials.html-content', [$material, 'style.css']))
             ->assertOk();
     }
 
-    public function test_replacing_an_interactive_html_page_deletes_the_old_file(): void
+    public function test_cannot_escape_a_materials_html_folder_via_path_traversal(): void
+    {
+        Storage::fake('local');
+
+        $student = User::role('student')->first();
+        $material = $this->makeMaterial(['price' => 0]);
+        $dir = 'materials-html/'.$material->id;
+        Storage::disk('local')->put($dir.'/index.html', '<html>course</html>');
+        Storage::disk('local')->put('secret.txt', 'top secret');
+        $material->update(['html_path' => $dir]);
+
+        $this->actingAs($student)
+            ->get(route('materials.html-content', [$material, '../../secret.txt']))
+            ->assertNotFound();
+    }
+
+    public function test_replacing_an_interactive_html_page_deletes_the_old_one(): void
     {
         Storage::fake('local');
 
         $admin = User::role('admin')->first();
         $material = $this->makeMaterial();
-        $material->update(['html_path' => 'materials-html/old.html']);
-        Storage::disk('local')->put($material->html_path, 'old content');
-        $oldPath = $material->html_path;
+        $oldDir = 'materials-html/old-version';
+        Storage::disk('local')->put($oldDir.'/index.html', 'old content');
+        $material->update(['html_path' => $oldDir]);
 
         $this->actingAs($admin)->post(route('admin.materials.html.store', $material), [
-            'html' => UploadedFile::fake()->create('course.html', 10, 'text/html'),
+            'file' => UploadedFile::fake()->create('course.html', 10, 'text/html'),
         ])->assertRedirect();
 
-        Storage::disk('local')->assertMissing($oldPath);
-        Storage::disk('local')->assertExists($material->refresh()->html_path);
+        Storage::disk('local')->assertMissing($oldDir.'/index.html');
+        Storage::disk('local')->assertExists($material->refresh()->html_path.'/index.html');
     }
 
     public function test_admin_can_delete_a_materials_interactive_html_page(): void
@@ -465,13 +562,14 @@ class MaterialsAndCyclesTest extends TestCase
 
         $admin = User::role('admin')->first();
         $material = $this->makeMaterial();
-        $material->update(['html_path' => 'materials-html/x.html']);
-        Storage::disk('local')->put($material->html_path, 'content');
+        $dir = 'materials-html/'.$material->id;
+        Storage::disk('local')->put($dir.'/index.html', 'content');
+        $material->update(['html_path' => $dir]);
 
         $this->actingAs($admin)->delete(route('admin.materials.html.destroy', $material))
             ->assertRedirect();
 
-        Storage::disk('local')->assertMissing('materials-html/x.html');
+        Storage::disk('local')->assertMissing($dir.'/index.html');
         $this->assertNull($material->refresh()->html_path);
     }
 

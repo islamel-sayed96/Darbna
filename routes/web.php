@@ -61,7 +61,9 @@ Route::get('/learning-paths/{learningPath:slug}', [LearningPathController::class
 
 Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
 Route::get('/materials/{material:slug}', [MaterialController::class, 'show'])->name('materials.show');
-Route::get('/materials/{material}/html-content', [MaterialHtmlController::class, 'show'])->name('materials.html-content');
+Route::get('/materials/{material}/html-content/{path?}', [MaterialHtmlController::class, 'show'])
+    ->where('path', '.*')
+    ->name('materials.html-content');
 
 Route::get('/cycles', [CycleController::class, 'index'])->name('cycles.index');
 Route::get('/cycles/{cycle:slug}', [CycleController::class, 'show'])->name('cycles.show');
