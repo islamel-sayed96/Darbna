@@ -1,11 +1,16 @@
 import SiteLayout from '@/Layouts/SiteLayout';
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Show({ material, hasAccess }) {
     const { auth } = usePage().props;
     const [purchasing, setPurchasing] = useState(false);
     const isFree = Number(material.price) === 0;
+    const iframeRef = useRef(null);
+
+    const goFullscreen = () => {
+        iframeRef.current?.requestFullscreen?.();
+    };
 
     const purchase = () => {
         if (!auth.user) {
@@ -57,6 +62,15 @@ export default function Show({ material, hasAccess }) {
                                 </span>
                             )}
 
+                            {(hasAccess || isFree) && (
+                                <button
+                                    onClick={goFullscreen}
+                                    className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-semibold text-gray-600 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                                >
+                                    ملء الشاشة ⛶
+                                </button>
+                            )}
+
                             {hasAccess ? (
                                 <span className="rounded-md bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-700 dark:bg-green-900/40 dark:text-green-300">
                                     المادة مفتوحة ليك
@@ -80,12 +94,15 @@ export default function Show({ material, hasAccess }) {
                     <div className="mt-3 overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
                         {hasAccess || isFree ? (
                             <iframe
+                                ref={iframeRef}
                                 src={route(
                                     'materials.html-content',
                                     material.id,
                                 )}
                                 title={material.title}
                                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                                allow="fullscreen"
+                                allowFullScreen
                                 className="h-[calc(100vh-9rem)] w-full border-0"
                             />
                         ) : (
