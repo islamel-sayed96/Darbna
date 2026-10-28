@@ -897,6 +897,78 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 @media (max-width:900px){.methods{grid-template-columns:repeat(2,minmax(0,1fr))}.case{grid-template-columns:minmax(0,1fr)}.case-art{max-width:260px;justify-self:center}}
 @media (max-width:640px){.kw{grid-template-columns:minmax(0,1fr);gap:8px}.cr-grid,.cr-ex,.score7,.ad-grid{grid-template-columns:minmax(0,1fr)}.methods{grid-template-columns:minmax(0,1fr)}}
 
+/* ---------- project ladder + reminders + products task ---------- */
+.remind{border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:stretch;gap:10px;border:2px solid;text-align:start;align-self:stretch;width:100%}
+.remind .rm-top{width:100%}
+.remind .rm-top > div{flex:1 1 auto}
+.remind.ok{background:var(--good-soft);border-color:var(--good)}
+.remind.no{background:var(--gold-soft);border-color:var(--gold)}
+.rm-top{display:flex;align-items:center;gap:12px}
+.rm-ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1.2rem;color:#fff;flex:none}
+.remind.ok .rm-ic{background:var(--good)} .remind.no .rm-ic{background:var(--gold)}
+.rm-top b{display:block;font-family:var(--font-display);font-size:1.1rem}
+.rm-top small{color:var(--muted)}
+.rm-cnt{margin-inline-start:auto;font-family:var(--font-poster);font-size:1.4rem}
+.msl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.msi label{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+.msi input{accent-color:var(--accent);width:17px;height:17px;flex:none}
+.msi.on label{border-color:var(--good)}
+.msi.on span{text-decoration:line-through;text-decoration-color:var(--muted)}
+.msi small{color:var(--muted)}
+.rm-msg{font-weight:700}
+.rm-acts{display:flex;flex-wrap:wrap;gap:8px}
+.rm-acts .btn{text-decoration:none;display:inline-block}
+.rm-older{font-size:.88rem}
+.lad-sum{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.lad-pct{font-family:var(--font-poster);font-size:3rem;color:var(--accent);line-height:1}
+.lad-sum .bar{height:12px}
+.lad-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;color:var(--muted);margin-top:8px}
+.lad-next{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--accent-soft);border-radius:12px;padding:10px 14px}
+.lad-next .lbl{font-size:.8rem;font-weight:800;color:var(--accent)}
+.lad-next b{flex:1 1 200px}
+.lad-next .btn{text-decoration:none}
+.ladder{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;position:relative}
+.ladder::before{content:"";position:absolute;top:18px;bottom:18px;inset-inline-start:19px;width:3px;background:var(--line);border-radius:3px}
+.lad{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;position:relative}
+.lad-n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-poster);font-size:1.1rem;background:var(--sunk);color:var(--muted);border:3px solid var(--bg);z-index:1}
+.lad.done .lad-n{background:var(--good);color:#fff}
+.lad.doing .lad-n{background:var(--gold);color:#fff}
+.lad-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.lad.done .lad-card{border-color:var(--good)}
+.lad-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.lad-h b{font-family:var(--font-display);font-size:1.08rem;flex:1 1 200px}
+.lad-h a{font-size:.85rem;font-weight:700}
+.pill{font-size:.75rem;font-weight:700;border-radius:99px;padding:2px 10px}
+.pill.done{background:var(--good-soft);color:var(--good)} .pill.doing{background:var(--gold-soft);color:var(--gold)} .pill.todo{background:var(--sunk);color:var(--muted)}
+.ptask{background:var(--surface);border:2px solid var(--accent);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.ptask-h{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ptask-h h3{font-family:var(--font-display);font-weight:800;font-size:1.3rem;flex:1 1 260px}
+.must{background:var(--bad);color:#fff;font-weight:800;font-size:.8rem;border-radius:99px;padding:3px 12px}
+.pstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pstats > div{background:var(--bg);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.pstats b{font-family:var(--font-poster);font-size:1.6rem;color:var(--accent)}
+.prows{display:flex;flex-direction:column;gap:6px}
+.prow{display:grid;grid-template-columns:34px minmax(0,1.2fr) minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:6px 8px}
+.prow.named{border-color:var(--accent)}
+.prow .pi{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);text-align:center}
+.prow input[type=text],.prow input[type=url]{font:500 .9rem var(--font-body);padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:100%;min-width:0}
+.pv{display:flex;gap:4px}
+.vchip{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;font-weight:700;border:1px solid var(--line);border-radius:99px;padding:3px 8px;cursor:pointer;background:var(--surface);white-space:nowrap}
+.vchip input{position:absolute;opacity:0;width:1px;height:1px}
+.vchip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.vchip:focus-within{outline:2px solid var(--gold)}
+.folder{background:var(--night);color:var(--night-ink);border-radius:14px;padding:14px 16px;font-family:var(--font-mono);font-size:.82rem;direction:ltr;text-align:left;overflow-x:auto}
+.folder ul{list-style:none;margin:6px 0 0;padding-left:16px;display:flex;flex-direction:column;gap:6px}
+.folder .fd{color:#7CC44A;font-weight:600;display:block}
+.folder .fl{color:#B9C2BC;padding-left:18px;display:block;white-space:normal}
+.vsrc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.vsrc > div{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.vsrc b{display:block;font-family:var(--font-display)}
+.home-project{display:flex;flex-wrap:wrap;align-items:center;gap:14px;background:var(--accent-dark);color:var(--accent-ink);border-radius:16px;padding:16px 18px;text-decoration:none}
+.home-project b{font-family:var(--font-display);font-size:1.2rem;flex:1 1 240px}
+.home-project span.cta{background:var(--surface);color:var(--accent-dark);border-radius:99px;padding:6px 14px;font-weight:800}
+@media (max-width:700px){.prow{grid-template-columns:30px minmax(0,1fr)}.prow .pl-in{grid-column:2}.prow .pv{grid-column:2}.vsrc{grid-template-columns:minmax(0,1fr)}.lad-sum{grid-template-columns:minmax(0,1fr)}}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -995,6 +1067,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <h2><span data-l="ar">الفصول</span><span data-l="en">Chapters</span></h2>
     <ol id="railList">
       <li><a href="#home" data-v="home"><span class="n">⌂</span><span><span class="lbl-long"><span data-l="ar">صفحة الدبلوم</span><span data-l="en">Diploma home</span></span><span class="lbl-short"><span data-l="ar">الرئيسية</span><span data-l="en">Home</span></span></span><span class="ok"></span></a></li>
+      <li><a href="#project" data-v="project" class="proj-link"><span class="n">🪜</span><span><span class="lbl-long"><span data-l="ar">سلم مشروعي</span><span data-l="en">My project</span></span><span class="lbl-short"><span data-l="ar">مشروعي</span><span data-l="en">Project</span></span></span><span class="ok"></span></a></li>
       <li><a href="#ch1" data-ch="1" data-v="ch1"><span class="n">01</span><span><span class="lbl-long"><span data-l="ar">البداية الصح</span><span data-l="en">The right start</span></span><span class="lbl-short">1 <span data-l="ar">البداية</span><span data-l="en">Start</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch2" data-ch="2" data-v="ch2"><span class="n">02</span><span><span class="lbl-long"><span data-l="ar">المنتج الرابح</span><span data-l="en">Winning Product</span></span><span class="lbl-short">2 <span data-l="ar">المنتج</span><span data-l="en">Product</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch3" data-ch="3" data-v="ch3"><span class="n">03</span><span><span class="lbl-long"><span data-l="ar">البراند: الاسم واللوجو والألوان</span><span data-l="en">Brand: name, logo & colors</span></span><span class="lbl-short">3 <span data-l="ar">البراند</span><span data-l="en">Brand</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch4" data-ch="4" data-v="ch4"><span class="n">04</span><span><span class="lbl-long"><span data-l="ar">الاشتراك في Shopify ولوحة التحكم</span><span data-l="en">Shopify sign-up & dashboard</span></span><span class="lbl-short">4 <span data-l="ar">لوحة التحكم</span><span data-l="en">Dashboard</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch5" data-ch="5" data-v="ch5"><span class="n">05</span><span><span class="lbl-long"><span data-l="ar">إضافة المنتجات للمتجر</span><span data-l="en">Adding products</span></span><span class="lbl-short">5 <span data-l="ar">المنتجات</span><span data-l="en">Products</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch6" data-ch="6" data-v="ch6"><span class="n">06</span><span><span class="lbl-long"><span data-l="ar">الثيم والشكل العام للمتجر</span><span data-l="en">Theme & store design</span></span><span class="lbl-short">6 <span data-l="ar">الثيم</span><span data-l="en">Theme</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch7" data-ch="7" data-v="ch7"><span class="n">07</span><span><span class="lbl-long"><span data-l="ar">الصفحات والقوائم والعروض</span><span data-l="en">Pages, menus & offers</span></span><span class="lbl-short">7 <span data-l="ar">الصفحات</span><span data-l="en">Pages</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch8" data-ch="8" data-v="ch8"><span class="n">08</span><span><span class="lbl-long"><span data-l="ar">إنشاء الشركة ووسائل الدفع</span><span data-l="en">Company & payments</span></span><span class="lbl-short">8 <span data-l="ar">الشركة والدفع</span><span data-l="en">Payments</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch9" data-ch="9" data-v="ch9"><span class="n">09</span><span><span class="lbl-long"><span data-l="ar">التطبيقات والأسواق والإيميلات</span><span data-l="en">Apps, markets & emails</span></span><span class="lbl-short">9 <span data-l="ar">التطبيقات</span><span data-l="en">Apps</span></span></span><span class="ok">✓</span></a></li><li><a href="#ch10" data-ch="10" data-v="ch10"><span class="n">10</span><span><span class="lbl-long"><span data-l="ar">ميتا والإعلانات والتحسين</span><span data-l="en">Meta ads & optimization</span></span><span class="lbl-short">10 <span data-l="ar">الإعلانات</span><span data-l="en">Ads</span></span></span><span class="ok">✓</span></a></li>
       <li><a href="#final" class="final-link" data-v="final"><span class="n">★</span><span><span class="lbl-long"><span data-l="ar">الاختبار النهائي</span><span data-l="en">Final exam</span></span><span class="lbl-short"><span data-l="ar">الاختبار النهائي</span><span data-l="en">Final exam</span></span></span><span class="ok"></span></a></li>
     </ol>
@@ -1046,6 +1119,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p data-l="ar">ابدأ بالفصل الأول، وكل فصل بيخلص باختبار. الفصل بيتعلّم عليه ✓ لما تنجح في اختباره (٦٠٪ فأكتر).</p>
     <p data-l="en">Start with chapter 1. Every chapter ends with a quiz, and a chapter is marked ✓ once you pass it (60% or more).</p></div>
   <div class="home-grid"><a class="chcard" href="#ch1" data-ch="1"><span class="st"></span><span class="no">01</span><b><span data-l="ar">البداية الصح</span><span data-l="en">The right start</span></b><small><span data-l="ar">الفصل الأول</span><span data-l="en">Chapter 1</span></small></a><a class="chcard" href="#ch2" data-ch="2"><span class="st"></span><span class="no">02</span><b><span data-l="ar">المنتج الرابح</span><span data-l="en">Winning Product</span></b><small><span data-l="ar">الفصل الثاني</span><span data-l="en">Chapter 2</span></small></a><a class="chcard" href="#ch3" data-ch="3"><span class="st"></span><span class="no">03</span><b><span data-l="ar">البراند: الاسم واللوجو والألوان</span><span data-l="en">Brand: name, logo & colors</span></b><small><span data-l="ar">الفصل الثالث</span><span data-l="en">Chapter 3</span></small></a><a class="chcard" href="#ch4" data-ch="4"><span class="st"></span><span class="no">04</span><b><span data-l="ar">الاشتراك في Shopify ولوحة التحكم</span><span data-l="en">Shopify sign-up & dashboard</span></b><small><span data-l="ar">الفصل الرابع</span><span data-l="en">Chapter 4</span></small></a><a class="chcard" href="#ch5" data-ch="5"><span class="st"></span><span class="no">05</span><b><span data-l="ar">إضافة المنتجات للمتجر</span><span data-l="en">Adding products</span></b><small><span data-l="ar">الفصل الخامس</span><span data-l="en">Chapter 5</span></small></a><a class="chcard" href="#ch6" data-ch="6"><span class="st"></span><span class="no">06</span><b><span data-l="ar">الثيم والشكل العام للمتجر</span><span data-l="en">Theme & store design</span></b><small><span data-l="ar">الفصل السادس</span><span data-l="en">Chapter 6</span></small></a><a class="chcard" href="#ch7" data-ch="7"><span class="st"></span><span class="no">07</span><b><span data-l="ar">الصفحات والقوائم والعروض</span><span data-l="en">Pages, menus & offers</span></b><small><span data-l="ar">الفصل السابع</span><span data-l="en">Chapter 7</span></small></a><a class="chcard" href="#ch8" data-ch="8"><span class="st"></span><span class="no">08</span><b><span data-l="ar">إنشاء الشركة ووسائل الدفع</span><span data-l="en">Company & payments</span></b><small><span data-l="ar">الفصل الثامن</span><span data-l="en">Chapter 8</span></small></a><a class="chcard" href="#ch9" data-ch="9"><span class="st"></span><span class="no">09</span><b><span data-l="ar">التطبيقات والأسواق والإيميلات</span><span data-l="en">Apps, markets & emails</span></b><small><span data-l="ar">الفصل التاسع</span><span data-l="en">Chapter 9</span></small></a><a class="chcard" href="#ch10" data-ch="10"><span class="st"></span><span class="no">10</span><b><span data-l="ar">ميتا والإعلانات والتحسين</span><span data-l="en">Meta ads & optimization</span></b><small><span data-l="ar">الفصل العاشر</span><span data-l="en">Chapter 10</span></small></a><a class="chcard final" href="#final"><span class="st" style="visibility:hidden"></span><span class="no">★</span><b><span data-l="ar">الاختبار النهائي</span><span data-l="en">Final exam</span></b><small><span data-l="ar">20 سؤال من كل الفصول</span><span data-l="en">20 questions from every chapter</span></small></a></div>
+  <a class="home-project" href="#project"><span style="font-size:1.8rem">🪜</span><b><span data-l="ar">سلم مشروعي: تابع كل خطوة في بناء متجرك</span><span data-l="en">My project ladder: track every step of building your store</span></b><span class="cta"><span data-l="ar">افتح</span><span data-l="en">Open</span></span></a>
 </section>
 
 <!-- ============ CH1 ============ -->
@@ -1570,13 +1644,14 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="2"></div>
 
 <div style="display:flex;flex-direction:column;gap:22px">
 <div class="ch-head">
   <p class="lead"><span data-l="ar">المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي. لو المنتج عليه طلب حقيقي، هيبيع حتى مع تسويق أو تصميم ضعيف.</span><span data-l="en">The product is the most important part of the business, even if the store isn't perfect. A product with real demand sells even with weak marketing or design.</span></p>
   <ul class="goals"><li><span data-l="ar">تفهم المواصفات السبعة للمنتج الرابح</span><span data-l="en">Understand the seven traits of a winning product</span></li><li><span data-l="ar">تحسب هامش الربح صح</span><span data-l="en">Calculate profit margin correctly</span></li><li><span data-l="ar">تبحث عن منتجات بـ 6 طرق وأدوات</span><span data-l="en">Research products with 6 methods and tools</span></li></ul>
 </div>
-<div class="tip"><span class="kicker"><span data-l="ar">قاعدة مهمة</span><span data-l="en">Key rule</span></span><p data-l="ar">لازم يكون عندك <b>ليستة من 10 منتجات مختلفة</b> عشان تقدر تجرّب وتبدّل لو منتج فشل. التجريب مهم للوصول للمنتج الرابح، والمجهود ده جزء أساسي من النجاح.</p><p data-l="en">Keep a <b>list of 10 different products</b> so you can test and swap if one fails. Testing is how you find a winner, and that effort is a core part of success.</p></div>
+<div class="tip"><span class="kicker"><span data-l="ar">قاعدة مهمة</span><span data-l="en">Key rule</span></span><p data-l="ar">لازم يكون عندك <b>ليستة من 10 منتجات مختلفة، ولكل منتج 3 فيديوهات</b>، عشان تقدر تجرّب وتبدّل لو منتج فشل. دي المهمة الأساسية للفصل، وهتلاقيها تحت.</p><p data-l="en">Keep a <b>list of 10 different products, each with 3 videos</b>, so you can test and swap if one fails. That's this chapter's main task; you'll find it below.</p></div>
 
 <div class="sec-head"><div class="en">WINNING PRODUCT CRITERIA</div><h2><span data-l="ar">المواصفات السبعة للمنتج الرابح</span><span data-l="en">The seven traits of a winning product</span></h2><p data-l="ar">كل مواصفة فيها: يعني إيه، ليه مهمة، إزاي تتأكد منها، ومثال كويس وتاني وحش.</p><p data-l="en">Each trait covers what it means, why it matters, how to check it, and a good and a bad example.</p></div>
 <div class="crit-list"><article class="cr">
@@ -1740,6 +1815,35 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <div class="verdict mid" id="scoreOut">—</div>
 </div>
 
+
+<div class="sec-head"><div class="en">YOUR MAIN TASK</div><h2><span data-l="ar">المهمة الأساسية: 10 منتجات × 3 فيديوهات</span><span data-l="en">Your main task: 10 products × 3 videos</span></h2>
+  <p data-l="ar">المنتجات دي هي اللي هنشتغل عليها في باقي الدبلوم: هنضيفها للمتجر في الفصل الخامس، ونعمل بيها الإعلانات في الفصل العاشر. عشان كده المهمة دي إجبارية.</p><p data-l="en">These are the products we'll work with for the rest of the diploma: we'll add them to the store in chapter 5 and build ads with them in chapter 10. That's why this task is required.</p></div>
+<div class="ptask" id="ptask">
+  <div class="ptask-h"><h3><span data-l="ar">ليستة منتجاتي</span><span data-l="en">My product list</span></h3><span class="must"><span data-l="ar">مهمة إجبارية</span><span data-l="en">Required task</span></span></div>
+  <div class="pstats">
+    <div><span><span data-l="ar">منتجات اخترتها</span><span data-l="en">Products chosen</span></span><b id="pStat" dir="ltr">0/10</b><div class="bar"><i id="pBar2"></i></div></div>
+    <div><span><span data-l="ar">فيديوهات اتحفظت</span><span data-l="en">Videos saved</span></span><b id="vStat" dir="ltr">0/30</b><div class="bar"><i id="vBar2"></i></div></div>
+  </div>
+  <p data-l="ar" style="color:var(--muted);font-size:.92rem">اكتب اسم كل منتج ولينكه، ولما تحفظ فيديو ليه على جهازك علّم عليه 🎬. الليستة بتتحفظ على جهازك، وبتظهر في «سلم مشروعي».</p><p data-l="en" style="color:var(--muted);font-size:.92rem">Enter each product's name and link, and tick 🎬 each time you save one of its videos on your device. The list is saved on this device and shows up in "My project".</p>
+  <div class="prows" id="prodRows"></div>
+</div>
+<div class="two">
+  <div class="panel">
+    <h4><span data-l="ar">اعمل فولدر المنتجات على جهازك كده</span><span data-l="en">Set up your products folder like this</span></h4>
+    <p data-l="ar" class="lede">فولدر رئيسي، وجواه فولدر لكل منتج برقمه واسمه، وفيه الـ 3 فيديوهات وملف فيه اللينكات (المورد، الفيديو، الإعلان). الأسماء بتتحدث لوحدها من الليستة.</p><p data-l="en" class="lede">One main folder, with a numbered subfolder per product holding its 3 videos and a file of links (supplier, video, ad). Names update from your list automatically.</p>
+    <div class="folder"><span class="fd">📁 Darbna-Products</span><ul id="folderList"></ul></div>
+  </div>
+  <div class="panel">
+    <h4><span data-l="ar">تجيب الفيديوهات منين؟</span><span data-l="en">Where do the videos come from?</span></h4>
+    <div class="vsrc" style="grid-template-columns:minmax(0,1fr)">
+      <div><b>AliExpress</b><span data-l="ar">فيديوهات المورد في صفحة المنتج. دي غالبًا مسموح تستخدمها في البيع.</span><span data-l="en">The supplier's videos on the product page. These are usually fine to use for selling.</span></div>
+      <div><b>TikTok · Instagram</b><span data-l="ar">فيديوهات الناس اللي بتجرب المنتج. احفظها كمرجع وإلهام لشكل الإعلان.</span><span data-l="en">Videos of people trying the product. Save them as reference and inspiration for your ad.</span></div>
+      <div><b>Meta Ads Library</b><span data-l="ar">إعلانات المنافسين الشغالة. اتعلم منها الفكرة والهوك والعرض.</span><span data-l="en">Competitors' live ads. Learn their idea, hook and offer.</span></div>
+    </div>
+    <div class="warn"><span class="kicker"><span data-l="ar">مهم</span><span data-l="en">Important</span></span><p data-l="ar">فيديوهات صناع المحتوى والمنافسين ليها حقوق. استخدمها للمرجع بس، ولما تيجي تعمل إعلانك استخدم فيديوهات المورد أو صوّر بنفسك أو اتفق مع صانع محتوى (UGC).</p><p data-l="en">Creators' and competitors' videos are copyrighted. Use them for reference only; for your own ads, use supplier footage, film your own, or hire a UGC creator.</p></div>
+  </div>
+</div>
+
 <div class="practice" data-practice="2">
   <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">الهدف: ليستة 10 منتجات</span><span data-l="en">Goal: a list of 10 products</span></span></div>
   <ul class="checks">
@@ -1787,6 +1891,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="3"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -1950,6 +2055,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="4"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2083,6 +2189,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="5"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2211,6 +2318,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="6"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2351,6 +2459,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="7"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2480,6 +2589,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="8"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2642,6 +2752,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="9"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2740,6 +2851,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
+<div class="remind" data-ch="10"></div>
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2868,6 +2980,17 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </section>
 
 <nav class="pager"><a href="#ch9"><small><span data-l="ar">→ الفصل السابق</span><span data-l="en">← Previous chapter</span></small><b><span data-l="ar">التطبيقات والأسواق والإيميلات</span><span data-l="en">Apps, markets & emails</span></b></a><a class="nx" href="#final"><small><span data-l="ar">بعد ما تخلص ←</span><span data-l="en">When you finish →</span></small><b><span data-l="ar">الاختبار النهائي</span><span data-l="en">Final exam</span></b></a></nav>
+</section>
+<section class="view chapter" id="project" data-view="project" data-title-ar="سلم مشروعي" data-title-en="My project" hidden>
+<div class="sec-head"><div class="en">MY PROJECT LADDER</div><h2><span data-l="ar">سلم مشروعي: خطوة بخطوة</span><span data-l="en">My project ladder, step by step</span></h2>
+  <p data-l="ar">كل خطوات بناء متجرك في مكان واحد. علّم على اللي خلّصته، ولو فيه خطوة ناقصة ارجع لفصلها وكمّلها. اللي بتعلّم عليه هنا بيتعلّم في تذكرة أول كل فصل كمان.</p><p data-l="en">Every step of building your store in one place. Tick what you've done; if a step is missing, go back to its chapter and finish it. Ticks here also show in each chapter's reminder.</p></div>
+<div class="lad-sum">
+  <div class="lad-pct" id="ladPct" dir="ltr">0%</div>
+  <div><div class="bar"><i id="ladBar"></i></div><div class="lad-meta"><span><span data-l="ar">الخطوات:</span><span data-l="en">Steps:</span> <b id="ladCnt" dir="ltr">0</b></span><span><span data-l="ar">المنتجات:</span><span data-l="en">Products:</span> <span id="ladProd"></span> · <a href="#ch2"><span data-l="ar">افتح الليستة</span><span data-l="en">Open the list</span></a></span></div></div>
+  <div class="lad-next" id="ladNext"></div>
+</div>
+<ol class="ladder" id="ladder"></ol>
+<div class="tip"><span class="kicker"><span data-l="ar">ملحوظة</span><span data-l="en">Note</span></span><p data-l="ar">تقدمك بيتحفظ على جهازك دلوقتي. لما نفعّل تسجيل الدخول هيتحفظ على حسابك ويوصل للمحاضر.</p><p data-l="en">Your progress is saved on this device for now. Once sign-in is enabled it will be saved to your account and shared with your instructor.</p></div>
 </section>
 <section class="view chapter" id="final" data-view="final" data-title-ar="الاختبار النهائي" data-title-en="Final exam" hidden>
 <div class="cover small">
@@ -3470,7 +3593,7 @@ form.addEventListener('submit',async e=>{
   if(!db||!uid){try{localStorage.setItem(LKEY,JSON.stringify(d));}catch(e){} setMsg('local','ok');return;}
   if(readOnly){setMsg('ro','err');return;}
   $('introSave').disabled=true; setMsg('saving');
-  try{await db.doc('intros/'+uid).set(Object.assign({},d,{at:new Date().toISOString()}));hasDoc=true;setMsg('sent','ok');$('introSave').textContent=tr(M.update);}
+  try{await db.doc('intros/'+uid).set(Object.assign({},d,{at:new Date().toISOString()}));hasDoc=true;setMsg('sent','ok');S.ms=S.ms||{};S.ms['1.intro']=true;save();if(typeof syncProgress==='function')syncProgress(false);$('introSave').textContent=tr(M.update);}
   catch(err){if(err&&err.code==='invalid_argument'){readOnly=true;setMsg('ro','err');}else setMsg('err','err');}
   finally{$('introSave').disabled=false;}
 });
@@ -3569,7 +3692,7 @@ function renderI18n(){
   if(msgKey) msg.textContent=tr(M[msgKey]); if(modeKey) mode.textContent=tr(M[modeKey]);
   $('introSave').textContent=tr(hasDoc?M.update:M.send);
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
-  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore();
+  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore(); if(typeof syncProgress==='function') syncProgress(true);
 }
 /* ---------- class polls (shared counts, no names) ---------- */
 const POLLS={
@@ -3682,6 +3805,89 @@ ASK.forEach(box=>{
   renderAsks();
   if(qOwner){qdb.collection('questions').onSnapshot(snap=>{allQ=snap.docs.filter(x=>x.exists!==false).map(x=>x.data()||{});renderAsks();},()=>{});}
 })();
+
+/* ---------- project ladder, chapter reminders, 10 products × 3 videos ---------- */
+const CHT={1:{ar:'البداية الصح',en:'The right start'},2:{ar:'المنتج الرابح',en:'Winning product'},3:{ar:'البراند: الاسم واللوجو والألوان',en:'Brand: name, logo & colors'},4:{ar:'الاشتراك في Shopify ولوحة التحكم',en:'Shopify sign-up & dashboard'},5:{ar:'إضافة المنتجات للمتجر',en:'Adding products'},6:{ar:'الثيم والشكل العام للمتجر',en:'Theme & store design'},7:{ar:'الصفحات والقوائم والعروض',en:'Pages, menus & offers'},8:{ar:'إنشاء الشركة ووسائل الدفع',en:'Company & payments'},9:{ar:'التطبيقات والأسواق والإيميلات',en:'Apps, markets & emails'},10:{ar:'ميتا والإعلانات والتحسين',en:'Meta ads & optimization'}};
+const MS={
+1:[{id:'intro',ar:'بعت كارت التعارف للمحاضر',en:'Sent my introduction to the instructor'},{id:'goal',ar:'كتبت هدفي من الدبلوم بالأرقام',en:'Wrote my diploma goal as numbers'},{id:'niches',ar:'اخترت 3 نيتشات مبدئية أقارن بينهم',en:'Shortlisted 3 niches to compare'}],
+2:[{id:'p10',ar:'اخترت 10 منتجات',en:'Picked 10 products',auto:'p'},{id:'v30',ar:'جمعت 3 فيديوهات لكل منتج (30 فيديو)',en:'Collected 3 videos per product (30 videos)',auto:'v'},{id:'folder',ar:'عملت فولدر المنتجات على جهازي ومقسّم',en:'Made an organised products folder on my device'},{id:'scored',ar:'قيّمت كل منتج وحسبت ربحه',en:'Scored every product and worked out its profit'}],
+3:[{id:'name',ar:'اخترت اسم البراند',en:'Chose my brand name'},{id:'domain',ar:'حجزت الدومين',en:'Registered the domain'},{id:'logo',ar:'صممت اللوجو',en:'Designed the logo'},{id:'colors',ar:'اخترت ألوان البراند',en:'Picked brand colors'}],
+4:[{id:'acct',ar:'فتحت حساب Shopify واشتركت في الخطة',en:'Opened a Shopify account and chose a plan'},{id:'basic',ar:'ظبطت الإعدادات الأساسية (اسم المتجر و Checkout)',en:'Set the basics (store name and checkout)'}],
+5:[{id:'dsers',ar:'ربطت DSers بحساب AliExpress',en:'Connected DSers to AliExpress'},{id:'added',ar:'ضفت المنتجات بعناوين ووصف جديد',en:'Added products with new titles and descriptions'},{id:'coll',ar:'عملت Collection للمنتجات',en:'Created a collection'}],
+6:[{id:'theme',ar:'اخترت الثيم وعملت Publish',en:'Chose a theme and published it'},{id:'brandset',ar:'ظبطت اللوجو والألوان والسكشنز',en:'Set the logo, colors and sections'},{id:'mobile',ar:'راجعت المتجر على الموبايل',en:'Checked the store on mobile'}],
+7:[{id:'pages',ar:'عملت About و Contact وضفتهم للقائمة',en:'Made About and Contact pages and added them to the menu'},{id:'policies',ar:'جهزت السياسات الخمسة',en:'Prepared the five policies'},{id:'bundle',ar:'عملت Bundle لمنتج',en:'Built a bundle for a product'}],
+8:[{id:'company',ar:'فتحت الشركة واستلمت الأوراق',en:'Registered the company and got the documents'},{id:'payments',ar:'فعّلت Shopify Payments',en:'Activated Shopify Payments'},{id:'bank',ar:'ربطت Wise وغيرت العملة لـ USD وعدلت الأسعار',en:'Linked Wise, switched to USD and fixed prices'}],
+9:[{id:'apps',ar:'ثبّت التطبيقات الأساسية',en:'Installed the core apps'},{id:'markets',ar:'فعّلت الأسواق واللغة العربية',en:'Enabled markets and Arabic'},{id:'email',ar:'عملت الإيميل الرسمي',en:'Created my business email'}],
+10:[{id:'meta',ar:'عملت Meta Business و Ad Account',en:'Set up Meta Business and an ad account'},{id:'pixel',ar:'ربطت البيكسل وجربت عملية شراء',en:'Connected the pixel and tested a purchase'},{id:'social',ar:'جهزت صفحات فيسبوك وإنستجرام',en:'Prepared Facebook and Instagram pages'},{id:'launch',ar:'أطلقت أول حملة',en:'Launched my first campaign'}]
+};
+S.ms=S.ms||{}; S.products=Array.isArray(S.products)?S.products:[];
+while(S.products.length<10) S.products.push({name:'',link:'',v:[false,false,false]});
+const pCount=()=>S.products.filter(p=>p.name&&p.name.trim()).length;
+const vCount=()=>S.products.reduce((a,p)=>a+(p.v||[]).filter(Boolean).length,0);
+function msDone(ch,m){if(m.auto==='p')return pCount()>=10; if(m.auto==='v')return vCount()>=30; return !!S.ms[ch+'.'+m.id];}
+function chDone(ch){return MS[ch].every(m=>msDone(ch,m));}
+function chCount(ch){return MS[ch].filter(m=>msDone(ch,m)).length;}
+const TT={done:{ar:'تم ✓',en:'Done ✓'},doing:{ar:'جاري',en:'In progress'},todo:{ar:'لسه',en:'Not started'},auto:{ar:'بيتحسب تلقائي',en:'counted automatically'},go:{ar:'روح للفصل',en:'Go to chapter'},
+ next:{ar:'خطوتك الجاية',en:'Your next step'},all:{ar:'خلّصت كل خطوات المشروع! 🎉',en:'You finished every project step! 🎉'},ch:{ar:'الفصل',en:'Chapter'},
+ rTitle:{ar:'قبل ما تبدأ: خلّصت اللي فات؟',en:'Before you start: finished the last steps?'},
+ rOk:{ar:'تمام! خلّصت خطوات الفصل اللي فات. كمّل على طول 💪',en:'Great! You finished the previous chapter\'s steps. Carry on 💪'},
+ rNo:{ar:'لسه فيه خطوات من الفصل اللي فات. ارجع خلّصها الأول، لأن الفصل ده مبني عليها.',en:'Some steps from the previous chapter are still open. Finish them first, because this chapter builds on them.'},
+ rBack:{ar:'ارجع للفصل',en:'Back to chapter'},rOlder:{ar:'وكمان فيه خطوات ناقصة في فصول قبل كده:',en:'There are also open steps in earlier chapters:'},rLadder:{ar:'شوف سلم مشروعك',en:'See your project ladder'}};
+function msItem(ch,m){
+  const id='ms-'+ch+'-'+m.id+'-'+Math.random().toString(36).slice(2,7), d=msDone(ch,m);
+  return '<li class="msi'+(d?' on':'')+'"><label for="'+id+'"><input type="checkbox" id="'+id+'" data-ms="'+ch+'.'+m.id+'"'+(d?' checked':'')+(m.auto?' disabled':'')+'><span>'+esc(tr(m))+(m.auto?' <small>('+esc(tr(TT.auto))+')</small>':'')+'</span></label></li>';
+}
+function renderReminders(){
+  document.querySelectorAll('.remind[data-ch]').forEach(box=>{
+    const ch=+box.dataset.ch, prev=ch-1, ok=chDone(prev);
+    const older=[];for(let c=1;c<prev;c++) if(!chDone(c)) older.push(c);
+    box.className='remind '+(ok?'ok':'no');
+    box.innerHTML='<div class="rm-top"><span class="rm-ic">'+(ok?'✓':'!')+'</span><div><b>'+esc(tr(TT.rTitle))+'</b><small>'+esc(tr(TT.ch))+' '+prev+' · '+esc(tr(CHT[prev]))+'</small></div><span class="rm-cnt" dir="ltr">'+chCount(prev)+'/'+MS[prev].length+'</span></div>'+
+      '<ul class="msl">'+MS[prev].map(m=>msItem(prev,m)).join('')+'</ul>'+
+      '<p class="rm-msg">'+esc(tr(ok?TT.rOk:TT.rNo))+'</p>'+
+      '<div class="rm-acts">'+(ok?'':'<a class="btn" href="#ch'+prev+'">'+esc(tr(TT.rBack))+' '+prev+'</a>')+'<a class="btn ghost" href="#project">'+esc(tr(TT.rLadder))+'</a></div>'+
+      (older.length?'<p class="rm-older">'+esc(tr(TT.rOlder))+' '+older.map(c=>'<a href="#ch'+c+'">'+esc(tr(TT.ch))+' '+c+'</a>').join(' · ')+'</p>':'');
+  });
+}
+function renderLadder(){
+  const box=$('ladder'); if(!box) return;
+  let total=0,done=0,next=null;
+  Object.keys(MS).forEach(ch=>MS[ch].forEach(m=>{total++; if(msDone(ch,m)) done++; else if(!next) next={ch,m};}));
+  const pct=Math.round(done/total*100);
+  $('ladPct').textContent=pct+'%'; $('ladBar').style.width=pct+'%'; $('ladCnt').textContent=done+' / '+total;
+  $('ladNext').innerHTML=next?'<span class="lbl">'+esc(tr(TT.next))+'</span><b>'+esc(tr(next.m))+'</b><a class="btn" href="#ch'+next.ch+'">'+esc(tr(TT.ch))+' '+next.ch+' '+(LANG==='ar'?'←':'→')+'</a>':'<b>'+esc(tr(TT.all))+'</b>';
+  box.innerHTML=Object.keys(MS).map(ch=>{const c=chCount(ch),n=MS[ch].length,st=c===n?'done':(c?'doing':'todo');
+    return '<li class="lad '+st+'"><span class="lad-n">'+ch+'</span><div class="lad-card"><div class="lad-h"><b>'+esc(tr(CHT[ch]))+'</b><span class="pill '+st+'">'+esc(tr(TT[st]))+' · <span dir="ltr">'+c+'/'+n+'</span></span><a href="#ch'+ch+'">'+esc(tr(TT.go))+'</a></div><ul class="msl">'+MS[ch].map(m=>msItem(ch,m)).join('')+'</ul></div></li>';}).join('');
+  const pc=pCount(),vc=vCount(); $('ladProd').innerHTML='<b dir="ltr">'+pc+'/10</b> '+esc(tr({ar:'منتجات',en:'products'}))+' · <b dir="ltr">'+vc+'/30</b> '+esc(tr({ar:'فيديو',en:'videos'}));
+}
+/* products task */
+function renderProducts(){
+  const box=$('prodRows'); if(!box) return;
+  box.innerHTML='';
+  S.products.forEach((p,i)=>{
+    const row=document.createElement('div'); row.className='prow'+(p.name&&p.name.trim()?' named':'');
+    row.innerHTML='<span class="pi">'+String(i+1).padStart(2,'0')+'</span>'+
+      '<input type="text" class="pn-in" id="pn-'+i+'" maxlength="80" aria-label="Product '+(i+1)+'">'+
+      '<input type="url" class="pl-in" id="pl-'+i+'" maxlength="300" dir="ltr" aria-label="Link '+(i+1)+'">'+
+      '<span class="pv">'+[0,1,2].map(k=>'<label class="vchip'+(p.v[k]?' on':'')+'"><input type="checkbox" id="pv-'+i+'-'+k+'"'+(p.v[k]?' checked':'')+'>🎬 '+(k+1)+'</label>').join('')+'</span>';
+    const n=row.querySelector('.pn-in'),l=row.querySelector('.pl-in');
+    n.value=p.name||''; l.value=p.link||'';
+    n.placeholder=tr({ar:'اسم المنتج',en:'Product name'}); l.placeholder=tr({ar:'لينك (AliExpress / TikTok)',en:'Link (AliExpress / TikTok)'});
+    n.addEventListener('input',()=>{p.name=n.value;row.classList.toggle('named',!!n.value.trim());save();syncProgress(false);});
+    l.addEventListener('input',()=>{p.link=l.value;save();});
+    row.querySelectorAll('.pv input').forEach((c,k)=>c.addEventListener('change',()=>{p.v[k]=c.checked;c.parentElement.classList.toggle('on',c.checked);save();syncProgress(false);}));
+    box.append(row);
+  });
+  updProdStats();
+}
+function updProdStats(){const pc=pCount(),vc=vCount();if(!$('pStat'))return;
+  $('pStat').textContent=pc+'/10'; $('vStat').textContent=vc+'/30';
+  $('pBar2').style.width=(pc*10)+'%'; $('vBar2').style.width=(vc/30*100)+'%';
+  const fold=$('folderList'); if(fold){fold.innerHTML=S.products.map((p,i)=>{const nm=(p.name||'').trim()||('product-'+(i+1));const safe=nm.replace(/[\\/:*?"<>|]/g,'').slice(0,40);
+    return '<li><span class="fd">📁 '+String(i+1).padStart(2,'0')+'-<bdi>'+esc(safe)+'</bdi></span><span class="fl">🎬 video-1.mp4 · 🎬 video-2.mp4 · 🎬 video-3.mp4 · 📝 links.txt</span></li>';}).join('');}}
+function syncProgress(full){renderReminders();renderLadder();updProdStats();if(full)renderProducts();}
+document.addEventListener('change',e=>{const t=e.target; if(t&&t.dataset&&t.dataset.ms){S.ms[t.dataset.ms]=t.checked;save();syncProgress(false);}});
+syncProgress(true);
 
 document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
