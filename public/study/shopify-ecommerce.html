@@ -820,6 +820,83 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 .poll-art img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 14px 28px -16px rgba(20,90,95,.7)}
 @media (max-width:640px){.poll{grid-template-columns:minmax(0,1fr)}.poll-art{max-width:220px;justify-self:center}}
 
+/* ---------- chapter 2 ---------- */
+.crit-list{display:flex;flex-direction:column;gap:14px}
+.cr{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cr-h{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--accent-soft)}
+.cr-h .num{width:36px;height:36px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--font-poster);flex:none}
+.cr-h .ic{width:40px;height:40px;flex:none}
+.cr-h h4{font-family:var(--font-display);font-weight:800;font-size:1.2rem}
+.cr-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.cr-what p{font-size:1.02rem;font-weight:600;max-width:75ch}
+.cr-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.cr-box{background:var(--bg);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.cr-box .lbl{font-size:.78rem;font-weight:800;color:var(--accent);letter-spacing:.02em}
+.cr-box ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px}
+.cr-box li::marker{content:"☐  ";color:var(--accent)}
+.cr-ex{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.cr-ex > div{border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:4px}
+.cr-ex .good{background:var(--good-soft)} .cr-ex .good b{color:var(--good)}
+.cr-ex .bad{background:var(--bad-soft)} .cr-ex .bad b{color:var(--bad)}
+.cr-note{background:var(--gold-soft);border-radius:10px;padding:8px 12px;font-weight:700;font-size:.93rem}
+.case{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;align-items:start}
+.case-art{position:relative;background:var(--paper);border-radius:16px;padding:16px;display:grid;place-items:center}
+.case-art svg{width:100%;max-width:220px;height:auto}
+.case-tag{position:absolute;top:10px;inset-inline-start:10px;background:var(--accent-dark);color:var(--accent-ink);font-size:.75rem;font-weight:800;border-radius:99px;padding:2px 10px}
+.case-body{display:flex;flex-direction:column;gap:10px;min-width:0}
+.case-body h3{font-family:var(--font-display);font-weight:800;font-size:1.35rem;color:var(--accent-dark)}
+.pests{display:flex;flex-wrap:wrap;gap:6px}
+.pests span{background:var(--bad-soft);color:var(--bad);border-radius:99px;padding:2px 12px;font-weight:700;font-size:.85rem}
+.score7{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 14px}
+.score7 li{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;line-height:1.6}
+.score7 .ok{width:20px;height:20px;border-radius:50%;background:var(--good);color:#fff;display:grid;place-items:center;font-size:.72rem;font-weight:800;flex:none;margin-top:2px}
+.price{background:var(--bg);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.price-h{font-weight:700}
+.price-h b{color:var(--accent)}
+.pbar{display:flex;height:20px;border-radius:99px;overflow:hidden;gap:2px;direction:ltr}
+.seg.p1,.sw.p1{background:#7A8C6E}.seg.p2,.sw.p2{background:#A8B59A}.seg.p3,.sw.p3{background:#D9771F}.seg.p4,.sw.p4{background:#C9A23A}.seg.p5,.sw.p5{background:var(--accent)}
+.plegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem}
+.plegend span{display:flex;align-items:center;gap:6px}
+.plegend .sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mth{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mth-h{display:flex;align-items:center;gap:10px}
+.mth-h .ic{width:44px;height:44px;border-radius:12px;background:var(--sunk);padding:7px;flex:none}
+.mth-h b{font-family:var(--font-display);font-size:1.1rem}
+.mth p{font-size:.9rem;color:var(--muted);line-height:1.7}
+.lks{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;align-items:center}
+.lk{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid var(--accent);color:var(--accent-dark);border-radius:99px;padding:3px 12px;background:var(--accent-soft)}
+.lk:hover{background:var(--accent);color:var(--accent-ink)}
+.kws{display:flex;flex-direction:column;gap:8px}
+.kw{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:grid;grid-template-columns:230px minmax(0,1fr) auto;gap:14px;align-items:center;min-width:0}
+.kw .lks{margin-top:0}
+.kw code{background:var(--night);color:#7CC44A;font-size:.85rem;padding:4px 8px;border-radius:8px;overflow-wrap:anywhere;text-align:start}
+.kw p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.copy-kw{font:600 .78rem var(--font-body);border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:3px 10px;cursor:pointer}
+.adslib{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.adslib-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.adslib-h .ic{width:48px;height:48px;border-radius:12px;background:var(--sunk);padding:8px;flex:none}
+.adslib-h b{display:block;font-family:var(--font-word);font-size:1.15rem}
+.adslib-h small{color:var(--muted)}
+.adslib-h > div{flex:1 1 240px}
+.adslib h4{font-family:var(--font-display);font-weight:800;font-size:1.1rem}
+.steps3{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+.steps3 li::marker{color:var(--accent);font-weight:800}
+.ad-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ad-q{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.ad-q:hover{border-color:var(--accent)}
+.ad-q .n{font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.ad-q .t{font-weight:700;text-align:start}
+.ad-q .k{font-size:.72rem;font-weight:700;border-radius:99px;padding:1px 8px}
+.ad-q.prod .k{background:var(--accent-soft);color:var(--accent-dark)}
+.ad-q.offer .k{background:var(--gold-soft);color:var(--gold)}
+.ad-q.store .k{background:#E3ECFB;color:#2D5FB0}
+.ad-q .go{color:var(--accent)}
+.signals{background:var(--good-soft);border-radius:12px;padding:12px 14px}
+.signals ul{margin:6px 0 0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+@media (max-width:900px){.methods{grid-template-columns:repeat(2,minmax(0,1fr))}.case{grid-template-columns:minmax(0,1fr)}.case-art{max-width:260px;justify-self:center}}
+@media (max-width:640px){.kw{grid-template-columns:minmax(0,1fr);gap:8px}.cr-grid,.cr-ex,.score7,.ad-grid{grid-template-columns:minmax(0,1fr)}.methods{grid-template-columns:minmax(0,1fr)}}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -962,7 +1039,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <div class="home-meta">
     <div><b>10</b><span data-l="ar">فصول عملية</span><span data-l="en">practical chapters</span></div>
     <div><b>10</b><span data-l="ar">تدريبات تطبقها على متجرك</span><span data-l="en">exercises on your own store</span></div>
-    <div><b>154</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
+    <div><b>161</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
     <div><b><span id="pDone">0</span>/10</b><span data-l="ar">فصول خلّصتها</span><span data-l="en">chapters completed</span><div class="bar"><i id="pBar"></i></div></div>
   </div>
   <div class="sec-head"><div class="en">COURSE CONTENT</div><h2><span data-l="ar">محتوى الدبلوم</span><span data-l="en">What's inside</span></h2>
@@ -1493,112 +1570,187 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   
 </div>
-<div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
-<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
-  <div class="ch-head">
+
+<div style="display:flex;flex-direction:column;gap:22px">
+<div class="ch-head">
+  <p class="lead"><span data-l="ar">المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي. لو المنتج عليه طلب حقيقي، هيبيع حتى مع تسويق أو تصميم ضعيف.</span><span data-l="en">The product is the most important part of the business, even if the store isn't perfect. A product with real demand sells even with weak marketing or design.</span></p>
+  <ul class="goals"><li><span data-l="ar">تفهم المواصفات السبعة للمنتج الرابح</span><span data-l="en">Understand the seven traits of a winning product</span></li><li><span data-l="ar">تحسب هامش الربح صح</span><span data-l="en">Calculate profit margin correctly</span></li><li><span data-l="ar">تبحث عن منتجات بـ 6 طرق وأدوات</span><span data-l="en">Research products with 6 methods and tools</span></li></ul>
+</div>
+<div class="tip"><span class="kicker"><span data-l="ar">قاعدة مهمة</span><span data-l="en">Key rule</span></span><p data-l="ar">لازم يكون عندك <b>ليستة من 10 منتجات مختلفة</b> عشان تقدر تجرّب وتبدّل لو منتج فشل. التجريب مهم للوصول للمنتج الرابح، والمجهود ده جزء أساسي من النجاح.</p><p data-l="en">Keep a <b>list of 10 different products</b> so you can test and swap if one fails. Testing is how you find a winner, and that effort is a core part of success.</p></div>
+
+<div class="sec-head"><div class="en">WINNING PRODUCT CRITERIA</div><h2><span data-l="ar">المواصفات السبعة للمنتج الرابح</span><span data-l="en">The seven traits of a winning product</span></h2><p data-l="ar">كل مواصفة فيها: يعني إيه، ليه مهمة، إزاي تتأكد منها، ومثال كويس وتاني وحش.</p><p data-l="en">Each trait covers what it means, why it matters, how to check it, and a good and a bad example.</p></div>
+<div class="crit-list"><article class="cr">
+  <header class="cr-h"><span class="num">01</span><i class="ic" data-ic="bulb"></i><h4><span data-l="ar">بيحل مشكلة حقيقية</span><span data-l="en">Solves a real problem</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">المنتج بيريّح العميل من ألم أو إزعاج أو وقت ضايع. الناس بتدفع عشان تتخلص من مشكلة أسرع بكتير من ما بتدفع عشان حاجة «شكلها حلو».</p><p data-l="en">The product removes a pain, an annoyance or wasted time. People pay to get rid of a problem far faster than they pay for something that just looks nice.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">العميل اللي عنده المشكلة بيدوّر على الحل بنفسه، فالإعلان بيقنعه في ثواني، وبيدفع من غير تفكير كتير.</p><p data-l="en">A customer with the problem is already looking for a fix, so the ad convinces them in seconds and they buy without overthinking.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">تقدر توصف المشكلة في جملة واحدة؟</span><span data-l="en">Can you describe the problem in one sentence?</span></li><li><span data-l="ar">الناس بتشتكي منها في الكومنتات والجروبات؟</span><span data-l="en">Do people complain about it in comments and groups?</span></li><li><span data-l="ar">الفيديو يقدر يوري «قبل وبعد»؟</span><span data-l="en">Can a video show a clear before and after?</span></li></ul></div>
+    </div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">طوق طارد للحشرات للكلاب والقطط، مشط إزالة شعر الحيوانات من الكنب، مصحح وضعية الضهر.</p><p data-l="en">A flea-repellent collar for pets, a pet-hair remover for sofas, a posture corrector.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">ميدالية مفاتيح عادية: شكلها لطيف، بس مش بتحل أي مشكلة.</p><p data-l="en">A plain keychain: cute, but it solves nothing.</p></div></div>
     
-    <div class="en">Winning Product</div>
-    <p class="lead">المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي. لو المنتج عليه طلب حقيقي، هيبيع حتى مع تسويق أو تصميم ضعيف.</p>
-    <ul class="goals"><li>تعرف مواصفات المنتج الرابح السبعة</li><li>تحسب هامش الربح صح</li><li>تستخدم 6 طرق للبحث عن منتجات</li></ul>
   </div>
-
-  <div class="tip">
-    <span class="kicker">قاعدة مهمة</span>
-    <p>لازم يكون عندك <b>ليستة من 10 منتجات مختلفة</b> عشان تقدر تجرّب وتبدّل لو منتج فشل. التجريب مهم للوصول للمنتج الرابح، والمجهود ده جزء أساسي من النجاح.</p>
-  </div>
-
-  <div class="prose"><h3>مواصفات المنتج الرابح</h3></div>
-  <div class="cards">
-    <div class="card"><span class="idx">01</span><h4>بيحل مشكلة حقيقية</h4><p>المنتجات اللي بتحل مشاكل بتضمن وجود عملاء جاهزين. مثال: الأساور الطاردة للحشرات للكلاب والقطط في 2024.</p></div>
-    <div class="card"><span class="idx">02</span><h4>ترندي / فايرل</h4><p>زي الكمامات وقت كورونا. تابع الترندات عشان تسبق السوق.</p></div>
-    <div class="card"><span class="idx">03</span><h4>قابل للتطوير</h4><p>شوف منتجات ناس تانية بتبيعها وطوّر على فكرتهم: مش تقلّد، تحسّن. ركز على المنتجات اللي تسويقها أو عرضها ضعيف.</p></div>
-    <div class="card"><span class="idx">04</span><h4>هامش ربح كويس</h4><p>احسب التكلفة الكاملة (منتج + شحن + إعلانات). ما تشتغلش على منتج مكسبه $3–5 بس.</p></div>
-    <div class="card"><span class="idx">05</span><h4>جودته حقيقية</h4><p>اقرا الريفيوهات وشوف تقييمه على Amazon. اسأل نفسك: «هل أقدر أهديه لأهلي بثقة؟»</p></div>
-    <div class="card"><span class="idx">06</span><h4>مش ممنوع من الشحن الدولي</h4><p>تجنب: السوائل، البطاريات، الأدوات الحادة، والإلكترونيات القابلة للكسر. راجع شروط الشحن في بلد التارجت.</p></div>
-    <div class="card"><span class="idx">07</span><h4>بعيد عن الأجهزة الكهربائية</h4><p>شحنها صعب، وزنها تقيل، وأعطالها كتير. خليك في منتجات بسيطة وخفيفة في البداية.</p></div>
-  </div>
-
-  <figure class="fig">
-    <div class="scroll-x">
-    <svg viewBox="0 0 720 250" width="100%" style="min-width:560px" role="img" aria-label="مثال منتج يحل مشكلة: طوق طارد للحشرات">
-      <rect x="20" y="20" width="300" height="210" rx="14" class="s-sunk"/>
-      <circle cx="170" cy="118" r="62" fill="none" class="s-stroke-acc" stroke-width="14"/>
-      <rect x="150" y="48" width="40" height="22" rx="5" class="s-gold"/>
-      <circle cx="170" cy="180" r="9" class="s-gold"/>
-      <text x="170" y="122" text-anchor="middle" class="s-muted" font-size="12">طوق طارد للحشرات</text>
-      <g font-size="12">
-        <rect x="350" y="26" width="350" height="44" rx="8" class="s-goldsoft"/>
-        <text x="688" y="53" text-anchor="end" class="s-ink" font-weight="700">المشكلة: براغيث وقراد وناموس على الحيوان الأليف</text>
-        <rect x="350" y="80" width="350" height="44" rx="8" class="s-accsoft"/>
-        <text x="688" y="107" text-anchor="end" class="s-ink">✔ بيحل مشكلة · ✔ خفيف وسهل الشحن</text>
-        <rect x="350" y="134" width="350" height="44" rx="8" class="s-accsoft"/>
-        <text x="688" y="161" text-anchor="end" class="s-ink">✔ تكلفته $3–6 · ✔ يتباع بـ $24.99 – $29.99</text>
-        <rect x="350" y="188" width="350" height="36" rx="8" class="s-surface" stroke-width="1" style="stroke:var(--line)"/>
-        <text x="688" y="211" text-anchor="end" class="s-muted">الحشرات: Fleas · Ticks · Lice · Mosquitoes · Larvae</text>
-      </g>
-    </svg>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">02</span><i class="ic" data-ic="fire"></i><h4><span data-l="ar">ترندي / فايرل</span><span data-l="en">Trending or viral</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">منتج الناس بتتكلم عنه دلوقتي على السوشيال، أو الطلب عليه طالع.</p><p data-l="en">A product people are talking about on social media right now, or whose demand is rising.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">الترند بيوفّر عليك تعليم السوق: الناس عارفة المنتج ومستنياه. واللي بيدخل بدري بيكسب أكتر قبل ما المنافسة تزيد.</p><p data-l="en">A trend saves you from educating the market: people already know and want it. Early movers earn the most before competition grows.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">فيديوهات عليها مشاهدات عالية في آخر شهر؟</span><span data-l="en">Videos with high views in the last month?</span></li><li><span data-l="ar">Google Trends بيقول إن البحث طالع؟</span><span data-l="en">Does Google Trends show rising searches?</span></li><li><span data-l="ar">إعلانات جديدة كتير عليه في Ads Library؟</span><span data-l="en">Many new ads for it in the Ads Library?</span></li></ul></div>
     </div>
-    <figcaption>شكل ٢ — مثال من المادة: الطوق الطارد للحشرات بيحقق أغلب مواصفات المنتج الرابح.</figcaption>
-  </figure>
-
-  <div class="tool" id="profitTool">
-    <h4>حاسبة هامش الربح</h4>
-    <p style="color:var(--muted);font-size:.92rem">غيّر الأرقام وشوف المنتج يستاهل ولا لأ. القيم بالدولار.</p>
-    <div class="tool-grid">
-      <label class="f">سعر البيع<input type="number" id="pf-price" value="29.99" step="0.01" min="0"></label>
-      <label class="f">تكلفة المنتج<input type="number" id="pf-cost" value="6" step="0.01" min="0"></label>
-      <label class="f">الشحن<input type="number" id="pf-ship" value="4" step="0.01" min="0"></label>
-      <label class="f">تكلفة الإعلان لكل بيعة<input type="number" id="pf-ads" value="10" step="0.01" min="0"></label>
-      <label class="f">نسبة Shopify ٪<input type="number" id="pf-fee" value="2" step="0.1" min="0"></label>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">الكمامات وقت كورونا، والخلاط المحمول لما انتشر على تيك توك.</p><p data-l="en">Face masks during COVID, or the portable blender when it took off on TikTok.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">ترند خلص من سنة، أو موضة عاشت يوم واحد.</p><p data-l="en">A trend that died a year ago, or a one-day fad.</p></div></div>
+    <div class="cr-note">💡 <span data-l="ar">الترند ليه عمر: ادخل بدري، واكسب، واستعد للمنتج اللي بعده.</span><span data-l="en">Trends have a lifespan: get in early, profit, and line up the next product.</span></div>
+  </div>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">03</span><i class="ic" data-ic="steps"></i><h4><span data-l="ar">قابل للتطوير</span><span data-l="en">Room to do it better</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">منتج بيتباع فعلًا، بس منافسينك بيقدموه بشكل ضعيف: صور وحشة، فيديو مش واضح، أو صفحة منتج فقيرة. أنت بتقدمه أحسن.</p><p data-l="en">A product that already sells, but competitors present it poorly: bad photos, unclear videos, thin product pages. You present it better.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">الطلب موجود ومتجرَّب، فأنت مش بتراهن على المنتج. بتكسب بالعرض: الإعلان والصفحة والعرض.</p><p data-l="en">Demand is proven, so you're not gambling on the product. You win on presentation: the ad, the page and the offer.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">صور المنافس منقولة من AliExpress زي ما هي؟</span><span data-l="en">Are competitors using raw AliExpress photos?</span></li><li><span data-l="ar">مفيش فيديو أو الفيديو ضعيف؟</span><span data-l="en">Is there no video, or a weak one?</span></li><li><span data-l="ar">تقدر تضيف Bundle أو هدية أو لون جديد؟</span><span data-l="en">Can you add a bundle, a gift or a new color?</span></li></ul></div>
     </div>
-    <div class="result">
-      <div><span>التكلفة الكاملة</span><b id="pf-total">—</b></div>
-      <div><span>الربح من البيعة</span><b id="pf-profit">—</b></div>
-      <div><span>هامش الربح</span><b id="pf-margin">—</b></div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">نفس المنتج بفيديو UGC، وصفحة واضحة، وعرض «اشتري 2 ووفّر».</p><p data-l="en">The same product with a UGC video, a clear page and a "buy 2, save" offer.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">تنسخ نفس الإعلان ونفس الصور بالظبط، فتنافس على السعر بس.</p><p data-l="en">Copying the exact same ad and photos, so you only compete on price.</p></div></div>
+    <div class="cr-note">💡 <span data-l="ar">مش بنقلّد، بنحسّن.</span><span data-l="en">We don't copy; we improve.</span></div>
+  </div>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">04</span><i class="ic" data-ic="moneyLens"></i><h4><span data-l="ar">هامش ربح كويس</span><span data-l="en">A healthy profit margin</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">السعر لازم يغطي المنتج والشحن والإعلانات وعمولة المنصة، ويفضل بعدها مكسب محترم.</p><p data-l="en">The price must cover the product, shipping, ads and platform fees, and still leave a solid profit.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">الإعلانات بتاكل جزء كبير من السعر. لو الهامش صغير، أي زيادة بسيطة في تكلفة الإعلان هتقلب الربح خسارة.</p><p data-l="en">Ads eat a big share of the price. With a thin margin, any small rise in ad cost turns profit into loss.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">سعر البيع ≈ 3 أضعاف (المنتج + الشحن) على الأقل؟</span><span data-l="en">Is the price at least ~3× (product + shipping)?</span></li><li><span data-l="ar">الربح بعد الإعلان أكتر من $10؟</span><span data-l="en">Is profit after ads above $10?</span></li><li><span data-l="ar">جرّبت الأرقام في الحاسبة تحت؟</span><span data-l="en">Did you run the numbers in the calculator below?</span></li></ul></div>
     </div>
-    <div class="verdict" id="pf-verdict">—</div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">تكلفة $6 + شحن $4، وبيع بـ $29.99.</p><p data-l="en">$6 cost + $4 shipping, selling at $29.99.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">تكلفة $15 وبيع بـ $19.99، فالمكسب $3–5 بس.</p><p data-l="en">$15 cost selling at $19.99, leaving only $3–5.</p></div></div>
+    
+  </div>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">05</span><i class="ic" data-ic="shield"></i><h4><span data-l="ar">جودته حقيقية</span><span data-l="en">Genuine quality</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">المنتج بيعمل اللي بيقوله فعلًا، ومش بيبوظ بعد أسبوع.</p><p data-l="en">The product does what it promises and doesn't break after a week.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">الجودة الوحشة معناها مرتجعات وشكاوى وتقييمات سيئة، وممكن نزاعات دفع (Chargebacks) توقف حساب الدفع بتاعك.</p><p data-l="en">Poor quality means refunds, complaints, bad reviews, and possibly payment disputes (chargebacks) that can freeze your payments account.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">قريت تقييمات العملاء بالصور على AliExpress؟</span><span data-l="en">Did you read photo reviews on AliExpress?</span></li><li><span data-l="ar">شفت تقييمه على Amazon؟</span><span data-l="en">Did you check its Amazon rating?</span></li><li><span data-l="ar">طلبت عينة وجرّبتها بنفسك؟</span><span data-l="en">Did you order a sample and test it?</span></li></ul></div>
+    </div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">مورد تقييمه 4.7+ وعنده طلبات كتير وصور عملاء حقيقية.</p><p data-l="en">A supplier rated 4.7+ with many orders and real customer photos.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">مورد جديد بتقييمات قليلة، وصوره مختلفة عن المنتج الحقيقي.</p><p data-l="en">A new supplier with few reviews and photos that don't match reality.</p></div></div>
+    <div class="cr-note">💡 <span data-l="ar">اسأل نفسك: «هل أقدر أهديه لأهلي بثقة؟»</span><span data-l="en">Ask yourself: "Would I confidently give this to my family?"</span></div>
+  </div>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">06</span><i class="ic" data-ic="globe"></i><h4><span data-l="ar">مش ممنوع من الشحن الدولي</span><span data-l="en">Ships internationally without issues</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">المنتج مسموح يتشحن للدولة اللي بتبيع فيها من غير مشاكل جمارك أو قيود.</p><p data-l="en">The product can be shipped to your target country without customs problems or restrictions.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">المنتجات الممنوعة بتتحجز أو بترجع، فبتخسر المنتج والشحن وثقة العميل مع بعض.</p><p data-l="en">Restricted items get held or returned, so you lose the product, the shipping and the customer's trust at once.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">مش سائل ولا فيه بطارية؟</span><span data-l="en">Not a liquid and no battery?</span></li><li><span data-l="ar">مش أداة حادة ولا قابل للكسر؟</span><span data-l="en">Not sharp and not fragile?</span></li><li><span data-l="ar">راجعت شروط الشحن في بلد التارجت وسألت المورد؟</span><span data-l="en">Did you check the target country's rules and ask the supplier?</span></li></ul></div>
+    </div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">إكسسوارات سيليكون، منتجات قماش، أدوات بلاستيك خفيفة.</p><p data-l="en">Silicone accessories, fabric products, light plastic tools.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">عطور (سائل قابل للاشتعال)، سكاكين، منتجات زجاج.</p><p data-l="en">Perfume (flammable liquid), knives, glass items.</p></div></div>
+    
+  </div>
+</article><article class="cr">
+  <header class="cr-h"><span class="num">07</span><i class="ic" data-ic="plug"></i><h4><span data-l="ar">بعيد عن الأجهزة الكهربائية</span><span data-l="en">Avoid electrical devices (at first)</span></h4></header>
+  <div class="cr-b">
+    <div class="cr-what"><p data-l="ar">في البداية ابعد عن الأجهزة اللي بتشتغل بالكهربا أو فيها إلكترونيات معقدة.</p><p data-l="en">When starting out, stay away from plug-in devices or complex electronics.</p></div>
+    <div class="cr-grid">
+      <div class="cr-box why"><span class="lbl"><span data-l="ar">ليه مهم؟</span><span data-l="en">Why it matters</span></span><p data-l="ar">شحنها أصعب ووزنها تقيل، وأعطالها كتير، ومحتاجة ضمان وشهادات، وكمان شكل الفيشة بيختلف من دولة لدولة.</p><p data-l="en">They're harder and heavier to ship, fail more often, need warranties and certifications, and plugs differ between countries.</p></div>
+      <div class="cr-box how"><span class="lbl"><span data-l="ar">إزاي تتأكد؟</span><span data-l="en">How to check</span></span><ul><li><span data-l="ar">المنتج ليه فيشة؟</span><span data-l="en">Does it have a plug?</span></li><li><span data-l="ar">فيه بطارية ليثيوم؟</span><span data-l="en">Does it have a lithium battery?</span></li><li><span data-l="ar">محتاج شهادات زي CE أو FCC؟</span><span data-l="en">Does it need CE or FCC certification?</span></li></ul></div>
+    </div>
+    <div class="cr-ex"><div class="good"><b>✓ <span data-l="ar">مثال كويس</span><span data-l="en">Good example</span></b><p data-l="ar">منتجات بسيطة وخفيفة من غير كهربا.</p><p data-l="en">Simple, light products with no electronics.</p></div><div class="bad"><b>✗ <span data-l="ar">مثال وحش</span><span data-l="en">Bad example</span></b><p data-l="ar">مكنسة كهربائية، سشوار، أجهزة مطبخ كبيرة.</p><p data-l="en">Vacuum cleaners, hair dryers, big kitchen appliances.</p></div></div>
+    <div class="cr-note">💡 <span data-l="ar">الخلاط المحمول مثال ترند ممتاز، بس فيه بطارية، فخليه لما يبقى عندك خبرة.</span><span data-l="en">The portable blender is a great trend example, but it has a battery, so save it for when you're experienced.</span></div>
+  </div>
+</article></div>
+
+<div class="sec-head"><div class="en">CASE STUDY</div><h2><span data-l="ar">مثال عملي: الطوق الطارد للحشرات</span><span data-l="en">Worked example: the flea collar</span></h2></div>
+
+  <div class="case">
+    <div class="case-art"><svg viewBox="0 0 240 240" aria-hidden="true">
+  <ellipse cx="120" cy="214" rx="78" ry="10" fill="var(--sunk)"/>
+  <ellipse cx="120" cy="110" rx="84" ry="74" fill="none" stroke="var(--accent-dark)" stroke-width="26"/>
+  <ellipse cx="120" cy="110" rx="84" ry="74" fill="none" stroke="var(--leaf)" stroke-width="3" stroke-dasharray="6 7" opacity=".9"/>
+  <g transform="rotate(-18 66 52)"><rect x="44" y="36" width="44" height="32" rx="7" fill="#C9A23A"/><rect x="54" y="44" width="24" height="16" rx="4" fill="var(--surface)"/><rect x="62" y="40" width="5" height="24" rx="2" fill="#8E6E1E"/></g>
+  <circle cx="171" cy="58" r="3.5" fill="#C9A23A"/><circle cx="184" cy="74" r="3.5" fill="#C9A23A"/><circle cx="194" cy="94" r="3.5" fill="#C9A23A"/>
+  <path d="M120 184 v10" stroke="#C9A23A" stroke-width="4"/>
+  <circle cx="120" cy="206" r="16" fill="#C9A23A"/>
+  <g fill="#fff"><ellipse cx="120" cy="210" rx="5.5" ry="4.5"/><circle cx="112" cy="202" r="2.6"/><circle cx="117" cy="198.5" r="2.6"/><circle cx="123" cy="198.5" r="2.6"/><circle cx="128" cy="202" r="2.6"/></g>
+  <g transform="translate(150 118)"><path d="M0 -26 L22 -18 V0 C22 14 12 22 0 26 C-12 22 -22 14 -22 0 V-18Z" fill="var(--accent)"/><path d="M-9 0 l6 6 12 -13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg><div class="case-tag"><span data-l="ar">دراسة حالة</span><span data-l="en">Case study</span></div></div>
+    <div class="case-body">
+      <h3><span data-l="ar">طوق طارد للحشرات للكلاب والقطط</span><span data-l="en">Flea &amp; tick collar for dogs and cats</span></h3>
+      <p data-l="ar">مثال من المادة على منتج بيحقق المواصفات السبعة. المشكلة: الحشرات دي بتأذي الحيوان الأليف وبتقلق صاحبه:</p><p data-l="en">An example from the course material that meets all seven criteria. The problem: these pests hurt pets and worry their owners:</p>
+      <div class="pests"><span><span data-l="ar">براغيث</span><span data-l="en">Fleas</span></span><span><span data-l="ar">قراد</span><span data-l="en">Ticks</span></span><span><span data-l="ar">قمل</span><span data-l="en">Lice</span></span><span><span data-l="ar">ناموس</span><span data-l="en">Mosquitoes</span></span><span><span data-l="ar">يرقات</span><span data-l="en">Larvae</span></span></div>
+      <ul class="score7"><li><span class="ok">✓</span><span data-l="ar">بيحل مشكلة: حشرات بتأذي الحيوان وبتقلق صاحبه</span><span data-l="en">Solves a problem: pests that hurt the pet and worry the owner</span></li><li><span class="ok">✓</span><span data-l="ar">ترندي: انتشر جدًا في 2024</span><span data-l="en">Trending: took off in 2024</span></li><li><span class="ok">✓</span><span data-l="ar">قابل للتطوير: فيديو قبل/بعد + Bundle لكلب وقطة</span><span data-l="en">Room to improve: before/after video + a dog-and-cat bundle</span></li><li><span class="ok">✓</span><span data-l="ar">هامش ربح كويس: تكلفة قليلة وسعر بيع عالي</span><span data-l="en">Healthy margin: low cost, high price</span></li><li><span class="ok">✓</span><span data-l="ar">جودة: راجع تقييمات المورد واطلب عينة</span><span data-l="en">Quality: check supplier reviews and order a sample</span></li><li><span class="ok">✓</span><span data-l="ar">شحن سهل: خفيف ومش سائل ولا بطارية</span><span data-l="en">Easy to ship: light, no liquid, no battery</span></li><li><span class="ok">✓</span><span data-l="ar">مش جهاز كهربائي</span><span data-l="en">Not an electrical device</span></li></ul>
+      <div class="price">
+        <div class="price-h"><span data-l="ar">بيتباع بـ</span><span data-l="en">Sells for</span> <b dir="ltr">$29.99</b> · <span data-l="ar">الفلوس بتروح فين؟</span><span data-l="en">where does the money go?</span></div>
+        <div class="pbar"><span class="seg p1" style="flex:5" title="Product: $5"></span><span class="seg p2" style="flex:3" title="Shipping: $3"></span><span class="seg p3" style="flex:10" title="Ads: $10"></span><span class="seg p4" style="flex:0.6" title="Shopify fee: $0.6"></span><span class="seg p5" style="flex:11.39" title="Your profit: $11.39"></span></div>
+        <div class="plegend"><span><i class="sw p1"></i><span data-l="ar">المنتج</span><span data-l="en">Product</span> <b dir="ltr">$5.00</b></span><span><i class="sw p2"></i><span data-l="ar">الشحن</span><span data-l="en">Shipping</span> <b dir="ltr">$3.00</b></span><span><i class="sw p3"></i><span data-l="ar">الإعلان</span><span data-l="en">Ads</span> <b dir="ltr">$10.00</b></span><span><i class="sw p4"></i><span data-l="ar">عمولة Shopify</span><span data-l="en">Shopify fee</span> <b dir="ltr">$0.60</b></span><span><i class="sw p5"></i><span data-l="ar">ربحك</span><span data-l="en">Your profit</span> <b dir="ltr">$11.39</b></span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="prose">
-    <h3>طرق البحث عن المنتج الرابح</h3>
+<div class="tool" id="profitTool">
+  <h4><span data-l="ar">حاسبة هامش الربح</span><span data-l="en">Profit margin calculator</span></h4>
+  <p data-l="ar" style="color:var(--muted);font-size:.92rem">غيّر الأرقام وشوف المنتج يستاهل ولا لأ. القيم بالدولار.</p><p data-l="en" style="color:var(--muted);font-size:.92rem">Change the numbers to see if a product is worth it. Values in US dollars.</p>
+  <div class="tool-grid">
+    <label class="f"><span data-l="ar">سعر البيع</span><span data-l="en">Selling price</span><input type="number" id="pf-price" value="29.99" step="0.01" min="0"></label>
+    <label class="f"><span data-l="ar">تكلفة المنتج</span><span data-l="en">Product cost</span><input type="number" id="pf-cost" value="5" step="0.01" min="0"></label>
+    <label class="f"><span data-l="ar">الشحن</span><span data-l="en">Shipping</span><input type="number" id="pf-ship" value="3" step="0.01" min="0"></label>
+    <label class="f"><span data-l="ar">تكلفة الإعلان لكل بيعة</span><span data-l="en">Ad cost per sale</span><input type="number" id="pf-ads" value="10" step="0.01" min="0"></label>
+    <label class="f"><span data-l="ar">نسبة Shopify ٪</span><span data-l="en">Shopify fee %</span><input type="number" id="pf-fee" value="2" step="0.1" min="0"></label>
   </div>
-  <div class="tbl"><table class="t">
-    <thead><tr><th>الطريقة</th><th>إزاي تستخدمها</th></tr></thead>
-    <tbody>
-      <tr><td><b>AliExpress</b></td><td>شوف المنتجات الأكثر مبيعًا وعدد الطلبات والتقييمات.</td></tr>
-      <tr><td><b>Google Keyword Planner / Amazon</b></td><td>شوف الناس بتبحث على إيه في الدولة اللي هتبيع فيها. لو فيه بحث ومبيعات، يبقى المنتج عليه فرصة.</td></tr>
-      <tr><td><b>أدوات مدفوعة</b><br><span class="mono">Sell The Trend · Minea</span></td><td>بتوريك المنتجات الأكثر مبيعًا، والإعلانات، والمتاجر المنافسة.</td></tr>
-      <tr><td><b>TikTok &amp; Social Media</b></td><td>ابحث بـ <code>Dropshipping Products</code> وتابع الفيديوهات اللي عليها تفاعل كبير. منتج ترندي + تقديم ضعيف = فرصة ذهبية.</td></tr>
-      <tr><td><b>Meta Ads Library</b></td><td>شوف الإعلانات الشغالة حاليًا على فيسبوك وإنستجرام. الإعلان اللي شغال من أسابيع غالبًا بيكسب.</td></tr>
-      <tr><td><b>Zendrop</b></td><td>مورّد وأداة بحث في نفس الوقت، بيعرض منتجات ترندي جاهزة للدروبشيبينج.</td></tr>
-    </tbody>
-  </table></div>
+  <div class="result">
+    <div><span><span data-l="ar">التكلفة الكاملة</span><span data-l="en">Total cost</span></span><b id="pf-total">—</b></div>
+    <div><span><span data-l="ar">الربح من البيعة</span><span data-l="en">Profit per sale</span></span><b id="pf-profit">—</b></div>
+    <div><span><span data-l="ar">هامش الربح</span><span data-l="en">Profit margin</span></span><b id="pf-margin">—</b></div>
+  </div>
+  <div class="verdict" id="pf-verdict">—</div>
+</div>
 
-  <div class="tool" id="scoreTool">
-    <h4>تقييم منتج: هل هو رابح؟</h4>
-    <p style="color:var(--muted);font-size:.92rem">فكّر في منتج معين وعلّم على المواصفات اللي بيحققها.</p>
-    <ul class="checks" id="scoreList">
-      <li><label><input type="checkbox"><span class="t">بيحل مشكلة حقيقية</span></label></li>
-      <li><label><input type="checkbox"><span class="t">ترندي أو عليه تفاعل عالي على السوشيال</span></label></li>
-      <li><label><input type="checkbox"><span class="t">أقدر أقدمه أحسن من المنافسين</span></label></li>
-      <li><label><input type="checkbox"><span class="t">هامش الربح أكتر من $10 بعد الإعلانات</span></label></li>
-      <li><label><input type="checkbox"><span class="t">تقييماته كويسة وأقدر أهديه لأهلي</span></label></li>
-      <li><label><input type="checkbox"><span class="t">مش سائل ولا بطارية ولا حاد ولا قابل للكسر</span></label></li>
-      <li><label><input type="checkbox"><span class="t">مش جهاز كهربائي، خفيف وبسيط</span></label></li>
-    </ul>
-    <div class="verdict mid" id="scoreOut">علّم على المواصفات عشان تشوف النتيجة.</div>
+<div class="sec-head"><div class="en">PRODUCT RESEARCH</div><h2><span data-l="ar">طرق البحث عن المنتج الرابح</span><span data-l="en">Ways to find a winning product</span></h2><p data-l="ar">كل طريقة معاها لينك تفتحه وتبدأ تبحث على طول.</p><p data-l="en">Each method comes with a link so you can start searching right away.</p></div>
+<div class="methods"><div class="mth"><div class="mth-h"><i class="ic" data-ic="aliexpress"></i><b><span dir="ltr">AliExpress</span></b></div><p data-l="ar">ابحث بالمنتج أو النيش، ورتّب النتايج بـ «Orders» عشان تشوف الأكثر طلبًا. بص على عدد الطلبات والتقييمات وصور العملاء.</p><p data-l="en">Search a product or niche and sort by Orders to see the best sellers. Check order counts, ratings and customer photos.</p><div class="lks"><a class="lk" href="https://www.aliexpress.com/" target="_blank" rel="noopener">AliExpress ↗</a></div></div><div class="mth"><div class="mth-h"><i class="ic" data-ic="gkp"></i><b><span dir="ltr">Google Keyword Planner</span></b></div><p data-l="ar">شوف الناس بتبحث على إيه وكام مرة في الشهر في الدولة اللي هتبيع فيها. ومعاه Google Trends عشان تعرف البحث طالع ولا نازل.</p><p data-l="en">See what people search for and how often in your target country. Pair it with Google Trends to see if interest is rising or falling.</p><div class="lks"><a class="lk" href="https://ads.google.com/home/tools/keyword-planner/" target="_blank" rel="noopener">Keyword Planner ↗</a><a class="lk" href="https://trends.google.com/trends/" target="_blank" rel="noopener">Google Trends ↗</a></div></div><div class="mth"><div class="mth-h"><i class="ic" data-ic="amazon"></i><b><span dir="ltr">Amazon</span></b></div><p data-l="ar">قائمة Best Sellers بتوريك الأكثر مبيعًا في كل قسم، و Movers &amp; Shakers بتوريك المنتجات اللي مبيعاتها طالعة بسرعة. لو فيه بحث ومبيعات، المنتج عليه فرصة.</p><p data-l="en">Best Sellers shows top products per category; Movers &amp; Shakers shows fast risers. Search plus sales means opportunity.</p><div class="lks"><a class="lk" href="https://www.amazon.com/Best-Sellers/zgbs" target="_blank" rel="noopener">Best Sellers ↗</a><a class="lk" href="https://www.amazon.com/gp/movers-and-shakers" target="_blank" rel="noopener">Movers &amp; Shakers ↗</a></div></div><div class="mth"><div class="mth-h"><i class="ic" data-ic="tiktok"></i><b><span dir="ltr">TikTok</span></b></div><p data-l="ar">ابحث بالكلمات المفتاحية اللي تحت، وتابع الفيديوهات اللي عليها تفاعل كبير. و TikTok Creative Center بيوريك المنتجات والإعلانات الأعلى أداءً.</p><p data-l="en">Search the keywords below and follow high-engagement videos. TikTok Creative Center shows top-performing products and ads.</p><div class="lks"><a class="lk" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://ads.tiktok.com/business/creativecenter/" target="_blank" rel="noopener">Creative Center ↗</a></div></div><div class="mth"><div class="mth-h"><i class="ic" data-ic="instagram"></i><b><span dir="ltr">Instagram</span></b></div><p data-l="ar">ادخل على الهاشتاجات (تحت) وعلى Reels، ولاحظ المنتجات اللي بتتكرر والكومنتات اللي بتسأل «بكام؟ ومنين؟».</p><p data-l="en">Browse the hashtags below and Reels, and watch for repeated products and comments asking "how much? where?".</p><div class="lks"><a class="lk" href="https://www.instagram.com/explore/" target="_blank" rel="noopener">Instagram Explore ↗</a></div></div><div class="mth"><div class="mth-h"><i class="ic" data-ic="paid"></i><b><span data-l="ar">أدوات مدفوعة</span><span data-l="en">Paid tools</span></b></div><p data-l="ar">Sell The Trend و Minea بيوروك المنتجات الأكثر مبيعًا، والإعلانات، والمتاجر المنافسة في مكان واحد. مفيدة بس مش ضرورية في البداية.</p><p data-l="en">Sell The Trend and Minea show best sellers, ads and competing stores in one place. Useful, but not essential at first.</p><div class="lks"><a class="lk" href="https://www.sellthetrend.com/" target="_blank" rel="noopener">Sell The Trend ↗</a><a class="lk" href="https://www.minea.com/" target="_blank" rel="noopener">Minea ↗</a></div></div></div>
+
+<div class="sec-head"><div class="en">SOCIAL MEDIA KEYWORDS</div><h2><span data-l="ar">كلمات مفتاحية تبحث بيها على السوشيال</span><span data-l="en">Keywords to search on social media</span></h2><p data-l="ar">دوس على الكلمة عشان تفتح نتايجها على تيك توك أو إنستجرام. ركّز على الفيديوهات الجديدة اللي عليها مشاهدات وكومنتات كتير.</p><p data-l="en">Tap a keyword to open its results on TikTok or Instagram. Focus on recent videos with lots of views and comments.</p></div>
+<div class="kws"><div class="kw"><code dir="ltr">#tiktokmademebuyit</code><p data-l="ar">«تيك توك خلاني أشتريه»: منتجات الناس اشترتها بسبب فيديو</p><p data-l="en">"TikTok made me buy it": products people bought because of a video</p>
+<div class="lks"><a class="lk" href="https://www.tiktok.com/tag/tiktokmademebuyit" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://www.instagram.com/explore/tags/tiktokmademebuyit/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="copy-kw" data-kw="tiktokmademebuyit"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></div></div><div class="kw"><code dir="ltr">#amazonfinds</code><p data-l="ar">لقطات من Amazon بتنتشر</p><p data-l="en">Viral Amazon finds</p>
+<div class="lks"><a class="lk" href="https://www.tiktok.com/tag/amazonfinds" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://www.instagram.com/explore/tags/amazonfinds/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="copy-kw" data-kw="amazonfinds"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></div></div><div class="kw"><code dir="ltr">#dropshippingproducts</code><p data-l="ar">منتجات بيعرضها أصحاب متاجر الدروب شيبينج</p><p data-l="en">Products shown by dropshipping store owners</p>
+<div class="lks"><a class="lk" href="https://www.tiktok.com/tag/dropshippingproducts" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://www.instagram.com/explore/tags/dropshippingproducts/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="copy-kw" data-kw="dropshippingproducts"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></div></div><div class="kw"><code dir="ltr">#winningproducts</code><p data-l="ar">«المنتجات الرابحة» اللي بيتكلم عنها المجتمع</p><p data-l="en">"Winning products" the community talks about</p>
+<div class="lks"><a class="lk" href="https://www.tiktok.com/tag/winningproducts" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://www.instagram.com/explore/tags/winningproducts/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="copy-kw" data-kw="winningproducts"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></div></div><div class="kw"><code dir="ltr">#viralproducts</code><p data-l="ar">منتجات انتشرت بسرعة</p><p data-l="en">Products that went viral fast</p>
+<div class="lks"><a class="lk" href="https://www.tiktok.com/tag/viralproducts" target="_blank" rel="noopener">TikTok ↗</a><a class="lk" href="https://www.instagram.com/explore/tags/viralproducts/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="copy-kw" data-kw="viralproducts"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></div></div></div>
+<div class="tip"><span class="kicker"><span data-l="ar">قاعدة ذهبية</span><span data-l="en">Golden rule</span></span><p data-l="ar">منتج ترندي + تقديم ضعيف = فرصة ذهبية. لو لقيت منتج عليه تفاعل كبير بس الفيديو أو المتجر ضعيف، أنت تقدر تقدمه أحسن.</p><p data-l="en">Trending product + weak presentation = golden opportunity. If a product gets big engagement but the video or store is weak, you can do it better.</p></div>
+
+<div class="sec-head"><div class="en">META ADS LIBRARY</div><h2><span data-l="ar">مكتبة الإعلانات: شوف إيه اللي بيكسب دلوقتي</span><span data-l="en">The Ads Library: see what's winning right now</span></h2></div>
+
+  <div class="adslib">
+    <div class="adslib-h"><i class="ic" data-ic="mega"></i><div><b>Meta Ads Library</b><small><span data-l="ar">مكتبة إعلانات فيسبوك وإنستجرام: كل الإعلانات الشغالة دلوقتي، ومجانية.</span><span data-l="en">Facebook &amp; Instagram's ad library: every ad running right now, free.</span></small></div><a class="lk" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener"><span data-l="ar">افتح المكتبة</span><span data-l="en">Open the library</span> ↗</a></div>
+    <ol class="steps3"><li><span data-l="ar">اختار الدولة (مثلًا: United States) ونوع الإعلان «All ads».</span><span data-l="en">Choose a country (e.g. United States) and ad type "All ads".</span></li><li><span data-l="ar">اكتب اسم منتج أو جملة إعلانية أو اسم متجر.</span><span data-l="en">Type a product, an ad phrase or a store name.</span></li><li><span data-l="ar">افتح الإعلانات وقيّمها بالعلامات اللي تحت.</span><span data-l="en">Open the ads and judge them with the signals below.</span></li></ol>
+    <h4><span data-l="ar">10 عمليات بحث جاهزة للتعلم والاطلاع</span><span data-l="en">10 ready-made searches to learn from</span></h4>
+    <div class="ad-grid"><a class="ad-q prod" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=pet%20hair%20remover&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">01</span><span class="t" dir="ltr">pet hair remover</span><span class="k"><span data-l="ar">منتج</span><span data-l="en">Product</span></span><span class="go">↗</span></a><a class="ad-q prod" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=posture%20corrector&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">02</span><span class="t" dir="ltr">posture corrector</span><span class="k"><span data-l="ar">منتج</span><span data-l="en">Product</span></span><span class="go">↗</span></a><a class="ad-q prod" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=portable%20blender&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">03</span><span class="t" dir="ltr">portable blender</span><span class="k"><span data-l="ar">منتج</span><span data-l="en">Product</span></span><span class="go">↗</span></a><a class="ad-q prod" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=cat%20water%20fountain&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">04</span><span class="t" dir="ltr">cat water fountain</span><span class="k"><span data-l="ar">منتج</span><span data-l="en">Product</span></span><span class="go">↗</span></a><a class="ad-q prod" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=LED%20strip%20lights&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">05</span><span class="t" dir="ltr">LED strip lights</span><span class="k"><span data-l="ar">منتج</span><span data-l="en">Product</span></span><span class="go">↗</span></a><a class="ad-q offer" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=free%20shipping%20worldwide&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">06</span><span class="t" dir="ltr">free shipping worldwide</span><span class="k"><span data-l="ar">جملة إعلانية</span><span data-l="en">Ad phrase</span></span><span class="go">↗</span></a><a class="ad-q offer" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=tiktok%20made%20me%20buy%20it&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">07</span><span class="t" dir="ltr">tiktok made me buy it</span><span class="k"><span data-l="ar">جملة إعلانية</span><span data-l="en">Ad phrase</span></span><span class="go">↗</span></a><a class="ad-q store" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=Blissy&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">08</span><span class="t" dir="ltr">Blissy</span><span class="k"><span data-l="ar">متجر</span><span data-l="en">Store</span></span><span class="go">↗</span></a><a class="ad-q store" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=Meowingtons&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">09</span><span class="t" dir="ltr">Meowingtons</span><span class="k"><span data-l="ar">متجر</span><span data-l="en">Store</span></span><span class="go">↗</span></a><a class="ad-q store" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ALL&amp;q=Mooshwalks&amp;search_type=keyword_unordered&amp;media_type=all" target="_blank" rel="noopener"><span class="n">10</span><span class="t" dir="ltr">Mooshwalks</span><span class="k"><span data-l="ar">متجر</span><span data-l="en">Store</span></span><span class="go">↗</span></a></div>
+    <div class="signals"><b><span data-l="ar">علامات إن الإعلان (والمنتج) ناجح:</span><span data-l="en">Signs an ad (and product) is winning:</span></b><ul><li><span data-l="ar">الإعلان شغال من أكتر من أسبوعين: صاحبه مش هيصرف على إعلان خسران.</span><span data-l="en">The ad has run for 2+ weeks: nobody keeps paying for a losing ad.</span></li><li><span data-l="ar">نفس المنتج له إعلانات كتير بنسخ مختلفة: بيختبر وبيكبّر.</span><span data-l="en">Many versions of ads for the same product: they're testing and scaling.</span></li><li><span data-l="ar">كومنتات كتير بتسأل «اللينك؟ بكام؟»: فيه طلب حقيقي.</span><span data-l="en">Lots of comments asking "link? price?": real demand.</span></li><li><span data-l="ar">ادخل على المتجر نفسه: شوف السعر، العروض، وصفحة المنتج.</span><span data-l="en">Visit the store itself: check price, offers and the product page.</span></li></ul></div>
   </div>
 
-  <div class="practice" data-practice="2">
-    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">الهدف: ليستة 10 منتجات</span></div>
-    <ul class="checks">
-      <li><label><input type="checkbox"><span class="t">ابحث على TikTok بكلمة <code>Dropshipping Products</code> واختار 3 منتجات عليها تفاعل كبير.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">دوّر على 3 منتجات من AliExpress أو Zendrop الأكثر مبيعًا في نيتش واحد.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">افتح Meta Ads Library ولاقي 4 إعلانات شغالة لمنتجات من نفس النيتش.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">قيّم كل منتج بأداة «هل هو رابح؟» واحسب ربحه بالحاسبة، واستبعد أي منتج أقل من 5 مواصفات.</span></label></li>
-    </ul>
-  </div>
-  <div class="quiz" data-quiz="2"></div>
+<div class="tool" id="scoreTool">
+  <h4><span data-l="ar">تقييم منتج: هل هو رابح؟</span><span data-l="en">Score a product: is it a winner?</span></h4>
+  <p data-l="ar" style="color:var(--muted);font-size:.92rem">فكّر في منتج معين وعلّم على المواصفات اللي بيحققها.</p><p data-l="en" style="color:var(--muted);font-size:.92rem">Think of a specific product and tick the traits it meets.</p>
+  <ul class="checks" id="scoreList">
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">بيحل مشكلة حقيقية</span><span data-l="en">Solves a real problem</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">ترندي أو عليه تفاعل عالي على السوشيال</span><span data-l="en">Trending or high social engagement</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">أقدر أقدمه أحسن من المنافسين</span><span data-l="en">I can present it better than competitors</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">هامش الربح أكتر من $10 بعد الإعلانات</span><span data-l="en">Profit above $10 after ads</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">تقييماته كويسة وأقدر أهديه لأهلي</span><span data-l="en">Good reviews; I'd give it to my family</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">مش سائل ولا بطارية ولا حاد ولا قابل للكسر</span><span data-l="en">No liquid, battery, sharp edges or fragility</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">مش جهاز كهربائي، خفيف وبسيط</span><span data-l="en">Not electrical; light and simple</span></span></label></li>
+  </ul>
+  <div class="verdict mid" id="scoreOut">—</div>
+</div>
+
+<div class="practice" data-practice="2">
+  <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">الهدف: ليستة 10 منتجات</span><span data-l="en">Goal: a list of 10 products</span></span></div>
+  <ul class="checks">
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">ابحث على <a href='https://www.tiktok.com/tag/tiktokmademebuyit' target='_blank' rel='noopener'>TikTok ↗</a> بالكلمات المفتاحية، واختار 3 منتجات عليها تفاعل كبير.</span><span data-l="en">Search <a href='https://www.tiktok.com/tag/tiktokmademebuyit' target='_blank' rel='noopener'>TikTok ↗</a> with the keywords and pick 3 high-engagement products.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">دوّر على 3 منتجات في نيش واحد على <a href='https://www.aliexpress.com/' target='_blank' rel='noopener'>AliExpress ↗</a> ورتّبهم بعدد الطلبات.</span><span data-l="en">Find 3 products in one niche on <a href='https://www.aliexpress.com/' target='_blank' rel='noopener'>AliExpress ↗</a> sorted by orders.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">افتح <a href='https://www.facebook.com/ads/library/' target='_blank' rel='noopener'>Meta Ads Library ↗</a> ولاقي 4 إعلانات شغالة من أكتر من أسبوعين لمنتجات من نفس النيش.</span><span data-l="en">Open the <a href='https://www.facebook.com/ads/library/' target='_blank' rel='noopener'>Meta Ads Library ↗</a> and find 4 ads running 2+ weeks in the same niche.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">تأكد من البحث على <a href='https://trends.google.com/trends/' target='_blank' rel='noopener'>Google Trends ↗</a> إن الاهتمام بالمنتجات دي طالع أو ثابت.</span><span data-l="en">Check on <a href='https://trends.google.com/trends/' target='_blank' rel='noopener'>Google Trends ↗</a> that interest in these products is rising or steady.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">قيّم كل منتج بأداة «هل هو رابح؟» واحسب ربحه بالحاسبة، واستبعد أي منتج أقل من 5 مواصفات.</span><span data-l="en">Score each product with the tool and the calculator; drop anything below 5 traits.</span></span></label></li>
+  </ul>
+</div>
+<div class="quiz" data-quiz="2"></div>
 </div>
 
   <section class="ask" data-ch="2" aria-label="Questions">
@@ -2833,21 +2985,65 @@ const QUIZ = {
   w:{ar:"مش محتاج مخزن ولا رأس مال ضخم. كل اللي محتاجه هو البداية.",en:"No warehouse or big capital needed. All you need is to start."}},
 ],
 2:[
- {t:"mc",q:"ليه لازم يكون عندك ليستة 10 منتجات؟",o:["عشان تعرضهم كلهم في نفس الإعلان","عشان تقدر تجرّب وتبدّل لو منتج فشل","عشان Shopify بيطلب 10 منتجات","عشان تاخد خصم من المورد"],a:1,w:"التجريب جزء أساسي من الوصول للمنتج الرابح."},
- {t:"tf",q:"المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي.",a:true,w:"لو المنتج عليه طلب حقيقي هيبيع حتى مع تسويق أو تصميم ضعيف."},
- {t:"multi",q:"أنهي منتجات المفروض تتجنبها في البداية؟",o:["السوائل","البطاريات","الأدوات الحادة","إكسسوار خفيف وبسيط"],a:[0,1,2],w:"دي ممنوعة أو صعبة في الشحن الدولي."},
- {t:"mc",q:"المنتج اللي مكسبه $3–5 بس بعد كل التكاليف:",o:["ممتاز لأنه رخيص","ما تشتغلش عليه، هامش الربح ضعيف","أحسن اختيار للمبتدئين","مفيش فرق"],a:1,w:"المادة بتقول صراحة: ما تشتغلش على منتج مكسبه $3–5 بس."},
- {t:"mc",q:"لقيت منتج ترندي على TikTok لكن طريقة تقديمه ضعيفة. ده:",o:["علامة إنه مش هيبيع","فرصة ذهبية","ممنوع تبيعه","لازم تستنى سنة"],a:1,w:"منتج ترندي + ضعيف في التقديم = فرصة ذهبية تقدمه أحسن."},
- {t:"mc",q:"إزاي تتأكد من جودة المنتج؟",o:["من سعره بس","تقرا الريفيوهات وتشوف تقييمه على Amazon وتجربه بنفسك","من عدد ألوانه","مش مهم الجودة في الدروبشيبينج"],a:1,w:"واسأل نفسك: هل أقدر أهديه لأهلي بثقة؟"},
- {t:"mc",q:"أنهي أداة بتوريك الإعلانات الشغالة حاليًا على فيسبوك وإنستجرام؟",o:["Namelix","Meta Ads Library","Canva","DSers"],a:1,w:"الإعلان اللي شغال من أسابيع غالبًا بيكسب."},
- {t:"mc",q:"بتبحث على TikTok بأنهي كلمة عشان تلاقي منتجات؟",o:["Free Shipping","Dropshipping Products","Shopify Themes","Best Logo"],a:1,w:"وبعدين تتابع الفيديوهات اللي عليها تفاعل كبير."},
- {t:"mc",q:"Google Keyword Planner و Amazon بيفيدوك في إيه؟",o:["تصميم اللوجو","تشوف الناس بتبحث وبتشتري إيه في الدولة اللي هتبيع فيها","فتح الشركة","ربط البيكسل"],a:1,w:"لو فيه بحث ومبيعات، يبقى المنتج عليه فرصة."},
- {t:"mc",q:"أنهي من دول أدوات بحث مدفوعة عن المنتجات؟",o:["Sell The Trend و Minea","Canva و Namelix","Wise و Vyke","Credas و DSers"],a:0,w:"بتوريك الأكثر مبيعًا والإعلانات والمتاجر المنافسة."},
- {t:"tf",q:"«قابل للتطوير» معناها إنك تنسخ منتج المنافس زي ما هو.",a:false,w:"الفكرة إنك تحسّن، مش تقلّد."},
- {t:"mc",q:"سعر البيع $29.99، المنتج $6، الشحن $4، الإعلان $10، وعمولة Shopify 2%. الربح تقريبًا:",o:["$9.39","$19.99","$13.99","$3.99"],a:0,w:"العمولة ≈ 0.60، والتكلفة الكاملة ≈ 20.60، فالربح ≈ 9.39."},
- {t:"mc",q:"مثال المادة لمنتج بيحل مشكلة حقيقية في 2024:",o:["ساعة ذكية","الأساور الطاردة للحشرات للكلاب والقطط","سماعات بلوتوث","كفرات موبايل"],a:1,w:"بيحل مشكلة البراغيث والقراد وخفيف في الشحن."},
- {t:"tf",q:"الأجهزة الكهربائية بداية كويسة لأن سعرها عالي.",a:false,w:"شحنها صعب، وزنها تقيل، وأعطالها كتير."},
- {t:"mc",q:"الكمامات وقت كورونا مثال على منتج:",o:["قابل للكسر","ترندي / فايرل","ممنوع من الشحن","هامش ربحه ضعيف"],a:1,w:"تابع الترندات عشان تسبق السوق."}
+ {t:"mc",q:{ar:"ليه لازم يكون عندك ليستة 10 منتجات؟",en:"Why keep a list of 10 products?"},
+  o:[{ar:"عشان تعرضهم كلهم في نفس الإعلان",en:"To show them all in one ad"},{ar:"عشان تقدر تجرّب وتبدّل لو منتج فشل",en:"So you can test and swap if one fails"},{ar:"عشان Shopify بيطلب 10 منتجات",en:"Because Shopify requires 10 products"},{ar:"عشان تاخد خصم من المورد",en:"To get a supplier discount"}],a:1,
+  w:{ar:"التجريب جزء أساسي من الوصول للمنتج الرابح.",en:"Testing is a core part of finding a winner."}},
+ {t:"tf",q:{ar:"المنتج هو أهم عنصر في التجارة، حتى لو المتجر مش مثالي.",en:"The product is the most important element, even if the store isn't perfect."},a:true,
+  w:{ar:"لو عليه طلب حقيقي هيبيع حتى مع تسويق أو تصميم ضعيف.",en:"With real demand it sells even with weak marketing or design."}},
+ {t:"mc",q:{ar:"ليه المنتج اللي بيحل مشكلة بيبيع أسهل؟",en:"Why does a problem-solving product sell more easily?"},
+  o:[{ar:"لأنه دايمًا أرخص",en:"It's always cheaper"},{ar:"لأن العميل بيدوّر على الحل بنفسه، فالإعلان بيقنعه بسرعة",en:"The customer is already looking for a fix, so the ad convinces them fast"},{ar:"لأنه مش محتاج إعلانات",en:"It needs no ads"},{ar:"لأن Shopify بيرشحه",en:"Shopify recommends it"}],a:1,
+  w:{ar:"الناس بتدفع عشان تتخلص من مشكلة أسرع من ما بتدفع عشان حاجة شكلها حلو.",en:"People pay to remove a problem faster than for something that just looks nice."}},
+ {t:"multi",q:{ar:"إزاي تتأكد إن المنتج بيحل مشكلة حقيقية؟",en:"How do you check a product solves a real problem?"},
+  o:[{ar:"توصف المشكلة في جملة واحدة",en:"You can state the problem in one sentence"},{ar:"الناس بتشتكي منها في الكومنتات والجروبات",en:"People complain about it in comments and groups"},{ar:"الفيديو يقدر يوري قبل وبعد",en:"A video can show before and after"},{ar:"لونه حلو",en:"It has a nice color"}],a:[0,1,2],
+  w:{ar:"اللون مش دليل على وجود مشكلة.",en:"Color says nothing about a problem."}},
+ {t:"mc",q:{ar:"أي أداة بتعرّفك إن البحث عن منتج طالع ولا نازل مع الوقت؟",en:"Which tool shows whether interest in a product is rising or falling over time?"},
+  o:["Google Trends","Canva","DSers","Namelix"],a:0,w:{ar:"Google Trends بيوري اتجاه البحث.",en:"Google Trends shows search interest over time."}},
+ {t:"tf",q:{ar:"«قابل للتطوير» معناها إنك تنسخ إعلان المنافس وصوره زي ما هي.",en:"\"Room to do it better\" means copying a competitor's ad and photos exactly."},a:false,
+  w:{ar:"مش بنقلّد، بنحسّن: فيديو أحسن، صفحة أوضح، عرض أقوى.",en:"We improve, not copy: a better video, a clearer page, a stronger offer."}},
+ {t:"mc",q:{ar:"منتج ترندي بس طريقة تقديمه ضعيفة. ده:",en:"A trending product with weak presentation is:"},
+  o:[{ar:"علامة إنه مش هيبيع",en:"A sign it won't sell"},{ar:"فرصة ذهبية",en:"A golden opportunity"},{ar:"ممنوع تبيعه",en:"Forbidden to sell"},{ar:"لازم تستنى سنة",en:"Something to wait a year on"}],a:1,
+  w:{ar:"تقدر تقدمه أحسن وتكسب بالعرض.",en:"You can present it better and win on presentation."}},
+ {t:"mc",q:{ar:"قاعدة تقريبية لسعر البيع:",en:"A rough rule for the selling price:"},
+  o:[{ar:"نفس تكلفة المنتج",en:"Equal to product cost"},{ar:"3 أضعاف (المنتج + الشحن) على الأقل",en:"At least ~3× (product + shipping)"},{ar:"أقل من سعر المنافس دايمًا",en:"Always below the competitor"},{ar:"ضعف الشحن بس",en:"Twice the shipping only"}],a:1,
+  w:{ar:"عشان يفضل مكان للإعلانات والربح.",en:"So there's room for ads and profit."}},
+ {t:"mc",q:{ar:"بيع بـ $29.99، منتج $5، شحن $3، إعلان $10، وعمولة 2%. الربح تقريبًا:",en:"Price $29.99, product $5, shipping $3, ads $10, fee 2%. Profit is about:"},
+  o:["$11.39","$21.99","$4.99","$16.99"],a:0,w:{ar:"العمولة ≈ 0.60، والتكاليف ≈ 18.60، فالربح ≈ 11.39.",en:"Fee ≈ 0.60, costs ≈ 18.60, so profit ≈ 11.39."}},
+ {t:"mc",q:{ar:"منتج مكسبه $3–5 بس بعد كل التكاليف:",en:"A product that nets only $3–5 after all costs:"},
+  o:[{ar:"ممتاز لأنه رخيص",en:"Great because it's cheap"},{ar:"ما تشتغلش عليه، الهامش ضعيف",en:"Skip it; the margin is too thin"},{ar:"أحسن اختيار للمبتدئين",en:"Best for beginners"},{ar:"مفيش فرق",en:"No difference"}],a:1,
+  w:{ar:"أي زيادة في تكلفة الإعلان هتقلبه خسارة.",en:"Any rise in ad cost turns it into a loss."}},
+ {t:"multi",q:{ar:"إزاي تتأكد من جودة المنتج قبل ما تبيعه؟",en:"How do you check quality before selling?"},
+  o:[{ar:"تقرا تقييمات العملاء بالصور",en:"Read photo reviews"},{ar:"تشوف تقييمه على Amazon",en:"Check its Amazon rating"},{ar:"تطلب عينة وتجربها",en:"Order and test a sample"},{ar:"تختار أرخص مورد وخلاص",en:"Just pick the cheapest supplier"}],a:[0,1,2],
+  w:{ar:"واسأل نفسك: هل أقدر أهديه لأهلي بثقة؟",en:"And ask: would I give it to my family with confidence?"}},
+ {t:"mc",q:{ar:"الجودة الوحشة ممكن توصّلك لـ:",en:"Poor quality can lead to:"},
+  o:[{ar:"مبيعات أعلى",en:"Higher sales"},{ar:"مرتجعات وتقييمات سيئة ونزاعات دفع (Chargebacks)",en:"Refunds, bad reviews and chargebacks"},{ar:"شحن أسرع",en:"Faster shipping"},{ar:"عمولة أقل",en:"Lower fees"}],a:1,
+  w:{ar:"والنزاعات الكتير ممكن توقف حساب الدفع.",en:"Too many disputes can freeze your payments account."}},
+ {t:"multi",q:{ar:"أنهي منتجات المفروض تتجنبها في الشحن الدولي؟",en:"Which products should you avoid for international shipping?"},
+  o:[{ar:"السوائل زي العطور",en:"Liquids like perfume"},{ar:"البطاريات",en:"Batteries"},{ar:"الأدوات الحادة",en:"Sharp tools"},{ar:"إكسسوار سيليكون خفيف",en:"A light silicone accessory"}],a:[0,1,2],
+  w:{ar:"دي بتتحجز أو بترجع.",en:"These get held or returned."}},
+ {t:"mc",q:{ar:"ليه نبعد عن الأجهزة الكهربائية في البداية؟",en:"Why avoid electrical devices at first?"},
+  o:[{ar:"لأنها رخيصة",en:"They're cheap"},{ar:"شحن صعب، وزن تقيل، أعطال كتير، ومحتاجة شهادات",en:"Hard to ship, heavy, fault-prone, and need certifications"},{ar:"لأنها مش ترندي أبدًا",en:"They're never trending"},{ar:"لأن Shopify بيمنعها",en:"Shopify bans them"}],a:1,
+  w:{ar:"وكمان الفيشة بتختلف من دولة لدولة.",en:"Plugs also differ between countries."}},
+ {t:"tf",q:{ar:"الطوق الطارد للحشرات مثال بيحقق أغلب مواصفات المنتج الرابح.",en:"The flea collar meets most winning-product traits."},a:true,
+  w:{ar:"بيحل مشكلة، خفيف، ترندي، وهامشه كويس.",en:"It solves a problem, is light, trending and has a good margin."}},
+ {t:"mc",q:{ar:"في AliExpress، ترتّب النتايج بإيه عشان تشوف الأكثر طلبًا؟",en:"On AliExpress, sort results by what to see the best sellers?"},
+  o:["Orders","Price","Newest","Color"],a:0,w:{ar:"وبعدها بص على التقييمات وصور العملاء.",en:"Then check ratings and customer photos."}},
+ {t:"mc",q:{ar:"قائمة Amazon اللي بتوريك المنتجات اللي مبيعاتها طالعة بسرعة:",en:"The Amazon list showing fast-rising products:"},
+  o:["Movers & Shakers","Today's Deals","Wish List","Prime Video"],a:0,w:{ar:"و Best Sellers بتوريك الأكثر مبيعًا.",en:"Best Sellers shows the top sellers."}},
+ {t:"multi",q:{ar:"أنهي من دول كلمات مفتاحية تبحث بيها عن منتجات على تيك توك وإنستجرام؟",en:"Which are keywords to find products on TikTok and Instagram?"},
+  o:["#tiktokmademebuyit","#amazonfinds","#winningproducts","#weatherforecast"],a:[0,1,2],
+  w:{ar:"الطقس مالوش علاقة بالمنتجات.",en:"Weather has nothing to do with products."}},
+ {t:"mc",q:{ar:"Meta Ads Library بتوريك إيه؟",en:"What does the Meta Ads Library show?"},
+  o:[{ar:"الإعلانات الشغالة دلوقتي على فيسبوك وإنستجرام",en:"Ads running now on Facebook and Instagram"},{ar:"أسعار الموردين",en:"Supplier prices"},{ar:"مبيعات المتاجر",en:"Store sales"},{ar:"ثيمات Shopify",en:"Shopify themes"}],a:0,
+  w:{ar:"ومجانية لأي حد.",en:"And it's free for anyone."}},
+ {t:"multi",q:{ar:"أنهي علامات بتقول إن الإعلان (والمنتج) غالبًا ناجح؟",en:"Which signs suggest an ad (and product) is winning?"},
+  o:[{ar:"شغال من أكتر من أسبوعين",en:"Running for 2+ weeks"},{ar:"له نسخ إعلانات كتير",en:"Many ad versions"},{ar:"كومنتات كتير بتسأل عن اللينك والسعر",en:"Many comments asking for the link and price"},{ar:"لسه نازل النهارده",en:"Posted today"}],a:[0,1,2],
+  w:{ar:"محدش بيفضل يصرف على إعلان خسران.",en:"Nobody keeps paying for a losing ad."}},
+ {t:"mc",q:{ar:"Sell The Trend و Minea هما:",en:"Sell The Trend and Minea are:"},
+  o:[{ar:"أدوات بحث مدفوعة عن المنتجات والإعلانات",en:"Paid product and ad research tools"},{ar:"شركات شحن",en:"Shipping companies"},{ar:"ثيمات",en:"Themes"},{ar:"بوابات دفع",en:"Payment gateways"}],a:0,
+  w:{ar:"مفيدة بس مش ضرورية في البداية.",en:"Useful but not essential at first."}},
+ {t:"mc",q:{ar:"لو المنتج حقق 3 مواصفات بس من 7 في أداة التقييم:",en:"If a product meets only 3 of the 7 traits:"},
+  o:[{ar:"ابدأ فيه فورًا",en:"Launch it now"},{ar:"ضعيف، دوّر على منتج تاني",en:"Weak; look for another product"},{ar:"ارفع السعر وخلاص",en:"Just raise the price"},{ar:"اعمله متجر عام",en:"Make it a general store"}],a:1,
+  w:{ar:"استبعد أي منتج أقل من 5 مواصفات.",en:"Drop anything below 5 traits."}}
 ],
 3:[
  {t:"mc",q:"إمتى تختار اسم البراند؟",o:["قبل ما تعرف هتبيع إيه","بعد ما تحدد النيتش أو المنتج","بعد ما تطلق الإعلانات","مش مهم الاسم"],a:1,w:"ابدأ من المنتج مش الاسم."},
@@ -3169,6 +3365,13 @@ const IC={
  pay:`<svg viewBox="0 0 64 64"><rect x="4" y="14" width="46" height="30" rx="5" fill="${G}"/><rect x="4" y="21" width="46" height="6" fill="${D}"/><rect x="10" y="33" width="14" height="4" rx="2" fill="${P}"/><path d="M48 30 L60 35 V44 C60 52 54 57 48 60 C42 57 36 52 36 44 V35Z" fill="${L}" stroke="${P}" stroke-width="2"/><path d="M43 45 l4 4 7-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
  wallet:`<svg viewBox="0 0 64 64"><rect x="14" y="8" width="30" height="20" rx="2" fill="${L}" transform="rotate(-10 29 18)"/><rect x="6" y="20" width="50" height="36" rx="7" fill="${D}"/><rect x="40" y="31" width="18" height="14" rx="5" fill="${G}"/><circle cx="47" cy="38" r="3" fill="#fff"/></svg>`,
  send:`<svg viewBox="0 0 64 64"><path d="M6 30 L58 8 L44 56 L32 38 Z" fill="#fff"/><path d="M32 38 L58 8" stroke="var(--accent-dark)" stroke-width="3"/></svg>`,
+ plug:`<svg viewBox="0 0 64 64"><path d="M22 6v14M42 6v14" stroke="${K}" stroke-width="5" stroke-linecap="round"/><path d="M14 20h36v10a18 18 0 0 1-36 0z" fill="${G}"/><path d="M32 48v12" stroke="${K}" stroke-width="5"/><circle cx="48" cy="48" r="12" fill="${R}"/><path d="M43 43l10 10M53 43l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>`,
+ aliexpress:`<svg viewBox="0 0 64 64"><path d="M14 22h36l-3 34H17z" fill="#E8603C"/><path d="M24 22a8 8 0 0 1 16 0" fill="none" stroke="#B23B1E" stroke-width="4"/><path d="M24 36 q8 8 16 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>`,
+ gkp:`<svg viewBox="0 0 64 64"><circle cx="26" cy="26" r="18" fill="none" stroke="#2D7FF0" stroke-width="5"/><path d="M39 39 L56 56" stroke="#2D7FF0" stroke-width="7" stroke-linecap="round"/><rect x="16" y="26" width="5" height="8" fill="#E8B84E"/><rect x="23" y="20" width="5" height="14" fill="#2F9E44"/><rect x="30" y="15" width="5" height="19" fill="#E2404B"/></svg>`,
+ amazon:`<svg viewBox="0 0 64 64"><path d="M6 12h9l7 28h28l6-20H18" fill="none" stroke="${K}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="50" r="5" fill="${K}"/><circle cx="46" cy="50" r="5" fill="${K}"/><path d="M14 58 q22 8 40-2" fill="none" stroke="#F29A1F" stroke-width="4" stroke-linecap="round"/></svg>`,
+ tiktok:`<svg viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#111"/><path d="M36 14v24a8 8 0 1 1-8-8" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M36 14c2 7 6 10 12 10" fill="none" stroke="#25F4EE" stroke-width="4" stroke-linecap="round"/></svg>`,
+ instagram:`<svg viewBox="0 0 64 64"><rect x="6" y="6" width="52" height="52" rx="15" fill="#D6336C"/><rect x="15" y="15" width="34" height="34" rx="10" fill="none" stroke="#fff" stroke-width="4"/><circle cx="32" cy="32" r="8" fill="none" stroke="#fff" stroke-width="4"/><circle cx="43" cy="21" r="2.6" fill="#fff"/></svg>`,
+ paid:`<svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="40" rx="5" fill="${P}" stroke="${G}" stroke-width="3"/><rect x="14" y="34" width="7" height="10" fill="${L}"/><rect x="25" y="26" width="7" height="18" fill="${G}"/><rect x="36" y="18" width="7" height="26" fill="${D}"/><circle cx="50" cy="50" r="10" fill="var(--gold)"/><text x="50" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Arial">$</text></svg>`,
  person:`<svg viewBox="0 0 20 40"><circle cx="10" cy="7" r="6"/><path d="M2 40V22c0-6 3-9 8-9s8 3 8 9v18z"/></svg>`
 };
 
@@ -3310,18 +3513,19 @@ function calcProfit(){
   const total=c+s+a+p*f,prof=p-total,m=p>0?prof/p*100:0;
   $('pf-total').textContent=money(total);$('pf-profit').textContent=money(prof);$('pf-margin').textContent=m.toFixed(0)+'%';
   const v=$('pf-verdict');
-  if(prof<5){v.className='verdict bad';v.textContent='ضعيف: الربح أقل من $5. ارفع السعر أو دوّر على مورد أرخص أو منتج تاني.';}
-  else if(prof<10){v.className='verdict mid';v.textContent='مقبول بس على الحافة: أي زيادة في تكلفة الإعلان هتاكل ربحك. جرّب Bundles لرفع قيمة الطلب.';}
-  else{v.className='verdict good';v.textContent='كويس: هامش الربح يسمح بتجريب الإعلانات براحة.';}
+  if(prof<5){v.className='verdict bad';v.textContent=tr({ar:'ضعيف: الربح أقل من $5. ارفع السعر أو دوّر على مورد أرخص أو منتج تاني.',en:'Weak: profit is under $5. Raise the price or find a cheaper supplier or another product.'});}
+  else if(prof<10){v.className='verdict mid';v.textContent=tr({ar:'مقبول بس على الحافة: أي زيادة في تكلفة الإعلان هتاكل ربحك. جرّب Bundles لرفع قيمة الطلب.',en:'Borderline: any rise in ad cost will eat your profit. Try bundles to raise order value.'});}
+  else{v.className='verdict good';v.textContent=tr({ar:'كويس: هامش الربح يسمح بتجريب الإعلانات براحة.',en:'Good: the margin leaves room to test ads comfortably.'});}
 }
 ['pf-price','pf-cost','pf-ship','pf-ads','pf-fee'].forEach(i=>$(i).addEventListener('input',calcProfit));calcProfit();
 const sl=document.querySelectorAll('#scoreList input');
-sl.forEach((b,i)=>{b.id='sc-'+i;b.addEventListener('change',()=>{
-  const n=[...sl].filter(x=>x.checked).length,o=$('scoreOut');
-  if(n>=6){o.className='verdict good';o.textContent=n+' / 7: منتج قوي، حطه في أول ليستة الاختبار.';}
-  else if(n>=4){o.className='verdict mid';o.textContent=n+' / 7: محتمل، بس شوف تقدر تحسّن أنهي نقطة قبل ما تصرف عليه.';}
-  else{o.className='verdict bad';o.textContent=n+' / 7: ضعيف، دوّر على منتج تاني.';}
-});});
+function updScore(){const n=[...sl].filter(x=>x.checked).length,o=$('scoreOut');
+  if(n===0){o.className='verdict mid';o.textContent=tr({ar:'علّم على المواصفات عشان تشوف النتيجة.',en:'Tick the traits to see the result.'});return;}
+  if(n>=6){o.className='verdict good';o.textContent=n+' / 7: '+tr({ar:'منتج قوي، حطه في أول ليستة الاختبار.',en:'Strong product. Put it at the top of your test list.'});}
+  else if(n>=4){o.className='verdict mid';o.textContent=n+' / 7: '+tr({ar:'محتمل، بس شوف تقدر تحسّن أنهي نقطة قبل ما تصرف عليه.',en:'Possible, but see which trait you can improve before spending on it.'});}
+  else{o.className='verdict bad';o.textContent=n+' / 7: '+tr({ar:'ضعيف، دوّر على منتج تاني.',en:'Weak. Look for another product.'});}}
+sl.forEach((b,i)=>{b.id='sc-'+i;b.addEventListener('change',updScore);});
+document.querySelectorAll('.copy-kw').forEach(b=>b.addEventListener('click',()=>{const k='#'+b.dataset.kw;const done=()=>{const o=b.innerHTML;b.textContent='✓';setTimeout(()=>b.innerHTML=o,1400);};try{navigator.clipboard.writeText(k).then(done,()=>{});}catch(e){}}));
 function calcRoas(){
   const sp=+$('ro-spend').value||0,rv=+$('ro-rev').value||0,m=(+$('ro-margin').value||0)/100;
   const roas=sp>0?rv/sp:0,be=m>0?1/m:0,net=rv*m-sp;
@@ -3365,7 +3569,7 @@ function renderI18n(){
   if(msgKey) msg.textContent=tr(M[msgKey]); if(modeKey) mode.textContent=tr(M[modeKey]);
   $('introSave').textContent=tr(hasDoc?M.update:M.send);
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
-  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks();
+  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore();
 }
 /* ---------- class polls (shared counts, no names) ---------- */
 const POLLS={
