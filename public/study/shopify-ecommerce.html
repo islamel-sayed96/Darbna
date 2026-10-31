@@ -969,6 +969,77 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 .home-project span.cta{background:var(--surface);color:var(--accent-dark);border-radius:99px;padding:6px 14px;font-weight:800}
 @media (max-width:700px){.prow{grid-template-columns:30px minmax(0,1fr)}.prow .pl-in{grid-column:2}.prow .pv{grid-column:2}.vsrc{grid-template-columns:minmax(0,1fr)}.lad-sum{grid-template-columns:minmax(0,1fr)}}
 
+/* ---------- chapter 3 ---------- */
+.idcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.idc{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 16px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-width:0}
+.idc .num{position:absolute;top:10px;inset-inline-start:10px;width:34px;height:34px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--font-poster)}
+.idc .ic{width:70px;height:70px;border-radius:50%;background:var(--sunk);padding:13px}
+.idc b{font-family:var(--font-display);font-size:1.2rem}
+.idc p{font-size:.92rem;color:var(--muted)}
+.idc-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:auto;border-top:1px dashed var(--line);padding-top:10px;font-size:.85rem;font-weight:700}
+.idc-meta small{display:block;font-size:.72rem;font-weight:600;color:var(--muted)}
+.order{display:flex;flex-direction:column;gap:8px}
+.order-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;border-radius:14px;padding:10px 12px}
+.order-row.bad{background:var(--bad-soft)} .order-row.good{background:var(--good-soft)}
+.order-row .tag{font-weight:800;min-width:110px}
+.order-row.bad .tag{color:var(--bad)} .order-row.good .tag{color:var(--good)}
+.order-row .st{background:var(--surface);border-radius:99px;padding:4px 12px;font-weight:700;font-size:.9rem;position:relative}
+.order-row .st:not(:last-child)::after{content:"←";margin-inline-start:8px;color:var(--muted)}
+#root[data-lang="en"] .order-row .st:not(:last-child)::after{content:"→"}
+.order-row .st.key{background:var(--accent);color:var(--accent-ink)}
+.order-row .st.warn{background:var(--bad);color:#fff}
+.pb{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pb-h{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.pb-h .ic{width:46px;height:46px;border-radius:12px;background:var(--sunk);padding:7px;flex:none}
+.pb-h > div{flex:1 1 240px}
+.pb-h b{display:block;font-family:var(--font-display);font-size:1.15rem}
+.pb-h small{color:var(--muted)}
+.pb-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pb-fields .f{display:flex;flex-direction:column;gap:4px;font-size:.85rem;font-weight:700}
+.pb-fields input{font:500 .95rem var(--font-body);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);text-align:left}
+.pb-out{background:var(--night);color:#E6ECE8;border-radius:12px;padding:14px 16px;font-family:var(--font-mono);font-size:.9rem;line-height:1.8;text-align:left;white-space:pre-wrap}
+.pb-out .blank{background:#5A4A14;color:#FFD66B;border-radius:4px;padding:0 4px}
+.pb-out .filled{background:#1F4A2A;color:#9BE58B;border-radius:4px;padding:0 4px}
+.pb-note{font-size:.85rem;color:var(--muted)}
+.dom-alert{background:var(--bad-soft);border:2px solid var(--bad);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:14px}
+.dom-badge{background:var(--bad);color:#fff;font-weight:800;font-size:.82rem;border-radius:99px;padding:3px 12px}
+.dom-alert h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,3.4vw,2rem);color:var(--bad)}
+.dom-alert p{font-size:1.02rem;font-weight:600}
+.dom-story{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.dom-story h4{font-family:var(--font-display);font-weight:800}
+.story{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.story li{background:var(--bg);border-radius:12px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;font-weight:700;font-size:.88rem;position:relative}
+.story li .e{font-size:1.6rem}
+.story li:last-child{background:var(--bad-soft);color:var(--bad);border:2px solid var(--bad)}
+.story-end{font-weight:700;color:var(--bad)}
+.dom-rule{background:var(--accent-dark);color:var(--accent-ink);border-radius:14px;padding:14px 18px;font-size:1.1rem;font-family:var(--font-display);font-weight:700;text-align:center}
+.dom-check{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.nc{background:var(--surface);border:2px solid #DE5833;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.nc-h{display:flex;align-items:center;gap:12px}
+.nc-logo{width:48px;height:48px;border-radius:12px;background:#DE5833;color:#fff;display:grid;place-items:center;font-family:var(--font-word);font-weight:800;font-size:1.5rem;flex:none}
+.nc-h b{display:block;font-family:var(--font-word);font-size:1.3rem}
+.nc-url{font-weight:800;font-size:1.05rem;color:#DE5833}
+.nc-form{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg);direction:ltr}
+.nc-form input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:600 1rem var(--font-body);padding:10px 12px}
+.nc-form .tld{display:grid;place-items:center;padding:0 10px;color:var(--muted);font-weight:700}
+.nc-form .btn{border-radius:0;text-decoration:none;display:grid;place-items:center;background:#DE5833;color:#fff}
+.nc-also{font-size:.88rem}
+.dom-steps{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.dom-steps h4{font-family:var(--font-display);font-weight:800;margin-bottom:8px}
+.dom-steps ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.dom-steps li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;line-height:1.7}
+.dom-steps .n{width:24px;height:24px;border-radius:50%;background:var(--accent-dark);color:var(--accent-ink);display:grid;place-items:center;font-size:.8rem;font-weight:800;flex:none;margin-top:2px}
+.logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lg{background:var(--sunk);border-radius:16px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-weight:700;font-size:.88rem;color:var(--muted)}
+.lg.dark{background:#141414}
+.lg.dark span{color:#B9C2BC}
+.lg svg{width:100%;max-width:220px;height:auto}
+.plain-ol,.plain-ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.plain-ul.ok{list-style:none;padding:0}
+.plain-ul.ok li::before{content:"✓";color:var(--good);font-weight:800;margin-inline-end:8px}
+@media (max-width:900px){.idcards,.logos{grid-template-columns:minmax(0,1fr)}.story{grid-template-columns:repeat(2,minmax(0,1fr))}.story li:last-child{grid-column:1/-1}.dom-check{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.pb-fields{grid-template-columns:minmax(0,1fr)}}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -1112,7 +1183,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <div class="home-meta">
     <div><b>10</b><span data-l="ar">فصول عملية</span><span data-l="en">practical chapters</span></div>
     <div><b>10</b><span data-l="ar">تدريبات تطبقها على متجرك</span><span data-l="en">exercises on your own store</span></div>
-    <div><b>161</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
+    <div><b>164</b><span data-l="ar">سؤال في اختبارات الفصول</span><span data-l="en">chapter quiz questions</span></div>
     <div><b><span id="pDone">0</span>/10</b><span data-l="ar">فصول خلّصتها</span><span data-l="en">chapters completed</span><div class="bar"><i id="pBar"></i></div></div>
   </div>
   <div class="sec-head"><div class="en">COURSE CONTENT</div><h2><span data-l="ar">محتوى الدبلوم</span><span data-l="en">What's inside</span></h2>
@@ -1892,133 +1963,96 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="3"></div>
-<div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
-<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
-  <div class="ch-head">
-    
-    <div class="en">Store Identity · Brand Name · Logo · Colors</div>
-    <p class="lead">المنتج مهم جدًا، بس المتجر اللي بيعرضه ما يقلش أهمية عنه. لو عندك نفس المنتج في متجرين، واحد كويس وواحد وحش، المتجر الأفضل تصميمًا وتجربةً هيبيع أكتر.</p>
-    <ul class="goals"><li>تختار نوع المتجر المناسب</li><li>تطلّع اسم براند احترافي بسرعة</li><li>تصمم لوجو وتختار ألوان بتعبر عن البراند</li></ul>
-  </div>
 
-  <div class="prose">
-    <h3>ليه لازم نهتم بالمتجر؟</h3>
-    <ul>
-      <li>المتجر بيمثل واجهة البراند بتاعك.</li>
-      <li>تجربة المستخدم الجيدة = عميل سعيد = عميل بيرجع + بيجيب ناس تانية.</li>
-      <li>نجاح المتجر بيساعد في بناء علاقة بينك وبين العميل.</li>
-    </ul>
-    <h3>قبل ما تبدأ تبني المتجر لازم تحدد</h3>
-    <p><b>اسم البراند</b>، <b>اللوجو</b>، و<b>ألوان البراند</b>. لأن كل ده هتحطه جوه المتجر. مينفعش تبدأ المتجر وبعدين تفكر تسميه!</p>
-    <h3>أنواع المتاجر</h3>
-  </div>
-  <div class="cards">
-    <div class="card"><span class="idx">One Product</span><h4>متجر منتج واحد</h4><p>المتجر كله مبني حوالين منتج واحد. سريع في الاختبار بس لو المنتج وقع لازم متجر جديد.</p></div>
-    <div class="card"><span class="idx">Niche Store</span><h4>متجر نيتش متخصص</h4><p>متخصص في مجال واحد زي المجوهرات أو منتجات الحيوانات. <b>هنبدأ بيه في الكورس</b> ونختبر أكتر من منتج لحد ما نلاقي الرابح.</p></div>
-    <div class="card"><span class="idx">General Store</span><h4>متجر عام</h4><p>منتجات متعددة من مجالات مختلفة. مرن بس صعب تبني فيه ثقة وهوية واضحة.</p></div>
-  </div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<div class="ch-head">
+  <p class="lead"><span data-l="ar">المنتج مهم جدًا، بس المتجر اللي بيعرضه ما يقلش أهمية عنه. لو عندك نفس المنتج في متجرين، المتجر اللي هويته أوضح وتجربته أحسن هيبيع أكتر.</span><span data-l="en">The product matters, but so does the store that presents it. With the same product in two stores, the one with the clearer identity and better experience sells more.</span></p>
+  <ul class="goals"><li><span data-l="ar">تختار اسم براند احترافي بسرعة</span><span data-l="en">Pick a professional brand name fast</span></li><li><span data-l="ar">تحجز الدومين قبل أي حاجة</span><span data-l="en">Secure the domain before anything else</span></li><li><span data-l="ar">تصمم لوجو وتختار ألوان</span><span data-l="en">Design a logo and choose colors</span></li></ul>
+</div>
 
-  <div class="example">
-    <span class="kicker">أمثلة لمتاجر ناجحة</span>
-    <p><b><a href="https://mooshwalks.com/" target="_blank" rel="noopener">Mooshwalks</a></b>: متجر شرابات 3D بشكل شخصيات، كسر المليون في أول سنة. قوة الفكرة + تصميم المتجر ساعدوا جدًا.</p>
-    <p><b><a href="https://www.meowingtons.com/" target="_blank" rel="noopener">Meowingtons</a></b>: متجر متخصص في منتجات القطط، شهرته كبيرة واتذكر في قنوات إعلامية.</p>
-  </div>
+<div class="sec-head"><div class="en">BRAND IDENTITY FIRST</div><h2><span data-l="ar">قبل ما تبدأ تبني المتجر: جهّز هوية البراند</span><span data-l="en">Before you build the store: prepare your brand identity</span></h2>
+  <p data-l="ar">التلات حاجات دول هتحطهم جوه المتجر في كل صفحة، فلازم يكونوا جاهزين الأول. مينفعش تبدأ المتجر وبعدين تفكر تسميه!</p><p data-l="en">You'll place these three things on every page of the store, so they must be ready first. You can't build the store and name it later!</p></div>
+<div class="idcards"><div class="idc"><span class="num">01</span><i class="ic" data-ic="tag"></i><b><span data-l="ar">اسم البراند</span><span data-l="en">Brand name</span></b><p data-l="ar">الكلمة اللي العميل هيفتكرك بيها ويدوّر عليك بيها.</p><p data-l="en">The word customers remember you by and search for.</p><div class="idc-meta"><span><small><span data-l="ar">الأداة</span><span data-l="en">Tool</span></small><span dir="ltr">ChatGPT · Namelix</span></span><span><small><span data-l="ar">هتطلع بـ</span><span data-l="en">You'll end with</span></small><span data-l="ar">اسم + دومين متاح</span><span data-l="en">A name + an available domain</span></span></div></div><div class="idc"><span class="num">02</span><i class="ic" data-ic="crown"></i><b><span data-l="ar">اللوجو</span><span data-l="en">Logo</span></b><p data-l="ar">الشكل اللي بيظهر في المتجر والإعلانات والكرتونة.</p><p data-l="en">The mark on your store, ads and packaging.</p><div class="idc-meta"><span><small><span data-l="ar">الأداة</span><span data-l="en">Tool</span></small><span dir="ltr">Canva</span></span><span><small><span data-l="ar">هتطلع بـ</span><span data-l="en">You'll end with</span></small><span data-l="ar">لوجو مستطيل PNG</span><span data-l="en">A wide PNG logo</span></span></div></div><div class="idc"><span class="num">03</span><i class="ic" data-ic="palette"></i><b><span data-l="ar">ألوان البراند</span><span data-l="en">Brand colors</span></b><p data-l="ar">لونين أو تلاتة بيعبروا عن إحساس البراند.</p><p data-l="en">Two or three colors that carry the brand's feeling.</p><div class="idc-meta"><span><small><span data-l="ar">الأداة</span><span data-l="en">Tool</span></small><span dir="ltr">Google · Canva</span></span><span><small><span data-l="ar">هتطلع بـ</span><span data-l="en">You'll end with</span></small><span data-l="ar">كودات الألوان (HEX)</span><span data-l="en">Color codes (HEX)</span></span></div></div></div>
+<div class="order">
+  <div class="order-row bad"><span class="tag">✗ <span data-l="ar">الترتيب الغلط</span><span data-l="en">Wrong order</span></span><span class="st"><span data-l="ar">المتجر</span><span data-l="en">Store</span></span><span class="st"><span data-l="ar">الاسم</span><span data-l="en">Name</span></span><span class="st"><span data-l="ar">اللوجو</span><span data-l="en">Logo</span></span><span class="st warn"><span data-l="ar">الدومين محجوز! 😱</span><span data-l="en">Domain taken! 😱</span></span></div>
+  <div class="order-row good"><span class="tag">✓ <span data-l="ar">الترتيب الصح</span><span data-l="en">Right order</span></span><span class="st"><span data-l="ar">نيش ومنتج</span><span data-l="en">Niche & product</span></span><span class="st"><span data-l="ar">اسم البراند</span><span data-l="en">Brand name</span></span><span class="st key"><span data-l="ar">الدومين متاح؟</span><span data-l="en">Domain free?</span></span><span class="st"><span data-l="ar">اللوجو</span><span data-l="en">Logo</span></span><span class="st"><span data-l="ar">الألوان</span><span data-l="en">Colors</span></span><span class="st"><span data-l="ar">المتجر</span><span data-l="en">Store</span></span></div>
+</div>
 
-  <div class="prose">
-    <h3>اختيار اسم البراند</h3>
-    <p>فيه ناس بتقعد شهور تفكر، وناس بتختار أي اسم بسرعة… الاتنين غلط. الصح: <b>توازن وذكاء باستخدام أدوات حديثة</b>. وابدأ من المنتج مش الاسم: لازم تكون عارف النيتش أو المنتج اللي هتبيعه قبل ما تختار الاسم.</p>
-    <ul>
-      <li>قصير وسهل النطق.</li>
-      <li>بيعكس مجال المتجر. مثال: <b>ZoomieZone</b> لمنتجات الحيوانات الأليفة.</li>
-      <li>متاح كدومين على <b>Namecheap</b> بنفس الاسم.</li>
-    </ul>
-    <p>اسم البراند أهم من شكل اللوجو. Apple وتويتر غيروا اللوجو وما حصلش حاجة. الناس بتشتري عشان «القيمة» مش عشان الشعار.</p>
-    <h4>الأداة الأولى: ChatGPT</h4>
-  </div>
-  <div class="prompt" id="prompt1"><button class="copy" data-copy="prompt1" type="button">نسخ</button>I am opening an online dropshipping store. The niche is socks, specifically long knee socks with 3D animal designs. Generate 10 name ideas.</div>
-  <div class="prose">
-    <h4>الأداة التانية: Namelix</h4>
-    <p>ادخل على <a href="https://namelix.com/" target="_blank" rel="noopener">namelix.com</a> واكتب كلمات مفتاحية عن البراند أو المنتج، مثلًا <code>socks, clothes, animal, 3d design</code>، واضغط Generate. وبعدها اختار أسلوب التوليد:</p>
-  </div>
-  <div class="tbl"><table class="t">
-    <thead><tr><th>الإعداد</th><th>بيعمل إيه</th></tr></thead>
-    <tbody>
-      <tr><td class="mono">Low</td><td>يدمج الكلمات اللي كتبتها في الاسم المقترح.</td></tr>
-      <tr><td class="mono">Medium ✓</td><td><b>أفضل اختيار</b>: بيوازن بين الواقعية والإبداع.</td></tr>
-      <tr><td class="mono">High</td><td>يختار أسماء إبداعية أبعد عن الكلمات اللي كتبتها.</td></tr>
-    </tbody>
-  </table></div>
 
-  <figure class="fig">
-    <div class="scroll-x">
-    <svg viewBox="0 0 720 200" width="100%" style="min-width:560px" role="img" aria-label="ثلاث أفكار للوجو">
-      <g>
-        <rect x="490" y="16" width="210" height="150" rx="14" class="s-sunk"/>
-        <circle cx="595" cy="72" r="34" class="s-acc"/>
-        <ellipse cx="595" cy="82" rx="13" ry="10" class="s-accink"/>
-        <circle cx="579" cy="62" r="5.5" class="s-accink"/><circle cx="591" cy="56" r="5.5" class="s-accink"/><circle cx="603" cy="56" r="5.5" class="s-accink"/><circle cx="613" cy="64" r="5.5" class="s-accink"/>
-        <text x="595" y="138" text-anchor="middle" class="s-ink" font-size="18" font-weight="700" style="font-family:var(--font-display)" direction="ltr">ZoomieZone</text>
-      </g>
-      <g>
-        <rect x="255" y="16" width="210" height="150" rx="14" class="s-sunk"/>
-        <path d="M345 34 h26 v52 q0 8 8 12 l14 8 q10 6 4 16 q-5 8 -16 3 l-30 -15 q-6 -3 -6 -10 z" class="s-gold"/>
-        <circle cx="356" cy="50" r="3" class="s-ink"/><circle cx="364" cy="50" r="3" class="s-ink"/>
-        <text x="360" y="150" text-anchor="middle" class="s-ink" font-size="18" font-weight="700" style="font-family:var(--font-display)" direction="ltr">KneeZoo</text>
-      </g>
-      <g>
-        <rect x="20" y="16" width="210" height="150" rx="14" class="s-ink"/>
-        <text x="125" y="98" text-anchor="middle" font-size="30" font-weight="700" style="fill:var(--bg);font-family:var(--font-display)" direction="ltr">furrly.</text>
-        <text x="125" y="124" text-anchor="middle" font-size="11" style="fill:var(--bg);opacity:.7" direction="ltr">PET ESSENTIALS</text>
-      </g>
-      <text x="595" y="190" text-anchor="middle" class="s-muted" font-size="12">أيقونة + اسم</text>
-      <text x="360" y="190" text-anchor="middle" class="s-muted" font-size="12">شكل المنتج نفسه</text>
-      <text x="125" y="190" text-anchor="middle" class="s-muted" font-size="12">اسم فقط (Wordmark)</text>
-    </svg>
-    </div>
-    <figcaption>شكل ٣ — ثلاث أساليب شائعة للوجو. كلها أمثلة توضيحية لأسماء براندات افتراضية.</figcaption>
-  </figure>
+<div class="sec-head"><div class="en">BRAND NAME</div><h2><span data-l="ar">اختيار اسم البراند</span><span data-l="en">Choosing the brand name</span></h2><p data-l="ar">فيه ناس بتقعد شهور تفكر، وناس بتختار أي اسم في ثانية… الاتنين غلط. الصح: توازن وذكاء باستخدام أدوات حديثة. وابدأ من المنتج مش من الاسم.</p><p data-l="en">Some people spend months deciding, others pick any name in a second; both are wrong. The right way is balance, using modern tools. And start from the product, not the name.</p></div>
+<div class="two"><div class="panel"><h4><span data-l="ar">مواصفات الاسم الكويس</span><span data-l="en">A good name is</span></h4><ul class="plain-ul ok"><li><span data-l="ar">قصير (كلمة أو كلمتين)</span><span data-l="en">Short (one or two words)</span></li><li><span data-l="ar">سهل النطق والكتابة</span><span data-l="en">Easy to say and spell</span></li><li><span data-l="ar">بيعكس النيش (زي ZoomieZone لمنتجات الحيوانات)</span><span data-l="en">Reflects the niche (like ZoomieZone for pets)</span></li><li><span data-l="ar">الدومين .com بتاعه متاح</span><span data-l="en">Its .com domain is available</span></li><li><span data-l="ar">مش شبه براند مشهور</span><span data-l="en">Doesn't resemble a famous brand</span></li></ul></div>
+<div class="panel"><h4><span data-l="ar">الأدوات</span><span data-l="en">Tools</span></h4><p data-l="ar"><b>ChatGPT</b> يطلعلك أفكار حسب النيش، و<b>Namelix</b> يولّد أسماء من كلمات مفتاحية. وبعدين <b>لازم</b> تتأكد من الدومين على Namecheap.</p><p data-l="en"><b>ChatGPT</b> suggests ideas for your niche, and <b>Namelix</b> generates names from keywords. Then you <b>must</b> check the domain on Namecheap.</p><div class="lks"><a class="lk" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="lk" href="https://namelix.com/" target="_blank" rel="noopener">Namelix ↗</a><a class="lk" href="https://www.namecheap.com/" target="_blank" rel="noopener">Namecheap ↗</a></div></div></div>
 
-  <div class="prose">
-    <h3>تصميم اللوجو على Canva</h3>
-    <ol>
-      <li>ادخل على <a href="https://www.canva.com/" target="_blank" rel="noopener">Canva.com</a>.</li>
-      <li>ابحث عن <code>3d socks store logo</code> أو أي وصف يناسب النيتش بتاعك.</li>
-      <li>اختار تصميم يعجبك واضغط <b>Customize</b> للتعديل عليه.</li>
-      <li>غيّر اسم البراند داخل التصميم أو جرّب أول حرف منه.</li>
-      <li>لو محتاج أفكار، ابحث على Google عن «اسم النيتش + logo» مثل <code>socks brand logo</code>.</li>
-    </ol>
-    <p>زمان كان التصميم صعب، دلوقتي Canva وأدوات الـ AI بتسهل الموضوع. دوّر على تصاميم قريبة من فكرتك واستخدمها كنقطة بداية.</p>
-    <h3>اختيار الألوان</h3>
-    <p>اختار ألوان تعبر عن إحساس البراند. ابحث على Google عن <code>Color and their effects</code> هتلاقي شرح للمشاعر المرتبطة بكل لون.</p>
+<div class="pb">
+  <div class="pb-h"><i class="ic" data-ic="chat"></i><div><b><span data-l="ar">الأداة الأولى: ChatGPT</span><span data-l="en">Tool 1: ChatGPT</span></b><small><span data-l="ar">املا الفراغات بتاعتك، والبرومبت هيتكتب لوحده جاهز للنسخ.</span><span data-l="en">Fill in your blanks and the prompt writes itself, ready to copy.</span></small></div><a class="lk" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a></div>
+  <div class="pb-fields">
+    <label class="f"><span data-l="ar">① النيش بتاعك</span><span data-l="en">① Your niche</span><input type="text" id="pbNiche" maxlength="60" dir="ltr" placeholder="pet products"></label>
+    <label class="f"><span data-l="ar">② المنتج أو الفئة بالتحديد</span><span data-l="en">② The exact product or category</span><input type="text" id="pbProduct" maxlength="80" dir="ltr" placeholder="flea collars for dogs and cats"></label>
+    <label class="f"><span data-l="ar">③ عملاءك مين؟</span><span data-l="en">③ Who are your customers?</span><input type="text" id="pbAudience" maxlength="80" dir="ltr" placeholder="pet owners in the USA"></label>
+    <label class="f"><span data-l="ar">④ إحساس البراند</span><span data-l="en">④ Brand feeling</span><input type="text" id="pbFeel" maxlength="60" dir="ltr" placeholder="friendly and caring"></label>
   </div>
-  <div class="swatches">
-    <div class="sw"><i style="background:#1F5FBF"></i><div><b>أزرق</b>ثقة وأمان: بنوك وتكنولوجيا</div></div>
-    <div class="sw"><i style="background:#D33A2C"></i><div><b>أحمر</b>حماس وعروض وإلحاح</div></div>
-    <div class="sw"><i style="background:#2E8B57"></i><div><b>أخضر</b>طبيعة وصحة ومنتجات عضوية</div></div>
-    <div class="sw"><i style="background:#F2B51C"></i><div><b>أصفر</b>تفاؤل وطاقة ولفت انتباه</div></div>
-    <div class="sw"><i style="background:#7A4FB5"></i><div><b>بنفسجي</b>إبداع وفخامة</div></div>
-    <div class="sw"><i style="background:#141414"></i><div><b>أسود</b>فخامة وبساطة: موضة وساعات</div></div>
-  </div>
+  <div class="pb-out" dir="ltr" id="pbOut"></div>
+  <div class="btns"><button type="button" class="btn" id="pbCopy"><span data-l="ar">انسخ البرومبت</span><span data-l="en">Copy the prompt</span></button><span class="form-msg" id="pbMsg" aria-live="polite"></span></div>
+  <p data-l="ar" class="pb-note">الكلام اللي بين الأقواس [ ] هو اللي إنت لسه ما ملتهوش. اكتب بالإنجليزي عشان النتايج تطلع أسماء تنفع للسوق الأجنبي.</p><p data-l="en" class="pb-note">Text in [ brackets ] is what you haven't filled in yet. Write in English so the names suit a foreign market.</p>
+</div>
+<div class="pb">
+  <div class="pb-h"><i class="ic" data-ic="bulb"></i><div><b><span data-l="ar">الأداة التانية: Namelix</span><span data-l="en">Tool 2: Namelix</span></b><small><span data-l="ar">اكتب كلمات مفتاحية عن البراند والمنتج، مثلًا <code>pet, care, collar, safe</code>، واضغط Generate.</span><span data-l="en">Type keywords about your brand and product, e.g. <code>pet, care, collar, safe</code>, then press Generate.</span></small></div><a class="lk" href="https://namelix.com/" target="_blank" rel="noopener">Namelix ↗</a></div>
+  <div class="tbl"><table class="t"><thead><tr><th><span data-l="ar">الإعداد</span><span data-l="en">Setting</span></th><th><span data-l="ar">بيعمل إيه</span><span data-l="en">What it does</span></th></tr></thead><tbody>
+    <tr><td class="mono">Low</td><td><span data-l="ar">يدمج الكلمات اللي كتبتها في الاسم.</span><span data-l="en">Blends your exact words into the name.</span></td></tr>
+    <tr><td class="mono">Medium ✓</td><td><span data-l="ar"><b>أفضل اختيار</b>: بيوازن بين الواقعية والإبداع.</span><span data-l="en"><b>Best choice</b>: balances realism and creativity.</span></td></tr>
+    <tr><td class="mono">High</td><td><span data-l="ar">أسماء إبداعية أبعد عن كلماتك.</span><span data-l="en">More creative names, further from your words.</span></td></tr></tbody></table></div>
+</div>
 
-  <div class="tip">
-    <span class="kicker">ملاحظات أخيرة</span>
-    <ul style="margin:0;padding-inline-start:20px">
-      <li>ركز في بناء الهوية من البداية (اسم، لوجو، ألوان).</li>
-      <li>نجاح المتجر بيبدأ من التفاصيل الصغيرة.</li>
-      <li>ما تهملش المتجر عشان تركز على الإعلانات بس.</li>
-    </ul>
-  </div>
 
-  <div class="practice" data-practice="3">
-    <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">طلّع هوية البراند</span></div>
-    <ul class="checks">
-      <li><label><input type="checkbox"><span class="t">عدّل البرومبت فوق بالنيتش بتاعك واطلب من ChatGPT 10 أسماء.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">جرّب Namelix بإعداد Medium وطلّع 5 أسماء تانية.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">اختار أحسن 3 أسماء وتأكد إن الدومين <code>.com</code> متاح على Namecheap.</span></label></li>
-      <li><label><input type="checkbox"><span class="t">صمم لوجو على Canva واختار لونين أساسيين للبراند واكتب كود كل لون.</span></label></li>
-    </ul>
+<div class="dom-alert">
+  <span class="dom-badge"><span data-l="ar">أهم نقطة في الفصل</span><span data-l="en">The most important point in this chapter</span></span>
+  <h2><span data-l="ar">اتأكد إن الدومين متاح قبل أي حاجة</span><span data-l="en">Check the domain is available before anything else</span></h2>
+  <p data-l="ar">الدومين هو عنوان متجرك على الإنترنت (زي <b dir='ltr'>yourbrand.com</b>). لو حد تاني معاه الدومين، أي عميل هيدوّر على اسمك هيروح له هو، وتعبك كله يروح.</p><p data-l="en">The domain is your store's address online (like <b dir='ltr'>yourbrand.com</b>). If someone else owns it, every customer who searches your name lands on their site, and all your work is lost.</p>
+</div>
+<div class="dom-story">
+  <h4><span data-l="ar">تخيّل السيناريو ده:</span><span data-l="en">Picture this:</span></h4>
+  <ol class="story"><li><span class="e">🙂</span><span data-l="ar">اخترت اسم عجبك</span><span data-l="en">You picked a name you love</span></li><li><span class="e">🎨</span><span data-l="ar">صممت لوجو وهوية</span><span data-l="en">You designed a logo and identity</span></li><li><span class="e">🛍️</span><span data-l="ar">بنيت المتجر</span><span data-l="en">You built the store</span></li><li><span class="e">📣</span><span data-l="ar">صرفت على إعلانات</span><span data-l="en">You spent on ads</span></li><li><span class="e">😱</span><span data-l="ar">دوّرت على الدومين… لقيته محجوز!</span><span data-l="en">You searched the domain… it's taken!</span></li></ol>
+  <p class="story-end"><span data-l="ar">النتيجة: كل اللي هيدوّر على اسمك هيروح لصاحب الدومين، مش ليك. ولازم تغيّر الاسم واللوجو والمتجر من الأول.</span><span data-l="en">The result: anyone searching your name goes to the domain owner, not you, and you must redo the name, logo and store from scratch.</span></p>
+</div>
+<div class="dom-rule"><b><span data-l="ar">القاعدة:</span><span data-l="en">The rule:</span></b> <span data-l="ar">الاسم والدومين قرار واحد. ما تعتمدش اسم غير لما تتأكد إن الدومين بتاعه متاح.</span><span data-l="en">The name and the domain are one decision. Don't commit to a name until its domain is confirmed available.</span></div>
+<div class="dom-check">
+  <div class="nc">
+    <div class="nc-h"><span class="nc-logo" aria-hidden="true">N</span><div><b>Namecheap</b><a class="nc-url" href="https://www.namecheap.com/" target="_blank" rel="noopener" dir="ltr">www.namecheap.com ↗</a></div></div>
+    <p data-l="ar" class="lede">اكتب اسم البراند هنا ودوس «افحص»، هيفتحلك صفحة البحث على Namecheap بالاسم ده على طول.</p><p data-l="en" class="lede">Type your brand name and press Check; it opens the Namecheap search for that name directly.</p>
+    <form class="nc-form" id="ncForm" novalidate><label class="sr" for="ncName"><span data-l="ar">اسم البراند</span><span data-l="en">Brand name</span></label><input type="text" id="ncName" dir="ltr" maxlength="60" placeholder="yourbrand"><span class="tld" dir="ltr">.com</span><a class="btn" id="ncGo" href="https://www.namecheap.com/" target="_blank" rel="noopener"><span data-l="ar">افحص على Namecheap ↗</span><span data-l="en">Check on Namecheap ↗</span></a></form>
+    <div class="nc-also"><span data-l="ar">وكمان شوف الاسم على:</span><span data-l="en">Also check the handle on:</span> <a id="ncIg" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram ↗</a> · <a id="ncTt" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok ↗</a></div>
   </div>
-  <div class="quiz" data-quiz="3"></div>
+  <div class="dom-steps"><h4><span data-l="ar">خطوات حجز الدومين</span><span data-l="en">Securing your domain</span></h4><ol><li><span class="n">1</span><span><span data-l="ar">ابحث عن الاسم على Namecheap قبل ما تعمل أي حاجة تانية.</span><span data-l="en">Search the name on Namecheap before doing anything else.</span></span></li><li><span class="n">2</span><span><span data-l="ar">الأفضل يكون <b>.com</b>، لأنه اللي الناس بتكتبه تلقائي.</span><span data-l="en">Prefer <b>.com</b>; it's what people type by default.</span></span></li><li><span class="n">3</span><span><span data-l="ar">لو محجوز: عدّل الاسم بكلمة بسيطة زي get أو shop أو try (مثلًا getzoomie.com). ابعد عن الشرط (-) والأرقام.</span><span data-l="en">If it's taken, tweak it with a short word like get, shop or try (e.g. getzoomie.com). Avoid hyphens and numbers.</span></span></li><li><span class="n">4</span><span><span data-l="ar">لو متاح: <b>اشتريه فورًا</b>، حتى قبل اللوجو. سعره حوالي $10 في السنة، وأرخص بكتير من إنك تبدأ من الأول.</span><span data-l="en">If it's free, <b>buy it right away</b>, even before the logo. It costs about $10 a year, far cheaper than starting over.</span></span></li><li><span class="n">5</span><span><span data-l="ar">اتأكد إن نفس الاسم متاح كحساب على Instagram و TikTok.</span><span data-l="en">Check the same name is free as an Instagram and TikTok handle.</span></span></li><li><span class="n">6</span><span><span data-l="ar">اتأكد إن الاسم مش براند مشهور مسجّل، عشان ما تقعش في مشكلة علامة تجارية.</span><span data-l="en">Make sure it isn't a well-known registered brand, to avoid trademark trouble.</span></span></li></ol></div>
+</div>
+
+
+<div class="sec-head"><div class="en">LOGO</div><h2><span data-l="ar">تصميم اللوجو على Canva</span><span data-l="en">Designing the logo in Canva</span></h2><p data-l="ar">اسم البراند أهم من شكل اللوجو: Apple وتويتر غيروا اللوجو وما حصلش حاجة. فما تقعدش أسابيع على اللوجو.</p><p data-l="en">The name matters more than the logo: Apple and Twitter changed logos and nothing happened. Don't spend weeks on it.</p></div>
+<div class="logos">
+  <div class="lg"><svg viewBox="0 0 200 120" aria-hidden="true"><circle cx="100" cy="46" r="30" fill="var(--accent)"/><ellipse cx="100" cy="54" rx="12" ry="9" fill="var(--accent-ink)"/><circle cx="86" cy="38" r="5" fill="var(--accent-ink)"/><circle cx="96" cy="32" r="5" fill="var(--accent-ink)"/><circle cx="106" cy="32" r="5" fill="var(--accent-ink)"/><circle cx="115" cy="39" r="5" fill="var(--accent-ink)"/><text x="100" y="104" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)" font-family="Cairo,Arial">ZoomieZone</text></svg><span><span data-l="ar">أيقونة + اسم</span><span data-l="en">Icon + name</span></span></div>
+  <div class="lg"><svg viewBox="0 0 200 120" aria-hidden="true"><path d="M88 14 h24 v46 q0 8 8 12 l12 7 q9 6 4 14 q-5 7 -15 3 l-27 -14 q-6 -3 -6 -10 z" fill="var(--gold)"/><circle cx="96" cy="30" r="3" fill="var(--ink)"/><circle cx="104" cy="30" r="3" fill="var(--ink)"/><text x="100" y="112" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)" font-family="Cairo,Arial">KneeZoo</text></svg><span><span data-l="ar">شكل المنتج نفسه</span><span data-l="en">The product's own shape</span></span></div>
+  <div class="lg dark"><svg viewBox="0 0 200 120" aria-hidden="true"><text x="100" y="66" text-anchor="middle" font-size="34" font-weight="800" fill="#F2EFE6" font-family="Poppins,Arial">furrly.</text><text x="100" y="88" text-anchor="middle" font-size="10" letter-spacing="2" fill="#B9C2BC" font-family="Arial">PET ESSENTIALS</text></svg><span><span data-l="ar">اسم بس (Wordmark)</span><span data-l="en">Name only (wordmark)</span></span></div>
+</div>
+<div class="two"><div class="panel"><h4><span data-l="ar">الخطوات</span><span data-l="en">Steps</span></h4><ol class="plain-ol"><li><span data-l="ar">ادخل على Canva.</span><span data-l="en">Open Canva.</span></li><li><span data-l="ar">ابحث عن «نوع النيش + logo»، مثلًا <code>pet store logo</code>.</span><span data-l="en">Search "your niche + logo", e.g. <code>pet store logo</code>.</span></li><li><span data-l="ar">اختار تصميم قريب من فكرتك واضغط <b>Customize</b>.</span><span data-l="en">Pick a design close to your idea and press <b>Customize</b>.</span></li><li><span data-l="ar">حط اسم البراند بتاعك، أو جرّب أول حرف منه بس.</span><span data-l="en">Put in your brand name, or try just its first letter.</span></li><li><span data-l="ar">نزّله PNG بخلفية شفافة، وخليه مستطيل عشان يظهر كويس في الهيدر.</span><span data-l="en">Download a PNG with a transparent background, in a wide shape so it fits the header.</span></li></ol><div class="lks"><a class="lk" href="https://www.canva.com/" target="_blank" rel="noopener">Canva ↗</a></div></div>
+<div class="panel"><h4><span data-l="ar">مواصفات اللوجو الكويس</span><span data-l="en">A good logo is</span></h4><ul class="plain-ul"><li><span data-l="ar">بسيط ويتقري وهو صغير</span><span data-l="en">Simple and readable at small sizes</span></li><li><span data-l="ar">بلونين بالكتير</span><span data-l="en">Two colors at most</span></li><li><span data-l="ar">بيعبّر عن النيش</span><span data-l="en">Reflects the niche</span></li><li><span data-l="ar">مستطيل وبخلفية شفافة (PNG)</span><span data-l="en">Wide, with a transparent background (PNG)</span></li></ul></div></div>
+
+
+<div class="sec-head"><div class="en">BRAND COLORS</div><h2><span data-l="ar">اختيار ألوان البراند</span><span data-l="en">Choosing brand colors</span></h2><p data-l="ar">اختار لونين أو تلاتة بيعبروا عن إحساس البراند. ابحث على Google عن <code>Color and their effects</code> وهتلاقي شرح للمشاعر المرتبطة بكل لون.</p><p data-l="en">Choose two or three colors that carry the brand's feeling. Search Google for <code>Color and their effects</code> to see the emotions linked to each color.</p></div>
+<div class="swatches"><div class="sw"><i style="background:#1F5FBF"></i><div><b><span data-l="ar">أزرق</span><span data-l="en">Blue</span></b><span data-l="ar">ثقة وأمان: بنوك وتكنولوجيا</span><span data-l="en">Trust and safety: banks, tech</span></div></div><div class="sw"><i style="background:#D33A2C"></i><div><b><span data-l="ar">أحمر</span><span data-l="en">Red</span></b><span data-l="ar">حماس وعروض وإلحاح</span><span data-l="en">Energy, sales, urgency</span></div></div><div class="sw"><i style="background:#2E8B57"></i><div><b><span data-l="ar">أخضر</span><span data-l="en">Green</span></b><span data-l="ar">طبيعة وصحة ومنتجات عضوية</span><span data-l="en">Nature, health, organic</span></div></div><div class="sw"><i style="background:#F2B51C"></i><div><b><span data-l="ar">أصفر</span><span data-l="en">Yellow</span></b><span data-l="ar">تفاؤل وطاقة ولفت انتباه</span><span data-l="en">Optimism, energy, attention</span></div></div><div class="sw"><i style="background:#7A4FB5"></i><div><b><span data-l="ar">بنفسجي</span><span data-l="en">Purple</span></b><span data-l="ar">إبداع وفخامة</span><span data-l="en">Creativity, luxury</span></div></div><div class="sw"><i style="background:#141414"></i><div><b><span data-l="ar">أسود</span><span data-l="en">Black</span></b><span data-l="ar">فخامة وبساطة: موضة وساعات</span><span data-l="en">Luxury, simplicity: fashion, watches</span></div></div></div>
+<div class="lks" style="justify-content:center"><a class="lk" href="https://www.google.com/search?q=color+and+their+effects" target="_blank" rel="noopener">Google: Color and their effects ↗</a><a class="lk" href="https://www.canva.com/colors/color-palette-generator/" target="_blank" rel="noopener">Canva Color Palette ↗</a></div>
+
+
+<div class="tip"><span class="kicker"><span data-l="ar">ملاحظات أخيرة</span><span data-l="en">Final notes</span></span><ul style="margin:0;padding-inline-start:20px"><li><span data-l="ar">ركّز في بناء الهوية من البداية (اسم، دومين، لوجو، ألوان).</span><span data-l="en">Build the identity from the start (name, domain, logo, colors).</span></li><li><span data-l="ar">نجاح المتجر بيبدأ من التفاصيل الصغيرة.</span><span data-l="en">A store's success starts with the small details.</span></li><li><span data-l="ar">ما تهملش المتجر عشان تركز على الإعلانات بس.</span><span data-l="en">Don't neglect the store to focus only on ads.</span></li></ul></div>
+
+<div class="practice" data-practice="3">
+  <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">طلّع هوية البراند</span><span data-l="en">Build your brand identity</span></span></div>
+  <ul class="checks">
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">املا فراغات البرومبت فوق، وانسخه، واطلب من <a href='https://chatgpt.com/' target='_blank' rel='noopener'>ChatGPT ↗</a> 10 أسماء.</span><span data-l="en">Fill the prompt blanks above, copy it and ask <a href='https://chatgpt.com/' target='_blank' rel='noopener'>ChatGPT ↗</a> for 10 names.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">جرّب <a href='https://namelix.com/' target='_blank' rel='noopener'>Namelix ↗</a> بإعداد Medium وطلّع 5 أسماء تانية.</span><span data-l="en">Try <a href='https://namelix.com/' target='_blank' rel='noopener'>Namelix ↗</a> on Medium and get 5 more names.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">افحص أحسن 3 أسماء على <a href='https://www.namecheap.com/' target='_blank' rel='noopener'>Namecheap ↗</a>، و<b>احجز الدومين</b> للاسم اللي اخترته.</span><span data-l="en">Check your top 3 names on <a href='https://www.namecheap.com/' target='_blank' rel='noopener'>Namecheap ↗</a> and <b>buy the domain</b> for your pick.</span></span></label></li>
+    <li><label><input type="checkbox"><span class="t"><span data-l="ar">صمم لوجو على <a href='https://www.canva.com/' target='_blank' rel='noopener'>Canva ↗</a>، واختار لونين للبراند واكتب كود كل لون.</span><span data-l="en">Design a logo on <a href='https://www.canva.com/' target='_blank' rel='noopener'>Canva ↗</a>, pick two brand colors and note their codes.</span></span></label></li>
+  </ul>
+</div>
+<div class="quiz" data-quiz="3"></div>
 </div>
 
   <section class="ask" data-ch="3" aria-label="Questions">
@@ -3169,21 +3203,53 @@ const QUIZ = {
   w:{ar:"استبعد أي منتج أقل من 5 مواصفات.",en:"Drop anything below 5 traits."}}
 ],
 3:[
- {t:"mc",q:"إمتى تختار اسم البراند؟",o:["قبل ما تعرف هتبيع إيه","بعد ما تحدد النيتش أو المنتج","بعد ما تطلق الإعلانات","مش مهم الاسم"],a:1,w:"ابدأ من المنتج مش الاسم."},
- {t:"mc",q:"في Namelix، أفضل إعداد لأسلوب التوليد هو:",o:["Low","Medium","High","مفيش إعدادات"],a:1,w:"Medium بيوازن بين الواقعية والإبداع."},
- {t:"mc",q:"إيه الأهم: اسم البراند ولا شكل اللوجو؟",o:["اللوجو أهم بكتير","اسم البراند أهم","الاتنين ملهمش لازمة","الألوان أهم من الاتنين"],a:1,w:"Apple وتويتر غيروا اللوجو وما حصلش حاجة."},
- {t:"mc",q:"بعد ما تختار الاسم لازم تتأكد من:",o:["إن الدومين متاح بنفس الاسم على Namecheap","إن الاسم طويل","إن الاسم فيه أرقام","إن الاسم عربي"],a:0,w:"احجز الدومين بنفس اسم البراند."},
- {t:"mc",q:"الكورس بيبدأ بأنهي نوع متاجر؟",o:["متجر عام","متجر نيتش متخصص","متجر منتج واحد بس","محل على أرض الواقع"],a:1,w:"بنبدأ بمتجر نيتش ونختبر أكتر من منتج."},
- {t:"mc",q:"إيه التلات حاجات اللي لازم تحددهم قبل ما تبني المتجر؟",o:["اسم البراند واللوجو وألوان البراند","السعر والشحن والضرايب","البنك والشركة والعملة","الإعلان والجمهور والميزانية"],a:0,w:"لأنك هتحطهم كلهم جوه المتجر."},
- {t:"mc",q:"Mooshwalks متجر مشهور بإيه؟",o:["منتجات قطط","شرابات 3D بشكل شخصيات وكسر المليون في أول سنة","أجهزة كهربائية","مجوهرات"],a:1,w:"قوة الفكرة + تصميم المتجر."},
- {t:"mc",q:"Meowingtons متخصص في:",o:["منتجات القطط","الأثاث","الساعات","الملابس الرياضية"],a:0,w:"متجر نيتش اتذكر في قنوات إعلامية."},
- {t:"tf",q:"إنك تقعد شهور تفكر في الاسم هو الطريقة الصح.",a:false,w:"الصح: توازن وذكاء باستخدام أدوات حديثة."},
- {t:"mc",q:"في Canva، بتضغط على إيه عشان تعدّل على تصميم جاهز؟",o:["Publish","Customize","Import","Generate"],a:1,w:"وبعدها تغيّر اسم البراند داخل التصميم."},
- {t:"multi",q:"أنهي صفات من دول مطلوبة في اسم البراند؟",o:["قصير","سهل النطق","بيعكس مجال المتجر","طويل وفيه أرقام كتير"],a:[0,1,2],w:"ومتاح كدومين."},
- {t:"mc",q:"أنهي لون مرتبط بالثقة والأمان؟",o:["الأحمر","الأزرق","الأصفر","البرتقالي"],a:1,w:"عشان كده البنوك وشركات التكنولوجيا بتستخدمه."},
- {t:"mc",q:"تبحث على Google بإيه عشان تعرف تأثير الألوان؟",o:["Color and their effects","Best colors 2024","Logo maker","Shopify colors"],a:0,w:"هتلاقي شرح للمشاعر المرتبطة بكل لون."},
- {t:"tf",q:"الأفضل تهمل المتجر وتركز على الإعلانات بس.",a:false,w:"نجاح المتجر بيبدأ من التفاصيل الصغيرة."},
- {t:"mc",q:"مثال المادة لاسم براند لمنتجات الحيوانات الأليفة:",o:["ZoomieZone","Apple","Meowingtons","SockStore123"],a:0,w:"قصير ومعبّر عن المجال."}
+ {t:"mc",q:{ar:"إيه التلات حاجات اللي لازم تحددهم قبل ما تبني المتجر؟",en:"Which three things must you set before building the store?"},
+  o:[{ar:"اسم البراند واللوجو وألوان البراند",en:"Brand name, logo and brand colors"},{ar:"السعر والشحن والضرايب",en:"Price, shipping and tax"},{ar:"البنك والشركة والعملة",en:"Bank, company and currency"},{ar:"الإعلان والجمهور والميزانية",en:"Ad, audience and budget"}],a:0,
+  w:{ar:"لأنك هتحطهم في كل صفحة في المتجر.",en:"You'll place them on every page of the store."}},
+ {t:"tf",q:{ar:"ممكن تبني المتجر الأول وبعدين تفكر في اسمه.",en:"You can build the store first and name it later."},a:false,
+  w:{ar:"مينفعش تبدأ المتجر وبعدين تفكر تسميه.",en:"You can't build the store and name it afterwards."}},
+ {t:"mc",q:{ar:"إمتى تختار اسم البراند؟",en:"When do you choose the brand name?"},
+  o:[{ar:"قبل ما تعرف هتبيع إيه",en:"Before knowing what you'll sell"},{ar:"بعد ما تحدد النيش أو المنتج",en:"After choosing the niche or product"},{ar:"بعد الإعلانات",en:"After running ads"},{ar:"مش مهم الاسم",en:"The name doesn't matter"}],a:1,
+  w:{ar:"ابدأ من المنتج مش الاسم.",en:"Start from the product, not the name."}},
+ {t:"mc",q:{ar:"في الترتيب الصح، الخطوة اللي بعد اختيار اسم البراند على طول:",en:"In the right order, the step right after picking the name is:"},
+  o:[{ar:"تصميم اللوجو",en:"Designing the logo"},{ar:"التأكد إن الدومين متاح",en:"Checking the domain is available"},{ar:"بناء المتجر",en:"Building the store"},{ar:"اختيار الألوان",en:"Choosing colors"}],a:1,
+  w:{ar:"الاسم والدومين قرار واحد.",en:"The name and the domain are one decision."}},
+ {t:"mc",q:{ar:"ليه الدومين أهم نقطة في الفصل؟",en:"Why is the domain the most important point in the chapter?"},
+  o:[{ar:"لأنه غالي جدًا",en:"It's very expensive"},{ar:"لأن لو حد تاني معاه الدومين، العملاء اللي بيدوروا على اسمك هيروحوله وتعبك يروح",en:"If someone else owns it, customers searching your name go to them and your work is lost"},{ar:"لأن Shopify بيطلبه قبل التسجيل",en:"Shopify needs it before sign-up"},{ar:"لأنه بيحدد ألوان المتجر",en:"It sets the store's colors"}],a:1,
+  w:{ar:"عشان كده تتأكد منه قبل اللوجو والمتجر.",en:"That's why you check it before the logo and the store."}},
+ {t:"mc",q:{ar:"بتتأكد إن الدومين متاح على موقع:",en:"You check domain availability on:"},
+  o:["Namecheap","Canva","Namelix","Minea"],a:0,w:{ar:"namecheap.com",en:"namecheap.com"}},
+ {t:"mc",q:{ar:"أفضل امتداد للدومين في الغالب:",en:"The best domain extension in most cases:"},
+  o:[".com",".xyz",".info",".biz"],a:0,w:{ar:"لأنه اللي الناس بتكتبه تلقائي.",en:"It's what people type by default."}},
+ {t:"multi",q:{ar:"الدومين اللي عايزه محجوز. تعمل إيه؟",en:"The domain you want is taken. What do you do?"},
+  o:[{ar:"تعدّل الاسم بكلمة بسيطة زي get أو shop",en:"Tweak it with a short word like get or shop"},{ar:"تختار اسم تاني دومينه متاح",en:"Choose another name with a free domain"},{ar:"تضيف شرطة وأرقام كتير",en:"Add hyphens and lots of numbers"},{ar:"تكمل بالاسم وخلاص",en:"Carry on with the name anyway"}],a:[0,1],
+  w:{ar:"ابعد عن الشرط والأرقام، وما تكملش باسم دومينه مع حد تاني.",en:"Avoid hyphens and numbers, and never continue with a name someone else's domain owns."}},
+ {t:"tf",q:{ar:"لو الدومين متاح، الأفضل تشتريه فورًا حتى قبل ما تصمم اللوجو.",en:"If the domain is free, buy it right away, even before designing the logo."},a:true,
+  w:{ar:"سعره حوالي $10 في السنة، أرخص بكتير من إنك تبدأ من الأول.",en:"About $10 a year, far cheaper than starting over."}},
+ {t:"mc",q:{ar:"غير الدومين، إيه كمان تتأكد إنه متاح بنفس الاسم؟",en:"Besides the domain, what else should be free under the same name?"},
+  o:[{ar:"حسابات Instagram و TikTok",en:"Instagram and TikTok handles"},{ar:"رقم تليفون",en:"A phone number"},{ar:"لون المتجر",en:"The store color"},{ar:"حساب بنك",en:"A bank account"}],a:0,
+  w:{ar:"عشان العميل يلاقيك بنفس الاسم في كل مكان.",en:"So customers find you under one name everywhere."}},
+ {t:"multi",q:{ar:"أنهي صفات مطلوبة في اسم البراند؟",en:"Which traits should a brand name have?"},
+  o:[{ar:"قصير",en:"Short"},{ar:"سهل النطق والكتابة",en:"Easy to say and spell"},{ar:"بيعكس النيش",en:"Reflects the niche"},{ar:"طويل وفيه أرقام",en:"Long, with numbers"}],a:[0,1,2],
+  w:{ar:"ودومينه متاح، ومش شبه براند مشهور.",en:"Plus a free domain, and unlike any famous brand."}},
+ {t:"mc",q:{ar:"في Namelix، أفضل إعداد لأسلوب التوليد:",en:"In Namelix, the best generation setting is:"},
+  o:["Low","Medium","High",{ar:"مفيش إعدادات",en:"There are none"}],a:1,w:{ar:"Medium بيوازن بين الواقعية والإبداع.",en:"Medium balances realism and creativity."}},
+ {t:"mc",q:{ar:"في برومبت ChatGPT، الكلام اللي بين الأقواس [ ] معناه:",en:"In the ChatGPT prompt, text in [ brackets ] means:"},
+  o:[{ar:"فراغ لازم تملاه بالنيش والمنتج والعملاء بتوعك",en:"A blank to fill with your niche, product and customers"},{ar:"كلام لازم يتمسح",en:"Text to delete"},{ar:"اسم البراند النهائي",en:"The final brand name"},{ar:"لينك",en:"A link"}],a:0,
+  w:{ar:"كل ما وصفك أدق، الأسماء هتطلع أنسب.",en:"The more precise your details, the better the names."}},
+ {t:"mc",q:{ar:"إيه الأهم: اسم البراند ولا شكل اللوجو؟",en:"Which matters more: the brand name or the logo?"},
+  o:[{ar:"اللوجو أهم بكتير",en:"The logo, by far"},{ar:"اسم البراند أهم",en:"The brand name"},{ar:"الاتنين ملهمش لازمة",en:"Neither"},{ar:"الألوان أهم من الاتنين",en:"Colors beat both"}],a:1,
+  w:{ar:"Apple وتويتر غيروا اللوجو وما حصلش حاجة.",en:"Apple and Twitter changed their logos and nothing happened."}},
+ {t:"mc",q:{ar:"في Canva، بتضغط على إيه عشان تعدّل تصميم جاهز؟",en:"In Canva, what do you press to edit a template?"},
+  o:["Publish","Customize","Import","Generate"],a:1,w:{ar:"وبعدين تحط اسم البراند بتاعك.",en:"Then put in your brand name."}},
+ {t:"mc",q:{ar:"شكل اللوجو المناسب للهيدر في المتجر:",en:"The best logo format for the store header:"},
+  o:[{ar:"مستطيل PNG بخلفية شفافة",en:"A wide PNG with a transparent background"},{ar:"دايرة صغيرة JPG",en:"A small round JPG"},{ar:"صورة كبيرة بعرض الشاشة",en:"A full-width photo"},{ar:"نص بس من غير ملف",en:"Plain text, no file"}],a:0,
+  w:{ar:"عشان يظهر واضح في الهيدر.",en:"So it shows clearly in the header."}},
+ {t:"mc",q:{ar:"أنهي لون مرتبط بالثقة والأمان؟",en:"Which color is linked to trust and safety?"},
+  o:[{ar:"الأحمر",en:"Red"},{ar:"الأزرق",en:"Blue"},{ar:"الأصفر",en:"Yellow"},{ar:"البرتقالي",en:"Orange"}],a:1,
+  w:{ar:"عشان كده البنوك وشركات التكنولوجيا بتستخدمه.",en:"That's why banks and tech companies use it."}},
+ {t:"tf",q:{ar:"الأفضل تهمل المتجر وتركز على الإعلانات بس.",en:"Better to neglect the store and focus only on ads."},a:false,
+  w:{ar:"نجاح المتجر بيبدأ من التفاصيل الصغيرة.",en:"A store's success starts with small details."}}
 ],
 4:[
  {t:"mc",q:"لما Shopify يسألك «تبيع إيه؟» تختار:",o:["Physical store","Dropshipping","Services","Digital products"],a:1,w:"وفي «تبيع فين» تختار Online Store."},
@@ -3495,6 +3561,8 @@ const IC={
  tiktok:`<svg viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#111"/><path d="M36 14v24a8 8 0 1 1-8-8" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M36 14c2 7 6 10 12 10" fill="none" stroke="#25F4EE" stroke-width="4" stroke-linecap="round"/></svg>`,
  instagram:`<svg viewBox="0 0 64 64"><rect x="6" y="6" width="52" height="52" rx="15" fill="#D6336C"/><rect x="15" y="15" width="34" height="34" rx="10" fill="none" stroke="#fff" stroke-width="4"/><circle cx="32" cy="32" r="8" fill="none" stroke="#fff" stroke-width="4"/><circle cx="43" cy="21" r="2.6" fill="#fff"/></svg>`,
  paid:`<svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="40" rx="5" fill="${P}" stroke="${G}" stroke-width="3"/><rect x="14" y="34" width="7" height="10" fill="${L}"/><rect x="25" y="26" width="7" height="18" fill="${G}"/><rect x="36" y="18" width="7" height="26" fill="${D}"/><circle cx="50" cy="50" r="10" fill="var(--gold)"/><text x="50" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Arial">$</text></svg>`,
+ tag:`<svg viewBox="0 0 64 64"><path d="M6 32 L30 8 H56 V34 L32 58Z" fill="${G}"/><circle cx="46" cy="18" r="5" fill="${P}"/><path d="M20 34h18M24 42h12" stroke="${P}" stroke-width="3.5" stroke-linecap="round"/></svg>`,
+ palette:`<svg viewBox="0 0 64 64"><path d="M32 6C16 6 6 18 6 32s10 26 24 26c4 0 6-2 6-5 0-4-4-5-4-9 0-3 3-5 6-5h8c7 0 12-5 12-12C58 15 46 6 32 6z" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2.5"/><circle cx="20" cy="26" r="5" fill="#D33A2C"/><circle cx="30" cy="16" r="5" fill="#F2B51C"/><circle cx="43" cy="18" r="5" fill="#1F5FBF"/><circle cx="18" cy="40" r="5" fill="${G}"/></svg>`,
  person:`<svg viewBox="0 0 20 40"><circle cx="10" cy="7" r="6"/><path d="M2 40V22c0-6 3-9 8-9s8 3 8 9v18z"/></svg>`
 };
 
@@ -3692,7 +3760,7 @@ function renderI18n(){
   if(msgKey) msg.textContent=tr(M[msgKey]); if(modeKey) mode.textContent=tr(M[modeKey]);
   $('introSave').textContent=tr(hasDoc?M.update:M.send);
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
-  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore(); if(typeof syncProgress==='function') syncProgress(true);
+  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore(); if(typeof syncProgress==='function') syncProgress(true); if(typeof pbRender==='function') pbRender();
 }
 /* ---------- class polls (shared counts, no names) ---------- */
 const POLLS={
@@ -3888,6 +3956,27 @@ function updProdStats(){const pc=pCount(),vc=vCount();if(!$('pStat'))return;
 function syncProgress(full){renderReminders();renderLadder();updProdStats();if(full)renderProducts();}
 document.addEventListener('change',e=>{const t=e.target; if(t&&t.dataset&&t.dataset.ms){S.ms[t.dataset.ms]=t.checked;save();syncProgress(false);}});
 syncProgress(true);
+
+/* ---------- chapter 3: prompt builder + domain check ---------- */
+S.pb=S.pb||{};
+const PBF=[['pbNiche','YOUR NICHE'],['pbProduct','SPECIFIC PRODUCT / CATEGORY'],['pbAudience','TARGET CUSTOMERS'],['pbFeel','BRAND FEELING']];
+function pbVal(i){const v=($(PBF[i][0])||{}).value; return (v||'').trim();}
+function pbPart(i){const v=pbVal(i);return v?'<span class="filled">'+esc(v)+'</span>':'<span class="blank">['+PBF[i][1]+']</span>';}
+function pbText(){const t=i=>pbVal(i)||'['+PBF[i][1]+']';
+  return 'I am opening an online dropshipping store. The niche is '+t(0)+', specifically '+t(1)+'. My target customers are '+t(2)+', and the brand should feel '+t(3)+'.\nGenerate 10 brand name ideas that are short (1–2 words), easy to pronounce and spell, and likely to be available as a .com domain. For each name, explain in one line why it fits.';}
+function pbRender(){const o=$('pbOut');if(!o)return;
+  o.innerHTML='I am opening an online dropshipping store. The niche is '+pbPart(0)+', specifically '+pbPart(1)+'. My target customers are '+pbPart(2)+', and the brand should feel '+pbPart(3)+'.\nGenerate 10 brand name ideas that are short (1–2 words), easy to pronounce and spell, and likely to be available as a .com domain. For each name, explain in one line why it fits.';}
+PBF.forEach(([id],i)=>{const el=$(id);if(!el)return;el.value=S.pb[id]||'';el.addEventListener('input',()=>{S.pb[id]=el.value;save();pbRender();});});
+if($('pbCopy')) $('pbCopy').addEventListener('click',()=>{const m=$('pbMsg');const missing=PBF.some((x,i)=>!pbVal(i));
+  const done=()=>{m.className='form-msg '+(missing?'err':'ok');m.textContent=missing?tr({ar:'اتنسخ، بس لسه فيه فراغات ما اتملتش.',en:'Copied, but some blanks are still empty.'}):tr({ar:'اتنسخ ✓ الصقه في ChatGPT.',en:'Copied ✓ Paste it into ChatGPT.'});};
+  try{navigator.clipboard.writeText(pbText()).then(done,()=>{const r=document.createRange();r.selectNodeContents($('pbOut'));const s=getSelection();s.removeAllRanges();s.addRange(r);});}catch(e){}});
+pbRender();
+function ncUpdate(){const el=$('ncName');if(!el)return;const raw=(el.value||'').trim().toLowerCase().replace(/\.com$/,'').replace(/[^a-z0-9-]/g,'');
+  $('ncGo').href=raw?'https://www.namecheap.com/domains/registration/results/?domain='+encodeURIComponent(raw+'.com'):'https://www.namecheap.com/';
+  $('ncIg').href=raw?'https://www.instagram.com/'+encodeURIComponent(raw)+'/':'https://www.instagram.com/';
+  $('ncTt').href=raw?'https://www.tiktok.com/@'+encodeURIComponent(raw):'https://www.tiktok.com/';}
+if($('ncName')){$('ncName').value=S.ncName||'';$('ncName').addEventListener('input',()=>{S.ncName=$('ncName').value;save();ncUpdate();});ncUpdate();
+  $('ncForm').addEventListener('submit',e=>{e.preventDefault();window.open($('ncGo').href,'_blank','noopener');});}
 
 document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
