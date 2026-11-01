@@ -1040,6 +1040,9 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 @media (max-width:900px){.idcards,.logos{grid-template-columns:minmax(0,1fr)}.story{grid-template-columns:repeat(2,minmax(0,1fr))}.story li:last-child{grid-column:1/-1}.dom-check{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.pb-fields{grid-template-columns:minmax(0,1fr)}}
 
+.prompt-list{display:flex;flex-direction:column;gap:14px}
+.pb-fields select{font:500 .95rem var(--font-body);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.pb-fields input{text-align:start}
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -1666,6 +1669,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <p class="rm-note"><span data-l="ar">اضغط على أي خطوة عشان تروح للفصل اللي بيشرحها.</span><span data-l="en">Tap any step to jump to the chapter that covers it.</span></p>
 
 
+
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch1-plan"></div><div class="pb pbx" data-pb="ch1-explain"></div></div>
+</section>
+
   <div class="practice" data-practice="1">
     <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">علّم على اللي خلّصته</span><span data-l="en">tick what you've done</span></span></div>
     <ul class="checks">
@@ -1915,6 +1925,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
 </div>
 
+
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch2-niches"></div><div class="pb pbx" data-pb="ch2-products"></div><div class="pb pbx" data-pb="ch2-evaluate"></div><div class="pb pbx" data-pb="ch2-keywords"></div></div>
+</section>
+
 <div class="practice" data-practice="2">
   <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">الهدف: ليستة 10 منتجات</span><span data-l="en">Goal: a list of 10 products</span></span></div>
   <ul class="checks">
@@ -1982,19 +1999,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 <div class="sec-head"><div class="en">BRAND NAME</div><h2><span data-l="ar">اختيار اسم البراند</span><span data-l="en">Choosing the brand name</span></h2><p data-l="ar">فيه ناس بتقعد شهور تفكر، وناس بتختار أي اسم في ثانية… الاتنين غلط. الصح: توازن وذكاء باستخدام أدوات حديثة. وابدأ من المنتج مش من الاسم.</p><p data-l="en">Some people spend months deciding, others pick any name in a second; both are wrong. The right way is balance, using modern tools. And start from the product, not the name.</p></div>
 <div class="two"><div class="panel"><h4><span data-l="ar">مواصفات الاسم الكويس</span><span data-l="en">A good name is</span></h4><ul class="plain-ul ok"><li><span data-l="ar">قصير (كلمة أو كلمتين)</span><span data-l="en">Short (one or two words)</span></li><li><span data-l="ar">سهل النطق والكتابة</span><span data-l="en">Easy to say and spell</span></li><li><span data-l="ar">بيعكس النيش (زي ZoomieZone لمنتجات الحيوانات)</span><span data-l="en">Reflects the niche (like ZoomieZone for pets)</span></li><li><span data-l="ar">الدومين .com بتاعه متاح</span><span data-l="en">Its .com domain is available</span></li><li><span data-l="ar">مش شبه براند مشهور</span><span data-l="en">Doesn't resemble a famous brand</span></li></ul></div>
 <div class="panel"><h4><span data-l="ar">الأدوات</span><span data-l="en">Tools</span></h4><p data-l="ar"><b>ChatGPT</b> يطلعلك أفكار حسب النيش، و<b>Namelix</b> يولّد أسماء من كلمات مفتاحية. وبعدين <b>لازم</b> تتأكد من الدومين على Namecheap.</p><p data-l="en"><b>ChatGPT</b> suggests ideas for your niche, and <b>Namelix</b> generates names from keywords. Then you <b>must</b> check the domain on Namecheap.</p><div class="lks"><a class="lk" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="lk" href="https://namelix.com/" target="_blank" rel="noopener">Namelix ↗</a><a class="lk" href="https://www.namecheap.com/" target="_blank" rel="noopener">Namecheap ↗</a></div></div></div>
-
-<div class="pb">
-  <div class="pb-h"><i class="ic" data-ic="chat"></i><div><b><span data-l="ar">الأداة الأولى: ChatGPT</span><span data-l="en">Tool 1: ChatGPT</span></b><small><span data-l="ar">املا الفراغات بتاعتك، والبرومبت هيتكتب لوحده جاهز للنسخ.</span><span data-l="en">Fill in your blanks and the prompt writes itself, ready to copy.</span></small></div><a class="lk" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a></div>
-  <div class="pb-fields">
-    <label class="f"><span data-l="ar">① النيش بتاعك</span><span data-l="en">① Your niche</span><input type="text" id="pbNiche" maxlength="60" dir="ltr" placeholder="pet products"></label>
-    <label class="f"><span data-l="ar">② المنتج أو الفئة بالتحديد</span><span data-l="en">② The exact product or category</span><input type="text" id="pbProduct" maxlength="80" dir="ltr" placeholder="flea collars for dogs and cats"></label>
-    <label class="f"><span data-l="ar">③ عملاءك مين؟</span><span data-l="en">③ Who are your customers?</span><input type="text" id="pbAudience" maxlength="80" dir="ltr" placeholder="pet owners in the USA"></label>
-    <label class="f"><span data-l="ar">④ إحساس البراند</span><span data-l="en">④ Brand feeling</span><input type="text" id="pbFeel" maxlength="60" dir="ltr" placeholder="friendly and caring"></label>
-  </div>
-  <div class="pb-out" dir="ltr" id="pbOut"></div>
-  <div class="btns"><button type="button" class="btn" id="pbCopy"><span data-l="ar">انسخ البرومبت</span><span data-l="en">Copy the prompt</span></button><span class="form-msg" id="pbMsg" aria-live="polite"></span></div>
-  <p data-l="ar" class="pb-note">الكلام اللي بين الأقواس [ ] هو اللي إنت لسه ما ملتهوش. اكتب بالإنجليزي عشان النتايج تطلع أسماء تنفع للسوق الأجنبي.</p><p data-l="en" class="pb-note">Text in [ brackets ] is what you haven't filled in yet. Write in English so the names suit a foreign market.</p>
-</div>
+<div class="pb pbx" data-pb="ch3-names"></div>
 <div class="pb">
   <div class="pb-h"><i class="ic" data-ic="bulb"></i><div><b><span data-l="ar">الأداة التانية: Namelix</span><span data-l="en">Tool 2: Namelix</span></b><small><span data-l="ar">اكتب كلمات مفتاحية عن البراند والمنتج، مثلًا <code>pet, care, collar, safe</code>، واضغط Generate.</span><span data-l="en">Type keywords about your brand and product, e.g. <code>pet, care, collar, safe</code>, then press Generate.</span></small></div><a class="lk" href="https://namelix.com/" target="_blank" rel="noopener">Namelix ↗</a></div>
   <div class="tbl"><table class="t"><thead><tr><th><span data-l="ar">الإعداد</span><span data-l="en">Setting</span></th><th><span data-l="ar">بيعمل إيه</span><span data-l="en">What it does</span></th></tr></thead><tbody>
@@ -2042,6 +2047,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 
 
 <div class="tip"><span class="kicker"><span data-l="ar">ملاحظات أخيرة</span><span data-l="en">Final notes</span></span><ul style="margin:0;padding-inline-start:20px"><li><span data-l="ar">ركّز في بناء الهوية من البداية (اسم، دومين، لوجو، ألوان).</span><span data-l="en">Build the identity from the start (name, domain, logo, colors).</span></li><li><span data-l="ar">نجاح المتجر بيبدأ من التفاصيل الصغيرة.</span><span data-l="en">A store's success starts with the small details.</span></li><li><span data-l="ar">ما تهملش المتجر عشان تركز على الإعلانات بس.</span><span data-l="en">Don't neglect the store to focus only on ads.</span></li></ul></div>
+
+
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch3-story"></div><div class="pb pbx" data-pb="ch3-colors"></div><div class="pb pbx" data-pb="ch3-logo"></div></div>
+</section>
 
 <div class="practice" data-practice="3">
   <div class="sec-title"><h3><span data-l="ar">تدريب عملي</span><span data-l="en">Practice</span></h3><span class="meta"><span data-l="ar">طلّع هوية البراند</span><span data-l="en">Build your brand identity</span></span></div>
@@ -2177,7 +2189,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     </tbody>
   </table></div>
 
-  <div class="practice" data-practice="4">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch4-checklist"></div><div class="pb pbx" data-pb="ch4-setting"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="4">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">افتح متجرك</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">افتح حساب Shopify وجاوب الأسئلة: Online Store · I'm just starting · Dropshipping.</span></label></li>
@@ -2306,7 +2324,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     </ul>
   </div>
 
-  <div class="practice" data-practice="5">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch5-page"></div><div class="pb pbx" data-pb="ch5-seo"></div><div class="pb pbx" data-pb="ch5-pricing"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="5">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">3 منتجات جاهزة</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">ثبّت DSers واربطه بحساب AliExpress.</span></label></li>
@@ -2447,7 +2471,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p>صفحة المنتج تبقى جذابة، واضحة، ومريحة للعين بحيث العميل يلاقي كل المعلومات قدامه بسهولة + صور تشجعه يشتري.</p>
   </div>
 
-  <div class="practice" data-practice="6">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch6-home"></div><div class="pb pbx" data-pb="ch6-theme"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="6">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز الواجهة</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">جرّب Generate Theme بوصف البيزنس بتاعك وشوف النتيجة.</span></label></li>
@@ -2577,7 +2607,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   </div>
   <div class="tip"><span class="kicker">النتيجة</span><p>العميل هيفضّل يختار باقات الـ Bundle لأنها أوفر، وهتزود متوسط سعر الطلب (AOV) عندك. والإعلان اللي جاب العميل اتدفع مرة واحدة بس.</p></div>
 
-  <div class="practice" data-practice="7">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch7-shipping"></div><div class="pb pbx" data-pb="ch7-pages"></div><div class="pb pbx" data-pb="ch7-bundle"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="7">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">صفحات + عرض واحد</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">اعمل صفحتين About Us و Contact Us وضيفهم للـ Menu.</span></label></li>
@@ -2740,7 +2776,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p>لازم تعدّل أسعار المنتجات يدويًا بعد تغيير العملة. مثال: لو المنتج بـ <b>300 درهم</b> ← هيظهر <b>300 دولار</b> بعد التغيير! يعني Shopify بيغير الرمز بس، مش بيحوّل السعر.</p>
   </div>
 
-  <div class="practice" data-practice="8">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch8-desc"></div><div class="pb pbx" data-pb="ch8-doc"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="8">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز ملف الشركة</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">اكتب اسم الشركة النهائي بصيغة <code>BRANDNAME LTD</code> وتأكد إنه نفس اسم البراند.</span></label></li>
@@ -2839,7 +2881,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p>العميل يستلم تأكيد الطلب من <code>zoomiezone.store2024@gmail.com</code> أو من <code>support@zoomiezone.com</code>. التاني بيدي إحساس إن ده براند حقيقي وبيقلل الشكاوى والـ Chargebacks.</p>
   </div>
 
-  <div class="practice" data-practice="9">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch9-replies"></div><div class="pb pbx" data-pb="ch9-apps"></div><div class="pb pbx" data-pb="ch9-translate"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="9">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">جهّز المتجر للعالم</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">ثبّت Translate &amp; Adapt و Shopify Inbox وتطبيق تقييمات.</span></label></li>
@@ -2982,7 +3030,13 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <p>صرفت $100 وجالك 1,000 زيارة لكن 3 طلبات بس (Conversion 0.3%). الـ CTR كويس يبقى الإعلان شغال، والمشكلة في المتجر: راجع صفحة المنتج، السعر، والتقييمات قبل ما تغير الإعلان.</p>
   </div>
 
-  <div class="practice" data-practice="10">
+  </div>
+<section class="prompts">
+  <div class="sec-head"><div class="en">CHATGPT PROMPTS</div><h2><span data-l="ar">🤖 برومبتات ChatGPT للفصل ده</span><span data-l="en">🤖 ChatGPT prompts for this chapter</span></h2>
+    <p data-l="ar">املا الفراغات، وانسخ البرومبت، والصقه في ChatGPT. البرومبتات دي هتختصر عليك وقت كبير في تطبيق الفصل.</p><p data-l="en">Fill in the blanks, copy the prompt and paste it into ChatGPT. These prompts save you a lot of time applying the chapter.</p></div>
+  <div class="prompt-list"><div class="pb pbx" data-pb="ch10-scripts"></div><div class="pb pbx" data-pb="ch10-copy"></div><div class="pb pbx" data-pb="ch10-results"></div></div>
+</section>
+<div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px"><div class="practice" data-practice="10">
     <div class="sec-title"><h3>تدريب عملي</h3><span class="meta">أول حملة</span></div>
     <ul class="checks">
       <li><label><input type="checkbox"><span class="t">اعمل حساب Meta Business و Ad Account واربطهم بوسيلة دفع.</span></label></li>
@@ -3760,7 +3814,7 @@ function renderI18n(){
   if(msgKey) msg.textContent=tr(M[msgKey]); if(modeKey) mode.textContent=tr(M[modeKey]);
   $('introSave').textContent=tr(hasDoc?M.update:M.send);
   document.querySelectorAll('.copy').forEach(b=>b.textContent=tr(UI.copy));
-  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore(); if(typeof syncProgress==='function') syncProgress(true); if(typeof pbRender==='function') pbRender();
+  renderAdmin(); if(typeof renderPolls==="function") renderPolls(); if(typeof renderAsks==="function") renderAsks(); calcProfit(); updScore(); if(typeof syncProgress==='function') syncProgress(true); if(typeof renderPBX==='function') renderPBX();
 }
 /* ---------- class polls (shared counts, no names) ---------- */
 const POLLS={
@@ -3957,26 +4011,128 @@ function syncProgress(full){renderReminders();renderLadder();updProdStats();if(f
 document.addEventListener('change',e=>{const t=e.target; if(t&&t.dataset&&t.dataset.ms){S.ms[t.dataset.ms]=t.checked;save();syncProgress(false);}});
 syncProgress(true);
 
-/* ---------- chapter 3: prompt builder + domain check ---------- */
-S.pb=S.pb||{};
-const PBF=[['pbNiche','YOUR NICHE'],['pbProduct','SPECIFIC PRODUCT / CATEGORY'],['pbAudience','TARGET CUSTOMERS'],['pbFeel','BRAND FEELING']];
-function pbVal(i){const v=($(PBF[i][0])||{}).value; return (v||'').trim();}
-function pbPart(i){const v=pbVal(i);return v?'<span class="filled">'+esc(v)+'</span>':'<span class="blank">['+PBF[i][1]+']</span>';}
-function pbText(){const t=i=>pbVal(i)||'['+PBF[i][1]+']';
-  return 'I am opening an online dropshipping store. The niche is '+t(0)+', specifically '+t(1)+'. My target customers are '+t(2)+', and the brand should feel '+t(3)+'.\nGenerate 10 brand name ideas that are short (1–2 words), easy to pronounce and spell, and likely to be available as a .com domain. For each name, explain in one line why it fits.';}
-function pbRender(){const o=$('pbOut');if(!o)return;
-  o.innerHTML='I am opening an online dropshipping store. The niche is '+pbPart(0)+', specifically '+pbPart(1)+'. My target customers are '+pbPart(2)+', and the brand should feel '+pbPart(3)+'.\nGenerate 10 brand name ideas that are short (1–2 words), easy to pronounce and spell, and likely to be available as a .com domain. For each name, explain in one line why it fits.';}
-PBF.forEach(([id],i)=>{const el=$(id);if(!el)return;el.value=S.pb[id]||'';el.addEventListener('input',()=>{S.pb[id]=el.value;save();pbRender();});});
-if($('pbCopy')) $('pbCopy').addEventListener('click',()=>{const m=$('pbMsg');const missing=PBF.some((x,i)=>!pbVal(i));
-  const done=()=>{m.className='form-msg '+(missing?'err':'ok');m.textContent=missing?tr({ar:'اتنسخ، بس لسه فيه فراغات ما اتملتش.',en:'Copied, but some blanks are still empty.'}):tr({ar:'اتنسخ ✓ الصقه في ChatGPT.',en:'Copied ✓ Paste it into ChatGPT.'});};
-  try{navigator.clipboard.writeText(pbText()).then(done,()=>{const r=document.createRange();r.selectNodeContents($('pbOut'));const s=getSelection();s.removeAllRanges();s.addRange(r);});}catch(e){}});
-pbRender();
+/* ---------- chapter 3: domain check ---------- */
 function ncUpdate(){const el=$('ncName');if(!el)return;const raw=(el.value||'').trim().toLowerCase().replace(/\.com$/,'').replace(/[^a-z0-9-]/g,'');
   $('ncGo').href=raw?'https://www.namecheap.com/domains/registration/results/?domain='+encodeURIComponent(raw+'.com'):'https://www.namecheap.com/';
   $('ncIg').href=raw?'https://www.instagram.com/'+encodeURIComponent(raw)+'/':'https://www.instagram.com/';
   $('ncTt').href=raw?'https://www.tiktok.com/@'+encodeURIComponent(raw):'https://www.tiktok.com/';}
 if($('ncName')){$('ncName').value=S.ncName||'';$('ncName').addEventListener('input',()=>{S.ncName=$('ncName').value;save();ncUpdate();});ncUpdate();
   $('ncForm').addEventListener('submit',e=>{e.preventDefault();window.open($('ncGo').href,'_blank','noopener');});}
+
+/* ---------- ChatGPT prompt builders (shared fields, one per chapter section) ---------- */
+const PF={
+ country:{ar:'الدولة اللي هتبيع فيها',en:'Country you sell to',ph:'United Arab Emirates',tag:'COUNTRY'},
+ budget:{ar:'ميزانيتك للبداية',en:'Starting budget',ph:'$500',tag:'BUDGET'},
+ hours:{ar:'ساعات في الأسبوع',en:'Hours per week',ph:'10',tag:'HOURS'},
+ niche:{ar:'النيش بتاعك',en:'Your niche',ph:'pet products',tag:'YOUR NICHE'},
+ product:{ar:'المنتج',en:'Product',ph:'flea collar for dogs and cats',tag:'PRODUCT'},
+ category:{ar:'المنتج أو الفئة بالتحديد',en:'Exact product or category',ph:'flea collars for dogs and cats',tag:'SPECIFIC PRODUCT / CATEGORY'},
+ audience:{ar:'عملاءك مين؟',en:'Who are your customers?',ph:'pet owners in the UAE',tag:'TARGET CUSTOMERS'},
+ feel:{ar:'إحساس البراند',en:'Brand feeling',ph:'friendly and caring',tag:'BRAND FEELING'},
+ brand:{ar:'اسم البراند',en:'Brand name',ph:'ZoomieZone',tag:'BRAND NAME'},
+ cost:{ar:'تكلفة المنتج',en:'Product cost',ph:'$5',tag:'COST'},
+ shipping:{ar:'تكلفة الشحن',en:'Shipping cost',ph:'$3',tag:'SHIPPING'},
+ price:{ar:'سعر البيع',en:'Selling price',ph:'$29.99',tag:'PRICE'},
+ setting:{ar:'اسم الإعداد في Shopify',en:'Shopify setting name',ph:'Checkout',tag:'SETTING NAME'},
+ storetype:{ar:'نوع المتجر',en:'Store type',ph:'niche store',tag:'STORE TYPE'},
+ delivery:{ar:'مدة التوصيل',en:'Delivery time',ph:'7–12 business days',tag:'DELIVERY TIME'},
+ email:{ar:'إيميل الدعم',en:'Support email',ph:'support@yourbrand.com',tag:'SUPPORT EMAIL'},
+ document:{ar:'اسم الورقة',en:'Document name',ph:'Share Certificate',tag:'DOCUMENT NAME'},
+ text:{ar:'النص اللي عايز تراجعه',en:'Text to review',ph:'paste your text here',tag:'TEXT'},
+ offer:{ar:'العرض',en:'Offer',ph:'Buy 2, save 15% + free shipping',tag:'OFFER'},
+ spend:{ar:'المصروف على الإعلان',en:'Ad spend',ph:'$100',tag:'SPEND'},
+ clicks:{ar:'عدد الضغطات',en:'Clicks',ph:'250',tag:'CLICKS'},
+ ctr:{ar:'CTR',en:'CTR',ph:'1.8%',tag:'CTR'},
+ cpc:{ar:'CPC',en:'CPC',ph:'$0.40',tag:'CPC'},
+ purchases:{ar:'عدد الطلبات',en:'Purchases',ph:'4',tag:'PURCHASES'},
+ revenue:{ar:'المبيعات',en:'Revenue',ph:'$120',tag:'REVENUE'},
+ margin:{ar:'هامش الربح قبل الإعلان',en:'Margin before ads',ph:'55%',tag:'MARGIN'}
+};
+const PR={
+ 'ch1-plan':{t:{ar:'خطة أول 30 يوم',en:'Your first 30 days'},d:{ar:'خطة أسبوع بأسبوع على قد وقتك وميزانيتك.',en:'A week-by-week plan that fits your time and budget.'},f:['country','budget','hours'],
+  p:"I'm a complete beginner starting a Shopify dropshipping store that sells to customers in {country}. My starting budget is {budget} and I can work {hours} hours a week. Create a simple 30-day action plan, week by week, covering product research, branding, store setup and my first ads. Keep each week to 4–5 clear tasks and tell me what I should have finished by the end of each week."},
+ 'ch1-explain':{t:{ar:'اشرحلي الدروب شيبينج بمثال من النيش بتاعي',en:'Explain dropshipping with my niche'},d:{ar:'مثال بالأرقام بيوضح مين بيدفع لمين.',en:'A numbers example showing who pays whom.'},f:['niche'],
+  p:"Explain how dropshipping works using a realistic example from the {niche} niche. Show step by step how an order moves from the customer to my store to the supplier and back to the customer, who pays whom, and where my profit comes from. Use simple numbers for product cost, shipping, ad cost and selling price."},
+ 'ch2-niches':{t:{ar:'رشّحلي نيتش أبدأ بيها في بلدي',en:'Suggest niches for my country'},d:{ar:'10 أفكار نيش ستور مناسبة للسوق اللي هتبيع فيه.',en:'10 niche store ideas that suit your market.'},f:['country','budget'],
+  p:"I'm starting a dropshipping niche store selling to customers in {country}, with a starting budget of {budget}. Suggest 10 niche store ideas that suit this market. For each niche give: who the customer is, the problem it solves, 3 example products, and why it fits {country} right now. Avoid liquids, batteries, fragile items and electrical devices."},
+ 'ch2-products':{t:{ar:'رشّحلي منتجات رابحة في النيش بتاعي',en:'Suggest winning products in my niche'},d:{ar:'10 منتجات متقيمة على المواصفات السبعة.',en:'10 products scored against the seven traits.'},f:['niche','country'],
+  p:"My dropshipping niche is {niche} and I sell to customers in {country}. Suggest 10 potential winning products. For each product give: the problem it solves, a typical AliExpress cost, a suggested selling price, and why it could go viral on TikTok. Then score each one from 1 to 5 on these traits: solves a real problem, trending, can be presented better than competitors, profit above $10 after ads, genuine quality, easy to ship internationally, not an electrical device."},
+ 'ch2-evaluate':{t:{ar:'قيّملي منتج: أجربه ولا لأ؟',en:'Evaluate a product: test it or skip it?'},d:{ar:'تقييم كامل وحساب ربح وقرار نهائي.',en:'A full review, profit estimate and final verdict.'},f:['product','cost','shipping','price'],
+  p:"Evaluate this product for a dropshipping store: {product}. It costs {cost} plus {shipping} shipping, and I plan to sell it for {price}. Rate it from 1 to 10 on: solves a real problem, trending potential, room to present it better, profit margin, quality risk, shipping restrictions, and whether it's electrical. Estimate my profit per sale after about $10 ad cost and a 2% platform fee, list the main risks, and end with a clear verdict: test it or skip it."},
+ 'ch2-keywords':{t:{ar:'كلمات بحث للسوشيال ومكتبة الإعلانات',en:'Search terms for social media and the Ads Library'},d:{ar:'هاشتاجات وكلمات جاهزة للبحث.',en:'Ready hashtags and search terms.'},f:['niche','country'],
+  p:"Give me 15 TikTok and Instagram hashtags and 10 Meta Ads Library search terms I can use to find winning products in the {niche} niche for customers in {country}. Group them by intent (problem, gift, trending, offer) and explain in one line what kind of results each group finds."},
+ 'ch3-names':{t:{ar:'الأداة الأولى: ChatGPT · أسماء للبراند',en:'Tool 1: ChatGPT · brand names'},d:{ar:'املا الفراغات بتاعتك، والبرومبت هيتكتب لوحده جاهز للنسخ.',en:'Fill in your blanks and the prompt writes itself, ready to copy.'},f:['niche','category','audience','feel'],
+  p:"I am opening an online dropshipping store. The niche is {niche}, specifically {category}. My target customers are {audience}, and the brand should feel {feel}.\nGenerate 10 brand name ideas that are short (1–2 words), easy to pronounce and spell, and likely to be available as a .com domain. For each name, explain in one line why it fits."},
+ 'ch3-story':{t:{ar:'شعار وقصة البراند',en:'Tagline and brand story'},d:{ar:'5 شعارات وقصة قصيرة لصفحة About Us.',en:'5 taglines and a short About Us story.'},f:['brand','niche','audience','feel'],
+  p:"My dropshipping brand is called {brand}. It sells {niche} products to {audience}. Write 5 short, memorable taglines and a 3-sentence brand story for my About Us page. The tone should feel {feel}."},
+ 'ch3-colors':{t:{ar:'ألوان البراند',en:'Brand colors'},d:{ar:'3 باليتات ألوان بكودات HEX.',en:'3 palettes with HEX codes.'},f:['brand','niche','feel'],
+  p:"Suggest 3 brand color palettes for a brand called {brand} in the {niche} niche that should feel {feel}. Give 3 colors per palette with HEX codes, say which color is for buttons, background and text, and explain the feeling each color creates."},
+ 'ch3-logo':{t:{ar:'أفكار لوجو وكلمات بحث في Canva',en:'Logo ideas and Canva search terms'},d:{ar:'5 أفكار لوجو بسيطة وتكتب إيه في Canva.',en:'5 simple logo ideas and what to type in Canva.'},f:['brand','niche','feel'],
+  p:"Suggest 5 simple logo concepts for a brand called {brand} in the {niche} niche with a {feel} feel. For each concept describe the icon, font style and colors, and give me the exact search terms to type in Canva to find matching logo templates."},
+ 'ch4-checklist':{t:{ar:'قايمة إعدادات Shopify الأولى',en:'First Shopify settings checklist'},d:{ar:'الإعدادات اللي تظبطها الأول والاختيار المناسب لكل واحد.',en:'What to set first and the recommended choice for each.'},f:['country'],
+  p:"I'm setting up a brand-new Shopify store for a dropshipping brand that sells to customers in {country}. Give me a step-by-step checklist of the settings to configure first: store details, checkout, shipping and delivery, taxes, markets, notifications and policies. For each one, tell me the recommended choice for a beginner and why."},
+ 'ch4-setting':{t:{ar:'اشرحلي إعداد في Shopify',en:'Explain a Shopify setting'},d:{ar:'شرح بسيط لأي إعداد مش فاهمه.',en:'A simple explanation of any setting.'},f:['setting'],
+  p:"Explain the Shopify setting \"{setting}\" in simple terms: what it does, when I should change it, common mistakes, and the recommended setup for a beginner dropshipping store."},
+ 'ch5-page':{t:{ar:'عنوان ووصف صفحة المنتج',en:'Product title and description'},d:{ar:'صفحة منتج كاملة جاهزة تلزقها في Shopify.',en:'A full product page ready to paste into Shopify.'},f:['product','country','feel'],
+  p:"Write a Shopify product page for {product}, for customers in {country}. Include: a clear product title (max 70 characters), one catchy opening sentence, 5 short benefit bullet points, a short specifications list, and a shipping and guarantee note. Tone: {feel}."},
+ 'ch5-seo':{t:{ar:'SEO للمنتج',en:'Product SEO'},d:{ar:'عنوان ووصف لمحركات البحث و Tags.',en:'Search title, meta description and tags.'},f:['product','niche'],
+  p:"Write an SEO page title (max 60 characters) and a meta description (max 155 characters) for {product} in the {niche} niche, plus 10 relevant product tags and 3 collection names to organise similar products."},
+ 'ch5-pricing':{t:{ar:'تسعير المنتج والعروض',en:'Pricing and bundle prices'},d:{ar:'سعر بيع وسعر قبل الخصم وأسعار Bundles.',en:'Selling, compare-at and bundle prices.'},f:['product','cost','shipping'],
+  p:"My product {product} costs {cost} plus {shipping} shipping. Suggest a selling price, a compare-at price, and prices for 'Buy 2' and 'Buy 3' bundles. Keep my profit above $10 per order after about $10 ad cost per sale, and show the calculation for each option."},
+ 'ch6-home':{t:{ar:'كلام الصفحة الرئيسية',en:'Homepage copy'},d:{ar:'شريط الإعلان والهيرو و«ليه تختارنا».',en:'Announcement bar, hero and "why choose us".'},f:['brand','niche','feel'],
+  p:"Write homepage copy for my Shopify store {brand} in the {niche} niche: one announcement bar line, a hero headline and subheadline with a call-to-action button, 3 'why choose us' points with short descriptions, and a short newsletter invitation. Tone: {feel}."},
+ 'ch6-theme':{t:{ar:'أنهي ثيم وسكشنز تناسبني؟',en:'Which theme and sections suit me?'},d:{ar:'ترشيح ثيم وترتيب سكشنز الصفحة الرئيسية.',en:'A theme pick and the homepage section order.'},f:['niche','storetype'],
+  p:"I sell {niche} products and my store type is a {storetype}. Which Shopify theme style suits me best (for example Broadcast, Ella, Empire, Motion or Prestige) and why? Then list the homepage sections I should add, in order, with one line on the purpose of each."},
+ 'ch7-shipping':{t:{ar:'سياسة الشحن',en:'Shipping policy'},d:{ar:'سياسة شحن واضحة جاهزة.',en:'A clear, ready shipping policy.'},f:['brand','country','delivery'],
+  p:"Write a clear Shipping Policy for my dropshipping store {brand} that sells to customers in {country}. Processing time is 1–3 business days and delivery takes {delivery}. Include sections on order tracking, possible delays, customs and duties, and lost or damaged parcels. Use simple, friendly language."},
+ 'ch7-pages':{t:{ar:'صفحتين About Us و Contact Us',en:'About Us and Contact Us pages'},d:{ar:'محتوى الصفحتين جاهز.',en:'Ready content for both pages.'},f:['brand','niche','email'],
+  p:"Write an About Us page and a Contact Us page for {brand}, a store selling {niche} products. The About Us page should tell a short brand story and our promise to customers. The Contact Us page should invite questions, mention a reply time of 24–48 hours, and show the support email {email}."},
+ 'ch7-bundle':{t:{ar:'عرض Bundle',en:'Bundle offer'},d:{ar:'أسماء وأسعار الخيارات وجملة لكل خيار.',en:'Option names, prices and a line for each.'},f:['product','price'],
+  p:"Create a bundle offer for {product}, which sells for {price} each. Give option names for Buy 1, Buy 2, Buy 3 and Buy 4, a price and savings percentage for each, and a short persuasive line for each option. Also add a 'Do not save money' option at the single price."},
+ 'ch8-desc':{t:{ar:'وصف النشاط لـ Shopify Payments',en:'Business description for Shopify Payments'},d:{ar:'وصف قصير ومحترف لنموذج التفعيل.',en:'A short, professional description for the form.'},f:['niche','country'],
+  p:"Write a short, professional business description (2–3 sentences) for a UK private limited company that sells {niche} products online through a Shopify store to customers in {country}. I'll use it in the Shopify Payments business details form, so keep it factual and clear."},
+ 'ch8-doc':{t:{ar:'اشرحلي ورقة من أوراق الشركة',en:'Explain a company document'},d:{ar:'الورقة دي إيه ومطلوبة ليه.',en:'What the document is and why it is needed.'},f:['document'],
+  p:"Explain in simple terms what a {document} is for a UK limited company, why Shopify or a bank asks for it, and which details on it must match exactly what I enter in my application."},
+ 'ch9-replies':{t:{ar:'ردود خدمة العملاء',en:'Customer service replies'},d:{ar:'6 قوالب ردود جاهزة.',en:'6 ready reply templates.'},f:['brand'],
+  p:"Write 6 short, friendly customer service reply templates for my store {brand}, for Shopify Inbox and email: 1) where is my order, 2) shipping delay, 3) wrong size or color, 4) refund request, 5) a product question before buying, 6) a thank-you message after purchase."},
+ 'ch9-apps':{t:{ar:'التطبيقات الأساسية لمتجري',en:'Essential apps for my store'},d:{ar:'تطبيقات أساسية ودور كل واحد.',en:'Core apps and what each one does.'},f:['niche'],
+  p:"I run a dropshipping Shopify store in the {niche} niche. Recommend the essential apps: supplier connection, reviews, live chat, translation and upsell. For each, say what it does, why I need it, and whether it has a free plan. Keep the list short so the store stays fast."},
+ 'ch9-translate':{t:{ar:'راجع الترجمة العربي',en:'Review my Arabic translation'},d:{ar:'يخلي الترجمة طبيعية لعملاء الخليج.',en:'Makes the translation sound natural for Gulf customers.'},f:['text'],
+  p:"Review this Arabic translation from my store and rewrite it so it sounds natural and persuasive for customers in the Gulf. Keep the meaning, fix any awkward phrases, and list the main changes you made:\n\n{text}"},
+ 'ch10-scripts':{t:{ar:'سكريبتات فيديو UGC للإعلان',en:'UGC video ad scripts'},d:{ar:'3 سكريبتات بهوك ومشكلة وحل.',en:'3 scripts with a hook, problem and solution.'},f:['product','audience','country'],
+  p:"Write 3 short UGC-style video ad scripts (15–30 seconds) for {product}, targeting {audience} in {country}. Each script needs: a strong 3-second hook, the problem, the product as the solution, a moment of social proof, and a clear call to action. Add on-screen text suggestions for each scene."},
+ 'ch10-copy':{t:{ar:'نصوص وعناوين الإعلان',en:'Ad texts and headlines'},d:{ar:'5 نصوص و5 عناوين للإعلان.',en:'5 primary texts and 5 headlines.'},f:['product','audience','offer'],
+  p:"Write 5 Facebook and Instagram ad primary texts and 5 headlines for {product}, aimed at {audience}. Mention this offer: {offer}. Vary the angles: problem, benefit, social proof, urgency and gift."},
+ 'ch10-results':{t:{ar:'اقرالي نتايج الحملة',en:'Read my campaign results'},d:{ar:'تشخيص المشكلة وأهم 3 خطوات جاية.',en:'A diagnosis and your next 3 actions.'},f:['spend','clicks','ctr','cpc','purchases','revenue','margin'],
+  p:"Here are my Meta campaign results: spend {spend}, clicks {clicks}, CTR {ctr}, CPC {cpc}, purchases {purchases}, revenue {revenue}. My profit margin before ads is {margin}. Calculate my ROAS and break-even ROAS, diagnose whether the problem is the ad, the product page or the price, and give me the next 3 actions to take."}
+};
+S.pbv=S.pbv||{};
+if(S.pb){const m={pbNiche:'niche',pbProduct:'category',pbAudience:'audience',pbFeel:'feel'};Object.keys(m).forEach(k=>{if(S.pb[k]&&!S.pbv[m[k]])S.pbv[m[k]]=S.pb[k];});}
+if(!S.pbv._lang) S.pbv._lang='en';
+const LANGLINE={en:'Answer in English.',ar:'Answer in Arabic (Egyptian dialect is fine).'};
+function pbParts(id,html){const P2=PR[id];return P2.p.replace(/\{(\w+)\}/g,(m,k)=>{const v=(S.pbv[k]||'').trim();
+  if(!html) return v||'['+PF[k].tag+']';
+  return v?'<span class="filled">'+esc(v)+'</span>':'<span class="blank">['+PF[k].tag+']</span>';})+'\n'+LANGLINE[S.pbv._lang==='ar'?'ar':'en'];}
+function renderPBX(){
+  document.querySelectorAll('.pbx[data-pb]').forEach(box=>{
+    const id=box.dataset.pb,P2=PR[id]; if(!P2) return;
+    const uid='pb-'+id;
+    box.innerHTML='<div class="pb-h"><i class="ic">'+IC.chat+'</i><div><b>'+esc(tr(P2.t))+'</b><small>'+esc(tr(P2.d))+'</small></div><a class="lk" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a></div>'+
+      '<div class="pb-fields">'+P2.f.map((k,i)=>'<label class="f">'+['①','②','③','④','⑤','⑥','⑦'][i]+' '+esc(tr(PF[k]))+'<input type="text" id="'+uid+'-'+k+'" data-k="'+k+'" maxlength="'+(k==='text'?1500:100)+'" dir="auto" placeholder="'+esc(PF[k].ph)+'"></label>').join('')+
+      '<label class="f">'+esc(tr({ar:'لغة رد ChatGPT',en:'ChatGPT reply language'}))+'<select id="'+uid+'-lang" data-k="_lang"><option value="en">English</option><option value="ar">العربية</option></select></label></div>'+
+      '<div class="pb-out" dir="ltr"></div><div class="btns"><button type="button" class="btn pb-copy">'+esc(tr({ar:'انسخ البرومبت',en:'Copy the prompt'}))+'</button><span class="form-msg" aria-live="polite"></span></div>'+
+      '<p class="pb-note">'+esc(tr({ar:'الكلام اللي بين الأقواس [ ] هو اللي لسه ما ملتهوش. اكتب بالإنجليزي عشان النتايج تطلع أدق، واختار لغة الرد اللي تريحك. الخانات المشتركة (زي النيش والدولة) بتتملا في كل البرومبتات مرة واحدة.',en:'Text in [ brackets ] is still empty. Write in English for sharper results, and pick the reply language you prefer. Shared fields (like niche and country) fill every prompt at once.'}))+'</p>';
+    box.querySelectorAll('[data-k]').forEach(inp=>{inp.value=S.pbv[inp.dataset.k]||(inp.tagName==='SELECT'?'en':'');
+      inp.addEventListener('input',()=>{S.pbv[inp.dataset.k]=inp.value;save();
+        document.querySelectorAll('.pbx [data-k="'+inp.dataset.k+'"]').forEach(o=>{if(o!==inp)o.value=inp.value;});
+        document.querySelectorAll('.pbx[data-pb]').forEach(b=>b.querySelector('.pb-out').innerHTML=pbParts(b.dataset.pb,true));});});
+    box.querySelector('.pb-out').innerHTML=pbParts(id,true);
+    box.querySelector('.pb-copy').addEventListener('click',()=>{const m=box.querySelector('.form-msg');const missing=P2.f.some(k=>!(S.pbv[k]||'').trim());
+      const done=()=>{m.className='form-msg '+(missing?'err':'ok');m.textContent=missing?tr({ar:'اتنسخ، بس لسه فيه فراغات ما اتملتش.',en:'Copied, but some blanks are still empty.'}):tr({ar:'اتنسخ ✓ الصقه في ChatGPT.',en:'Copied ✓ Paste it into ChatGPT.'});};
+      try{navigator.clipboard.writeText(pbParts(id,false)).then(done,()=>{const r=document.createRange();r.selectNodeContents(box.querySelector('.pb-out'));const s=getSelection();s.removeAllRanges();s.addRange(r);});}catch(e){}});
+  });
+}
+renderPBX();
 
 document.querySelectorAll('.ic[data-ic]').forEach(e=>{e.innerHTML=IC[e.dataset.ic]||'';e.setAttribute('aria-hidden','true');});
 applyLang();
