@@ -1043,6 +1043,41 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 .prompt-list{display:flex;flex-direction:column;gap:14px}
 .pb-fields select{font:500 .95rem var(--font-body);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .pb-fields input{text-align:start}
+/* ---------- Shopify offer ---------- */
+.so{background:linear-gradient(150deg,var(--surface) 40%,var(--accent-soft));border:2px solid var(--accent);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.so-badge{display:inline-block;background:var(--gold);color:#fff;font-weight:800;font-size:.8rem;border-radius:99px;padding:3px 12px;width:max-content}
+.so-head{display:flex;flex-direction:column;gap:8px}
+.so-head h3{font-family:var(--font-display);font-weight:800;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.5}
+.so-head h3 em{font-style:normal;color:var(--accent)}
+.so-head p{font-size:1.02rem;max-width:70ch}
+.so-compare{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) minmax(0,.8fr);gap:12px;align-items:stretch}
+.so-col{border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.so-col span{font-weight:700;font-size:.9rem}
+.so-col b{font-family:var(--font-poster);font-size:2.4rem;line-height:1.1}
+.so-col small{color:var(--muted);font-size:.82rem}
+.so-col.old{background:var(--sunk)} .so-col.old b{color:var(--muted);text-decoration:line-through;text-decoration-thickness:3px}
+.so-col.new{background:var(--surface);border:2px solid var(--accent)} .so-col.new b{color:var(--accent)}
+.so-vs{align-self:center;font-size:1.6rem;color:var(--accent);font-weight:800}
+#root[data-lang="ar"] .so-vs{transform:scaleX(-1)}
+.so-save{background:var(--accent-dark);color:var(--accent-ink);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.so-save b{font-family:var(--font-poster);font-size:2.2rem;line-height:1.1}
+.so-time{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;counter-reset:so}
+.so-time li{counter-increment:so;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;position:relative}
+.so-time li b{font-family:var(--font-display);color:var(--accent-dark)}
+.so-time li span{font-size:.88rem;color:var(--muted)}
+.so-time li:last-child{background:var(--sunk)}
+.so-tip{background:var(--gold-soft);border-radius:12px;padding:10px 14px;font-size:.93rem}
+.so-cta{align-self:center;display:inline-block;text-decoration:none;background:var(--accent);color:var(--accent-ink);font-family:var(--font-display);font-weight:800;font-size:1.15rem;border-radius:999px;padding:12px 28px;box-shadow:0 10px 22px -12px var(--accent)}
+.so-cta:hover{background:var(--accent-dark)}
+.so-disc{font-size:.8rem;color:var(--muted);text-align:center;max-width:75ch;align-self:center}
+.so-compact{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:16px}
+.so-compact .so-txt{flex:1 1 320px;display:flex;flex-direction:column;gap:6px}
+.so-compact .so-txt b{font-family:var(--font-display);font-size:1.1rem;line-height:1.6}
+.so-compact .so-txt small{color:var(--muted)}
+.so-compact .so-cta{font-size:1rem;padding:10px 20px}
+.so-compact .so-disc{flex-basis:100%;text-align:start}
+@media (max-width:760px){.so-compare{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.so-vs{display:none}.so-save{grid-column:1/-1}.so-time{grid-template-columns:minmax(0,1fr)}}
+
 /* quiz extras */
 .qbody{display:flex;flex-direction:column;gap:14px}
 .qtype{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
@@ -1659,6 +1694,11 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <ul data-l="ar"><li>أشهر منصة للتجارة الإلكترونية في العالم، وسهلة من غير برمجة.</li><li>بتدعم الدروبشيبينج بشكل كبير، والموردين عاملين تطبيقات متوافقة معاها.</li><li>اشتراكها مش غالي مقارنة بالمكاسب اللي ممكن تحققها.</li></ul>
     <ul data-l="en"><li>The world's best-known e-commerce platform, and easy to use without code.</li><li>Strong dropshipping support, with supplier apps built for it.</li><li>The subscription is affordable compared to what you can earn.</li></ul>
   </div>
+  <div class="so so-compact">
+    <div class="so-txt"><span class="so-badge"><span data-l="ar">عرض لطلبة الدبلوم</span><span data-l="en">Diploma student offer</span></span><b><span data-l="ar">هتسجل في Shopify؟ سجّل من لينك الدبلوم: 3 أيام مجانًا + 3 شهور بـ $1 للشهر بدل $32.</span><span data-l="en">Signing up to Shopify? Use the diploma link: 3 free days + 3 months at $1/month instead of $32.</span></b><small><span data-l="ar">هنفتح الحساب بالتفصيل في الفصل الرابع.</span><span data-l="en">We'll open the account step by step in chapter 4.</span> <a href="#ch4"><span data-l="ar">روح للفصل الرابع</span><span data-l="en">Go to chapter 4</span></a></small></div>
+    <a class="so-cta" href="https://www.shopify.com/ae/ppc/website-builder?irclickid=UZcWgD3MvxyZW3A01cUqTXzqUkr3YgyQ2zUsy00&amp;irgwc=1&amp;partner=6429460&amp;affpt=excluded&amp;utm_channel=affiliates&amp;utm_source=6429460-impact&amp;utm_medium=cpa&amp;iradid=2980068" target="_blank" rel="noopener sponsored"><span data-l="ar">سجّل في Shopify من لينك الدبلوم ↗</span><span data-l="en">Sign up to Shopify with the diploma link ↗</span></a>
+    <p class="so-disc"><span data-l="ar">ده لينك أفلييت خاص بالمحاضر: بتاخد نفس العرض ومش بتدفع أي حاجة زيادة، والمحاضر بياخد عمولة من Shopify بتساعده يكمل يقدّم المحتوى.</span><span data-l="en">This is the instructor's affiliate link: you get the same offer at no extra cost, and the instructor earns a commission from Shopify that helps keep this content going.</span></p>
+  </div>
   <div class="rm-head">
     <div class="rm-title" dir="ltr">E-COMMERCE SHOPIFY</div>
     <div class="ribbon"><span data-l="ar">خريطة الطريق لبناء متجر إلكتروني ناجح</span><span data-l="en">The roadmap to a successful online store</span></div>
@@ -1726,6 +1766,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="2"></div>
+
 
 <div style="display:flex;flex-direction:column;gap:22px">
 <div class="ch-head">
@@ -1981,6 +2022,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
 </div>
 <div class="remind" data-ch="3"></div>
 
+
 <div style="display:flex;flex-direction:column;gap:22px">
 <div class="ch-head">
   <p class="lead"><span data-l="ar">المنتج مهم جدًا، بس المتجر اللي بيعرضه ما يقلش أهمية عنه. لو عندك نفس المنتج في متجرين، المتجر اللي هويته أوضح وتجربته أحسن هيبيع أكتر.</span><span data-l="en">The product matters, but so does the store that presents it. With the same product in two stores, the one with the clearer identity and better experience sells more.</span></p>
@@ -2102,6 +2144,26 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="4"></div>
+<div class="so">
+  <div class="so-head"><span class="so-badge"><span data-l="ar">عرض خاص لطلبة الدبلوم</span><span data-l="en">Special offer for diploma students</span></span>
+    <h3><span data-l="ar">سجّل في Shopify من لينك الدبلوم: <em>3 أيام مجانًا</em> + <em>3 شهور بـ $1 بس</em> في الشهر</span><span data-l="en">Sign up to Shopify with the diploma link: <em>3 free days</em> + <em>3 months for just $1</em> a month</span></h3>
+    <p><span data-l="ar">الخطة الأساسية في Shopify سعرها $32 في الشهر. من خلال اللينك ده بتبدأ بـ 3 أيام تجربة مجانية، وبعدها بتدفع $1 بس في الشهر لمدة 3 شهور، ومن الشهر الرابع بترجع للخطة الأصلية.</span><span data-l="en">Shopify's Basic plan costs $32 a month. With this link you start with a 3-day free trial, then pay just $1 a month for 3 months; from month 4 you move to the regular plan.</span></p></div>
+  <div class="so-compare">
+    <div class="so-col old"><span><span data-l="ar">من غير اللينك</span><span data-l="en">Without the link</span></span><b dir="ltr">$96</b><small><span data-l="ar">أول 3 شهور (3 × $32)</span><span data-l="en">first 3 months (3 × $32)</span></small></div>
+    <div class="so-vs" aria-hidden="true">→</div>
+    <div class="so-col new"><span><span data-l="ar">من لينك الدبلوم</span><span data-l="en">With the diploma link</span></span><b dir="ltr">$3</b><small><span data-l="ar">أول 3 شهور (3 × $1) + 3 أيام مجانًا</span><span data-l="en">first 3 months (3 × $1) + 3 free days</span></small></div>
+    <div class="so-save"><span><span data-l="ar">هتوفّر حوالي</span><span data-l="en">You save about</span></span><b dir="ltr">$93</b></div>
+  </div>
+  <ol class="so-time">
+    <li><b><span data-l="ar">أول 3 أيام</span><span data-l="en">Days 1–3</span></b><span><span data-l="ar">تجربة مجانية: جرّب لوحة التحكم وابدأ تبني</span><span data-l="en">Free trial: explore the dashboard and start building</span></span></li>
+    <li><b><span data-l="ar">الشهور 1–3</span><span data-l="en">Months 1–3</span></b><span dir="auto"><span data-l="ar">$1 بس في الشهر وانت بتجهز المتجر وتطلق الإعلانات</span><span data-l="en">Just $1 a month while you set up the store and launch ads</span></span></li>
+    <li><b><span data-l="ar">من الشهر الرابع</span><span data-l="en">From month 4</span></b><span><span data-l="ar">الخطة الأصلية، وساعتها المتجر بقى شغال وبيبيع</span><span data-l="en">The regular plan, by which time your store is live and selling</span></span></li>
+  </ol>
+  <div class="so-tip">💡 <span data-l="ar"><b>نصيحة المحاضر:</b> بعد ما تسجل من اللينك، تقدر تفتح أكتر من متجر من نفس الحساب وتستفيد من العرض، حسب شروط Shopify وقت التسجيل. استغل الفترة دي تجرّب وتتعلم براحتك.</span><span data-l="en"><b>Instructor tip:</b> after signing up via the link, you can open more than one store from the same account and use the offer, subject to Shopify's terms at the time. Use this period to experiment and learn.</span></div>
+  <a class="so-cta" href="https://www.shopify.com/ae/ppc/website-builder?irclickid=UZcWgD3MvxyZW3A01cUqTXzqUkr3YgyQ2zUsy00&amp;irgwc=1&amp;partner=6429460&amp;affpt=excluded&amp;utm_channel=affiliates&amp;utm_source=6429460-impact&amp;utm_medium=cpa&amp;iradid=2980068" target="_blank" rel="noopener sponsored"><span data-l="ar">سجّل في Shopify من لينك الدبلوم ↗</span><span data-l="en">Sign up to Shopify with the diploma link ↗</span></a>
+  <p class="so-disc"><span data-l="ar">ده لينك أفلييت خاص بالمحاضر: بتاخد نفس العرض ومش بتدفع أي حاجة زيادة، والمحاضر بياخد عمولة من Shopify بتساعده يكمل يقدّم المحتوى.</span><span data-l="en">This is the instructor's affiliate link: you get the same offer at no extra cost, and the instructor earns a commission from Shopify that helps keep this content going.</span><br><span data-l="ar">العرض والأسعار بتحددها Shopify، وممكن تختلف حسب الدولة ووقت التسجيل. هتشوف التفاصيل النهائية في صفحة التسجيل.</span><span data-l="en">Shopify sets the offer and prices, which can vary by country and sign-up date. You'll see the final details on the sign-up page.</span></p>
+</div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2114,7 +2176,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   <div class="prose">
     <h3>الاشتراك خطوة بخطوة</h3>
     <ol>
-      <li><b>فتح حساب:</b> سجّل بإيميل وباسورد وبلدك الحالي (تقدر تغيره بعدين). الإيميل ده مش شرط يكون رسمي، مجرد دخول فقط.</li>
+      <li><b>فتح حساب من <a href="https://www.shopify.com/ae/ppc/website-builder?irclickid=UZcWgD3MvxyZW3A01cUqTXzqUkr3YgyQ2zUsy00&amp;irgwc=1&amp;partner=6429460&amp;affpt=excluded&amp;utm_channel=affiliates&amp;utm_source=6429460-impact&amp;utm_medium=cpa&amp;iradid=2980068" target="_blank" rel="noopener sponsored">لينك الدبلوم ↗</a>:</b> سجّل بإيميل وباسورد وبلدك الحالي (تقدر تغيره بعدين). الإيميل ده مش شرط يكون رسمي، مجرد دخول فقط.</li>
       <li><b>أسئلة التسجيل:</b>
         <ul>
           <li>تبيع فين؟ ← <code>Online Store</code></li>
@@ -2130,7 +2192,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
     <thead><tr><th>الباقة</th><th>السعر وقت الشرح</th><th>عمولة Shopify من كل بيعة</th><th>القرار</th></tr></thead>
     <tbody>
       <tr><td>الباقة الأرخص</td><td class="mono">$5 / month</td><td class="mono">5%</td><td>✗ ما تختارهاش، محدودة جدًا</td></tr>
-      <tr><td><b>الباقة الأساسية</b></td><td class="mono">$32 / month</td><td class="mono">2%</td><td>✓ اختارها: دعم فني 24 ساعة ومميزات متقدمة</td></tr>
+      <tr><td><b>الباقة الأساسية</b></td><td class="mono">$32 / month<br><small style="color:var(--accent)">$1 أول 3 شهور من لينك الدبلوم</small></td><td class="mono">2%</td><td>✓ اختارها: دعم فني 24 ساعة ومميزات متقدمة</td></tr>
     </tbody>
   </table></div>
   <p style="font-size:.85rem;color:var(--muted)">الأسعار بتتغير من وقت للتاني حسب Shopify والدولة وطريقة الدفع (شهري أو سنوي). راجع صفحة الأسعار قبل ما تشترك.</p>
@@ -2242,6 +2304,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="5"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2377,6 +2440,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="6"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2524,6 +2588,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="7"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2660,6 +2725,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="8"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2829,6 +2895,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="9"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -2934,6 +3001,7 @@ mark{background:var(--accent-soft);color:var(--accent-dark);padding:0 6px;border
   
 </div>
 <div class="remind" data-ch="10"></div>
+
 <div class="tip" data-l="en"><span class="kicker">Arabic only for now</span><p>The English version of this chapter is on its way. The Arabic lesson is shown below.</p></div>
 <div dir="rtl" lang="ar" style="display:flex;flex-direction:column;gap:22px">
   <div class="ch-head">
@@ -3934,7 +4002,7 @@ const MS={
 1:[{id:'intro',ar:'بعت كارت التعارف للمحاضر',en:'Sent my introduction to the instructor'},{id:'goal',ar:'كتبت هدفي من الدبلوم بالأرقام',en:'Wrote my diploma goal as numbers'},{id:'niches',ar:'اخترت 3 نيتشات مبدئية أقارن بينهم',en:'Shortlisted 3 niches to compare'}],
 2:[{id:'p10',ar:'اخترت 10 منتجات',en:'Picked 10 products',auto:'p'},{id:'v30',ar:'جمعت 3 فيديوهات لكل منتج (30 فيديو)',en:'Collected 3 videos per product (30 videos)',auto:'v'},{id:'folder',ar:'عملت فولدر المنتجات على جهازي ومقسّم',en:'Made an organised products folder on my device'},{id:'scored',ar:'قيّمت كل منتج وحسبت ربحه',en:'Scored every product and worked out its profit'}],
 3:[{id:'name',ar:'اخترت اسم البراند',en:'Chose my brand name'},{id:'domain',ar:'حجزت الدومين',en:'Registered the domain'},{id:'logo',ar:'صممت اللوجو',en:'Designed the logo'},{id:'colors',ar:'اخترت ألوان البراند',en:'Picked brand colors'}],
-4:[{id:'acct',ar:'فتحت حساب Shopify واشتركت في الخطة',en:'Opened a Shopify account and chose a plan'},{id:'basic',ar:'ظبطت الإعدادات الأساسية (اسم المتجر و Checkout)',en:'Set the basics (store name and checkout)'}],
+4:[{id:'acct',ar:'فتحت حساب Shopify من لينك الدبلوم (عرض $1)',en:'Opened a Shopify account via the diploma link ($1 offer)'},{id:'basic',ar:'ظبطت الإعدادات الأساسية (اسم المتجر و Checkout)',en:'Set the basics (store name and checkout)'}],
 5:[{id:'dsers',ar:'ربطت DSers بحساب AliExpress',en:'Connected DSers to AliExpress'},{id:'added',ar:'ضفت المنتجات بعناوين ووصف جديد',en:'Added products with new titles and descriptions'},{id:'coll',ar:'عملت Collection للمنتجات',en:'Created a collection'}],
 6:[{id:'theme',ar:'اخترت الثيم وعملت Publish',en:'Chose a theme and published it'},{id:'brandset',ar:'ظبطت اللوجو والألوان والسكشنز',en:'Set the logo, colors and sections'},{id:'mobile',ar:'راجعت المتجر على الموبايل',en:'Checked the store on mobile'}],
 7:[{id:'pages',ar:'عملت About و Contact وضفتهم للقائمة',en:'Made About and Contact pages and added them to the menu'},{id:'policies',ar:'جهزت السياسات الخمسة',en:'Prepared the five policies'},{id:'bundle',ar:'عملت Bundle لمنتج',en:'Built a bundle for a product'}],
