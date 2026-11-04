@@ -1,0 +1,142 @@
+{
+ "_readme": "Hand-written additions merged into english.json by build.py. Key = section title (or id). rules = extra explanation bullets. questions = MCQ with 'answer' = index of the right option (options are shuffled in the app). focus = words that fill-in-the-blank questions should hide, with their confusable alternatives.",
+ "sections": {
+  "Part 1: I’m in / at / on": {
+   "focus": {"in": ["at", "on"], "at": ["in", "on"], "on": ["in", "at"]},
+   "rules": [
+    "in = جوه مكان مقفول أو مساحة: in the car, in the lobby, in a house.",
+    "at = عند نقطة أو مكان بنروحه لغرض: at the airport, at the doctor’s office, at the mall.",
+    "on = مع وسائل المواصلات الكبيرة والأجهزة: on a bus, on the phone, on my computer.",
+    "in the shower معناها «بستحمى» مش بس «موجود في الحمام»."
+   ],
+   "questions": [
+    {"q": "I’m ___ the phone. (بتكلم في التليفون)", "options": ["on", "in", "at"], "answer": 0, "explain": "مع التليفون والكمبيوتر بنقول on: on the phone, on my computer."},
+    {"q": "I’m ___ a bus.", "options": ["on", "in", "at"], "answer": 0, "explain": "مع وسائل المواصلات الكبيرة (bus, train, plane) بنقول on."},
+    {"q": "I’m ___ a car.", "options": ["in", "on", "at"], "answer": 0, "explain": "مع العربية الصغيرة (car, taxi) بنقول in لأنك جوه مساحة مقفولة."},
+    {"q": "I’m ___ the airport. (موجود في المطار كمكان/وجهة)", "options": ["at", "on", "to"], "answer": 0, "explain": "at للمكان كنقطة أو وجهة: at the airport."},
+    {"q": "إيه معنى I’m in the shower؟", "options": ["أنا بستحمى", "أنا واقف في الحمام", "أنا بنضف الحمام"], "answer": 0, "explain": "in the shower = بتستحمى تحت الدش."},
+    {"q": "أي جملة صح لما تكون جوه المول بالظبط (داخل المبنى)؟", "options": ["I’m in the mall.", "I’m on the mall.", "I’m to the mall."], "answer": 0, "explain": "in = جوه المكان. at the mall كمان صح لو تقصد المكان عمومًا."}
+   ]
+  },
+  "Part 2: I’m good at": {
+   "focus": {"at": ["in", "on", "to"]},
+   "rules": ["good at + اسم (math, chess) أو فعل -ing (swimming, driving).", "مانقولش good in swimming ولا good at swim."],
+   "questions": [
+    {"q": "I’m good at ___.", "options": ["swimming", "swim", "to swim"], "answer": 0, "explain": "بعد at بييجي اسم أو فعل بـ ing."},
+    {"q": "I’m good ___ math.", "options": ["at", "in", "on"], "answer": 0, "explain": "التركيب الثابت: good at."},
+    {"q": "أي جملة صحيحة؟", "options": ["I’m good at driving.", "I’m good at drive.", "I’m good to driving."], "answer": 0, "explain": "good at + verb-ing."}
+   ]
+  },
+  "Part 3: I’m getting": {
+   "focus": {"getting": ["trying", "going", "having"]},
+   "rules": ["getting + صفة = حالة بتتغير: getting tired, getting better.", "getting ready = بستعد. getting a cold = بدأ يجيلي برد.", "getting + اسم ممكن تعني هحصل على/هجيب: getting a new car."],
+   "questions": [
+    {"q": "إيه معنى I’m getting tired؟", "options": ["بدأت أتعب", "أنا تعبان من زمان", "هجيب حاجة متعبة"], "answer": 0, "explain": "getting + صفة = تغير في الحالة دلوقتي."},
+    {"q": "I’m getting ___ for bed.", "options": ["ready", "readying", "to ready"], "answer": 0, "explain": "getting ready for = بستعد لـ."},
+    {"q": "إيه معنى I’m getting a cold؟", "options": ["بدأ يجيلي دور برد", "بشتري حاجة ساقعة", "أنا بردان"], "answer": 0, "explain": "get a cold = يصاب بالبرد؛ getting = بداية الأعراض."}
+   ]
+  },
+  "Part 4: I’m trying to + verb": {
+   "focus": {"to": ["for", "at", "-"], "trying": ["getting", "going", "having"]},
+   "rules": ["trying to + فعل في صورته الأساسية = بحاول أعمل.", "trying + اسم (من غير to) = بجرّب: I’m trying new food."],
+   "questions": [
+    {"q": "I’m trying ___ understand.", "options": ["to", "for", "at"], "answer": 0, "explain": "trying to + base verb."},
+    {"q": "إيه الفرق بين I’m trying new food و I’m trying to eat healthily؟", "options": ["الأولى بجرّب، التانية بحاول", "الاتنين بحاول", "الاتنين بجرّب"], "answer": 0, "explain": "trying + اسم = يجرّب. trying to + فعل = يحاول."},
+    {"q": "أي جملة صحيحة؟", "options": ["I’m trying to call my family.", "I’m trying to calling my family.", "I’m trying calling to my family."], "answer": 0, "explain": "بعد to الفعل يكون في صورته الأساسية."}
+   ]
+  },
+  "Part 5: I’m gonna + verb": {
+   "focus": {"gonna": ["wanna", "going", "about"]},
+   "rules": ["gonna = going to (غير رسمي، للكلام).", "I’m gonna + فعل أساسي: I’m gonna have some coffee.", "في الكتابة الرسمية اكتب going to."],
+   "questions": [
+    {"q": "gonna اختصار لإيه؟", "options": ["going to", "want to", "got to"], "answer": 0, "explain": "gonna = going to. wanna = want to. gotta = got to."},
+    {"q": "I’m gonna ___ some coffee.", "options": ["have", "having", "to have"], "answer": 0, "explain": "بعد gonna فعل في صورته الأساسية."},
+    {"q": "في إيميل رسمي تكتب إيه؟", "options": ["I am going to send my resume.", "I’m gonna send my resume.", "I gonna send my resume."], "answer": 0, "explain": "gonna للكلام غير الرسمي فقط."}
+   ]
+  },
+  "Part 6: I wanna + verb": {
+   "focus": {"wanna": ["gonna", "want", "about"]},
+   "rules": ["wanna = want to (غير رسمي).", "نقول I wanna مش I’m wanna."],
+   "questions": [
+    {"q": "أي جملة صحيحة؟", "options": ["I wanna talk.", "I’m wanna talk.", "I wanna to talk."], "answer": 0, "explain": "wanna فيها to بالفعل، ومن غير am."},
+    {"q": "wanna اختصار لإيه؟", "options": ["want to", "going to", "want a"], "answer": 0, "explain": "wanna = want to (وأحيانًا want a في الكلام)."},
+    {"q": "I wanna ___ some food.", "options": ["order", "ordering", "to order"], "answer": 0, "explain": "بعد wanna فعل أساسي."}
+   ]
+  },
+  "Part 10: I was about to + verb": {
+   "focus": {"about": ["going", "busy", "trying"]},
+   "rules": ["I was about to = كنت على وشك (في الماضي).", "I’m about to = أنا على وشك (دلوقتي).", "بعد about to فعل في صورته الأساسية."],
+   "questions": [
+    {"q": "إيه معنى I was about to call you؟", "options": ["كنت على وشك أتصل بيك", "اتصلت بيك عن الموضوع", "كنت بتصل بيك كتير"], "answer": 0, "explain": "about to = على وشك."},
+    {"q": "دلوقتي حالًا هتخرج. تقول إيه؟", "options": ["I’m about to go out.", "I was about to go out.", "I was busy going out."], "answer": 0, "explain": "I’m about to للحاضر؛ I was about to للماضي."},
+    {"q": "I was about to ___ the same thing.", "options": ["say", "saying", "said"], "answer": 0, "explain": "about to + base verb."}
+   ]
+  },
+  "Part 14: I was busy + verb-ing": {
+   "focus": {"busy": ["about", "trying", "getting"]},
+   "rules": ["busy + verb-ing = مشغول بـ: I was busy cooking.", "مانقولش busy to cook."],
+   "questions": [
+    {"q": "I was busy ___ dinner.", "options": ["cooking", "to cook", "cook"], "answer": 0, "explain": "busy + verb-ing."},
+    {"q": "أي جملة صحيحة؟", "options": ["I was busy studying for my test.", "I was busy to study for my test.", "I was busy study for my test."], "answer": 0, "explain": "busy + verb-ing."}
+   ]
+  },
+  "Part 15: I’m having a hard time + verb-ing": {
+   "focus": {"hard": ["busy", "good", "about"]},
+   "rules": ["have a hard time + verb-ing = بواجه صعوبة في.", "I’m having a hard time understanding you = بلاقي صعوبة أفهمك."],
+   "questions": [
+    {"q": "I’m having a hard time ___ you.", "options": ["understanding", "to understand", "understand"], "answer": 0, "explain": "hard time + verb-ing."},
+    {"q": "إيه معنى I’m having a hard time writing؟", "options": ["بواجه صعوبة في الكتابة", "بقضي وقت صعب بكتب", "الكتابة بتاخد وقت"], "answer": 0, "explain": "have a hard time doing = يواجه صعوبة في."}
+   ]
+  },
+  "استخدامات over": {
+   "rules": ["be over = خلص/انتهى.", "argue over = يتخانق بسبب/على.", "over dinner = أثناء العشاء.", "over + رقم = أكتر من.", "prefer A over/to B (مش than)."],
+   "questions": [
+    {"q": "The game is ___.", "options": ["over", "up", "off"], "answer": 0, "explain": "be over = انتهى."},
+    {"q": "Let’s talk ___ dinner. (أثناء العشاء)", "options": ["over", "on", "above"], "answer": 0, "explain": "over + وجبة = أثناء الوجبة."},
+    {"q": "أي جملة صحيحة؟", "options": ["I prefer tea to coffee.", "I prefer tea than coffee.", "I prefer tea from coffee."], "answer": 0, "explain": "prefer A to B أو prefer A over B. مانستخدمش than."},
+    {"q": "The trip took over two hours. معنى over هنا:", "options": ["أكتر من", "فوق", "خلص"], "answer": 0, "explain": "over + رقم = أكتر من."},
+    {"q": "They argued ___ money. (اتخانقوا بسبب الفلوس)", "options": ["over", "on", "for"], "answer": 0, "explain": "argue/fight over something = بسبب/على شيء."}
+   ]
+  },
+  "قل ولا تقل - فروق الاستخدام": {
+   "rules": ["أغلب الصيغتين صح؛ الفرق في الرسمية والقوة والسياق.", "get + صفة = يصبح (got sad). got home من غير to."],
+   "questions": [
+    {"q": "I got ___ at nine. (وصلت البيت)", "options": ["home", "to home", "at home"], "answer": 0, "explain": "مع home بعد get/arrive/go مانستخدمش to."},
+    {"q": "أقوى بديل لـ very funny:", "options": ["hilarious", "funnier", "funnily"], "answer": 0, "explain": "hilarious = مضحك جدًا."},
+    {"q": "أقوى بديل لـ very angry:", "options": ["furious", "angrily", "upset"], "answer": 0, "explain": "furious = غضبان جدًا."},
+    {"q": "It’s on me في المطعم معناها:", "options": ["الحساب عليّا", "ده فوقي", "ده ذنبي دايمًا"], "answer": 0, "explain": "It’s on me = أنا اللي هدفع."},
+    {"q": "أي صيغة ألطف لدعوة حد يقعد؟", "options": ["Have a seat.", "Sit down!", "Seat you."], "answer": 0, "explain": "Have a seat دعوة لطيفة؛ Sit down ممكن تبان أمر."}
+   ]
+  },
+  "1. Certainty and probability — اليقين والاحتمال": {
+   "questions": [
+    {"q": "I’m positive that… معناها:", "options": ["أنا متأكد إن…", "أنا إيجابي إن…", "أنا متفائل إن…"], "answer": 0, "explain": "positive هنا = متأكد."},
+    {"q": "أي تعبير معناه «غالبًا هيحصل»؟", "options": ["Chances are that…", "I seriously doubt it.", "I wouldn’t bet on it."], "answer": 0, "explain": "Chances are / Odds are = من المحتمل."},
+    {"q": "I wouldn’t bet on it معناها:", "options": ["مش متوقع إنه يحصل", "مش بحب المراهنة", "أكيد هيحصل"], "answer": 0, "explain": "تعبير عن توقع ضعيف، مش مراهنة فعلية."}
+   ]
+  },
+  "4. Disappointment — خيبة الأمل": {
+   "questions": [
+    {"q": "What a shame معناها:", "options": ["يا خسارة", "يا عيب عليك", "يا للعار"], "answer": 0, "explain": "What a shame = What a pity = يا خسارة."},
+    {"q": "It didn’t live up to my expectations معناها:", "options": ["ماكانش قد توقعاتي", "عاش أكتر من توقعاتي", "توقعته بالظبط"], "answer": 0, "explain": "live up to = يكون على قدر."}
+   ]
+  },
+  "5. Describing speaking — وصف طريقة الكلام": {
+   "questions": [
+    {"q": "اتكلم بصوت واطي وكلام مش واضح:", "options": ["mumbled", "yelled", "chatted"], "answer": 0, "explain": "mumble = يتمتم بكلام مش واضح."},
+    {"q": "فضل يتكلم كتير من غير تنظيم:", "options": ["rambled", "whispered", "screamed"], "answer": 0, "explain": "ramble / go on and on."},
+    {"q": "I snapped at my husband معناها:", "options": ["رديت عليه بعصبية", "ضربته", "صورته"], "answer": 0, "explain": "snap at = يتكلم بحدة وعصبية."}
+   ]
+  },
+  "اختصارات الشات": {
+   "questions": [
+    {"q": "FYI اختصار لـ:", "options": ["for your information", "for your info", "fix your issue"], "answer": 0, "explain": "FYI = for your information."},
+    {"q": "brb معناها:", "options": ["راجع حالًا", "أخويا", "باي باي"], "answer": 0, "explain": "brb = be right back."},
+    {"q": "إمتى ماتستخدمش idk؟", "options": ["في رسالة شغل رسمية", "مع صاحبك", "في جروب العيلة"], "answer": 0, "explain": "الاختصارات للدردشة غير الرسمية."}
+   ]
+  },
+  "كورس - التصحيحات": {
+   "rules": ["للعادات استخدم المضارع البسيط: I usually wake up at 8.", "take a shower (بـ a).", "get ready to + فعل.", "check my schedule من غير to."]
+  }
+ }
+}
