@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 500" font-family="Arial, sans-serif">
+  <rect width="560" height="500" rx="16" fill="#0f3d3e"/>
+  <circle cx="470" cy="80" r="120" fill="#c9a227" opacity=".12"/>
+  <circle cx="80" cy="440" r="140" fill="#ffffff" opacity=".05"/>
+  <!-- dashboard card -->
+  <rect x="50" y="60" width="460" height="300" rx="14" fill="#ffffff"/>
+  <rect x="50" y="60" width="460" height="46" rx="14" fill="#f1f4f3"/>
+  <rect x="50" y="92" width="460" height="14" fill="#f1f4f3"/>
+  <circle cx="78" cy="83" r="6" fill="#e05d5d"/><circle cx="98" cy="83" r="6" fill="#e6b84c"/><circle cx="118" cy="83" r="6" fill="#4cbf7a"/>
+  <text x="480" y="89" text-anchor="end" font-size="15" font-weight="700" fill="#0f3d3e">Organic Traffic</text>
+  <!-- grid -->
+  <g stroke="#e8eeec" stroke-width="1">
+    <line x1="80" y1="150" x2="480" y2="150"/><line x1="80" y1="200" x2="480" y2="200"/>
+    <line x1="80" y1="250" x2="480" y2="250"/><line x1="80" y1="300" x2="480" y2="300"/>
+  </g>
+  <!-- bars -->
+  <g fill="#cfe0dd">
+    <rect x="95" y="270" width="34" height="30" rx="4"/><rect x="150" y="255" width="34" height="45" rx="4"/>
+    <rect x="205" y="240" width="34" height="60" rx="4"/><rect x="260" y="215" width="34" height="85" rx="4"/>
+    <rect x="315" y="190" width="34" height="110" rx="4"/><rect x="370" y="165" width="34" height="135" rx="4"/>
+  </g>
+  <rect x="425" y="130" width="34" height="170" rx="4" fill="#c9a227"/>
+  <polyline points="112,262 167,246 222,230 277,204 332,178 387,152 442,118" fill="none" stroke="#0f3d3e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="442" cy="118" r="7" fill="#0f3d3e" stroke="#fff" stroke-width="3"/>
+  <!-- KPI badges -->
+  <rect x="50" y="390" width="140" height="70" rx="12" fill="#145a5b"/>
+  <text x="120" y="422" text-anchor="middle" font-size="26" font-weight="800" fill="#c9a227">+320%</text>
+  <text x="120" y="446" text-anchor="middle" font-size="13" fill="#d7e3e1">Traffic</text>
+  <rect x="210" y="390" width="140" height="70" rx="12" fill="#145a5b"/>
+  <text x="280" y="422" text-anchor="middle" font-size="26" font-weight="800" fill="#c9a227">#1</text>
+  <text x="280" y="446" text-anchor="middle" font-size="13" fill="#d7e3e1">Google Rank</text>
+  <rect x="370" y="390" width="140" height="70" rx="12" fill="#145a5b"/>
+  <text x="440" y="422" text-anchor="middle" font-size="26" font-weight="800" fill="#c9a227">x4</text>
+  <text x="440" y="446" text-anchor="middle" font-size="13" fill="#d7e3e1">Leads</text>
+</svg>

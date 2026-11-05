@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460" font-family="Arial, sans-serif">
+  <rect width="560" height="460" rx="16" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="559" height="459" rx="16" fill="none" stroke="#e3eae8"/>
+  <!-- search bar -->
+  <rect x="40" y="40" width="480" height="56" rx="28" fill="#f5f7f6" stroke="#dbe3e1"/>
+  <circle cx="490" cy="68" r="10" fill="none" stroke="#0f3d3e" stroke-width="3"/>
+  <line x1="497" y1="75" x2="505" y2="83" stroke="#0f3d3e" stroke-width="3" stroke-linecap="round"/>
+  <text x="70" y="75" font-size="18" fill="#5d6b6c">SEO agency Dubai</text>
+  <!-- result #1 highlighted -->
+  <rect x="40" y="122" width="480" height="104" rx="12" fill="#0f3d3e"/>
+  <rect x="460" y="138" width="44" height="28" rx="14" fill="#c9a227"/>
+  <text x="482" y="158" text-anchor="middle" font-size="15" font-weight="800" fill="#0f3d3e">#1</text>
+  <text x="64" y="152" font-size="13" fill="#9fd0c4">www.your-business.ae</text>
+  <rect x="64" y="166" width="280" height="14" rx="7" fill="#c9a227"/>
+  <rect x="64" y="192" width="380" height="9" rx="4.5" fill="#4d7d7c"/>
+  <rect x="64" y="208" width="300" height="9" rx="4.5" fill="#4d7d7c"/>
+  <!-- other results -->
+  <g>
+    <rect x="64" y="252" width="140" height="10" rx="5" fill="#cfdad8"/>
+    <rect x="64" y="270" width="240" height="12" rx="6" fill="#9db3b0"/>
+    <rect x="64" y="292" width="380" height="8" rx="4" fill="#e6ecea"/>
+    <rect x="64" y="306" width="320" height="8" rx="4" fill="#e6ecea"/>
+  </g>
+  <g>
+    <rect x="64" y="342" width="140" height="10" rx="5" fill="#cfdad8"/>
+    <rect x="64" y="360" width="220" height="12" rx="6" fill="#9db3b0"/>
+    <rect x="64" y="382" width="380" height="8" rx="4" fill="#e6ecea"/>
+    <rect x="64" y="396" width="290" height="8" rx="4" fill="#e6ecea"/>
+  </g>
+  <!-- pin -->
+  <g transform="translate(470 300)">
+    <path d="M0 70s34-31 34-58a34 34 0 0 0-68 0c0 27 34 58 34 58z" fill="#c9a227"/>
+    <circle cx="0" cy="12" r="12" fill="#ffffff"/>
+  </g>
+</svg>
